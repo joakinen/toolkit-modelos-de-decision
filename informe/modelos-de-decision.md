@@ -412,6 +412,12 @@ respuesta correcta. Cuanto más bajo, mejor; castiga mucho equivocarse con segur
 **LoRA.** Técnica de ajuste fino que congela el modelo y entrena solo unas piezas pequeñas añadidas. Reduce mucho la
 memoria y el tiempo necesarios.
 
+**GB y GiB.** Dos unidades de memoria que se confunden a menudo. Un gigabyte (GB) son mil millones de bytes (10⁹); un
+gibibyte (GiB), 1.073.741.824 bytes (2³⁰), un 7,4 % más. Los fabricantes de discos y macOS usan GB; Windows y muchos
+programas muestran GiB aunque escriban «GB». Las memorias de este informe están en GB decimales, salvo los «24 GB» del
+equipo, que son la cifra comercial de su memoria y equivalen a 24 GiB. La norma que distingue ambas unidades es la
+ISO/IEC 80000-13.
+
 **Pesos abiertos.** Modelo cuyos ficheros se publican y se pueden descargar y ejecutar en máquinas propias.
 
 ---
