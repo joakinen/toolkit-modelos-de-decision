@@ -76,7 +76,21 @@
    "control": [
     11,
     12
-   ]
+   ],
+   "ajuste": {
+    "equipo": "Mac mini con M4 Pro y 24 GB de memoria unificada",
+    "segundos": 12562,
+    "epocas": 3,
+    "ejemplos_propios": 1400,
+    "ejemplos_repaso": 160,
+    "ejemplos_procesados": 4680,
+    "tokens": 2076726,
+    "s_por_ejemplo": 2.68,
+    "memoria_gpu_gb": 3.3,
+    "memoria_proceso_gb": 7.0,
+    "parametros_entrenados": "LoRA de rango 16",
+    "base_en_media_precision": false
+   }
   },
   {
    "id": "jev-v1",

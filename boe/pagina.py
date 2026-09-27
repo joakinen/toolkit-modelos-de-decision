@@ -45,6 +45,9 @@ pagina = f"""<!doctype html>
   <div class="card scroll"><table class="matrix" id="boe-tabla"></table></div>
   <h2>Dónde se equivoca cada uno</h2>
   <div class="card scroll"><table class="matrix" id="boe-confusiones"></table></div>
+  <h2>Cuánto cuesta el ajuste</h2>
+  <p class="sub">Medido por el propio entrenador de Kev. Antes hay que descargar los textos: los 1.400 de entrenamiento tardaron unos 27 minutos, a una petición por segundo.</p>
+  <div class="card scroll" id="boe-ajuste"></div>
   <h2>Control: ¿olvida lo que ya sabía?</h2>
   <p class="sub">12 preguntas ajenas al BOE, antes y después del ajuste. Si el ajuste estropeara el modelo, aquí bajaría.</p>
   <div class="card" id="boe-control"></div>

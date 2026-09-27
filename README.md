@@ -44,6 +44,24 @@ datos, en cambio, el ajuste no sirve: en otra prueba con 17 ejemplos de la clase
 Todo se ejecutó en un ordenador de sobremesa (Mac mini con M4 Pro y 24 GB), con modelos de pesos abiertos y sin enviar
 nada fuera. El detalle está en el [informe](informe/modelos-de-decision.pdf) y en la [página de resultados](https://joakinen.github.io/modelos-de-decision/).
 
+## Cuánto cuesta el ajuste
+
+Ajustar un modelo (el *post-training*) es seguir entrenándolo con casos propios. Esto es lo que costó en la prueba del
+BOE, medido por el propio entrenador de Kev en un Mac mini con M4 Pro y 24 GB de memoria, sin servicios externos:
+
+| | Kev-0.8B |
+|---|---|
+| Tiempo de ajuste | **3 h 29 min** |
+| Ejemplos propios | 1.400 (200 por apartado), más 160 generales de repaso |
+| Pasadas por los datos | 3 (4.680 ejemplos procesados, 2,1 millones de tokens) |
+| Segundos por ejemplo | 2,68 |
+| Memoria máxima | 3,3 GB de GPU; 7,0 GB el proceso |
+| Qué se entrena | Una LoRA de rango 16: en torno al 1 % de los parámetros |
+
+Antes hay que reunir los datos: descargar los 1.400 textos tardó unos 27 minutos, a una petición por segundo. Evaluar
+los 350 textos de prueba lleva alrededor de un minuto con el 0.8B. El tiempo de ajuste crece en proporción a los ejemplos
+y a las pasadas, y con el tamaño del modelo: el 4B va unas 3,3 veces más lento por ejemplo que el 0.8B.
+
 ## Probar el laboratorio
 
 El laboratorio es una web que hace de intermediaria entre tú y varios modelos que se ejecutan en tu máquina. Trae 12

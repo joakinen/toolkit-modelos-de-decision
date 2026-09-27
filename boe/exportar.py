@@ -88,6 +88,19 @@ for mid, (nombre, ajustado, d, ms) in dist.items():
                     "control": [sum(max(range(len(x["p"])), key=x["p"].__getitem__) == int(x["label"]) for x in ctrl), len(ctrl)]
                                if isinstance(ctrl, list) and ctrl else None})
 
+# lo que costó cada ajuste, de los propios registros de Kev (runs/<nombre>/training_metrics.json y training_config.json)
+EQUIPO = os.environ.get("EQUIPO", "Mac mini con M4 Pro y 24 GB de memoria unificada")
+for m in modelos:
+    met, cfg = leer(AQUI / "runs" / m["id"] / "training_metrics.json"), leer(AQUI / "runs" / m["id"] / "training_config.json")
+    if m["ajustado"] and met and cfg:
+        a = cfg["args"]
+        m["ajuste"] = {"equipo": EQUIPO, "segundos": round(met["wall_seconds"]), "epocas": a["epochs"],
+                       "ejemplos_propios": sum(1 for _ in open(AQUI / "entrenamiento.jsonl")) if (AQUI / "entrenamiento.jsonl").exists() else None,
+                       "ejemplos_repaso": a.get("replay"), "ejemplos_procesados": met["records_seen"], "tokens": met["forward_tokens"],
+                       "s_por_ejemplo": round(met["wall_seconds"] / met["records_seen"], 2),
+                       "memoria_gpu_gb": round(met["peak_device_bytes"] / 1e9, 1), "memoria_proceso_gb": round(met["peak_rss_bytes"] / 1e9, 1),
+                       "parametros_entrenados": "LoRA de rango %d" % a["lora"], "base_en_media_precision": a.get("weights_dtype") == "bf16"}
+
 comparaciones = []
 for aj, orig in ORIGINAL_DE.items():
     if aj in top and orig in top:

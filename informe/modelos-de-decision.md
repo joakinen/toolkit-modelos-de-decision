@@ -263,8 +263,25 @@ con seguridad.
 - **Un modelo pequeño y ajustado supera a uno grande sin ajustar.** El ajustado tiene 800 millones de parámetros; el
   modelo general de 9.000 millones se queda en el 66 % y tarda unas trece veces más por texto que Kev-0.8B.
 - **No olvida lo que ya sabía.** En un control con preguntas ajenas al BOE, el modelo ajustado responde igual que antes.
-- **Es asequible en una máquina propia.** El ajuste tardó unas tres horas y media en un ordenador de sobremesa (Mac mini con
-  chip M4 Pro y 24 GB de memoria), sin enviar nada fuera.
+- **Es asequible en una máquina propia.** El ajuste se hizo en un ordenador de sobremesa (Mac mini con chip M4 Pro y
+  24 GB de memoria), sin enviar nada fuera. Lo que costó está en la tabla siguiente.
+
+```{=latex}
+\necesitaespacio{13\baselineskip}
+```
+
+**Lo que cuesta el ajuste** (medido por el propio entrenador de Kev):
+
+| | Kev-0.8B |
+|---|---|
+| Tiempo de ajuste | 3 h 29 min |
+| Ejemplos propios | 1.400, más 160 generales de repaso |
+| Pasadas por los datos | 3 (4.680 ejemplos procesados) |
+| Memoria máxima | 3,3 GB de GPU; 7,0 GB el proceso |
+| Qué se entrena | En torno al 1 % de los parámetros (LoRA) |
+
+A eso hay que sumar reunir los datos: descargar los 1.400 textos del BOE tardó unos 27 minutos. El tiempo de ajuste
+crece en proporción a los ejemplos y a las pasadas, y con el tamaño del modelo.
 
 **Y lo que pasa con pocos datos.** En otra prueba, con 100 ejemplos de los que solo 17 eran de la clase difícil, el
 ajuste no se distinguió del azar: el modelo aprendió a responder casi siempre la clase mayoritaria. La diferencia entre

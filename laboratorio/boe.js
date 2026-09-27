@@ -43,6 +43,22 @@ function pintarBoe(d) {
   $("#boe-confusiones").innerHTML = `<tr><th>Modelo</th><th>Confusiones más frecuentes (real → dicho)</th></tr>` + M.map(m =>
     `<tr><td>${esc(m.nombre)}</td><td style="text-align:left" class="sub">${m.confusiones.map(([r, p, n]) => `${esc(sigla(r))} → ${esc(sigla(p))} ×${n}`).join(" · ") || "ninguna"}</td></tr>`).join("");
 
+  const conAjuste = M.filter(m => m.ajuste), cel = $("#boe-ajuste");
+  const hm = s => `${Math.floor(s / 3600)} h ${String(Math.round(s % 3600 / 60)).padStart(2, "0")} min`;
+  if (cel) cel.innerHTML = conAjuste.length ? `<table class="matrix"><tr><th></th>${conAjuste.map(m => `<th>${esc(m.nombre)}</th>`).join("")}</tr>
+    ${[["Tiempo de ajuste", a => `<b>${hm(a.segundos)}</b>`],
+       ["Ejemplos propios", a => a.ejemplos_propios ? a.ejemplos_propios.toLocaleString("es-ES") : "–"],
+       ["Ejemplos generales de repaso", a => a.ejemplos_repaso],
+       ["Pasadas por los datos", a => a.epocas],
+       ["Ejemplos procesados en total", a => a.ejemplos_procesados.toLocaleString("es-ES")],
+       ["Segundos por ejemplo", a => coma(a.s_por_ejemplo)],
+       ["Memoria de GPU, máximo", a => `${coma(a.memoria_gpu_gb, 1)} GB`],
+       ["Memoria del proceso, máximo", a => `${coma(a.memoria_proceso_gb, 1)} GB`],
+       ["Qué se entrena", a => a.parametros_entrenados + (a.base_en_media_precision ? ", base en media precisión" : "")]]
+      .map(([t, f]) => `<tr><td>${t}</td>${conAjuste.map(m => `<td>${f(m.ajuste)}</td>`).join("")}</tr>`).join("")}</table>
+    <p class="sub" style="margin-top:8px">Equipo: ${esc(conAjuste[0].ajuste.equipo)}, sin conexión a servicios externos. El tiempo crece en proporción a los ejemplos y a las pasadas: el doble de ejemplos, el doble de tiempo.</p>`
+    : `<span class="sub">Sin datos de ajuste.</span>`;
+
   const conCtrl = M.filter(m => m.control);
   $("#boe-control").innerHTML = conCtrl.length ? conCtrl.map(m => `${esc(m.nombre)}: ${m.control[0]}/${m.control[1]}`).join(" · ") : `<span class="sub">Sin datos de control.</span>`;
 }
