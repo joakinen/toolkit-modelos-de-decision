@@ -1,0 +1,1186 @@
+{
+ "noticia": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "Business",
+     0.6772223858583685
+    ],
+    [
+     "Science/Technology",
+     0.31547635050275324
+    ],
+    [
+     "World",
+     0.00528121804947119
+    ],
+    [
+     "Sports",
+     0.0020200455894071323
+    ]
+   ],
+   "ms": 241,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:57"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "Business",
+     0.969611162369542
+    ],
+    [
+     "Science/Technology",
+     0.013987210452459953
+    ],
+    [
+     "World",
+     0.010456667863588622
+    ],
+    [
+     "Sports",
+     0.005944959314409409
+    ]
+   ],
+   "ms": 100,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:57"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "Business",
+     0.8749
+    ],
+    [
+     "Science/Technology",
+     0.1236
+    ],
+    [
+     "World",
+     0.0012
+    ],
+    [
+     "Sports",
+     0.0004
+    ]
+   ],
+   "ms": 199,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:57"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "Business",
+     0.7305
+    ],
+    [
+     "Science/Technology",
+     0.2493
+    ],
+    [
+     "World",
+     0.0137
+    ],
+    [
+     "Sports",
+     0.0064
+    ]
+   ],
+   "ms": 93,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:57"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "Business",
+     0.9735600824741572
+    ],
+    [
+     "Science/Technology",
+     0.024134648145224043
+    ],
+    [
+     "World",
+     0.0018554287557664769
+    ],
+    [
+     "Sports",
+     0.0004498406248522818
+    ]
+   ],
+   "ms": 615,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:22"
+  }
+ },
+ "refund-en": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "refund",
+     0.8925689871711067
+    ],
+    [
+     "technical issue",
+     0.042464758402179795
+    ],
+    [
+     "cancel",
+     0.03870363430446568
+    ],
+    [
+     "general question",
+     0.02626262012224784
+    ]
+   ],
+   "ms": 316,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:58"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "refund",
+     0.9842940087215128
+    ],
+    [
+     "cancel",
+     0.006029316612585393
+    ],
+    [
+     "general question",
+     0.005916272358737659
+    ],
+    [
+     "technical issue",
+     0.003760402307164083
+    ]
+   ],
+   "ms": 77,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:58"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "refund",
+     0.8125
+    ],
+    [
+     "general question",
+     0.1091
+    ],
+    [
+     "cancel",
+     0.0562
+    ],
+    [
+     "technical issue",
+     0.0222
+    ]
+   ],
+   "ms": 217,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:58"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "refund",
+     0.7366
+    ],
+    [
+     "technical issue",
+     0.1013
+    ],
+    [
+     "general question",
+     0.096
+    ],
+    [
+     "cancel",
+     0.0661
+    ]
+   ],
+   "ms": 217,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:58"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "refund",
+     0.9987734421659906
+    ],
+    [
+     "cancel",
+     0.0006982972307249857
+    ],
+    [
+     "technical issue",
+     0.000419794315788752
+    ],
+    [
+     "general question",
+     0.0001084662874955824
+    ]
+   ],
+   "ms": 604,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:23"
+  }
+ },
+ "refund-es": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "reembolso",
+     0.9113143260741209
+    ],
+    [
+     "incidencia técnica",
+     0.03940319156552126
+    ],
+    [
+     "baja",
+     0.025137147529527983
+    ],
+    [
+     "consulta general",
+     0.024145334830829892
+    ]
+   ],
+   "ms": 323,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:58"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "reembolso",
+     0.9883219277928357
+    ],
+    [
+     "consulta general",
+     0.005260871053673186
+    ],
+    [
+     "incidencia técnica",
+     0.0032193010389567974
+    ],
+    [
+     "baja",
+     0.0031979001145341674
+    ]
+   ],
+   "ms": 76,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:59"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "reembolso",
+     0.8822
+    ],
+    [
+     "baja",
+     0.0617
+    ],
+    [
+     "consulta general",
+     0.0445
+    ],
+    [
+     "incidencia técnica",
+     0.0116
+    ]
+   ],
+   "ms": 216,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:59"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "reembolso",
+     0.8372
+    ],
+    [
+     "consulta general",
+     0.0607
+    ],
+    [
+     "baja",
+     0.0574
+    ],
+    [
+     "incidencia técnica",
+     0.0446
+    ]
+   ],
+   "ms": 196,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:59"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "reembolso",
+     0.9988908217052873
+    ],
+    [
+     "baja",
+     0.0007002996351744479
+    ],
+    [
+     "incidencia técnica",
+     0.0002661305833206943
+    ],
+    [
+     "consulta general",
+     0.00014274807621755562
+    ]
+   ],
+   "ms": 598,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:23"
+  }
+ },
+ "tramite": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "ampliación de plazo",
+     0.930223174641938
+    ],
+    [
+     "recurso",
+     0.04469343575762739
+    ],
+    [
+     "desistimiento",
+     0.012610354467949406
+    ],
+    [
+     "subsanación de documentación",
+     0.01247303513248509
+    ]
+   ],
+   "ms": 334,
+   "acierto": true,
+   "cuando": "2026-09-25T23:41:59"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "ampliación de plazo",
+     0.9887918589773668
+    ],
+    [
+     "subsanación de documentación",
+     0.005162943135530367
+    ],
+    [
+     "recurso",
+     0.0038737444057661326
+    ],
+    [
+     "desistimiento",
+     0.0021714534813368444
+    ]
+   ],
+   "ms": 218,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:00"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "ampliación de plazo",
+     0.914
+    ],
+    [
+     "recurso",
+     0.0715
+    ],
+    [
+     "subsanación de documentación",
+     0.0098
+    ],
+    [
+     "desistimiento",
+     0.0047
+    ]
+   ],
+   "ms": 211,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:00"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "ampliación de plazo",
+     0.9713
+    ],
+    [
+     "recurso",
+     0.0232
+    ],
+    [
+     "subsanación de documentación",
+     0.0041
+    ],
+    [
+     "desistimiento",
+     0.0014
+    ]
+   ],
+   "ms": 209,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:00"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "ampliación de plazo",
+     0.9997868451921205
+    ],
+    [
+     "recurso",
+     0.00010708954746325483
+    ],
+    [
+     "subsanación de documentación",
+     5.511225402101878e-05
+    ],
+    [
+     "desistimiento",
+     5.095300639526161e-05
+    ]
+   ],
+   "ms": 690,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:24"
+  }
+ },
+ "frustracion": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "sí",
+     0.9710543189759637
+    ],
+    [
+     "no",
+     0.02894568102403628
+    ]
+   ],
+   "ms": 300,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:00"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "sí",
+     0.9198376124683124
+    ],
+    [
+     "no",
+     0.08016238753168764
+    ]
+   ],
+   "ms": 80,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:00"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "sí",
+     0.8194
+    ],
+    [
+     "no",
+     0.1806
+    ]
+   ],
+   "ms": 174,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:01"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "sí",
+     0.9067
+    ],
+    [
+     "no",
+     0.0933
+    ]
+   ],
+   "ms": 214,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:01"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "sí",
+     0.997955903021178
+    ],
+    [
+     "no",
+     0.0020440969788220915
+    ]
+   ],
+   "ms": 597,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:25"
+  }
+ },
+ "negacion-en": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "no",
+     0.9648255182281447
+    ],
+    [
+     "yes",
+     0.035174481771855434
+    ]
+   ],
+   "ms": 274,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:01"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "yes",
+     0.7012582896384244
+    ],
+    [
+     "no",
+     0.29874171036157554
+    ]
+   ],
+   "ms": 58,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:01"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "no",
+     0.7672
+    ],
+    [
+     "yes",
+     0.2328
+    ]
+   ],
+   "ms": 28,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:01"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "no",
+     0.9944
+    ],
+    [
+     "yes",
+     0.0056
+    ]
+   ],
+   "ms": 104,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:01"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "no",
+     0.9996247994824805
+    ],
+    [
+     "yes",
+     0.00037520051751939817
+    ]
+   ],
+   "ms": 596,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:25"
+  }
+ },
+ "no-baja": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "consulta general",
+     0.6928499624279801
+    ],
+    [
+     "baja",
+     0.12247419490684189
+    ],
+    [
+     "incidencia técnica",
+     0.12075849594009042
+    ],
+    [
+     "reembolso",
+     0.06391734672508764
+    ]
+   ],
+   "ms": 319,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:02"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "consulta general",
+     0.5428665654508186
+    ],
+    [
+     "baja",
+     0.391459457693165
+    ],
+    [
+     "reembolso",
+     0.056500120699644794
+    ],
+    [
+     "incidencia técnica",
+     0.00917385615637165
+    ]
+   ],
+   "ms": 83,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:02"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "consulta general",
+     0.7143
+    ],
+    [
+     "incidencia técnica",
+     0.1097
+    ],
+    [
+     "baja",
+     0.1092
+    ],
+    [
+     "reembolso",
+     0.0668
+    ]
+   ],
+   "ms": 45,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:02"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "consulta general",
+     0.7555
+    ],
+    [
+     "incidencia técnica",
+     0.1941
+    ],
+    [
+     "baja",
+     0.0319
+    ],
+    [
+     "reembolso",
+     0.0185
+    ]
+   ],
+   "ms": 182,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:02"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "consulta general",
+     0.5292931284398511
+    ],
+    [
+     "reembolso",
+     0.2574655357515364
+    ],
+    [
+     "baja",
+     0.19095312069859427
+    ],
+    [
+     "incidencia técnica",
+     0.022288215110018297
+    ]
+   ],
+   "ms": 603,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:26"
+  }
+ },
+ "recurso-plazo": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "no",
+     0.723594294354706
+    ],
+    [
+     "sí",
+     0.2764057056452939
+    ]
+   ],
+   "ms": 316,
+   "acierto": true,
+   "cuando": "2026-09-25T23:48:22"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "sí",
+     0.7497146086693388
+    ],
+    [
+     "no",
+     0.2502853913306612
+    ]
+   ],
+   "ms": 212,
+   "acierto": false,
+   "cuando": "2026-09-25T23:48:22"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "no",
+     0.7656
+    ],
+    [
+     "sí",
+     0.2344
+    ]
+   ],
+   "ms": 968,
+   "acierto": true,
+   "cuando": "2026-09-25T23:48:23"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "no",
+     0.9314
+    ],
+    [
+     "sí",
+     0.0686
+    ]
+   ],
+   "ms": 1936,
+   "acierto": true,
+   "cuando": "2026-09-25T23:48:24"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "no",
+     0.9939250085570178
+    ],
+    [
+     "sí",
+     0.006074991442982234
+    ]
+   ],
+   "ms": 614,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:26"
+  }
+ },
+ "ironia": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "positivo",
+     0.9406485312484556
+    ],
+    [
+     "neutro",
+     0.04669286236803958
+    ],
+    [
+     "negativo",
+     0.01265860638350473
+    ]
+   ],
+   "ms": 311,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:03"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "positivo",
+     0.9662625625977217
+    ],
+    [
+     "neutro",
+     0.02543043820428043
+    ],
+    [
+     "negativo",
+     0.008306999197997973
+    ]
+   ],
+   "ms": 74,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:03"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "positivo",
+     0.7278
+    ],
+    [
+     "neutro",
+     0.2221
+    ],
+    [
+     "negativo",
+     0.0501
+    ]
+   ],
+   "ms": 73,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:03"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "positivo",
+     0.5052
+    ],
+    [
+     "neutro",
+     0.303
+    ],
+    [
+     "negativo",
+     0.1918
+    ]
+   ],
+   "ms": 182,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:03"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "positivo",
+     0.7422560136438341
+    ],
+    [
+     "negativo",
+     0.23703691254205173
+    ],
+    [
+     "neutro",
+     0.0207070738141142
+    ]
+   ],
+   "ms": 600,
+   "acierto": false,
+   "cuando": "2026-09-26T20:19:27"
+  }
+ },
+ "mas-joven": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "Marta",
+     0.8372319803770741
+    ],
+    [
+     "Luis",
+     0.08356528992242014
+    ],
+    [
+     "Ana",
+     0.07920272970050575
+    ]
+   ],
+   "ms": 303,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "Ana",
+     0.3616343270613683
+    ],
+    [
+     "Luis",
+     0.34495889843640487
+    ],
+    [
+     "Marta",
+     0.29340677450222685
+    ]
+   ],
+   "ms": 60,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "Marta",
+     0.6214
+    ],
+    [
+     "Luis",
+     0.2244
+    ],
+    [
+     "Ana",
+     0.1542
+    ]
+   ],
+   "ms": 34,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "Marta",
+     0.9873
+    ],
+    [
+     "Luis",
+     0.0083
+    ],
+    [
+     "Ana",
+     0.0043
+    ]
+   ],
+   "ms": 146,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "Marta",
+     0.999383622403777
+    ],
+    [
+     "Ana",
+     0.0004899113577503401
+    ],
+    [
+     "Luis",
+     0.00012646623847270677
+    ]
+   ],
+   "ms": 593,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:28"
+  }
+ },
+ "no-consta": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "no",
+     0.5681597851152803
+    ],
+    [
+     "no consta",
+     0.3591206924658511
+    ],
+    [
+     "sí",
+     0.07271952241886859
+    ]
+   ],
+   "ms": 307,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "no",
+     0.3829419365648056
+    ],
+    [
+     "no consta",
+     0.37023437070629395
+    ],
+    [
+     "sí",
+     0.24682369272890048
+    ]
+   ],
+   "ms": 72,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "no consta",
+     0.4646
+    ],
+    [
+     "no",
+     0.3877
+    ],
+    [
+     "sí",
+     0.1478
+    ]
+   ],
+   "ms": 40,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "no consta",
+     0.6776
+    ],
+    [
+     "no",
+     0.2828
+    ],
+    [
+     "sí",
+     0.0396
+    ]
+   ],
+   "ms": 210,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:04"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "no consta",
+     0.9250934679495751
+    ],
+    [
+     "no",
+     0.06748651286548007
+    ],
+    [
+     "sí",
+     0.0074200191849447955
+    ]
+   ],
+   "ms": 599,
+   "acierto": true,
+   "cuando": "2026-09-26T20:19:28"
+  }
+ },
+ "dias-habiles": {
+  "jev-v1": {
+   "ranking": [
+    [
+     "sí",
+     0.6967137425767964
+    ],
+    [
+     "no",
+     0.3032862574232036
+    ]
+   ],
+   "ms": 316,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:05"
+  },
+  "jev-v3": {
+   "ranking": [
+    [
+     "sí",
+     0.7070723826360865
+    ],
+    [
+     "no",
+     0.29292761736391354
+    ]
+   ],
+   "ms": 75,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:05"
+  },
+  "kev-08b": {
+   "ranking": [
+    [
+     "no",
+     0.569
+    ],
+    [
+     "sí",
+     0.431
+    ]
+   ],
+   "ms": 66,
+   "acierto": true,
+   "cuando": "2026-09-25T23:42:05"
+  },
+  "kev-4b": {
+   "ranking": [
+    [
+     "sí",
+     0.6342
+    ],
+    [
+     "no",
+     0.3658
+    ]
+   ],
+   "ms": 188,
+   "acierto": false,
+   "cuando": "2026-09-25T23:42:05"
+  },
+  "llm-9b": {
+   "ranking": [
+    [
+     "sí",
+     0.8421683822338513
+    ],
+    [
+     "no",
+     0.15783161776614874
+    ]
+   ],
+   "ms": 691,
+   "acierto": false,
+   "cuando": "2026-09-26T20:19:29"
+  }
+ }
+}

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f6f5f1" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16171a" media="(prefers-color-scheme: dark)">
+<title>Laboratorio de decisiones</title>
+<style>
+:root {
+  --bg: #f6f5f1; --panel: #ffffff; --ink: #1c1d21; --muted: #62646b; --line: #e3e1da;
+  --accent: #2f5bd3; --accent-soft: #e6ecfb; --ok: #1e7a4c; --ok-soft: #e2f3ea; --bad: #b3261e; --bad-soft: #fbe7e5;
+  --warn: #8a5a00; --warn-soft: #fbf0d9; --bar: #2f5bd3; --bar-bg: #eceae4;
+  --radius: 12px; --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16171a; --panel: #1f2024; --ink: #ececef; --muted: #a0a2aa; --line: #2e3036;
+    --accent: #7ea2ff; --accent-soft: #232c45; --ok: #5fd39a; --ok-soft: #1b3328; --bad: #ff8a80; --bad-soft: #3a2220;
+    --warn: #f0c060; --warn-soft: #372c16; --bar: #7ea2ff; --bar-bg: #2b2d33;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { padding: 20px 16px 8px; max-width: 860px; margin: 0 auto; }
+h1 { font-size: 1.35rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+h2 { font-size: 1.1rem; margin: 24px 0 8px; }
+h3 { font-size: 1rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+.sub { color: var(--muted); font-size: 0.92rem; }
+nav { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+nav .tabs { display: flex; gap: 4px; overflow-x: auto; padding: 8px 12px; max-width: 860px; margin: 0 auto; scrollbar-width: none; }
+nav button { flex: none; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 0.95rem; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+nav button[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+main { max-width: 860px; margin: 0 auto; padding: 8px 16px 64px; }
+section[hidden] { display: none; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; margin: 12px 0; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.grow { flex: 1; min-width: 0; }
+.btn { border: 0; background: var(--accent); color: #fff; font: inherit; font-weight: 600; font-size: 0.95rem; padding: 10px 14px; border-radius: 10px; cursor: pointer; }
+@media (prefers-color-scheme: dark) { .btn { color: #10131c; } }
+.btn.ghost { background: var(--accent-soft); color: var(--accent); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: inherit; font-size: 0.85rem; padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.chip .dot.on { background: var(--ok); }
+.badge { display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; background: var(--bar-bg); color: var(--muted); }
+.badge.trampa { background: var(--warn-soft); color: var(--warn); }
+.state { font-size: 0.95rem; background: var(--bg); border-left: 3px solid var(--line); padding: 8px 10px; border-radius: 6px; margin: 8px 0; }
+.q { font-weight: 600; margin: 6px 0 2px; }
+.opts { color: var(--muted); font-size: 0.88rem; }
+.opts b { color: var(--ok); font-weight: 600; }
+.why { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+.res { margin-top: 10px; border-top: 1px solid var(--line); }
+.r { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.r:last-child { border-bottom: 0; }
+.r .who { font-size: 0.85rem; color: var(--muted); }
+.r .ans { font-weight: 600; }
+.r .ans.ok::before { content: "✓ "; color: var(--ok); }
+.r .ans.bad::before { content: "✗ "; color: var(--bad); }
+.r .meta { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); text-align: right; white-space: nowrap; }
+.bar { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--bar-bg); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--bar); border-radius: 3px; }
+.bar.bad i { background: var(--bad); }
+.dist { grid-column: 1 / -1; font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
+.pending { color: var(--muted); font-size: 0.85rem; }
+.err { color: var(--bad); font-size: 0.85rem; }
+.score { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.score .card { margin: 0; }
+.score .n { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; }
+.score .n small { font-size: 0.95rem; color: var(--muted); font-weight: 500; }
+.matrix { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.matrix th, .matrix td { padding: 6px 4px; border-bottom: 1px solid var(--line); text-align: center; }
+.matrix th:first-child, .matrix td:first-child { text-align: left; }
+.matrix td.ok { color: var(--ok); } .matrix td.bad { color: var(--bad); font-weight: 700; }
+.scroll { overflow-x: auto; }
+textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+textarea { min-height: 96px; resize: vertical; }
+label { display: block; font-size: 0.85rem; color: var(--muted); margin: 10px 0 4px; }
+ul.plain { padding-left: 18px; margin: 6px 0 10px; } ul.plain li { margin: 4px 0; }
+a { color: var(--accent); }
+.progress { font-size: 0.85rem; color: var(--muted); }
+mark { background: var(--warn-soft); color: var(--warn); font-weight: 600; border-radius: 3px; padding: 0 2px; }
+details summary { cursor: pointer; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Laboratorio de decisiones</h1>
+  <p class="sub">Modelos de «decisión» (estilo Jev) ejecutándose en tu propia máquina. No escriben texto: leen un texto, reciben una pregunta con opciones cerradas y devuelven una probabilidad para cada opción.</p>
+</header>
+<nav><div class="tabs" role="tablist">
+  <button role="tab" data-tab="resumen" aria-selected="true">Resumen</button>
+  <button role="tab" data-tab="pruebas">Pruebas</button>
+  <button role="tab" data-tab="triajes">Triajes</button>
+  <button role="tab" data-tab="boe">BOE</button>
+  <button role="tab" data-tab="libre">Prueba libre</button>
+  <button role="tab" data-tab="modelos">Modelos</button>
+</div></nav>
+<main>
+
+<section id="resumen">
+  <h2>Marcador</h2>
+  <p class="sub" id="aviso-referencia" hidden><b>Estás viendo los resultados de referencia</b> (Mac mini con M4 Pro, septiembre de 2026). En cuanto ejecutes las pruebas, se sustituyen por los tuyos.</p>
+  <p class="sub">Aciertos en las 12 pruebas, con el último resultado guardado de cada modelo. Se actualiza cada vez que ejecutas pruebas. El <b>log-loss</b> (cuanto más bajo, mejor) mira además la seguridad: premia acertar con 0,95 más que con 0,55 y castiga mucho fallar con seguridad.</p>
+  <div class="score" id="marcador"></div>
+  <h2>Caso por caso</h2>
+  <div class="card scroll"><table class="matrix" id="matriz"></table></div>
+  <h2>Qué se vio en los resultados de referencia</h2>
+  <div class="card" id="hallazgos">
+    <ul class="plain">
+      <li><b>Kev es el mejor en estas pruebas, y el 4B más que el 0.8B.</b> Contando aciertos gana el 0.8B (11 de 12 frente a 10), pero por un solo caso, los días hábiles, que acierta con 0,57: casi a cara o cruz. Con el log-loss gana con claridad el 4B (0,36 frente a 0,54): da más probabilidad a la respuesta correcta en 9 de los 12 casos (0,99 en la negación y en «el más joven», 0,93 en el recurso fuera de plazo).</li>
+      <li><b>Kev-4B duda donde debe.</b> Sus dos fallos son casi empates: la ironía con 0,51 y los días hábiles con 0,63. El 0.8B acertó los días hábiles, pero solo con 0,57, así que ahí ninguno es fiable.</li>
+      <li><b>Un chat general de 9B, con el truco de las letras, empata con Kev-4B.</b> Qwen3.5 9B, sin ningún ajuste para decidir, acierta 10 de 12 (los mismos fallos: ironía y días hábiles) con un log-loss de 0,34 frente a 0,36. Pero en días hábiles se equivoca con 0,84 de seguridad, donde Kev-4B dudaba (0,63), tarda unas tres veces más (unos 600 ms por pregunta) y ocupa más del doble. Con 12 casos, la ventaja del entrenamiento específico no se ve; habría que medirlo con muchos más.</li>
+      <li><b>La v3 del GGUF se equivoca con mucha seguridad.</b> Decía que la reunión seguía en martes (0,70) y que un recurso presentado fuera de plazo estaba dentro (0,75). Es la peor de las cuatro primeras (6 de 12).</li>
+      <li><b>La ironía engaña a todos.</b> Jev-style v1 y v3 fallan con más de un 90 % de seguridad; los Kev, con poca.</li>
+      <li><b>Solo Kev sabe abstenerse.</b> Los dos Kev responden «no consta» cuando el texto no habla de la tasa. Los Jev-style dicen «no».</li>
+      <li><b>En los triajes los modelos discrepan mucho</b> con textos ambiguos (por ejemplo, «me voy a la competencia»: ¿incidencia técnica o baja?). Ahí la probabilidad baja es la señal para mandarlo a una persona.</li>
+    </ul>
+  </div>
+  <h2>Cómo leer esto</h2>
+  <div class="card">
+    <ul class="plain">
+      <li><b>12 casos son una anécdota, no una evaluación.</b> Sirven para descartar un modelo, no para elegirlo. Los casos los escribió Claude, no vienen de expedientes reales.</li>
+      <li><b>La probabilidad importa tanto como el acierto.</b> Un modelo útil falla con 0,55 y acierta con 0,95. Si falla con 0,95, no se puede automatizar nada encima.</li>
+      <li><b>Los tiempos no son del todo comparables.</b> Kev corre con MLX y guarda en caché el texto ya leído. Jev-style v1 y Qwen3.5 9B pasan por Ollama y hacen una llamada por pregunta. En la primera ejecución hay que sumar lo que tarda en cargar el modelo. Y si lanzas varios a la vez, compiten por la misma GPU: para medir velocidad, ejecuta un modelo solo.</li>
+      <li><b>Nada sale de tu máquina.</b> Todos los modelos son de pesos abiertos (Apache-2.0) y se ejecutan en local. Esta web escucha solo en tu máquina (127.0.0.1).</li>
+    </ul>
+  </div>
+</section>
+
+<section id="pruebas" hidden>
+  <h2>Las 12 pruebas</h2>
+  <p class="sub">Seis fáciles y seis con trampa. La respuesta correcta aparece en verde entre las opciones.</p>
+  <div class="card">
+    <label>Modelos a ejecutar</label>
+    <div class="row modelpick" id="pick-pruebas"></div>
+    <div class="row" style="margin-top:12px">
+      <button class="btn" id="run-all">Ejecutar las 12</button>
+      <span class="progress" id="prog-all"></span>
+    </div>
+  </div>
+  <div id="lista-casos"></div>
+</section>
+
+<section id="triajes" hidden>
+  <h2>Triajes</h2>
+  <p class="sub">Varias preguntas sobre el mismo texto, como haría un sistema de entrada de tickets o de registro. Kev las responde todas en una sola pasada; los demás, una a una.</p>
+  <div class="card">
+    <div class="row" id="triaje-tipo"></div>
+    <p class="sub" id="triaje-desc" style="margin-top:10px"></p>
+    <label>Ejemplos</label>
+    <div class="row" id="triaje-ejemplos"></div>
+    <label for="triaje-texto">Texto a triar (puedes escribir el tuyo)</label>
+    <textarea id="triaje-texto"></textarea>
+    <label>Modelos</label>
+    <div class="row modelpick" id="pick-triajes"></div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="run-triaje">Ejecutar triaje</button><span class="progress" id="prog-triaje"></span></div>
+  </div>
+  <div id="triaje-out"></div>
+</section>
+
+<section id="boe" hidden>
+  <h2>¿En qué apartado del BOE se publica?</h2>
+  <p class="sub">Una clasificación documental real, con datos suficientes. 350 textos del BOE de julio y agosto de 2026, 50 por apartado; al modelo se le da el cuerpo del texto, sin título. La etiqueta es la sección del sumario en que se publicó: la pone el propio BOE. Los modelos ajustados se entrenaron con 1.400 textos de enero a junio, 200 por apartado, sin ver nunca el periodo de prueba. Fuente: Agencia Estatal Boletín Oficial del Estado (<a href="https://www.boe.es" target="_blank" rel="noopener">boe.es</a>), datos abiertos.</p>
+  <div class="score" id="boe-marcador"></div>
+  <h2>Qué dice</h2>
+  <div class="card" id="boe-lectura"></div>
+  <h2>Acierto por apartado</h2>
+  <p class="sub">Aciertos sobre 50 en cada apartado. En verde, el mejor de cada fila.</p>
+  <div class="card scroll"><table class="matrix" id="boe-tabla"></table></div>
+  <h2>Dónde se equivoca cada uno</h2>
+  <div class="card scroll"><table class="matrix" id="boe-confusiones"></table></div>
+  <h2>Control: ¿olvida lo que ya sabía?</h2>
+  <p class="sub">Las 12 pruebas de la pestaña Pruebas, ajenas al BOE. Si el ajuste estropeara el modelo, aquí bajaría.</p>
+  <div class="card" id="boe-control"></div>
+</section>
+
+<section id="libre" hidden>
+  <h2>Prueba libre</h2>
+  <p class="sub">Escribe un texto, una pregunta y las opciones posibles, una por línea.</p>
+  <div class="card">
+    <label for="libre-estado">Texto</label>
+    <textarea id="libre-estado">El interesado presentó la solicitud el 15 de enero pero no ha pagado la tasa.</textarea>
+    <label for="libre-pregunta">Pregunta</label>
+    <input type="text" id="libre-pregunta" value="¿Está la solicitud completa?">
+    <label for="libre-opciones">Opciones (una por línea)</label>
+    <textarea id="libre-opciones" style="min-height:80px">sí
+no
+no consta</textarea>
+    <label>Modelos</label>
+    <div class="row modelpick" id="pick-libre"></div>
+    <div class="row" style="margin-top:12px"><button class="btn" id="run-libre">Decidir</button><span class="progress" id="prog-libre"></span></div>
+  </div>
+  <div id="libre-out"></div>
+</section>
+
+<section id="modelos" hidden>
+  <h2>Los modelos</h2>
+  <p class="sub">Réplicas abiertas de la idea de Jev, el modelo de TypeSafe AI, que es cerrado y solo existe como API en la nube. Ninguna está afiliada a TypeSafe. El quinto, Qwen3.5 9B, no es un modelo de decisión: es un chat general que se usa como control.</p>
+  <div id="lista-modelos"></div>
+  <h2>Qué quedó fuera</h2>
+  <div class="card"><ul class="plain">
+    <li><b>Jev original</b>: no tiene pesos publicados. Probarlo supone darse de alta en TypeSafe y enviarle los textos.</li>
+  </ul></div>
+</section>
+
+</main>
+<script src="/boe.js"></script>
+<script>
+const $ = (s, el = document) => el.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const pct = p => (p * 100).toFixed(0) + " %";
+let META = null;
+const elegidos = {};  // grupo -> Set de ids de modelo
+
+async function api(path, body) {
+  const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.detail || r.statusText);
+  return j;
+}
+
+// ---------- pestañas ----------
+document.querySelectorAll("nav button").forEach(b => b.onclick = () => {
+  document.querySelectorAll("nav button").forEach(x => x.setAttribute("aria-selected", x === b));
+  document.querySelectorAll("main > section").forEach(s => s.hidden = s.id !== b.dataset.tab);
+  try { localStorage.setItem("tab", b.dataset.tab); } catch {}
+  window.scrollTo(0, 0);
+});
+
+// ---------- selector de modelos ----------
+function picker(grupo) {
+  const el = $("#pick-" + grupo);
+  elegidos[grupo] ??= new Set(META.modelos.filter(m => m.activo).map(m => m.id));
+  el.innerHTML = META.modelos.map(m => `<button class="chip" data-id="${m.id}" aria-pressed="${elegidos[grupo].has(m.id)}"
+    title="${m.activo ? "activo" : "no responde"}"><span class="dot ${m.activo ? "on" : ""}"></span>${esc(m.nombre)}</button>`).join("");
+  el.querySelectorAll(".chip").forEach(c => c.onclick = () => {
+    const s = elegidos[grupo], id = c.dataset.id;
+    s.has(id) ? s.delete(id) : s.add(id);
+    c.setAttribute("aria-pressed", s.has(id));
+  });
+}
+const modelosDe = grupo => META.modelos.filter(m => elegidos[grupo].has(m.id));
+const nombre = id => META.modelos.find(m => m.id === id)?.nombre ?? id;
+
+// ---------- fila de resultado ----------
+function fila(modeloId, ranking, ms, correcta) {
+  const [top, p] = ranking[0];
+  const cls = correcta == null ? "" : (top === correcta ? "ok" : "bad");
+  const resto = ranking.slice(1).filter(([, q]) => q >= 0.005).map(([o, q]) => `${esc(o)} ${pct(q)}`).join(" · ");
+  return `<div class="r"><div><div class="who">${esc(nombre(modeloId))}</div><div class="ans ${cls}">${esc(top)}</div></div>
+    <div class="meta">${pct(p)}<br>${ms != null ? ms + " ms" : ""}</div>
+    <div class="bar ${cls === "bad" ? "bad" : ""}"><i style="width:${(p * 100).toFixed(1)}%"></i></div>
+    ${resto ? `<div class="dist">${resto}</div>` : ""}</div>`;
+}
+
+const hueco = (id, modeloId) => `<div class="r" id="${id}"><div><div class="who">${esc(nombre(modeloId))}</div>
+  <div class="pending">calculando…</div></div></div>`;
+
+// ---------- resumen ----------
+function pintarResumen() {
+  $("#aviso-referencia").hidden = !META.referencia;
+  const R = META.resultados, casos = META.casos;
+  $("#marcador").innerHTML = META.modelos.map(m => {
+    const hechos = casos.filter(c => R[c.id]?.[m.id]);
+    const ok = hechos.filter(c => R[c.id][m.id].acierto).length;
+    const ms = hechos.map(c => R[c.id][m.id].ms).sort((a, b) => a - b);
+    const med = ms.length ? ms[Math.floor(ms.length / 2)] : null;
+    // log-loss: media de −ln(probabilidad que el modelo da a la opción correcta); castiga los fallos seguros
+    const ll = hechos.length ? hechos.reduce((s, c) => {
+      const p = R[c.id][m.id].ranking.find(([o]) => o === c.correcta)?.[1] ?? 0;
+      return s - Math.log(Math.max(p, 1e-6));
+    }, 0) / hechos.length : null;
+    return `<div class="card"><div class="sub">${esc(m.nombre)}</div>
+      <div class="n">${hechos.length ? ok : "–"}<small> / ${hechos.length || casos.length}</small></div>
+      <div class="sub">${ll != null ? `log-loss <b>${ll.toFixed(2).replace(".", ",")}</b><br>` : ""}${med != null ? "mediana " + med + " ms" : "sin ejecutar"}${m.activo ? "" : " · parado"}</div></div>`;
+  }).join("");
+  $("#matriz").innerHTML = `<tr><th>Caso</th>${META.modelos.map(m => `<th>${esc(m.nombre.replace("Jev-style ", "J ").replace("Kev · ", "K ").replace(" (letras)", ""))}</th>`).join("")}</tr>` +
+    casos.map(c => `<tr><td>${esc(c.id)}</td>${META.modelos.map(m => {
+      const d = R[c.id]?.[m.id];
+      return d ? `<td class="${d.acierto ? "ok" : "bad"}" title="${esc(d.ranking[0][0])} ${pct(d.ranking[0][1])}">${d.acierto ? "✓" : "✗"} ${(d.ranking[0][1] * 100).toFixed(0)}</td>` : "<td>·</td>";
+    }).join("")}</tr>`).join("");
+}
+
+// ---------- pruebas ----------
+function pintarCasos() {
+  $("#lista-casos").innerHTML = META.casos.map(c => `<div class="card" id="caso-${c.id}">
+    <div class="row"><span class="badge ${c.grupo}">${esc(c.grupo)}</span><span class="grow"></span>
+      <button class="btn ghost" data-run="${c.id}">Ejecutar</button></div>
+    <div class="state">${esc(c.estado)}</div>
+    <div class="q">${esc(c.pregunta)}</div>
+    <div class="opts">${c.opciones.map(o => o === c.correcta ? `<b>${esc(o)}</b>` : esc(o)).join(" · ")}</div>
+    <div class="why">${esc(c.mide)}</div>
+    <div class="res" id="res-${c.id}">${resCaso(c)}</div></div>`).join("");
+  document.querySelectorAll("[data-run]").forEach(b => b.onclick = () => ejecutarCaso(b.dataset.run, b));
+}
+function resCaso(c) {
+  const R = META.resultados[c.id] || {};
+  const filas = META.modelos.filter(m => R[m.id]).map(m => fila(m.id, R[m.id].ranking, R[m.id].ms, c.correcta));
+  return filas.join("") || `<div class="pending" style="padding-top:8px">Sin ejecutar todavía.</div>`;
+}
+async function ejecutarCaso(id, boton) {
+  const c = META.casos.find(x => x.id === id), cont = $("#res-" + id);
+  if (boton) boton.disabled = true;
+  const ms = modelosDe("pruebas");
+  cont.querySelectorAll(".r").forEach(r => r.style.opacity = 0.4);
+  await Promise.all(ms.map(async m => {
+    try {
+      const d = await api("/api/caso", { modelo: m.id, caso: id });
+      (META.resultados[id] ??= {})[m.id] = d;
+    } catch (e) {
+      cont.insertAdjacentHTML("beforeend", `<div class="err">${esc(e.message)}</div>`);
+    }
+  }));
+  const errores = [...cont.querySelectorAll(".err")].map(e => e.outerHTML).join("");
+  cont.innerHTML = resCaso(c) + errores;
+  if (boton) boton.disabled = false;
+  pintarResumen();
+}
+$("#run-all").onclick = async e => {
+  const b = e.target; b.disabled = true;
+  for (const [i, c] of META.casos.entries()) {
+    $("#prog-all").textContent = `${i + 1} / ${META.casos.length}: ${c.id}`;
+    await ejecutarCaso(c.id);
+  }
+  $("#prog-all").textContent = "Hecho. El marcador está en Resumen.";
+  b.disabled = false;
+};
+
+// ---------- triajes ----------
+let triajeActual = "cliente";
+function pintarTriaje() {
+  const T = META.triajes;
+  $("#triaje-tipo").innerHTML = Object.entries(T).map(([k, t]) => `<button class="chip" data-t="${k}" aria-pressed="${k === triajeActual}">${esc(t.nombre)}</button>`).join("");
+  $("#triaje-tipo").querySelectorAll(".chip").forEach(c => c.onclick = () => { triajeActual = c.dataset.t; $("#triaje-texto").value = ""; pintarTriaje(); });
+  const t = T[triajeActual];
+  $("#triaje-desc").textContent = t.descripcion + " Preguntas: " + t.preguntas.map(p => p.pregunta).join(" ");
+  $("#triaje-ejemplos").innerHTML = t.ejemplos.map((e, i) => `<button class="chip" data-e="${i}">Ejemplo ${i + 1}</button>`).join("");
+  $("#triaje-ejemplos").querySelectorAll(".chip").forEach(c => c.onclick = () => { $("#triaje-texto").value = t.ejemplos[c.dataset.e]; });
+  if (!$("#triaje-texto").value) $("#triaje-texto").value = t.ejemplos[0];
+}
+$("#run-triaje").onclick = async e => {
+  const b = e.target, t = META.triajes[triajeActual], estado = $("#triaje-texto").value.trim();
+  if (!estado) return;
+  b.disabled = true;
+  const out = $("#triaje-out");
+  const ms = modelosDe("triajes"), tiempos = {};
+  out.innerHTML = t.preguntas.map(p => `<div class="card"><div class="q">${esc(p.pregunta)}</div>
+    <div class="opts">${p.opciones.map(esc).join(" · ")}</div><div class="res">${ms.map(m => hueco(`tq-${p.id}-${m.id}`, m.id)).join("")}</div></div>`).join("");
+  let hechos = 0;
+  $("#prog-triaje").textContent = `0 / ${ms.length} modelos`;
+  await Promise.all(ms.map(async m => {
+    try {
+      const d = await api("/api/decidir", { modelo: m.id, estado, preguntas: t.preguntas });
+      for (const p of t.preguntas) $(`#tq-${p.id}-${m.id}`).outerHTML = fila(m.id, d.respuestas[p.id], null, null);
+      tiempos[m.id] = d.ms;
+    } catch (err) {
+      for (const p of t.preguntas) $(`#tq-${p.id}-${m.id}`).outerHTML = `<div class="err">${esc(err.message)}</div>`;
+    }
+    $("#prog-triaje").textContent = `${++hechos} / ${ms.length} modelos`;
+  }));
+  $("#prog-triaje").textContent = "Tiempo de las 5 preguntas: " + Object.entries(tiempos).map(([id, t]) => `${nombre(id)} ${t} ms`).join(" · ");
+  b.disabled = false;
+};
+
+// ---------- prueba libre ----------
+$("#run-libre").onclick = async e => {
+  const b = e.target, estado = $("#libre-estado").value.trim(), pregunta = $("#libre-pregunta").value.trim();
+  const opciones = $("#libre-opciones").value.split("\n").map(s => s.trim()).filter(Boolean);
+  const out = $("#libre-out");
+  if (!estado || !pregunta || opciones.length < 2) { out.innerHTML = `<div class="err">Hace falta texto, pregunta y al menos dos opciones.</div>`; return; }
+  b.disabled = true;
+  const ms = modelosDe("libre");
+  out.innerHTML = `<div class="card"><div class="q">${esc(pregunta)}</div><div class="res">${ms.map(m => hueco("lr-" + m.id, m.id)).join("")}</div></div>`;
+  await Promise.all(ms.map(async m => {
+    try {
+      const d = await api("/api/decidir", { modelo: m.id, estado, preguntas: [{ id: "q", pregunta, opciones }] });
+      $("#lr-" + m.id).outerHTML = fila(m.id, d.respuestas.q, d.ms, null);
+    } catch (err) {
+      $("#lr-" + m.id).outerHTML = `<div class="err">${esc(err.message)}</div>`;
+    }
+  }));
+  b.disabled = false;
+};
+
+// ---------- modelos ----------
+function pintarModelos() {
+  $("#lista-modelos").innerHTML = META.modelos.map(m => `<div class="card">
+    <div class="row"><h3 class="grow">${esc(m.nombre)}</h3><span class="chip"><span class="dot ${m.activo ? "on" : ""}"></span>${m.activo ? "activo" : "no responde"}</span></div>
+    <p>${esc(m.resumen)}</p>
+    <div class="sub">Motor: ${esc(m.motor)}<br>Autor: ${esc(m.autor)} · <a href="${esc(m.fuente)}" target="_blank" rel="noopener">ficha en Hugging Face</a></div></div>`).join("");
+}
+
+// ---------- arranque ----------
+(async () => {
+  try { META = await api("/api/meta"); }
+  catch (e) { document.querySelector("main").innerHTML = `<div class="card err">No se pudo cargar: ${esc(e.message)}</div>`; return; }
+  ["pruebas", "triajes", "libre"].forEach(picker);
+  pintarResumen(); pintarCasos(); pintarTriaje(); pintarModelos();
+  api("/api/boe").then(pintarBoe).catch(err => $("#boe-marcador").innerHTML = `<div class="card sub">${esc(err.message)}</div>`);
+  let tab = null; try { tab = localStorage.getItem("tab"); } catch {}
+  if (tab) document.querySelector(`nav button[data-tab="${tab}"]`)?.click();
+})();
+</script>
+</body>
+</html>

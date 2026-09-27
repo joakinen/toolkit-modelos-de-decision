@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+*.log
+
+# resultados propios del laboratorio (los de referencia sí van: resultados-referencia.json)
+laboratorio/resultados.json
+
+# datos y modelos de la prueba del BOE: se regeneran con los scripts y no se publican
+# (los textos pueden contener nombres de personas; ver «Cuidados» en el README)
+boe/datos/
+boe/*.jsonl
+boe/eval/
+boe/eval-kev/
+boe/runs/

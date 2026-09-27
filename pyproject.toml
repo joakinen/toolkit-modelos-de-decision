@@ -1,0 +1,12 @@
+[project]
+name = "modelos-de-decision"
+version = "0.1.0"
+description = "Qué son los modelos de decisión, para qué sirven y cómo probarlos en local"
+readme = "README.md"
+requires-python = ">=3.12,<3.14"
+license = "Apache-2.0"
+# Solo lo que necesita el laboratorio web. Kev (servidores, ajuste y evaluador) se instala aparte: ver README.
+dependencies = ["fastapi>=0.115", "uvicorn>=0.30", "pydantic>=2"]
+
+[tool.uv]
+package = false
