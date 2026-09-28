@@ -29,7 +29,8 @@ El código, los datos de la prueba y un laboratorio para probar varios modelos e
 <https://github.com/joakinen/toolkit-modelos-de-decision>
 
 Funciona como un **toolkit de evaluación de modelos de decisión**: se irá actualizando con los modelos nuevos que salgan.
-Al final del texto hay un veredicto provisional sobre el estado de esta tecnología.
+Al final del texto hay un veredicto provisional sobre el estado de esta tecnología. Esta es la versión del 28 de
+septiembre de 2026; la última está siempre en <https://creativecodeworks.com/toolkit-modelos-de-decision.html>.
 
 # Qué es un modelo de decisión
 
@@ -753,7 +754,8 @@ ISO/IEC 80000-13.
 Joaquín Herrero Pintado\
 Creative Codeworks
 
-Primera versión · septiembre de 2026\
+Primera versión · 28 de septiembre de 2026\
+Última versión: [creativecodeworks.com/toolkit-modelos-de-decision.html](https://creativecodeworks.com/toolkit-modelos-de-decision.html)\
 Toolkit de evaluación de modelos de decisión:
 [github.com/joakinen/toolkit-modelos-de-decision](https://github.com/joakinen/toolkit-modelos-de-decision)\
 [creativecodeworks.com](https://creativecodeworks.com)
