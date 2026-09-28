@@ -1,0 +1,86 @@
+% Portada del informe: sustituye al título de pandoc (\maketitle). La dibuja TikZ sobre el fondo de la página con
+% eso-pic, así que no necesita una segunda pasada de LaTeX. Colores y marca de Creative Codeworks (web/marca de
+% creativecodeworks.com): fondo oscuro, verde de la marca y la marca reducida (las dos c sobre su placa).
+\usepackage{tikz}
+\usepackage{eso-pic}
+\usepackage{xcolor}
+\definecolor{ccwOscuro}{HTML}{0B0D11}
+\definecolor{ccwPlaca}{HTML}{15171C}
+\definecolor{ccwVerde}{HTML}{8CB724}
+\definecolor{ccwTeal}{HTML}{41C4AB}
+\definecolor{ccwBlanco}{HTML}{F4F4F2}
+\definecolor{ccwGris}{HTML}{AAB1BC}
+\definecolor{ccwLinea}{HTML}{2B2F37}
+\newfontfamily\ccwLigera{Helvetica Neue Light}
+\newfontfamily\ccwMedia{Helvetica Neue Medium}
+
+% La marca reducida, en unidades del SVG oficial (cc-marca.svg): dos c de radio 200 y trazo 68, centros a 340 de
+% distancia, disco verde de radio 138 dentro. El corte entre las dos c se pinta con el color de la placa.
+\newcommand{\ccwMarca}[1]{%
+  \begin{scope}[shift={#1}, x=0.04mm, y=-0.04mm]
+    \fill[ccwPlaca, rounded corners=2.3mm] (126,110) rectangle (1074,690);
+    \fill[ccwVerde] (430,400) circle (138);
+    \draw[ccwBlanco, line width=2.72mm] (430,400) ++(-30:200) arc[start angle=-30, end angle=-330, radius=200];
+    \draw[ccwPlaca, line width=4.16mm] (770,400) ++(-30:200) arc[start angle=-30, end angle=-330, radius=200];
+    \fill[ccwPlaca] (770,400) circle (156);
+    \fill[ccwVerde] (770,400) circle (138);
+    \draw[ccwBlanco, line width=2.72mm] (770,400) ++(-30:200) arc[start angle=-30, end angle=-330, radius=200];
+  \end{scope}}
+
+% Una fila de la respuesta de ejemplo: opción, barra proporcional y porcentaje.
+\newcommand{\ccwBarra}[4]{% y, opción, probabilidad (0-1), texto del porcentaje
+  \node[anchor=east, text=ccwGris, font=\small] at (52,#1) {#2};
+  \fill[ccwLinea, rounded corners=0.6mm] (55,#1-1.6) rectangle (160,#1+1.6);
+  \fill[ccwVerde!\ifdim#3pt>0.5pt 100\else 45\fi!ccwGris, rounded corners=0.6mm] (55,#1-1.6) rectangle ({55+max(1.2,105*#3)},#1+1.6);
+  \node[anchor=west, text=ccwBlanco, font=\small\ccwMedia] at (163,#1) {#4};}
+
+\renewcommand{\maketitle}{%
+  \thispagestyle{empty}%
+  \AddToShipoutPictureBG*{\put(0,0){\begin{tikzpicture}[overlay, x=1mm, y=1mm]
+    \fill[ccwOscuro] (0,0) rectangle (210,297);
+    \fill[ccwVerde] (0,297) rectangle (210,294);
+
+    % cabecera
+    \node[anchor=north west, inner sep=0, text=ccwVerde, font=\small\bfseries\addfontfeatures{LetterSpace=18}]
+      at (22,276) {INFORME TÉCNICO · SEPTIEMBRE DE 2026};
+    \draw[ccwVerde, line width=1.4pt] (22,268) -- (42,268);
+
+    % título y subtítulo
+    \node[anchor=north west, text width=160mm, align=left, text=white, inner sep=0,
+          font=\fontsize{42}{47}\selectfont\bfseries] at (22,258) {Modelos de decisión\\y ajuste fino};
+    \node[anchor=north west, text width=150mm, align=left, text=ccwTeal, inner sep=0,
+          font=\fontsize{17}{22}\selectfont\ccwLigera] at (22,212)
+      {Una introducción para programadores que ya han usado modelos de lenguaje};
+
+    % respuesta real de Kev-4B
+    \fill[ccwPlaca, rounded corners=3mm] (22,112) rectangle (188,178);
+    \draw[ccwLinea, rounded corners=3mm, line width=0.6pt] (22,112) rectangle (188,178);
+    \node[anchor=north west, inner sep=0, text=ccwTeal, font=\scriptsize\bfseries\addfontfeatures{LetterSpace=12}]
+      at (30,173) {RESPUESTA REAL DE KEV-4B};
+    \node[anchor=north west, text width=150mm, text=ccwGris, font=\small\itshape, inner sep=0] at (30,164)
+      {«El interesado presentó la solicitud el 15 de enero, pero no consta el pago de la tasa.»};
+    \node[anchor=north west, text=white, font=\normalsize\bfseries, inner sep=0] at (30,152)
+      {¿Está la solicitud completa?};
+    \ccwBarra{138}{sí}{0.007}{0,7 \%}
+    \ccwBarra{130}{no}{0.949}{94,9 \%}
+    \ccwBarra{122}{no consta}{0.044}{4,4 \%}
+
+    % qué incluye
+    \node[anchor=north west, inner sep=0, text=ccwVerde, font=\scriptsize\bfseries\addfontfeatures{LetterSpace=12}]
+      at (22,100) {QUÉ INCLUYE};
+    \foreach \y/\t in {92/{Qué cambia frente a un chat, y la API con peticiones reales},
+                       85/{Cómo funcionan por dentro: logits, softmax, calibración},
+                       78/{El ajuste fino paso a paso, en una máquina propia},
+                       71/{Un caso medido con 350 textos del BOE},
+                       64/{Veredicto provisional sobre el estado de esta tecnología}}
+      {\fill[ccwVerde] (23,\y-1) rectangle (25,\y+1);
+       \node[anchor=west, text=ccwBlanco, font=\small] at (28,\y) {\t};}
+
+    % autor y marca
+    \draw[ccwLinea, line width=0.6pt] (22,46) -- (188,46);
+    \node[anchor=north west, text=white, font=\large\bfseries, inner sep=0] at (22,38) {Joaquín Herrero Pintado};
+    \node[anchor=north west, text=ccwVerde, font=\normalsize\ccwMedia, inner sep=0] at (22,30) {Creative Codeworks};
+    \ccwMarca{(145.04,43.4)}
+  \end{tikzpicture}}}%
+  \null\clearpage
+  \pagenumbering{arabic}}

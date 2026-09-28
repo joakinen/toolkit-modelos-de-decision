@@ -173,4 +173,5 @@ de medir ningún modelo. Los controles se descargan de sus fuentes y no se publi
   viene de [este artículo de allanrbo](https://allanrbo.blogspot.com/2026/09/a-jev-like-wrapper-for-llms-including.html).
 - Jev es un modelo cerrado de TypeSafe AI; este repositorio no está afiliado a TypeSafe.
 
-Joaquín Herrero, asistido por Claude Opus 5.5.
+Joaquín Herrero Pintado · Creative Codeworks ([creativecodeworks.com](https://creativecodeworks.com)). Hecho con la asistencia de
+Claude Code (Anthropic); el detalle está en los créditos del [informe](informe/modelos-de-decision.pdf).

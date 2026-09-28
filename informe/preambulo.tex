@@ -1,0 +1,11 @@
+% Preámbulo de LaTeX del informe (lo incluye generar.sh junto a portada.tex).
+% \necesitaespacio{n\baselineskip}: salta de página si no quedan n líneas, para que tablas y código no se partan.
+\usepackage{etoolbox}
+\newdimen\nsFalta \newdimen\nsQueda
+\newcommand{\necesitaespacio}[1]{\par\nsFalta=#1\relax\nsQueda=\pagegoal\advance\nsQueda by -\pagetotal
+  \ifdim\nsFalta>\nsQueda\ifdim\nsQueda>0pt\newpage\fi\fi}
+\pretocmd{\section}{\necesitaespacio{12\baselineskip}}{}{}
+\pretocmd{\subsection}{\necesitaespacio{8\baselineskip}}{}{}
+\usepackage{fancyvrb}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\small}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\small}

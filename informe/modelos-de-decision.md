@@ -1,21 +1,9 @@
 ---
 title: "Modelos de decisión y ajuste fino"
 subtitle: "Una introducción para programadores que ya han usado modelos de lenguaje"
-author: "Joaquín Herrero asistido por Claude Opus 5.5"
+author: "Joaquín Herrero Pintado"
 date: "Septiembre de 2026"
 lang: es
-header-includes: |
-  ```{=latex}
-  \usepackage{etoolbox}
-  \newdimen\nsFalta \newdimen\nsQueda
-  \newcommand{\necesitaespacio}[1]{\par\nsFalta=#1\relax\nsQueda=\pagegoal\advance\nsQueda by -\pagetotal
-    \ifdim\nsFalta>\nsQueda\ifdim\nsQueda>0pt\newpage\fi\fi}
-  \pretocmd{\section}{\necesitaespacio{12\baselineskip}}{}{}
-  \pretocmd{\subsection}{\necesitaespacio{8\baselineskip}}{}{}
-  \usepackage{fancyvrb}
-  \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\},fontsize=\small}
-  \RecustomVerbatimEnvironment{verbatim}{Verbatim}{fontsize=\small}
-  ```
 ---
 
 # Antes de empezar
@@ -753,6 +741,37 @@ programas muestran GiB aunque escriban «GB». Las memorias de este informe est�
 equipo, que son la cifra comercial de su memoria y equivalen a 24 GiB. La norma que distingue ambas unidades es la
 ISO/IEC 80000-13.
 
----
+```{=latex}
+\newpage
+```
 
-*Este texto se publica con licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0).*
+# Créditos
+
+**Modelos de decisión y ajuste fino**\
+*Una introducción para programadores que ya han usado modelos de lenguaje*
+
+Joaquín Herrero Pintado\
+Creative Codeworks
+
+Primera versión · septiembre de 2026\
+Toolkit de evaluación de modelos de decisión:
+[github.com/joakinen/toolkit-modelos-de-decision](https://github.com/joakinen/toolkit-modelos-de-decision)\
+[creativecodeworks.com](https://creativecodeworks.com)
+
+© 2026 Joaquín Herrero Pintado.\
+Este texto se publica con licencia Creative Commons Reconocimiento-CompartirIgual 4.0 Internacional (CC BY-SA 4.0):
+puedes copiarlo y adaptarlo, también con fines comerciales, siempre que indiques la fuente (autor, título y
+creativecodeworks.com) y publiques lo que hagas a partir de él con la misma licencia. El código del toolkit tiene
+licencia Apache-2.0.
+
+Los datos de la prueba proceden de la Agencia Estatal Boletín Oficial del Estado (boe.es), reutilizados según sus
+condiciones de datos abiertos. Los modelos probados son de sus autores: Kev, de Jared Palmer; las réplicas abiertas de
+Jev, de chaoliangUNSW; Qwen3.5, de Alibaba. Jev es un modelo de TypeSafe AI, que no está relacionada con este trabajo.
+
+Este informe y el toolkit que lo acompaña se han hecho con la asistencia de **Claude Code** (Anthropic). La herramienta
+se usó para escribir y ejecutar los programas de evaluación, lanzar los ajustes y las medidas, contrastar cada cifra
+con los datos de los que sale, revisar a mano muestras de resultados, redactar borradores del texto y maquetarlo. Las
+preguntas, el criterio sobre qué medir y qué dar por bueno, y la decisión de publicar también lo que corrige versiones
+anteriores son míos; míos son también los errores.
+
+Este informe se actualizará cada vez que el toolkit evalúe un modelo de decisión nuevo.
