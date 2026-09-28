@@ -12,9 +12,10 @@ Decisiones fijadas el 27-sep-2026 antes de medir ningún modelo:
 - 50 por apartado en la prueba y hasta 200 por apartado en el entrenamiento, semilla 0; las opciones son las secciones
   del sumario con su nombre oficial, en el orden del BOE.
 
-Uso: python construir.py sumarios            descarga los sumarios de enero-agosto (un día por segundo, con caché)
+Uso: python construir.py sumarios            descarga los sumarios de enero a septiembre (un día por segundo, con caché)
      python construir.py prueba              elige la muestra de prueba y descarga sus textos -> prueba.jsonl
      python construir.py entrenamiento       lo mismo para el entrenamiento -> entrenamiento.jsonl
+     python construir.py calibracion         20 por apartado de septiembre, para recalibrar -> calibracion.jsonl
 """
 import datetime as dt, json, random, re, sys, time, urllib.error, urllib.request
 import xml.etree.ElementTree as ET
@@ -33,7 +34,9 @@ APARTADOS = {  # código del sumario -> nombre oficial de la sección
     "5B": "V.B. Anuncios: otros anuncios oficiales",
 }  # V.C (anuncios particulares) y Tribunal Constitucional no publican nada en enero-agosto de 2026: fuera de las opciones
 PERIODOS = {"entrenamiento": (dt.date(2026, 1, 1), dt.date(2026, 6, 30), 200),
-            "prueba": (dt.date(2026, 7, 1), dt.date(2026, 8, 31), 50)}
+            "prueba": (dt.date(2026, 7, 1), dt.date(2026, 8, 31), 50),
+            # añadido el 28-sep-2026 para recalibrar los ajustados: textos de después de la prueba, sin solape con nada
+            "calibracion": (dt.date(2026, 9, 1), dt.date(2026, 9, 27), 20)}
 # las peticiones se identifican con el proyecto, no con el nombre genérico de Python (cortesía con el servidor del BOE)
 AGENTE = "laboratorio-decisiones/1.0 (evaluacion local de modelos de decision; reutilizacion de datos abiertos del BOE)"
 POR_PLANTILLA, MIN_CARACTERES, MAX_CARACTERES, SEMILLA = 3, 150, 2000, 0
@@ -61,7 +64,7 @@ def lista(x):
 
 def sumarios():
     SUMARIOS.mkdir(parents=True, exist_ok=True)
-    d, fin = PERIODOS["entrenamiento"][0], PERIODOS["prueba"][1]
+    d, fin = PERIODOS["entrenamiento"][0], max(p[1] for p in PERIODOS.values())
     while d <= fin:
         f = SUMARIOS / f"{d:%Y%m%d}.json"
         if not f.exists():
@@ -159,4 +162,5 @@ def muestra(nombre):
 
 
 if __name__ == "__main__":
-    {"sumarios": sumarios, "prueba": lambda: muestra("prueba"), "entrenamiento": lambda: muestra("entrenamiento")}[sys.argv[1]]()
+    {"sumarios": sumarios, "prueba": lambda: muestra("prueba"), "entrenamiento": lambda: muestra("entrenamiento"),
+     "calibracion": lambda: muestra("calibracion")}[sys.argv[1]]()

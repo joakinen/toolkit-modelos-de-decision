@@ -15,6 +15,190 @@
  "fuente": "Agencia Estatal Boletín Oficial del Estado (boe.es), datos abiertos",
  "modelos": [
   {
+   "id": "ajustado4b",
+   "nombre": "Kev · 4B ajustado",
+   "ajustado": true,
+   "ms": null,
+   "clases": [
+    [
+     47,
+     50
+    ],
+    [
+     48,
+     50
+    ],
+    [
+     49,
+     50
+    ],
+    [
+     44,
+     50
+    ],
+    [
+     50,
+     50
+    ],
+    [
+     50,
+     50
+    ],
+    [
+     49,
+     50
+    ]
+   ],
+   "media": 0.9628571428571429,
+   "logloss": 0.22375693817810863,
+   "confusiones": [
+    [
+     "III. Otras disposiciones",
+     "I. Disposiciones generales",
+     5
+    ],
+    [
+     "I. Disposiciones generales",
+     "III. Otras disposiciones",
+     3
+    ],
+    [
+     "III. Otras disposiciones",
+     "V.B. Anuncios: otros anuncios oficiales",
+     1
+    ],
+    [
+     "II.B. Autoridades y personal: oposiciones y concursos",
+     "II.A. Autoridades y personal: nombramientos, situaciones e incidencias",
+     1
+    ]
+   ],
+   "control": [
+    11,
+    12
+   ],
+   "ajuste": {
+    "equipo": "Mac mini con M4 Pro y 24 GB de memoria unificada",
+    "segundos": 41719,
+    "epocas": 3,
+    "ejemplos_propios": 1400,
+    "ejemplos_repaso": 160,
+    "ejemplos_procesados": 4680,
+    "tokens": 2076726,
+    "s_por_ejemplo": 8.91,
+    "memoria_gpu_gb": 9.2,
+    "memoria_proceso_gb": 2.9,
+    "parametros_entrenados": "LoRA de rango 16",
+    "base_en_media_precision": true
+   },
+   "olvido": {
+    "ampliado": {
+     "preguntas": 560,
+     "original": {
+      "acierto": 0.8696428571428572,
+      "ece": 0.035445526815703864,
+      "logloss": 0.3382029062302942,
+      "seguras": 338,
+      "fallos_seguras": 0
+     },
+     "ajustado": {
+      "acierto": 0.8553571428571428,
+      "ece": 0.1211462407180101,
+      "logloss": 0.9416614800653998,
+      "seguras": 512,
+      "fallos_seguras": 53
+     },
+     "recalibrado": {
+      "acierto": 0.8553571428571428,
+      "ece": 0.04077055104086002,
+      "logloss": 0.3626099950893225,
+      "seguras": 399,
+      "fallos_seguras": 11
+     },
+     "diferencia": -0.014285714285714285,
+     "ic95": [
+      -0.031192660550458717,
+      0.0017513134851138354
+     ]
+    },
+    "es": {
+     "preguntas": 150,
+     "original": {
+      "acierto": 0.68,
+      "ece": 0.10448959009671871,
+      "logloss": 0.7113688433308838,
+      "seguras": 58,
+      "fallos_seguras": 7
+     },
+     "ajustado": {
+      "acierto": 0.6866666666666666,
+      "ece": 0.28503776389097923,
+      "logloss": 2.6169321593984924,
+      "seguras": 132,
+      "fallos_seguras": 35
+     },
+     "recalibrado": {
+      "acierto": 0.6866666666666666,
+      "ece": 0.16248790618857747,
+      "logloss": 0.8323242988635857,
+      "seguras": 81,
+      "fallos_seguras": 11
+     },
+     "diferencia": 0.006666666666666667,
+     "ic95": [
+      -0.04,
+      0.05333333333333334
+     ]
+    }
+   },
+   "calibracion": {
+    "temperatura": 4.0,
+    "preguntas": 460,
+    "nll_con_temperatura": 0.3083318315430394,
+    "temperatura_sin_tope": 4.153036832088741,
+    "nll_sin_tope": 0.30816865394470844,
+    "temperatura_por_parte": {
+     "BOE": 2.5053288772482563,
+     "generales": 4.412715288654986,
+     "español": 5.856342783782502
+    },
+    "fuera_de_muestra": {
+     "ece_sin_calibrar": 0.1011578009056958,
+     "ece_calibrado": 0.03307431911740127,
+     "temperaturas_por_pliegue": [
+      4.0,
+      3.8193664156416647,
+      4.0,
+      4.0,
+      4.0
+     ]
+    },
+    "prueba": {
+     "original": {
+      "acierto": 0.6914285714285714,
+      "ece": 0.19432772322645014,
+      "logloss": 0.8311657311291465,
+      "seguras": 0,
+      "fallos_seguras": 0
+     },
+     "ajustado": {
+      "acierto": 0.9628571428571429,
+      "ece": 0.034965436642324245,
+      "logloss": 0.2451590564832185,
+      "seguras": 340,
+      "fallos_seguras": 8
+     },
+     "recalibrado": {
+      "acierto": 0.9628571428571429,
+      "ece": 0.03242688605444692,
+      "logloss": 0.13391471288670753,
+      "seguras": 289,
+      "fallos_seguras": 3
+     }
+    }
+   }
+  },
+  {
    "id": "ajustado08b",
    "nombre": "Kev · 0.8B ajustado",
    "ajustado": true,
@@ -90,6 +274,112 @@
     "memoria_proceso_gb": 7.0,
     "parametros_entrenados": "LoRA de rango 16",
     "base_en_media_precision": false
+   },
+   "olvido": {
+    "ampliado": {
+     "preguntas": 560,
+     "original": {
+      "acierto": 0.8303571428571429,
+      "ece": 0.02297946330472865,
+      "logloss": 0.4614861295466502,
+      "seguras": 298,
+      "fallos_seguras": 4
+     },
+     "ajustado": {
+      "acierto": 0.8178571428571428,
+      "ece": 0.1670603245593568,
+      "logloss": 2.087849899526122,
+      "seguras": 530,
+      "fallos_seguras": 88
+     },
+     "recalibrado": {
+      "acierto": 0.8178571428571428,
+      "ece": 0.10740742350799617,
+      "logloss": 0.6200898172103132,
+      "seguras": 425,
+      "fallos_seguras": 30
+     },
+     "diferencia": -0.0125,
+     "ic95": [
+      -0.03185840707964602,
+      0.0070921985815602835
+     ]
+    },
+    "es": {
+     "preguntas": 150,
+     "original": {
+      "acierto": 0.58,
+      "ece": 0.19843575350722994,
+      "logloss": 0.988411645318303,
+      "seguras": 31,
+      "fallos_seguras": 12
+     },
+     "ajustado": {
+      "acierto": 0.5666666666666667,
+      "ece": 0.41395493643573944,
+      "logloss": 5.107666288229816,
+      "seguras": 136,
+      "fallos_seguras": 58
+     },
+     "recalibrado": {
+      "acierto": 0.5666666666666667,
+      "ece": 0.29689779916153397,
+      "logloss": 1.4403777811693401,
+      "seguras": 83,
+      "fallos_seguras": 35
+     },
+     "diferencia": -0.013333333333333334,
+     "ic95": [
+      -0.04666666666666667,
+      0.02
+     ]
+    }
+   },
+   "calibracion": {
+    "temperatura": 4.0,
+    "preguntas": 460,
+    "nll_con_temperatura": 0.637863327954664,
+    "temperatura_sin_tope": 7.16847713529562,
+    "nll_sin_tope": 0.5170163349553225,
+    "temperatura_por_parte": {
+     "BOE": 4.412715288654986,
+     "generales": 7.025008641493199,
+     "español": 18.16807086513403
+    },
+    "fuera_de_muestra": {
+     "ece_sin_calibrar": 0.17152491812543724,
+     "ece_calibrado": 0.11864012128947105,
+     "temperaturas_por_pliegue": [
+      4.0,
+      4.0,
+      4.0,
+      4.0,
+      4.0
+     ]
+    },
+    "prueba": {
+     "original": {
+      "acierto": 0.49142857142857144,
+      "ece": 0.12122101343219158,
+      "logloss": 1.3235792174726837,
+      "seguras": 0,
+      "fallos_seguras": 0
+     },
+     "ajustado": {
+      "acierto": 0.9457142857142857,
+      "ece": 0.04720492416727311,
+      "logloss": 0.36421423030884953,
+      "seguras": 340,
+      "fallos_seguras": 14
+     },
+     "recalibrado": {
+      "acierto": 0.9457142857142857,
+      "ece": 0.018062539865386164,
+      "logloss": 0.14435318001697903,
+      "seguras": 301,
+      "fallos_seguras": 3
+     }
+    }
    }
   },
   {
@@ -212,7 +502,10 @@
      5
     ]
    ],
-   "control": null
+   "control": [
+    10,
+    12
+   ]
   },
   {
    "id": "llm-9b",
@@ -413,6 +706,16 @@
    ]
   },
   {
+   "a": "ajustado4b",
+   "b": "base4b",
+   "texto": "Kev · 4B ajustado frente al mismo modelo sin ajustar",
+   "diferencia": 0.27142857142857146,
+   "ic95": [
+    0.23607611600222445,
+    0.3061818159535671
+   ]
+  },
+  {
    "a": "ajustado08b",
    "b": "jev-v1",
    "texto": "Kev · 0.8B ajustado frente a Jev-style v1 · 2B",
@@ -420,6 +723,16 @@
    "ic95": [
     0.17849677398847108,
     0.25833067097872
+   ]
+  },
+  {
+   "a": "ajustado4b",
+   "b": "jev-v1",
+   "texto": "Kev · 4B ajustado frente a Jev-style v1 · 2B",
+   "diferencia": 0.23428571428571432,
+   "ic95": [
+    0.19633697313139842,
+    0.27409685323980626
    ]
   }
  ],
@@ -3933,6 +4246,358 @@
    0,
    0,
    3,
+   0,
+   0,
+   0,
+   0
+  ],
+  "ajustado4b": [
+   5,
+   3,
+   6,
+   3,
+   4,
+   1,
+   1,
+   5,
+   2,
+   6,
+   5,
+   4,
+   3,
+   6,
+   5,
+   6,
+   5,
+   2,
+   2,
+   6,
+   4,
+   6,
+   2,
+   5,
+   2,
+   0,
+   4,
+   5,
+   3,
+   3,
+   4,
+   5,
+   5,
+   1,
+   6,
+   2,
+   4,
+   0,
+   5,
+   3,
+   6,
+   2,
+   6,
+   5,
+   5,
+   2,
+   5,
+   6,
+   6,
+   6,
+   5,
+   5,
+   6,
+   4,
+   6,
+   5,
+   3,
+   6,
+   6,
+   4,
+   5,
+   4,
+   5,
+   6,
+   3,
+   4,
+   3,
+   3,
+   3,
+   6,
+   6,
+   6,
+   5,
+   5,
+   5,
+   6,
+   2,
+   6,
+   5,
+   6,
+   4,
+   6,
+   2,
+   6,
+   3,
+   5,
+   1,
+   6,
+   3,
+   1,
+   3,
+   3,
+   1,
+   3,
+   2,
+   0,
+   6,
+   3,
+   5,
+   5,
+   5,
+   3,
+   6,
+   4,
+   6,
+   5,
+   3,
+   3,
+   6,
+   5,
+   5,
+   6,
+   3,
+   6,
+   2,
+   4,
+   5,
+   4,
+   3,
+   0,
+   6,
+   4,
+   5,
+   6,
+   0,
+   2,
+   3,
+   3,
+   3,
+   6,
+   5,
+   2,
+   5,
+   0,
+   6,
+   2,
+   6,
+   2,
+   6,
+   2,
+   6,
+   1,
+   5,
+   3,
+   4,
+   5,
+   5,
+   6,
+   1,
+   5,
+   1,
+   5,
+   1,
+   6,
+   5,
+   4,
+   6,
+   1,
+   4,
+   3,
+   5,
+   2,
+   6,
+   2,
+   6,
+   4,
+   2,
+   3,
+   1,
+   2,
+   1,
+   4,
+   6,
+   6,
+   6,
+   5,
+   6,
+   5,
+   2,
+   6,
+   6,
+   5,
+   5,
+   5,
+   2,
+   5,
+   5,
+   4,
+   0,
+   5,
+   5,
+   5,
+   1,
+   2,
+   2,
+   2,
+   0,
+   4,
+   3,
+   4,
+   2,
+   2,
+   1,
+   4,
+   4,
+   2,
+   4,
+   4,
+   1,
+   2,
+   4,
+   0,
+   4,
+   2,
+   1,
+   4,
+   0,
+   4,
+   2,
+   2,
+   2,
+   1,
+   3,
+   2,
+   3,
+   2,
+   4,
+   0,
+   2,
+   4,
+   1,
+   2,
+   1,
+   2,
+   3,
+   1,
+   4,
+   2,
+   4,
+   2,
+   2,
+   3,
+   3,
+   2,
+   1,
+   1,
+   4,
+   3,
+   3,
+   2,
+   2,
+   0,
+   2,
+   0,
+   2,
+   2,
+   1,
+   1,
+   3,
+   0,
+   4,
+   1,
+   2,
+   3,
+   3,
+   1,
+   0,
+   1,
+   1,
+   4,
+   3,
+   4,
+   4,
+   1,
+   4,
+   3,
+   2,
+   3,
+   0,
+   4,
+   3,
+   3,
+   3,
+   0,
+   4,
+   0,
+   4,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   1,
+   4,
+   4,
+   4,
+   4,
+   4,
+   1,
+   4,
+   1,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   0,
+   1,
+   0,
+   1,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3,
+   3,
+   0,
+   0,
+   0,
+   3,
+   0,
+   0,
+   0,
    0,
    0,
    0,

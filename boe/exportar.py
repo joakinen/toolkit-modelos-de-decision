@@ -1,9 +1,12 @@
 """Resume la prueba del apartado del BOE en resultados/boe.json, sin ningún texto: solo identificadores del BOE, la
 respuesta de cada modelo y las cifras agregadas. Es lo que muestran la pestaña BOE del laboratorio y la página estática.
 
-Lee eval/<modelo>.jsonl (modelos sin ajustar, de evaluar.py) y eval-kev/<nombre>-{prueba,control}/rows.json (Kev original
-y ajustado, de evaluar_kev.py). Las diferencias entre modelos llevan un intervalo de confianza del 95 % por bootstrap
-pareado (2.000 remuestreos, semilla 0) sobre la media del acierto por apartado.
+Lee eval/<modelo>.jsonl (modelos sin ajustar, de evaluar.py), eval-kev/<nombre>-{prueba,control,ampliado,es}/rows.json
+(Kev original y ajustado, de evaluar_kev.py) y calibracion.json (de calibrar.py). Las diferencias entre modelos llevan un
+intervalo de confianza del 95 % por bootstrap pareado (2.000 remuestreos, semilla 0) sobre la media del acierto por
+apartado; las de los controles, sobre el acierto por pregunta, remuestreando casos.
+Para los ajustados calcula también lo que cambia al recalibrarlos: aplica la temperatura de calibracion.json a los
+logits registrados (sin volver a ejecutar el modelo; la respuesta más probable no cambia).
 Uso: python exportar.py
 """
 import json, math, random
@@ -17,6 +20,7 @@ SIN_AJUSTAR = {"jev-v1": "Jev-style v1 · 2B", "jev-v3": "Jev-style v3 · 0.8B",
 AJUSTADOS = {"ajustado08b": "Kev · 0.8B ajustado", "ajustado4b": "Kev · 4B ajustado"}
 ORIGINAL_DE = {"ajustado08b": "base08b", "ajustado4b": "base4b"}   # el mismo modelo sin ajustar, medido igual
 N_CONTROL = 12   # control.py: las 12 pruebas de laboratorio/casos.py
+N_AMPLIADO = 452   # control_ampliado.py: las 12 pruebas más 440 de decision-v7
 CONTROL_DE = {"kev-08b": "base08b", "kev-4b": "base4b", "ajustado08b": "ajustado08b", "ajustado4b": "ajustado4b"}
 
 
@@ -33,6 +37,59 @@ def media_por_apartado(top, etiqueta, indices=None):
     for i in indices:
         por.setdefault(etiqueta[i], []).append(top[i] == etiqueta[i])
     return sum(sum(v) / len(v) for v in por.values()) / len(por)
+
+
+def probabilidades(fila, temperatura=None):
+    """Las probabilidades tal como se sirvieron o, con temperatura, recalculadas desde los logits en bruto."""
+    if temperatura is None:
+        return fila["p"]
+    z = [x * fila.get("inference_temperature", 1.0) / temperatura for x in fila["logits"]]
+    tope = max(z)
+    e = [math.exp(x - tope) for x in z]
+    return [x / sum(e) for x in e]
+
+
+def medidas(filas, temperatura=None):
+    """Acierto, ECE (10 tramos, como Kev), log-loss y cuántas respuestas con seguridad >= 90 % fallan."""
+    conf, ok, nll = [], [], []
+    for f in filas:
+        p = probabilidades(f, temperatura); k = max(range(len(p)), key=p.__getitem__)
+        conf.append(p[k]); ok.append(k == int(f["label"])); nll.append(-math.log(max(p[int(f["label"])], 1e-12)))
+    ece = 0
+    for t in range(10):
+        dentro = [i for i, c in enumerate(conf) if t / 10 <= c < (t + 1) / 10 or (t == 9 and c == 1)]
+        if dentro:
+            ece += len(dentro) / len(conf) * abs(sum(ok[i] for i in dentro) / len(dentro) - sum(conf[i] for i in dentro) / len(dentro))
+    seguras = [i for i, c in enumerate(conf) if c >= 0.9]
+    return {"acierto": sum(ok) / len(ok), "ece": ece, "logloss": sum(nll) / len(nll),
+            "seguras": len(seguras), "fallos_seguras": sum(not ok[i] for i in seguras)}
+
+
+def filas_control(nombre, ultimos=None):
+    """Filas (una por pregunta) de eval-kev/<nombre>/rows.json; con `ultimos`, solo las de los últimos casos."""
+    filas = leer(AQUI / "eval-kev" / nombre / "rows.json")
+    if not isinstance(filas, list):
+        return None
+    filas = [f for f in filas if f.get("variant", "clean") == "clean"]
+    caso = lambda f: int(f["id"].split("/")[1])
+    if ultimos:
+        total = max(caso(f) for f in filas) + 1
+        filas = [f for f in filas if caso(f) >= total - ultimos]   # un control local puede llevar casos propios delante
+    return sorted(filas, key=lambda f: (caso(f), f["question"]))
+
+
+def comparar_control(a, b):
+    """Diferencia de acierto b - a por pregunta, emparejada, con intervalo por bootstrap sobre los casos."""
+    acierta = lambda f: max(range(len(f["p"])), key=f["p"].__getitem__) == int(f["label"])
+    por_caso = {}
+    for fa, fb in zip(a, b):
+        por_caso.setdefault(fa["id"], []).append(acierta(fb) - acierta(fa))
+    casos_, rnd, difs = list(por_caso.values()), random.Random(0), []
+    for _ in range(2000):
+        m = [casos_[rnd.randrange(len(casos_))] for _ in casos_]
+        difs.append(sum(map(sum, m)) / sum(map(len, m)))
+    difs.sort()
+    return {"diferencia": sum(map(sum, casos_)) / len(a), "ic95": [difs[50], difs[1950]]}
 
 
 def comparar(a, b, etiqueta):
@@ -100,6 +157,25 @@ for m in modelos:
                        "s_por_ejemplo": round(met["wall_seconds"] / met["records_seen"], 2),
                        "memoria_gpu_gb": round(met["peak_device_bytes"] / 1e9, 1), "memoria_proceso_gb": round(met["peak_rss_bytes"] / 1e9, 1),
                        "parametros_entrenados": "LoRA de rango %d" % a["lora"], "base_en_media_precision": a.get("weights_dtype") == "bf16"}
+
+# control ampliado y en español, y recalibración: original, ajustado tal cual y ajustado con la temperatura de calibrar.py
+calibracion = leer(AQUI / "calibracion.json") or {}
+for m in modelos:
+    if not m["ajustado"] or m["id"] not in ORIGINAL_DE:
+        continue
+    t = calibracion.get(m["id"], {}).get("temperatura")
+    olvido = {}
+    for control, ultimos in (("ampliado", N_AMPLIADO), ("es", None)):
+        a, b = filas_control(f"{ORIGINAL_DE[m['id']]}-{control}", ultimos), filas_control(f"{m['id']}-{control}", ultimos)
+        if a and b and [(f["id"], f["question"]) for f in a] == [(f["id"], f["question"]) for f in b]:
+            olvido[control] = {"preguntas": len(a), "original": medidas(a), "ajustado": medidas(b),
+                               "recalibrado": medidas(b, t) if t else None, **comparar_control(a, b)}
+    if olvido:
+        m["olvido"] = olvido
+    if t:
+        a, b = filas_control(f"{ORIGINAL_DE[m['id']]}-prueba"), filas_control(f"{m['id']}-prueba")
+        m["calibracion"] = {**calibracion[m["id"]], "prueba": {"original": medidas(a), "ajustado": medidas(b), "recalibrado": medidas(b, t)}
+                            if a and b else None}
 
 comparaciones = []
 for aj, orig in ORIGINAL_DE.items():

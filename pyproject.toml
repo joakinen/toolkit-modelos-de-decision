@@ -8,5 +8,9 @@ license = "Apache-2.0"
 # Solo lo que necesita el laboratorio web. Kev (servidores, ajuste y evaluador) se instala aparte: ver README.
 dependencies = ["fastapi>=0.115", "uvicorn>=0.30", "pydantic>=2"]
 
+[project.optional-dependencies]
+# Para los controles y la calibración de la prueba del BOE (control_es.py, calibracion.py): leen parquet.
+boe = ["pyarrow>=15"]
+
 [tool.uv]
 package = false

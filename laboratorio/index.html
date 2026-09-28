@@ -177,8 +177,12 @@ details summary { cursor: pointer; }
   <p class="sub">Medido por el propio entrenador de Kev. Antes hay que descargar los textos: los 1.400 de entrenamiento tardaron unos 27 minutos, a una petición por segundo.</p>
   <div class="card scroll" id="boe-ajuste"></div>
   <h2>Control: ¿olvida lo que ya sabía?</h2>
-  <p class="sub">Las 12 pruebas de la pestaña Pruebas, ajenas al BOE. Si el ajuste estropeara el modelo, aquí bajaría.</p>
-  <div class="card" id="boe-control"></div>
+  <p class="sub">Preguntas ajenas al BOE, antes y después del ajuste: 560 en inglés (las 12 pruebas y 440 del conjunto de prueba con el que se publica Kev: noticias, reseñas, consultas, inferencia…) y 150 en español (XNLI, PAWS-X y reseñas de Amazon). Se mira si acierta lo mismo y si su seguridad sigue siendo de fiar: de las respuestas que da con un 90 % o más, cuántas fallan.</p>
+  <div class="card scroll" id="boe-olvido"></div>
+  <p class="sub">Las 12 pruebas de la pestaña Pruebas, por separado: <span id="boe-control"></span></p>
+  <h2>Recalibración</h2>
+  <p class="sub">El ajuste deja al modelo demasiado seguro. Se corrige con una temperatura, un número que suaviza las probabilidades sin cambiar la respuesta, ajustada con 400 casos que no se usan para nada más: 140 textos del BOE de septiembre, 200 generales y 60 en español. En el 4B se escribió en el modelo; en el 0.8B no, porque una sola temperatura no le basta.</p>
+  <div class="card scroll" id="boe-calibracion"></div>
 </section>
 
 <section id="libre" hidden>

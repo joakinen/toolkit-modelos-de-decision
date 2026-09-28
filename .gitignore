@@ -12,3 +12,4 @@ boe/*.jsonl
 boe/eval/
 boe/eval-kev/
 boe/runs/
+boe/calibracion.json

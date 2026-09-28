@@ -243,6 +243,7 @@ título, que a menudo delata la sección.
 
 | Modelo | Acierto | Log-loss |
 |---|---|---|
+| **Kev-4B, ajustado con los 1.400 textos** | **96 %** | **0,22** |
 | **Kev-0.8B, ajustado con los 1.400 textos** | **95 %** | **0,35** |
 | Réplica abierta de Jev de 2.000 millones de parámetros, sin ajustar | 73 % | 1,24 |
 | Kev-4B, sin ajustar | 69 % | 0,83 |
@@ -255,14 +256,16 @@ con seguridad.
 
 **Lo que enseña:**
 
-- **Con datos suficientes, el ajuste funciona.** El mismo modelo pasa del 49 % al 95 %. La mejora es de +45 puntos, con
-  un intervalo de confianza del 95 % de +41 a +49: no es casualidad.
+- **Con datos suficientes, el ajuste funciona.** Kev-0.8B pasa del 49 % al 95 %: +45 puntos, con un intervalo de
+  confianza del 95 % de +41 a +49, así que no es casualidad. Kev-4B pasa del 69 % al 96 % (+27 puntos; de +24 a +31).
 - **Sin ajustar, ningún modelo conoce las convenciones del BOE.** Ninguno reconoce más de 5 de las 50 disposiciones
   generales: las confunden con «otras disposiciones». Distinguir una norma de alcance general de un acto concreto no se
-  deduce del texto; se aprende con ejemplos. El ajustado acierta 42 de 50.
-- **Un modelo pequeño y ajustado supera a uno grande sin ajustar.** El ajustado tiene 800 millones de parámetros; el
+  deduce del texto; se aprende con ejemplos. El 0.8B ajustado acierta 42 de 50, y el 4B ajustado, 47.
+- **Un modelo pequeño y ajustado supera a uno grande sin ajustar.** El 0.8B ajustado tiene 800 millones de parámetros; el
   modelo general de 9.000 millones se queda en el 66 % y tarda unas trece veces más por texto que Kev-0.8B.
-- **No olvida lo que ya sabía.** En un control con preguntas ajenas al BOE, el modelo ajustado responde igual que antes.
+- **Fuera del BOE acierta lo mismo, pero ya no sabe cuándo dudar.** Con preguntas ajenas al BOE, los ajustados aciertan
+  casi igual que antes. Pero se vuelven demasiado seguros: responden con un 90 % o más a preguntas que antes dudaban, y
+  muchas de esas respuestas fallan. Se corrige en parte recalibrando; se explica más abajo.
 - **Es asequible en una máquina propia.** El ajuste se hizo en un ordenador de sobremesa (Mac mini con chip M4 Pro y
   24 GB de memoria), sin enviar nada fuera. Lo que costó está en la tabla siguiente.
 
@@ -272,24 +275,60 @@ con seguridad.
 
 **Lo que cuesta el ajuste** (medido por el propio entrenador de Kev):
 
-| | Kev-0.8B |
-|---|---|
-| Tiempo de ajuste | 3 h 29 min |
-| Ejemplos propios | 1.400, más 160 generales de repaso |
-| Pasadas por los datos | 3 (4.680 ejemplos procesados) |
-| Memoria máxima | 3,3 GB de GPU; 7,0 GB el proceso |
-| Qué se entrena | En torno al 1 % de los parámetros (LoRA) |
+| | Kev-0.8B | Kev-4B |
+|---|---|---|
+| Tiempo de ajuste | 3 h 29 min | 11 h 35 min |
+| Ejemplos propios | 1.400, más 160 generales de repaso | Los mismos |
+| Pasadas por los datos | 3 (4.680 ejemplos procesados) | Las mismas |
+| Segundos por ejemplo | 2,68 | 8,91 |
+| Memoria máxima de GPU | 3,3 GB | 9,2 GB |
+| Qué se entrena | En torno al 1 % de los parámetros (LoRA) | Lo mismo, con la base en media precisión |
 
 A eso hay que sumar reunir los datos: descargar los 1.400 textos del BOE tardó unos 27 minutos. El tiempo de ajuste
-crece en proporción a los ejemplos y a las pasadas, y con el tamaño del modelo.
+crece en proporción a los ejemplos y a las pasadas, y con el tamaño del modelo. Con el 4B, un equipo de 24 GB está en su
+límite: llegó a usar unos 14 GB de intercambio a disco.
+
+```{=latex}
+\necesitaespacio{16\baselineskip}
+```
+
+**Lo que pasa fuera del BOE.** Para ver si el ajuste estropea lo que el modelo ya sabía, se le hicieron antes y después
+preguntas ajenas al BOE: 560 en inglés, de colecciones públicas (noticias, reseñas, consultas de clientes, inferencia) que
+no se usaron al ajustar, y 150 en español (tres colecciones públicas etiquetadas por personas). Se mira el acierto y,
+sobre todo, cuántas de las respuestas que da con un 90 % de seguridad o más resultan erróneas:
+
+| En las 560 preguntas en inglés | Kev-0.8B | Kev-4B |
+|---|---|---|
+| Acierto, antes y después del ajuste | 83 % y 82 % | 87 % y 86 % |
+| Respuestas con ≥ 90 % que fallan, antes del ajuste | 4 de 298 (1 %) | 0 de 338 (0 %) |
+| Después del ajuste | 88 de 530 (17 %) | 53 de 512 (10 %) |
+| Después de recalibrar | 30 de 425 (7 %) | 11 de 399 (3 %) |
+
+El acierto no cambia más de lo que cambia por azar. Lo que cambia es la seguridad: el ajustado dice «90 %» a casi todo,
+también cuando se equivoca. En español pasa lo mismo, y más acusado: con el 4B, fallan 7 de 58 respuestas seguras antes
+del ajuste, 35 de 132 después y 11 de 81 recalibrado.
+
+**La recalibración.** El entrenador deja al modelo ajustado sin su corrección de seguridad. Se recalculó con 400 casos
+apartados, que no se usan para entrenar ni para medir: 140 textos del BOE de septiembre, 200 preguntas generales y 60 en
+español. La corrección es un solo número (la **temperatura**) que suaviza las probabilidades sin cambiar la respuesta, así
+que el acierto no varía:
+
+- **En el 4B funciona.** En inglés, las respuestas seguras que fallan bajan del 10 % al 3 % (el original tenía un 0 %),
+  y en la prueba del BOE fallan 3 de 289. En español mejora mucho, pero sigue peor que antes del ajuste.
+- **En el 0.8B no basta.** Necesitaría más corrección de la que admite la herramienta, y cada tipo de pregunta pide una
+  distinta: poca el BOE, mucha el español. Una sola temperatura no las ajusta a la vez. No se le deberían fijar umbrales.
+
+La lección es general: **el ajuste no hace olvidar cómo responder, pero sí cuándo dudar**, y eso solo se ve midiendo la
+calibración fuera de la tarea ajustada, no solo en ella.
 
 **Y lo que pasa con pocos datos.** En otra prueba, con 100 ejemplos de los que solo 17 eran de la clase difícil, el
 ajuste no se distinguió del azar: el modelo aprendió a responder casi siempre la clase mayoritaria. La diferencia entre
 un caso y otro no está en el modelo ni en la máquina, sino en tener **unos cientos de ejemplos de cada opción**.
 
-**Límites de esta medida.** Es un solo periodo de prueba (dos meses) y una sola pregunta. El modelo ajustado no se ha
-recalibrado: antes de fijar un umbral habría que hacerlo con un conjunto aparte. Y los textos del BOE están más
-normalizados que los escritos que llegan a un registro, que serían más variados.
+**Límites de esta medida.** Es un solo periodo de prueba (dos meses) y una sola pregunta. Aún no se ha fijado ningún
+umbral: debería salir de otro conjunto aparte, distinto del de calibración y del de prueba. El control en español es
+pequeño (150 preguntas). Y los textos del BOE están más normalizados que los escritos que llegan a un registro, que
+serían más variados.
 
 *Fuente de los datos: Agencia Estatal Boletín Oficial del Estado (boe.es), reutilizados según sus condiciones de datos
 abiertos.*

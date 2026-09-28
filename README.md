@@ -29,7 +29,8 @@ de julio y agosto de 2026, que el modelo ajustado nunca vio al entrenar.
 
 | Modelo | Acierto medio por apartado |
 |---|---|
-| **Kev-0.8B ajustado con 1.400 textos del BOE** (200 por apartado) | **95 %** |
+| **Kev-4B ajustado con 1.400 textos del BOE** (200 por apartado) | **96 %** |
+| **Kev-0.8B ajustado con los mismos textos** | **95 %** |
 | Jev-style v1, 2.000 millones de parámetros, sin ajustar | 73 % |
 | Kev-4B, sin ajustar | 69 % |
 | Qwen3.5 9B, un modelo de chat general, sin ajustar | 66 % |
@@ -37,9 +38,15 @@ de julio y agosto de 2026, que el modelo ajustado nunca vio al entrenar.
 | Kev-0.8B, sin ajustar | 49 % |
 
 Con unos cientos de ejemplos por opción, un modelo pequeño ajustado supera con claridad a modelos mucho mayores sin
-ajustar: la mejora es de +45 puntos (intervalo de confianza del 95 %: +41 a +49). Sin ajustar, ningún modelo distingue
+ajustar: el 0.8B mejora +45 puntos (intervalo de confianza del 95 %: +41 a +49) y el 4B, +27 (de +24 a +31). Sin ajustar, ningún modelo distingue
 una disposición general de una «otra disposición»: es una convención del BOE que solo se aprende con ejemplos. Con pocos
 datos, en cambio, el ajuste no sirve: en otra prueba con 17 ejemplos de la clase difícil, no se distinguió del azar.
+
+**Fuera del BOE, los ajustados aciertan lo mismo pero ya no saben cuándo dudar.** En 560 preguntas ajenas al BOE en
+inglés y 150 en español, el acierto no cambia más de lo que cambia por azar. Pero de las respuestas que dan con un 90 %
+de seguridad o más, fallan muchas más que antes: en inglés, del 1 % al 17 % con el 0.8B y del 0 % al 10 % con el 4B.
+Recalibrando con 400 casos apartados, el 4B baja al 3 %; al 0.8B no le basta una sola corrección (7 %, y peor en
+español). Antes de fijar umbrales hay que recalibrar y medir la calibración también fuera de la tarea ajustada.
 
 Todo se ejecutó en un ordenador de sobremesa (Mac mini con M4 Pro y 24 GB), con modelos de pesos abiertos y sin enviar
 nada fuera. El detalle está en el [informe](informe/modelos-de-decision.pdf) y en la [página de resultados](https://joakinen.github.io/modelos-de-decision/).
@@ -49,18 +56,19 @@ nada fuera. El detalle está en el [informe](informe/modelos-de-decision.pdf) y 
 Ajustar un modelo (el *post-training*) es seguir entrenándolo con casos propios. Esto es lo que costó en la prueba del
 BOE, medido por el propio entrenador de Kev en un Mac mini con M4 Pro y 24 GB de memoria, sin servicios externos:
 
-| | Kev-0.8B |
-|---|---|
-| Tiempo de ajuste | **3 h 29 min** |
-| Ejemplos propios | 1.400 (200 por apartado), más 160 generales de repaso |
-| Pasadas por los datos | 3 (4.680 ejemplos procesados, 2,1 millones de tokens) |
-| Segundos por ejemplo | 2,68 |
-| Memoria máxima | 3,3 GB de GPU; 7,0 GB el proceso |
-| Qué se entrena | Una LoRA de rango 16: en torno al 1 % de los parámetros |
+| | Kev-0.8B | Kev-4B |
+|---|---|---|
+| Tiempo de ajuste | **3 h 29 min** | **11 h 35 min** |
+| Ejemplos propios | 1.400 (200 por apartado), más 160 generales de repaso | Los mismos |
+| Pasadas por los datos | 3 (4.680 ejemplos procesados, 2,1 millones de tokens) | Las mismas |
+| Segundos por ejemplo | 2,68 | 8,91 |
+| Memoria máxima de GPU | 3,3 GB | 9,2 GB |
+| Qué se entrena | Una LoRA de rango 16: en torno al 1 % de los parámetros | Lo mismo, con la base en media precisión |
 
 Antes hay que reunir los datos: descargar los 1.400 textos tardó unos 27 minutos, a una petición por segundo. Evaluar
 los 350 textos de prueba lleva alrededor de un minuto con el 0.8B. El tiempo de ajuste crece en proporción a los ejemplos
-y a las pasadas, y con el tamaño del modelo: el 4B va unas 3,3 veces más lento por ejemplo que el 0.8B.
+y a las pasadas, y con el tamaño del modelo: el 4B va unas 3,3 veces más lento por ejemplo que el 0.8B. Con el 4B, 24 GB
+son el límite: el equipo llegó a usar unos 14 GB de intercambio a disco.
 
 ## Probar el laboratorio
 
@@ -92,18 +100,28 @@ Los textos no se publican aquí, porque algunos contienen nombres de personas. S
 del BOE con [`boe/construir.py`](boe/construir.py), a una petición por segundo y con caché:
 
 ```sh
+uv sync --extra boe                        # añade pyarrow, para los controles y la calibración
 cd boe
-uv run python construir.py sumarios        # sumarios de enero a agosto de 2026
+uv run python construir.py sumarios        # sumarios de enero a septiembre de 2026
 uv run python construir.py prueba          # 350 textos de julio y agosto  -> prueba.jsonl
 uv run python construir.py entrenamiento   # 1.400 textos de enero a junio -> entrenamiento.jsonl
+uv run python construir.py calibracion     # 140 textos de septiembre      -> calibracion.jsonl
 uv run python control.py                   # 12 preguntas ajenas al BOE, para ver si el ajuste hace olvidar
+KEV_DIR=/ruta/a/kev uv run python control_ampliado.py   # esas 12 más 440 del test de Kev (en inglés)
+uv run python control_es.py                # 150 preguntas en español (XNLI, PAWS-X, reseñas de Amazon)
+KEV_DIR=/ruta/a/kev uv run python calibracion.py        # 400 casos apartados para recalibrar
 uv run python evaluar.py                   # los modelos del laboratorio, sin ajustar
-KEV_DIR=/ruta/a/kev sh ajustar.sh          # ajusta y evalúa Kev-0.8B y Kev-4B (horas; ver el script)
+KEV_DIR=/ruta/a/kev sh ajustar.sh          # ajusta, evalúa y calcula la temperatura (horas; ver el script)
 uv run python exportar.py && uv run python pagina.py   # resultados/boe.json y docs/index.html
 ```
 
-Las reglas del conjunto (periodos, recorte a 2.000 caracteres, un máximo de tres textos casi idénticos, sin título) están
-explicadas al principio de `construir.py` y se fijaron antes de medir ningún modelo.
+`ajustar.sh` no escribe la temperatura en el modelo: `calibrar.py` la calcula, dice si basta una sola y da el comando
+de Kev para escribirla. En la prueba publicada se escribió en el 4B y no en el 0.8B.
+
+Las reglas de cada conjunto (periodos, recorte a 2.000 caracteres, un máximo de tres textos casi idénticos, sin título,
+tamaños y semillas de los controles y de la calibración) están explicadas al principio de cada script y se fijaron antes
+de medir ningún modelo. Los controles se descargan de sus fuentes y no se publican aquí: cada colección tiene su licencia
+(XNLI, por ejemplo, no permite el uso comercial).
 
 ## Cuidados
 
@@ -119,7 +137,10 @@ explicadas al principio de `construir.py` y se fijaron antes de medir ningún mo
 ## Créditos y licencias
 
 - Código: [Apache-2.0](LICENSE). Informe y resultados: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es).
-- Datos: Agencia Estatal Boletín Oficial del Estado ([boe.es](https://www.boe.es)), datos abiertos.
+- Datos: Agencia Estatal Boletín Oficial del Estado ([boe.es](https://www.boe.es)), datos abiertos. Controles: el
+  conjunto de prueba de Kev (`evals/v7/decision-v7`), [XNLI](https://huggingface.co/datasets/facebook/xnli),
+  [PAWS-X](https://huggingface.co/datasets/google-research-datasets/paws-x) y
+  [reseñas de Amazon en español](https://huggingface.co/datasets/SetFit/amazon_reviews_multi_es), cada uno con su licencia.
 - Modelos: [Kev](https://github.com/jaredpalmer/kev) de Jared Palmer; Jev-style de [chaoliangUNSW](https://huggingface.co/chaoliangUNSW);
   Qwen3.5 de Alibaba. La idea de convertir un modelo de chat en uno de decisión leyendo la probabilidad de cada letra
   viene de [este artículo de allanrbo](https://allanrbo.blogspot.com/2026/09/a-jev-like-wrapper-for-llms-including.html).
