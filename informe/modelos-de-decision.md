@@ -34,10 +34,14 @@ Al terminar deberías saber:
 - qué pasó al hacerlo de verdad, con textos del BOE, incluidos los problemas que aparecieron.
 
 Los primeros apartados explican los conceptos; después viene el ajuste fino, el caso medido con el BOE y, al final, usos,
-límites y un glosario. El código, los datos de la prueba y un laboratorio para probar varios modelos en tu máquina están
-en <https://github.com/joakinen/modelos-de-decision>, que funciona como un **toolkit de evaluación de modelos de
-decisión**: se irá actualizando con los modelos nuevos que salgan. Al final del texto hay un veredicto provisional sobre
-el estado de esta tecnología.
+límites y un glosario.
+
+El código, los datos de la prueba y un laboratorio para probar varios modelos en tu máquina están en este repositorio:
+
+<https://github.com/joakinen/toolkit-modelos-de-decision>
+
+Funciona como un **toolkit de evaluación de modelos de decisión**: se irá actualizando con los modelos nuevos que salgan.
+Al final del texto hay un veredicto provisional sobre el estado de esta tecnología.
 
 # Qué es un modelo de decisión
 
@@ -428,7 +432,7 @@ escribir mejor las opciones, y el ajuste no compensa el trabajo.
 Para comprobar si todo esto funciona con textos administrativos reales, se ha seguido el proceso anterior con datos
 públicos del Boletín Oficial del Estado. Es una clasificación documental muy parecida a la de un registro de entrada:
 leer un texto y decir de qué tipo es. El código, los resultados y las instrucciones para repetirlo están en
-<https://github.com/joakinen/modelos-de-decision>.
+<https://github.com/joakinen/toolkit-modelos-de-decision>.
 
 ```{=latex}
 \necesitaespacio{18\baselineskip}

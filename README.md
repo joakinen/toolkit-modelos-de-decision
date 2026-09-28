@@ -33,7 +33,7 @@ nuevo que salga, para seguir el estado de esta tecnología. Reúne tres cosas:
 | [`boe/`](boe/) | Una prueba con textos reales del BOE: construir los datos, evaluar, ajustar un modelo y medirlo |
 | [`resultados/`](resultados/) y [`docs/`](docs/) | Los resultados de esa prueba (sin textos) y una página estática para verlos |
 
-**Ver los resultados sin instalar nada:** <https://joakinen.github.io/modelos-de-decision/>
+**Ver los resultados sin instalar nada:** <https://joakinen.github.io/toolkit-modelos-de-decision/>
 
 ## El resultado principal
 
@@ -64,7 +64,7 @@ Recalibrando con 400 casos apartados, el 4B baja al 3 %; al 0.8B no le basta una
 español). Antes de fijar umbrales hay que recalibrar y medir la calibración también fuera de la tarea ajustada.
 
 Todo se ejecutó en un ordenador de sobremesa (Mac mini con M4 Pro y 24 GB), con modelos de pesos abiertos y sin enviar
-nada fuera. El detalle está en el [informe](informe/modelos-de-decision.pdf) y en la [página de resultados](https://joakinen.github.io/modelos-de-decision/).
+nada fuera. El detalle está en el [informe](informe/modelos-de-decision.pdf) y en la [página de resultados](https://joakinen.github.io/toolkit-modelos-de-decision/).
 
 ## Veredicto provisional (28 de septiembre de 2026)
 
@@ -101,7 +101,7 @@ El laboratorio es una web que hace de intermediaria entre tú y varios modelos q
 casos de prueba (seis fáciles y seis con trampa), triajes de ejemplo y un formulario para hacer tus propias preguntas.
 
 ```sh
-git clone https://github.com/joakinen/modelos-de-decision && cd modelos-de-decision
+git clone https://github.com/joakinen/toolkit-modelos-de-decision && cd toolkit-modelos-de-decision
 uv sync
 cd laboratorio && uv run uvicorn app:app --host 127.0.0.1 --port 8090
 ```

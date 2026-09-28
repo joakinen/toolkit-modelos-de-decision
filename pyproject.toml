@@ -1,5 +1,5 @@
 [project]
-name = "modelos-de-decision"
+name = "toolkit-modelos-de-decision"
 version = "0.1.0"
 description = "Qué son los modelos de decisión, para qué sirven y cómo probarlos en local"
 readme = "README.md"
