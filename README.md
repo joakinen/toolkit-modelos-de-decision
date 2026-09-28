@@ -1,21 +1,33 @@
 # Modelos de decisión
 
 Un **modelo de decisión** es un modelo de inteligencia artificial que no escribe. Recibe un texto, una pregunta cerrada y
-una lista de respuestas posibles, y devuelve **una probabilidad para cada respuesta**:
+una lista de respuestas posibles, y devuelve **una probabilidad para cada respuesta**. Si lo escribieras como una función:
+
+```python
+def decidir(texto: str, pregunta: str, opciones: list[str]) -> dict[str, float]: ...
+```
+
+Un ejemplo real, con Kev-4B ejecutándose en un ordenador de sobremesa:
 
 > **Texto:** «El interesado presentó la solicitud el 15 de enero, pero no consta el pago de la tasa.»
 > **Pregunta:** ¿Está la solicitud completa?
-> **Respuesta:** sí 3 % · no 91 % · no consta 6 %
+> **Respuesta:** sí 0,7 % · no 94,9 % · no consta 4,4 %
 
 No puede inventar una respuesta fuera de la lista, devuelve datos en lugar de texto y dice cuánta seguridad tiene. Por
 eso sirve para clasificar, encaminar y comprobar documentos: el trabajo que hoy se hace a mano en un registro de entrada
 o en una cola de expedientes.
 
-Este repositorio reúne tres cosas para quien quiera entenderlos y probarlos, sobre todo en una administración:
+**A quién va dirigido.** A programadores que ya han usado modelos de lenguaje (han llamado a la API de un chat, han
+escrito *prompts*) y se acercan por primera vez a los modelos de decisión y al ajuste fino (*fine-tuning*). No hace falta
+saber aprendizaje automático: el informe explica desde cero lo que hace falta (*logits*, softmax, log-loss, calibración,
+LoRA, cómo repartir los datos) con ejemplos de código y con un caso real medido. Los ejemplos son de administración
+pública, pero las ideas valen para cualquier clasificación de textos.
+
+Este repositorio reúne tres cosas:
 
 | Carpeta | Qué contiene |
 |---|---|
-| [`informe/`](informe/) | Un informe introductorio: qué son, cómo se les pregunta, cómo se entrenan, usos posibles y límites ([PDF](informe/modelos-de-decision.pdf)) |
+| [`informe/`](informe/) | Un informe introductorio: qué son, en qué se diferencian de un chat, cómo se llaman desde código, cómo funcionan por dentro, cómo se ajustan con casos propios y qué hay que medir ([PDF](informe/modelos-de-decision.pdf)) |
 | [`laboratorio/`](laboratorio/) | Una web local para comparar varios modelos de decisión con los mismos casos |
 | [`boe/`](boe/) | Una prueba con textos reales del BOE: construir los datos, evaluar, ajustar un modelo y medirlo |
 | [`resultados/`](resultados/) y [`docs/`](docs/) | Los resultados de esa prueba (sin textos) y una página estática para verlos |
@@ -25,7 +37,8 @@ Este repositorio reúne tres cosas para quien quiera entenderlos y probarlos, so
 ## El resultado principal
 
 Pregunta: *¿en qué apartado del BOE se publica este texto?* Siete apartados, 350 textos de prueba (50 por apartado)
-de julio y agosto de 2026, que el modelo ajustado nunca vio al entrenar.
+de julio y agosto de 2026, que los modelos ajustados nunca vieron al entrenar. El acierto es la media de los siete
+aciertos por apartado, para que no cuenten más los apartados fáciles.
 
 | Modelo | Acierto medio por apartado |
 |---|---|
@@ -38,7 +51,8 @@ de julio y agosto de 2026, que el modelo ajustado nunca vio al entrenar.
 | Kev-0.8B, sin ajustar | 49 % |
 
 Con unos cientos de ejemplos por opción, un modelo pequeño ajustado supera con claridad a modelos mucho mayores sin
-ajustar: el 0.8B mejora +45 puntos (intervalo de confianza del 95 %: +41 a +49) y el 4B, +27 (de +24 a +31). Sin ajustar, ningún modelo distingue
+ajustar: el 0.8B mejora +45 puntos y el 4B, +27. Los intervalos de confianza del 95 % (+41 a +49 y +24 a +31, por
+*bootstrap*: sorteando 2.000 veces los casos de prueba) no incluyen el cero, así que la mejora no se explica por azar. Sin ajustar, ningún modelo distingue
 una disposición general de una «otra disposición»: es una convención del BOE que solo se aprende con ejemplos. Con pocos
 datos, en cambio, el ajuste no sirve: en otra prueba con 17 ejemplos de la clase difícil, no se distinguió del azar.
 
@@ -136,7 +150,9 @@ de medir ningún modelo. Los controles se descargan de sus fuentes y no se publi
 
 ## Créditos y licencias
 
-- Código: [Apache-2.0](LICENSE). Informe y resultados: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.es).
+- Código: [Apache-2.0](LICENSE). Informe, documentación, página de resultados y resultados:
+  [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es) (puedes copiarlos y adaptarlos citando la
+  fuente, y lo que publiques a partir de ellos debe llevar la misma licencia).
 - Datos: Agencia Estatal Boletín Oficial del Estado ([boe.es](https://www.boe.es)), datos abiertos. Controles: el
   conjunto de prueba de Kev (`evals/v7/decision-v7`), [XNLI](https://huggingface.co/datasets/facebook/xnli),
   [PAWS-X](https://huggingface.co/datasets/google-research-datasets/paws-x) y

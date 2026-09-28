@@ -27,7 +27,7 @@ pagina = f"""<!doctype html>
   <p class="sub">Un modelo de decisión lee un texto, recibe una pregunta con opciones cerradas y devuelve una probabilidad
   para cada opción. No escribe: elige. Esta página muestra cómo rinden varios de estos modelos, todos abiertos y ejecutados
   en un ordenador de sobremesa, al clasificar textos reales del BOE.</p>
-  <p class="sub"><a href="modelos-de-decision.pdf">Informe: qué son y para qué sirven (PDF)</a> ·
+  <p class="sub"><a href="modelos-de-decision.pdf">Informe: modelos de decisión y ajuste fino, para programadores (PDF)</a> ·
   <a href="https://github.com/joakinen/modelos-de-decision">Código y cómo reproducirlo</a></p>
 </header>
 <main>
@@ -55,7 +55,8 @@ pagina = f"""<!doctype html>
   <h2>Recalibración</h2>
   <p class="sub">El ajuste deja al modelo demasiado seguro. Se corrige con una temperatura, un número que suaviza las probabilidades sin cambiar la respuesta, ajustada con 400 casos que no se usan para nada más: 140 textos del BOE de septiembre, 200 generales y 60 en español. En el 4B se escribió en el modelo; en el 0.8B no, porque una sola temperatura no le basta.</p>
   <div class="card scroll" id="boe-calibracion"></div>
-  <p class="sub">Fuente de los datos: {html.escape(datos["fuente"])}.</p>
+  <p class="sub">Fuente de los datos: {html.escape(datos["fuente"])}. Textos y resultados de esta página:
+  <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>.</p>
 </section>
 </main>
 <script>{boe_js}
