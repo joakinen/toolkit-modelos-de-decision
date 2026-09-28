@@ -35,7 +35,9 @@ Al terminar deberías saber:
 
 Los primeros apartados explican los conceptos; después viene el ajuste fino, el caso medido con el BOE y, al final, usos,
 límites y un glosario. El código, los datos de la prueba y un laboratorio para probar varios modelos en tu máquina están
-en <https://github.com/joakinen/modelos-de-decision>.
+en <https://github.com/joakinen/modelos-de-decision>, que funciona como un **toolkit de evaluación de modelos de
+decisión**: se irá actualizando con los modelos nuevos que salgan. Al final del texto hay un veredicto provisional sobre
+el estado de esta tecnología.
 
 # Qué es un modelo de decisión
 
@@ -640,6 +642,47 @@ Son proyectos recientes y cambian rápido: conviene tratarlos como tecnología e
    prueba sin fugas, fija los ajustes antes de mirar, entrena, recalibra y mide, también fuera de tu tarea.
 5. **Fija un umbral** con casos apartados y haz un piloto en el que el modelo solo propone y una persona revisa.
 6. **Decide con los datos del piloto** si merece la pena seguir.
+
+```{=latex}
+\newpage
+```
+
+# Veredicto provisional
+
+El repositorio que acompaña a este texto es un **toolkit de evaluación de modelos de decisión**: un laboratorio para
+comparar modelos con los mismos casos, la prueba del BOE, los controles de olvido y la recalibración. La idea es
+repetir las mismas pruebas con cada modelo de decisión nuevo que salga, así que esta valoración es **provisional**:
+refleja el estado de la tecnología a 28 de septiembre de 2026, con los modelos probados hasta ahora (Kev-0.8B y
+Kev-4B, sin ajustar y ajustados; las réplicas abiertas de Jev de 800 y 2.000 millones de parámetros; y un modelo de chat
+general, Qwen3.5 9B, como referencia). El Jev original no se ha probado, porque exige enviar los textos a sus servidores.
+
+**En una frase:** los modelos de decisión abiertos **ya son usables para clasificar y encaminar documentos con revisión
+humana**, en una máquina propia, siempre que se ajusten con unos cientos de ejemplos de cada opción y se recalibren antes
+de fiarse de su seguridad. **No lo son** sin ajustar para tareas con convenciones propias, ni para decidir solos.
+
+| Aspecto | Valoración | Por qué |
+|--------------|-----------|-------------------------------|
+| Integración en una aplicación | **Buena** | Devuelven datos, no texto; no pueden salirse de las opciones; la API es sencilla y estable |
+| Acierto sin ajustar en una tarea propia | **Insuficiente** | Del 49 % al 73 % en el BOE: no conocen las convenciones propias de un dominio |
+| Acierto ajustados, con datos suficientes | **Muy bueno** | 95 % y 96 % en el BOE con 1.400 ejemplos, por encima de modelos diez veces mayores |
+| Con pocos datos | **No funciona** | Con 17 ejemplos de la opción difícil, el ajuste no se distinguió del azar |
+| Fiabilidad de su seguridad | **Frágil** | El ajuste la estropea fuera de la tarea; recalibrando se recupera en el 4B, no en el 0.8B |
+| Coste y soberanía | **Muy favorable** | Un ordenador de sobremesa, sin enviar nada fuera; ajuste en horas; respuesta en décimas de segundo |
+| Español | **Aceptable, poco medido** | Funcionan, pero se ha medido menos y su calibración empeora más que en inglés |
+| Madurez | **Baja** | Proyectos de semanas (la versión de Kev probada es del 24 de septiembre de 2026); sus herramientas tienen límites que no avisan |
+
+Sobre la madurez, dos ejemplos encontrados por el camino: el evaluador de Kev descartaba en silencio los textos largos
+(182 de 350 en la prueba del BOE), y su herramienta de calibración tiene un tope que el 0.8B ajustado supera. Nada de eso
+impide usarlos, pero obliga a medir con cuidado y a no dar por buenas las cifras de nadie, incluidas las de este texto.
+
+**Qué modelo elegir hoy.** Kev-4B, ajustado con tus casos y recalibrado. Kev-0.8B solo si la máquina no da para más, y sin
+fijarle umbrales. Para una primera prueba sin ajustar, la réplica abierta de Jev de 2.000 millones es la que mejor rinde.
+
+**Qué falta para pasar de provisional a firme:**
+
+- probarlo con un lote real de expedientes con la respuesta conocida;
+- fijar un umbral con casos apartados y medir cuánto trabajo ahorra y cuántos errores deja pasar;
+- repetir las pruebas con cada modelo nuevo que salga, con los mismos datos, para ver si la tecnología madura.
 
 # Glosario
 

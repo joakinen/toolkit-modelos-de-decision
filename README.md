@@ -1,4 +1,4 @@
-# Modelos de decisión
+# Toolkit de evaluación de modelos de decisión
 
 Un **modelo de decisión** es un modelo de inteligencia artificial que no escribe. Recibe un texto, una pregunta cerrada y
 una lista de respuestas posibles, y devuelve **una probabilidad para cada respuesta**. Si lo escribieras como una función:
@@ -23,7 +23,8 @@ saber aprendizaje automático: el informe explica desde cero lo que hace falta (
 LoRA, cómo repartir los datos) con ejemplos de código y con un caso real medido. Los ejemplos son de administración
 pública, pero las ideas valen para cualquier clasificación de textos.
 
-Este repositorio reúne tres cosas:
+Este repositorio es un **toolkit de evaluación de modelos de decisión**: las mismas pruebas se repetirán con cada modelo
+nuevo que salga, para seguir el estado de esta tecnología. Reúne tres cosas:
 
 | Carpeta | Qué contiene |
 |---|---|
@@ -64,6 +65,16 @@ español). Antes de fijar umbrales hay que recalibrar y medir la calibración ta
 
 Todo se ejecutó en un ordenador de sobremesa (Mac mini con M4 Pro y 24 GB), con modelos de pesos abiertos y sin enviar
 nada fuera. El detalle está en el [informe](informe/modelos-de-decision.pdf) y en la [página de resultados](https://joakinen.github.io/modelos-de-decision/).
+
+## Veredicto provisional (28 de septiembre de 2026)
+
+Con los modelos probados hasta ahora (Kev-0.8B y Kev-4B, las réplicas abiertas de Jev de 800 y 2.000 millones y Qwen3.5
+9B como referencia): los modelos de decisión abiertos **ya son usables para clasificar y encaminar documentos con revisión
+humana**, en una máquina propia, siempre que se ajusten con unos cientos de ejemplos de cada opción y se recalibren antes
+de fiarse de su seguridad. **No lo son** sin ajustar para tareas con convenciones propias, ni para decidir solos. Hoy
+elegiríamos Kev-4B ajustado y recalibrado. Su punto más débil es la madurez: son proyectos de semanas, con herramientas
+que tienen límites que no avisan. La valoración completa, aspecto por aspecto, está al final del
+[informe](informe/modelos-de-decision.pdf); se revisará con cada modelo nuevo.
 
 ## Cuánto cuesta el ajuste
 
