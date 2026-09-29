@@ -6,6 +6,64 @@ date: "Septiembre de 2026"
 lang: es
 ---
 
+```{=latex}
+\parteinforme{Lo esencial}
+```
+
+# En cinco minutos
+
+**Qué es un modelo de decisión.** Un modelo de inteligencia artificial pequeño, de pesos abiertos, que se ejecuta en un
+ordenador propio y no escribe: recibe un texto, una pregunta cerrada y una lista de respuestas posibles, y devuelve una
+probabilidad para cada una. «¿Está completa esta solicitud? Sí 1 %, no 95 %, no consta 4 %». No puede inventar una
+respuesta fuera de la lista y dice cuánta seguridad tiene.
+
+**La idea más útil de este informe: la caja de herramientas escalonada.** Para responder una pregunta cerrada sobre un
+texto hay cinco herramientas, de la más barata a la más cara, como las bandejas de una caja de herramientas que se abre
+en escalones. Se empieza por abajo y se sube a la bandeja siguiente solo cuando la de abajo no
+llega, midiéndolo.
+
+![](caja-escalonada.pdf){width=100%}
+
+**Lo que hemos medido.** Todo en un Mac mini de 24 GB, sin enviar nada fuera, con cinco pruebas en español:
+
+| Pregunta | Depende de | Hasta qué bandeja hizo falta subir |
+|------------|-----|--------------------------|
+| ¿En qué sección del BOE se publica este texto? | Vocabulario | **Bandeja 2.** El clasificador clásico llega al 95 % con 1.400 ejemplos, igual que un modelo de decisión ajustado durante horas, y con solo 5 ejemplos por sección ya supera a todos los modelos sin ajustar |
+| ¿Significan lo mismo estas dos frases? | Significado | **Bandeja 4.** El clásico se queda en el azar incluso con 5.000 ejemplos, y los *embeddings*, en el 58 %. Un modelo de decisión sin ajustar llega al 78 %, y uno pequeño ajustado con 200 ejemplos pasa del 60 % al 80 % |
+| Triaje del buzón general: unidad, tipo y urgencia | Las dos cosas | **Bandeja 2 para la unidad, 4 para lo demás.** El clásico es el mejor encaminando, pero casi no distingue lo urgente |
+| ¿Está completo este expediente? | Significado | **Bandeja 4.** El clásico y los *embeddings* fallan con los matices («el pago se hará en ventanilla», «el justificante es de otro expediente») |
+| ¿Esta respuesta se apoya en el documento? | Significado | **Bandeja 4 o 5.** Un modelo de decisión pequeño entrenado para esta tarea (Jeff-0.8B) saca un 8,4 sobre 10, y el chat de 9.000 millones, un 9,4; el clásico se queda en un 3,3 |
+
+**Notas de 1 a 10 en los casos de uso** (1 es el azar y 10 acertarlo todo; se resta si el modelo falla con mucha
+seguridad; el detalle está en la sección 5 de la [metodología](https://joakinen.github.io/toolkit-modelos-de-decision/metodologia.html#nota)):
+
+| | Triaje de correo | Expedientes | Respuestas apoyadas |
+|--------------------------|--------|--------|--------|
+| Kev-4B (modelo de decisión, 4.000 millones de parámetros) | 7,5 | 8,4 | 4,9 |
+| Jeff-0.8B (modelo de decisión, 800 millones) | 3,9 | 4,4 | 8,4 |
+| Qwen3.5 9B (modelo de chat general, preguntado con letras) | 7,7 | 8,5 | 9,4 |
+| *Embeddings* y clasificador | 6,5 | 3,0 | 2,5 |
+| Clasificador clásico | 5,5 | 3,3 | 3,3 |
+| Kev-0.8B (modelo de decisión, 800 millones) | 5,1 | 4,7 | 1,0 |
+
+Un modelo de chat mediano, bien preguntado, rinde como el mejor modelo de decisión pequeño, pero tarda de tres a cuatro
+veces más y ocupa más memoria. Ningún modelo de decisión gana en todo: cada uno rinde en lo que se parece a su
+entrenamiento (Jeff-0.8B es flojo en correo y expedientes y muy bueno comprobando respuestas). Por eso hay que medirlos
+con la tarea propia.
+
+**Veredicto provisional (versión 2.0).** Para preguntas que dependen del significado (urgencia, completitud de un
+expediente, si dos textos dicen lo mismo), los modelos de decisión de 2.000 a 4.000 millones de parámetros **ya son
+útiles con revisión humana**, en una máquina propia. Para preguntas que se resuelven por el vocabulario, **un
+clasificador clásico basta** y es mucho más barato. Ninguno está para decidir solo: casi todos se equivocan con
+demasiada seguridad, así que no se les deben fijar umbrales sin recalibrarlos. Son proyectos de semanas; la madurez
+sigue siendo su punto débil.
+
+**Si solo te llevas tres cosas:**
+
+1. Empieza por la bandeja más baja que pueda funcionar.
+2. Mide siempre contra un clasificador clásico: si lo iguala, el modelo sobra.
+3. No te fíes de la seguridad que declara un modelo hasta haberla comprobado con tus datos.
+
 # Antes de empezar
 
 Este texto es para quien programa y ya ha usado modelos de lenguaje: has llamado a la API de un chat, has escrito
@@ -19,18 +77,28 @@ Al terminar deberías saber:
 - qué significan sus probabilidades y por qué hay que comprobarlas antes de fiarse de ellas;
 - qué es el **ajuste fino** (*fine-tuning*), cómo se hace con una máquina propia y qué hay que medir para saber si ha
   salido bien;
-- qué pasó al hacerlo de verdad, con textos del BOE, incluidos los problemas que aparecieron.
+- cuándo conviene un modelo de decisión y cuándo basta algo más sencillo, como un clasificador clásico;
+- qué pasó al medirlo de verdad, con textos del BOE, una prueba de significado y tres casos de uso,
+  incluidos los problemas que aparecieron.
 
-Los primeros apartados explican los conceptos; después viene el ajuste fino, el caso medido con el BOE y, al final, usos,
-límites y un glosario.
+Si solo tienes cinco minutos, la sección 1 («En cinco minutos») lo resume. El resto va en cinco partes: **entender** qué son y
+cómo funcionan; **decidir** cuándo usarlos; **lo que se ha medido**; **hacerlo tú**, con el ajuste fino paso a
+paso; y un cierre con el veredicto y un glosario. El detalle de cómo se ha medido cada cifra está en una página
+aparte, enlazada en la sección 12 («Cómo se ha medido»).
 
 El código, los datos de la prueba y un laboratorio para probar varios modelos en tu máquina están en este repositorio:
 
 <https://github.com/joakinen/toolkit-modelos-de-decision>
 
 Funciona como un **toolkit de evaluación de modelos de decisión**: se irá actualizando con los modelos nuevos que salgan.
-Al final del texto hay un veredicto provisional sobre el estado de esta tecnología. Esta es la versión del 28 de
-septiembre de 2026; la última está siempre en <https://creativecodeworks.com/toolkit-modelos-de-decision.html>.
+Al final del texto hay un veredicto provisional sobre el estado de esta tecnología.
+Esta es la versión 2.0, del 29 de septiembre de 2026; la última está siempre en
+<https://creativecodeworks.com/toolkit-modelos-de-decision.html>, y lo que cambia en cada una, en
+[CAMBIOS.md](https://github.com/joakinen/toolkit-modelos-de-decision/blob/main/CAMBIOS.md).
+
+```{=latex}
+\parteinforme{Entender}
+```
 
 # Qué es un modelo de decisión
 
@@ -76,7 +144,7 @@ razona en varios pasos ni planifica.
 
 Un modelo de lenguaje (ChatGPT, Claude, Gemini, Llama, Qwen…) **genera texto**: calcula la probabilidad de cada posible
 siguiente trozo de palabra (*token*), elige uno, lo añade al texto y repite. Un modelo de decisión parte de uno de esos
-modelos, pero le quita la parte que escribe (se explica cómo en el apartado «Cómo funciona por dentro»). La tabla resume
+modelos, pero le quita la parte que escribe (se explica cómo en la sección 6 («Cómo funciona por dentro»)). La tabla resume
 lo que eso cambia para quien lo usa desde código:
 
 ```{=latex}
@@ -88,7 +156,7 @@ lo que eso cambia para quien lo usa desde código:
 | Qué le envías | Un *prompt*: instrucciones, contenido y formato mezclados en texto libre | Campos fijos: el texto, la pregunta y las opciones |
 | Qué devuelve | Texto, generado *token* a *token* | Un JSON con una probabilidad por opción, calculado de una vez |
 | ¿Puede salirse de las opciones? | Sí, aunque le pidas JSON: hay que validar la respuesta | No: la salida es siempre una de las opciones |
-| La «temperatura» | Controla la aleatoriedad al elegir el siguiente *token* | No hay nada que elegir al azar; la temperatura corrige lo seguro que se muestra (se explica más abajo) |
+| La «temperatura» | Controla la aleatoriedad al elegir el siguiente *token* | No hay nada que elegir al azar; la temperatura corrige lo seguro que se muestra (sección 7 («Probabilidad, calibración y umbrales»)) |
 | Coste | Pagas sobre todo los *tokens* que genera | Casi no genera nada: el coste es leer la entrada |
 | Tiempo por consulta | Segundos | De décimas de segundo a un segundo, en un ordenador de sobremesa |
 | Cómo se evalúa | Hay que valorar textos, a mano o con otro modelo | Se cuenta cuántas veces acierta |
@@ -105,8 +173,10 @@ general de 9.000 millones de parámetros (Qwen3.5 9B) con los modelos de decisi�
 
 Tiene tres problemas. El modelo no se entrenó para esto, así que su probabilidad sobre las letras no está pensada para
 significar «cuánto acierto»; depende de detalles del *prompt*, como el orden de las opciones; y sigue pagando el coste de
-un modelo grande. En la prueba con textos del BOE que se cuenta más abajo, ese modelo de 9.000 millones acierta el 66 %;
-un modelo de decisión de 800 millones, ajustado con ejemplos, acierta el 95 %.
+un modelo grande. En la prueba con textos del BOE de la sección 13 («Una pregunta de vocabulario: el BOE»), ese modelo de 9.000 millones acierta el 66 %;
+un modelo de decisión de 800 millones, ajustado con ejemplos, acierta el 95 %. En preguntas que dependen del
+significado, en cambio, ese mismo chat rinde como el mejor modelo de decisión pequeño, aunque más despacio (se
+cuenta en la sección 15 («Tres casos de uso»)).
 
 # Cómo se llama: la API
 
@@ -252,7 +322,7 @@ Durante el entrenamiento se toman precauciones para que aprenda la tarea y no at
 - **Se incluyen casos en los que la respuesta no está en el texto**, para que aprenda a decir «no consta» en lugar de
   adivinar.
 - **Se aparta una parte de los ejemplos que el modelo nunca ve al entrenar**, para medir con ellos cuánto acierta de
-  verdad y para corregir al final lo seguro que se muestra (el apartado siguiente).
+  verdad y para corregir al final lo seguro que se muestra (sección 7 («Probabilidad, calibración y umbrales»)).
 
 Todo esto lo hace quien publica el modelo. Lo que puedes hacer tú es el paso siguiente: ajustarlo con tus propios casos.
 
@@ -301,6 +371,471 @@ nada; es la misma operación matemática, pero sirve para corregir la seguridad,
 umbral posible y cuántos casos quedarían para revisión, y se elige el equilibrio que convenga. Esos casos tienen que ser
 distintos de los que se usaron para entrenar y para calibrar: si no, el umbral se ajusta a ellos y promete menos error
 del que habrá.
+
+```{=latex}
+\parteinforme{Decidir}
+```
+
+# La caja de herramientas escalonada
+
+Un modelo de decisión no es la única forma de responder una pregunta cerrada sobre un texto. Hay al menos cinco, y las
+pruebas de este informe dicen que ninguna gana siempre. Ordenadas de la más barata a la más cara:
+
+```{=latex}
+\necesitaespacio{24\baselineskip}
+```
+
+| Bandeja | Qué es | Qué necesita | Qué entiende | Coste por texto |
+|--------|------------|----------|--------|--------|
+| 1. Reglas | Expresiones regulares y condiciones escritas a mano | Escribir la regla | Lo mecánico: hay un NIF, hay una fecha | Nada |
+| 2. Clasificador clásico | TF-IDF y regresión logística: aprende qué palabras van con cada respuesta | Decenas o cientos de ejemplos etiquetados | Palabras, no significado | Milésimas de segundo, sin GPU |
+| 3. *Embeddings* y clasificador | Un modelo pequeño convierte el texto en un vector y un clasificador aprende encima | Ejemplos etiquetados | Algo de significado | Décimas de segundo |
+| 4. Modelo de decisión | Un modelo de lenguaje pequeño reentrenado para elegir entre opciones | Nada para empezar; cientos de ejemplos si se ajusta | Significado | De 0,2 a 1,5 segundos |
+| 5. Modelo de lenguaje | Un chat general, preguntado para que conteste con una letra | Nada | Significado, y además sabe redactar | Varios segundos y más memoria |
+
+**La regla: empieza por abajo y sube a la bandeja siguiente solo si la de abajo no llega, midiéndolo.** Cada bandeja
+cuesta más en
+tiempo, en memoria y en dependencia de un modelo concreto. Subir solo compensa si la pregunta depende del significado.
+
+**Cómo elegir, en cuatro preguntas:**
+
+1. ¿Es mecánico? Reglas.
+2. ¿La respuesta la delatan las palabras y tienes ejemplos etiquetados? Clasificador clásico. Si no llega, prueba con
+   *embeddings* antes de subir otra bandeja.
+3. ¿Depende del sentido (negaciones, plazos, algo citado pero no aportado), no tienes ejemplos o la pregunta cambia a
+   menudo? Modelo de decisión. Si tienes unos cientos de ejemplos, ajústalo.
+4. ¿Hay que redactar, resumir o explicar? Modelo de lenguaje.
+
+**Ojo: la caja ordena por coste, no por acierto.** En la prueba del BOE, un clasificador clásico entrenado en nueve
+segundos acierta tanto como un modelo de decisión ajustado durante horas. En el triaje de correo, el clásico es el que
+mejor encamina a la unidad correcta. Subir de bandeja en una pregunta de vocabulario no mejora nada: solo encarece.
+
+**Las bandejas se combinan.** En un buzón general, lo razonable sería que el clasificador clásico decidiera la unidad
+(rápido y fiable, porque el tema lo delatan las palabras), que un modelo de decisión decidiera la urgencia y el tipo de
+correo (que dependen del sentido) y que un modelo de lenguaje redactara, si hace falta, el borrador de la respuesta.
+
+Las pruebas de las secciones 13 a 15 muestran hasta qué bandeja hizo falta subir en cada caso. La figura de la sección 1
+(«En cinco minutos»)
+la resume; se puede reutilizar citando la fuente (CC BY-SA 4.0).
+
+# Qué tareas hacen bien
+
+Todo lo que se pueda formular como una pregunta cerrada sobre un texto:
+
+- **Clasificar:** qué tipo de documento es, a qué materia pertenece.
+- **Encaminar:** a qué unidad, cola o persona debe ir.
+- **Comprobar:** si falta un documento, si se cumple una condición, si se menciona un requisito.
+- **Detectar:** urgencia, reclamación, queja, plazo, datos personales.
+- **Priorizar:** puntuar para ordenar una cola de trabajo.
+- **Verificar a otro sistema:** comprobar si la respuesta que ha dado otro programa (o un chat) es correcta o está
+  sustentada en el texto.
+- **Abstenerse:** responder «no consta» cuando el texto no dice nada, en lugar de suponer.
+
+# Posibles usos en una administración
+
+Algunos ejemplos, escritos como la pregunta que se le haría al modelo:
+
+| Uso | Pregunta | Opciones |
+|---|---|---|
+| Registro de entrada | ¿Qué tipo de escrito es? | solicitud · alegación · recurso · consulta · otro |
+| Reparto | ¿Qué unidad debe tramitarlo? | la lista de unidades |
+| Completitud | ¿Aporta la documentación obligatoria? | sí · no · no consta |
+| Plazos | ¿Se presentó dentro de plazo según el texto? | sí · no · no consta |
+| Urgencia | ¿Con qué urgencia hay que atenderlo? | escala del 1 al 5 |
+| Consultas | ¿La respuesta a esta consulta está en la documentación publicada? | sí · no |
+| Calidad | ¿Cita la resolución la norma aplicable? | sí · no |
+| Revisión | ¿Contiene datos personales que haya que anonimizar? | sí · no · no consta |
+
+No todos piden la misma bandeja de la caja escalonada: el tipo de escrito o la unidad suelen delatarlos las palabras, y
+ahí puede bastar un clasificador clásico; la completitud, los plazos o la urgencia dependen del sentido, y ahí es
+donde un modelo de decisión aporta. Tres de estos usos se han medido: se cuentan en la sección 15 («Tres casos de uso»).
+
+En todos ellos el modelo no sustituye a quien tramita: **ordena, filtra y señala**, y deja la decisión a una persona
+cuando hay duda o cuando la decisión tiene efectos sobre alguien.
+
+También encajan bien **delante de un modelo de lenguaje**: el modelo de decisión, barato y rápido, clasifica todas las
+entradas, y solo las que lo necesitan pasan a un chat, más caro, para redactar un borrador.
+
+# Qué no hacen, y con qué cuidado usarlos
+
+- **No redactan, no resumen, no explican.** Solo eligen entre opciones.
+- **A veces sobran.** Si la respuesta la delatan las palabras y hay ejemplos, un clasificador clásico acierta lo
+  mismo por una fracción del coste. Mídelo siempre como referencia.
+- **Dependen de cómo se escriban las opciones.** Opciones ambiguas o que se solapan dan resultados pobres.
+- **Fallan con la ironía, los dobles sentidos y los razonamientos largos** (contar días hábiles, encadenar varias
+  condiciones). Ahí conviene que el modelo dude, y medir si lo hace.
+- **Hay que medirlos con casos propios.** Las cifras de quien publica un modelo se obtienen con sus datos, no con los
+  tuyos.
+- **Ajustarlos tiene coste y riesgos.** Con pocos ejemplos aprenden poco, y el ajuste puede estropear la calibración
+  aunque el acierto no baje.
+- **Las decisiones con efectos sobre personas requieren intervención humana.** El Reglamento General de Protección de
+  Datos (artículo 22) limita las decisiones basadas únicamente en tratamiento automatizado, y la Ley 40/2015 (artículo 41)
+  exige que la actuación administrativa automatizada tenga un órgano responsable definido. Usados como apoyo a la
+  tramitación, estos límites se respetan con facilidad; usados para resolver, no.
+
+```{=latex}
+\parteinforme{Lo que se ha medido}
+```
+
+# Cómo se ha medido
+
+Esta parte cuenta los resultados. El detalle de cómo se obtuvo cada cifra (de dónde salen los datos, cómo se reparten,
+qué se comprueba y qué límites tiene cada prueba) está en la página de metodología:
+
+<https://joakinen.github.io/toolkit-modelos-de-decision/metodologia.html>
+
+Lo esencial cabe en cinco ideas:
+
+- **El diseño se fija antes de medir.** Qué se pregunta, con qué datos y cómo se puntúa se escribe antes de pasar ningún
+  modelo. Lo que se cambia después se anota con la fecha y el motivo.
+- **Entrenar, calibrar y medir usan casos distintos.** Ningún modelo se mide con casos que haya visto al prepararse. Con
+  textos fechados, se entrena con lo antiguo y se mide con lo reciente.
+- **Siempre hay dos referencias:** un clasificador clásico y *embeddings* con clasificador, entrenados con los mismos
+  ejemplos que los modelos ajustados.
+- **Se mide el acierto medio por respuesta posible**, no el acierto a secas: un modelo que dijera siempre la respuesta más
+  frecuente no puede sacar buena nota.
+- **Las diferencias llevan intervalo de confianza del 95 %** (*bootstrap*, 2.000 sorteos). Si el intervalo no incluye el
+  cero, la diferencia no se explica por azar.
+
+Todo se ejecutó en un Mac mini con chip M4 Pro y 24 GB de memoria, con modelos de pesos abiertos y sin enviar nada fuera
+de la máquina.
+
+# Una pregunta de vocabulario: el BOE
+
+Para comprobar si todo esto funciona con textos administrativos reales, se ha seguido el proceso del ajuste fino con
+datos públicos del Boletín Oficial del Estado. Es una clasificación documental muy parecida a la de un registro de
+entrada: leer un texto y decir de qué tipo es.
+
+```{=latex}
+\necesitaespacio{18\baselineskip}
+```
+
+**La pregunta.** *¿En qué apartado del BOE se publica este texto?* Las opciones son las siete secciones del sumario:
+
+| Apartado | Qué contiene |
+|---|---|
+| I | Disposiciones generales (leyes, reales decretos, órdenes de alcance general) |
+| II.A | Nombramientos, situaciones e incidencias del personal |
+| II.B | Oposiciones y concursos |
+| III | Otras disposiciones (actos concretos: convenios, subvenciones, resoluciones) |
+| IV | Administración de Justicia |
+| V.A | Anuncios de contratación del sector público |
+| V.B | Otros anuncios oficiales |
+
+**Los datos.** Se descargaron de la API de datos abiertos del BOE. La respuesta correcta es la sección en que publicó el
+texto el propio BOE, así que es fiable por construcción. Al modelo se le da solo el cuerpo del texto, sin el título, que a
+menudo delata la sección. Se entrena con 1.400 textos de enero a junio de 2026 (200 por apartado) y se mide con 350 de
+julio y agosto (50 por apartado).
+
+```{=latex}
+\necesitaespacio{30\baselineskip}
+```
+
+**Resultados en los 350 textos de prueba** (acierto medio por apartado):
+
+| Herramienta | Bandeja | Acierto | Log-loss |
+|------------------------------|----|----|----|
+| **Kev-4B, ajustado con los 1.400 textos** | 4 | **96 %** | 0,22 |
+| **Clasificador clásico, con los mismos 1.400 textos** | 2 | **95 %** | **0,15** |
+| **Kev-0.8B, ajustado con los 1.400 textos** | 4 | **95 %** | 0,35 |
+| *Embeddings* y clasificador, con los mismos textos | 3 | 93 % | 0,22 |
+| Réplica abierta de Jev de 2.000 millones, sin ajustar | 4 | 73 % | 1,24 |
+| Kev-4B, sin ajustar | 4 | 69 % | 0,83 |
+| Jeff-0.8B, sin ajustar | 4 | 67 % | 0,93 |
+| Qwen3.5 9B, modelo de chat general, con letras | 5 | 66 % | 0,78 |
+| Réplica abierta de Jev de 800 millones, sin ajustar | 4 | 64 % | 1,10 |
+| Kev-0.8B, sin ajustar | 4 | 49 % | 1,32 |
+| Jeff-2B, sin ajustar | 4 | 45 % | 1,10 |
+
+«Acierto medio por apartado» es la media de los siete aciertos por apartado: así nadie saca buena nota acertando solo los
+apartados fáciles.
+
+**Lo que enseña:**
+
+- **El clasificador clásico iguala a los modelos ajustados.** La diferencia con Kev-4B ajustado (+1,4 puntos a favor de
+  Kev) tiene un intervalo de confianza de −0,7 a +3,6: incluye el cero, así que no se distingue del azar. Con Kev-0.8B
+  ajustado, la diferencia es prácticamente nula. Y el clásico está mejor calibrado: de las 289 respuestas que da con un
+  90 % de seguridad o más, falla 2; Kev-4B ajustado falla 8 de 340.
+- **Con datos suficientes, el ajuste funciona.** Kev-0.8B pasa del 49 % al 95 % (+45 puntos; intervalo de +41 a +49) y
+  Kev-4B, del 69 % al 96 % (+27; de +24 a +31).
+- **Sin ajustar, ningún modelo conoce las convenciones del BOE.** Casi ninguno reconoce las disposiciones generales: las
+  confunden con «otras disposiciones». Distinguir una norma de alcance general de un acto concreto no se deduce del texto;
+  se aprende con ejemplos.
+- **No es memoria.** Revisando a mano una muestra de aciertos y separando los textos cuyo tipo de título aparece en el
+  entrenamiento de los que no, el 4B ajustado acierta casi igual en los dos grupos (96,6 % y 95,9 %).
+
+**Por qué gana el clásico aquí.** Las secciones del BOE las delatan las palabras: «edicto», «juzgado», «licitación»,
+«nombramiento», «convocatoria». Una pregunta así es de vocabulario, y para eso basta la segunda bandeja. Cuántos ejemplos
+le hacen falta lo dice su curva de aprendizaje (10 sorteos por tamaño):
+
+```{=latex}
+\necesitaespacio{16\baselineskip}
+```
+
+| Ejemplos por apartado | Textos en total | Clasificador clásico | *Embeddings* y clasificador |
+|---|---|---|---|
+| 2 | 14 | 66 % | 68 % |
+| 5 | 35 | 75 % | 78 % |
+| 10 | 70 | 83 % | 84 % |
+| 50 | 350 | 92 % | 90 % |
+| 200 | 1.400 | 95 % | 93 % |
+
+Con solo 5 ejemplos por apartado, 35 textos que se etiquetan en un rato, el clasificador clásico ya supera a todos los
+modelos de decisión sin ajustar.
+
+```{=latex}
+\necesitaespacio{13\baselineskip}
+```
+
+**Lo que cuesta cada cosa** (en el Mac mini, con los mismos 1.400 textos):
+
+| | Clasificador clásico | Kev-0.8B ajustado | Kev-4B ajustado |
+|--------|--------|--------|--------|
+| Tiempo de entrenamiento | 9 segundos | 3 h 29 min | 11 h 35 min |
+| Qué se entrena | Una regresión logística | En torno al 1 % de los parámetros (LoRA) | Lo mismo, con la base en media precisión |
+| Memoria máxima | Despreciable, sin GPU | 3,3 GB de GPU | 9,2 GB de GPU |
+| Tiempo por texto al usarlo | Menos de un milisegundo | Décimas de segundo | En torno a un segundo |
+
+A eso hay que sumar reunir los datos: descargar los 1.400 textos del BOE tardó unos 27 minutos. Con el 4B, un equipo de
+24 GB está en su límite: llegó a usar unos 14 GB de intercambio a disco.
+
+*Fuente de los datos: Agencia Estatal Boletín Oficial del Estado (boe.es), reutilizados según sus condiciones de datos
+abiertos.*
+
+# Una pregunta de significado: PAWS-X
+
+En el BOE bastaban las palabras. Para ver qué pasa cuando no bastan, hace falta una prueba diseñada contra ellas.
+**PAWS-X** es una colección pública de pares de oraciones con casi las mismas palabras que unas veces significan lo mismo
+y otras no. «El vuelo de Madrid a Lima» y «El vuelo de Lima a Madrid» tienen las mismas palabras y no dicen lo mismo. Se
+hizo precisamente para que fallen los métodos que miran qué palabras hay.
+
+**La pregunta.** *¿Significa lo mismo que esta otra oración?* Sí o no.
+
+**Los datos.** La versión en español. Se mide con 400 pares de su partición de prueba, traducida por personas. Para
+entrenar el clasificador clásico, los *embeddings* y el ajuste se usa una bolsa de 5.000 pares de su partición de
+entrenamiento.
+
+```{=latex}
+\necesitaespacio{24\baselineskip}
+```
+
+**Resultados en los 400 pares** (acierto medio por respuesta; el azar es el 50 %):
+
+| Herramienta | Bandeja | Ejemplos de la tarea | Acierto |
+|--------------------------|----|--------|------|
+| Clasificador clásico | 2 | 50 a 5.000 | 50 % a 52 % |
+| *Embeddings* y clasificador | 3 | 50 a 5.000 | 56 % a 58 % |
+| Kev-0.8B, sin ajustar | 4 | ninguno | 60 % |
+| Réplica de Jev de 800 millones, sin ajustar | 4 | ninguno | 60 % |
+| Réplica de Jev de 2.000 millones, sin ajustar | 4 | ninguno | 68 % |
+| Kev-4B, sin ajustar | 4 | ninguno | 78 % |
+| **Kev-0.8B, ajustado con 200 pares** | 4 | 200 | **80 %** |
+| Jeff-0.8B, sin ajustar | 4 | ver nota | 80 % |
+| Jeff-2B, sin ajustar | 4 | ver nota | 84 % |
+| Qwen3.5 9B, modelo de chat general, con letras | 5 | ninguno | 79 % |
+
+**Lo que enseña:**
+
+- **El clasificador clásico no aprende la tarea, ni con 5.000 ejemplos.** No es que le falten datos: la información que
+  necesita (el orden, quién hace qué a quién) no está en qué palabras aparecen. Los *embeddings* captan algo, pero poco.
+- **Los modelos de decisión sí la resuelven, aunque no todos.** Kev-4B, que nunca vio esta tarea al entrenarse, llega al
+  78 % sin ajustar, igual que el chat de 9.000 millones (79 %). Los modelos de 800 millones y la réplica de Jev de 2.000
+  se quedan entre el 60 % y el 68 %, y fallan entre el 30 % y el 43 % de las respuestas que dan con un 90 % o más.
+- **Un ajuste pequeño rinde mucho.** Kev-0.8B pasa del 60 % al 80 % con solo 200 pares (+20 puntos; intervalo de +15 a
+  +24), en unos 20 minutos de ajuste. Pero sale demasiado seguro: falla el 19 % de las respuestas que da con un 90 % o
+  más. Otra vez, el ajuste hace que el modelo no sepa cuándo dudar.
+
+**Nota sobre Jeff.** Jeff se entrenó con 12.000 pares de PAWS en inglés, y los pares de PAWS-X son traducciones de pares
+de PAWS. Su resultado no es el de un modelo que ve la tarea por primera vez: es la tarea aprendida en inglés y trasladada
+al español. Kev, en cambio, no vio PAWS al entrenarse.
+
+*Fuente de los datos: PAWS-X (Google Research), versión en español.*
+
+# Tres casos de uso
+
+El BOE y PAWS-X miden dos extremos: una pregunta de vocabulario y una de significado. Los usos reales en una
+administración suelen quedar en medio. Para acercarse a ellos se han preparado tres casos, con las preguntas que se le
+harían al modelo en el trabajo diario. El diseño de los tres se fijó por escrito antes de medir.
+
+**La nota de 1 a 10.** Para comparar de un vistazo, cada herramienta recibe una nota por pregunta y la nota del caso es
+la media. Un 1 es acertar como el azar y un 10, acertarlo todo; si más del 5 % de las respuestas dadas con un 90 % de
+seguridad o más son errores, se resta un punto, y si son más del 10 %, dos. Las reglas completas y un ejemplo resuelto
+están en la sección 5 de la metodología.
+
+**Los datos son sintéticos.** Los correos y los expedientes se escribieron para la prueba, con casi la mitad de casos
+difíciles a propósito. Los de entrenamiento (para las dos referencias) y los de prueba los escribieron autores distintos,
+para que no compartan frases hechas. Los datos reales son más variados; por eso el triaje de correo tiene también una
+prueba privada con correos reales anonimizados, cuyos resultados se publicarán en una versión posterior.
+
+## Triaje del buzón general
+
+Correos que llegan al buzón general de un ayuntamiento ficticio, con tres preguntas: **a qué unidad** corresponde (ocho
+opciones, entre ellas «ninguna»: no es competencia municipal o es publicidad), **qué es** (consulta, trámite, queja,
+respuesta a un requerimiento o publicidad) y **si es urgente** (un plazo de menos de una semana, un riesgo para personas o
+un servicio caído). 120 correos de prueba; 160 para entrenar las referencias.
+
+```{=latex}
+\necesitaespacio{20\baselineskip}
+```
+
+| Herramienta | Bandeja | Nota | Unidad | Tipo | Urgente |
+|------------------------|----|----|----|----|----|
+| Qwen3.5 9B, chat general con letras | 5 | **7,7** | 7,3 | **7,5** | **8,3** |
+| Kev-4B | 4 | **7,5** | 7,6 | **7,5** | 7,4 |
+| *Embeddings* y clasificador | 3 | 6,5 | **8,6** | 6,4 | 4,6 |
+| Jeff-2B | 4 | 6,1 | 6,2 | 7,3 | 4,8 |
+| Clasificador clásico | 2 | 5,5 | **8,6** | 5,7 | 2,2 |
+| Réplica de Jev de 800 millones | 4 | 5,1 | 4,1 | 6,2 | 5,1 |
+| Kev-0.8B | 4 | 5,1 | 6,9 | 3,0 | 5,4 |
+| Réplica de Jev de 2.000 millones | 4 | 4,6 | 4,7 | 4,7 | 4,4 |
+| Jeff-0.8B | 4 | 3,9 | 4,4 | 2,0 | 5,2 |
+
+**Lo que enseña.** La pregunta de la unidad es de vocabulario, y ahí ganan las bandejas 2 y 3: el tema de un correo lo
+delatan sus palabras. La urgencia es de significado (hay que calcular un plazo con la fecha del correo, o ver un riesgo),
+y ahí el clasificador clásico está casi al azar (2,2) mientras Kev-4B y el chat superan el 7. Es el caso que mejor ilustra
+la combinación de bandejas: clásico para encaminar, modelo de decisión para la urgencia y el tipo.
+
+## Completitud de un expediente
+
+Resúmenes de expedientes (licencias, ayudas, certificados) tal como los ve quien los revisa, con cuatro preguntas: **si
+consta el pago** de la tasa, **si está firmada** la solicitud, **si se aporta el documento de identidad** del interesado
+(las tres con «sí», «no» o «no consta») y **quién presenta** la solicitud (el interesado, un representante con
+autorización o uno sin ella). Con trampas: «el pago se hará en ventanilla», «el justificante es de otro expediente», «la
+firma está pendiente», un DNI citado pero no adjunto. 60 expedientes de prueba; 40 para entrenar las referencias.
+
+```{=latex}
+\necesitaespacio{20\baselineskip}
+```
+
+| Herramienta | Bandeja | Nota | Pago | Firma | Identidad | Quién presenta |
+|--------------------|----|---|---|---|-----|-------|
+| Qwen3.5 9B, chat general con letras | 5 | **8,5** | 6,6 | **8,9** | **8,5** | **10** |
+| Kev-4B | 4 | **8,4** | **8,1** | 8,0 | 7,4 | **10** |
+| Réplica de Jev de 2.000 millones | 4 | 7,5 | 7,7 | 6,2 | 6,4 | 9,7 |
+| Jeff-2B | 4 | 6,8 | 5,3 | 7,0 | 6,2 | 8,9 |
+| Kev-0.8B | 4 | 4,7 | 3,2 | 3,4 | 2,2 | **10** |
+| Jeff-0.8B | 4 | 4,4 | 3,3 | 2,9 | 2,3 | 9,0 |
+| Réplica de Jev de 800 millones | 4 | 4,2 | 4,9 | 1,1 | 1,4 | 9,2 |
+| Clasificador clásico | 2 | 3,3 | 4,5 | 1,9 | 1,6 | 5,1 |
+| *Embeddings* y clasificador | 3 | 3,0 | 4,4 | 3,2 | 2,2 | 2,1 |
+
+**Lo que enseña.** Es el caso en que más claramente hace falta la bandeja 4. Las referencias fallan porque la respuesta
+depende de matices que las palabras no recogen: «pago» aparece igual en «pago acreditado» que en «el pago se hará en
+ventanilla». Los modelos de decisión de 2.000 a 4.000 millones de parámetros llegan a notas de 7 a 8,4; los de 800
+millones se quedan cortos, salvo en la pregunta más sencilla (quién presenta).
+
+**Un error de diseño, corregido.** La primera redacción de la pregunta de identidad decía «del solicitante», que es
+ambiguo cuando presenta un representante: quien preparó los datos entendió el titular, y los modelos, quien presenta. Se
+detectó al revisar los casos en que los dos mejores modelos coincidían contra la respuesta esperada. Se cambió la
+redacción («del interesado, el titular del trámite, no su representante») y se volvió a medir todo. Es un buen ejemplo
+de lo que la sección 5 («Cómo se llama: la API») llama «las opciones son el nuevo *prompt*»: una pregunta ambigua hace fallar a todos.
+
+## ¿La respuesta se apoya en el documento?
+
+Un texto del BOE, una pregunta sobre él y una respuesta; la pregunta al modelo es **si todo lo que afirma la respuesta
+está en el texto**. Serviría para vigilar a otros sistemas, por ejemplo un asistente que responde consultas con la
+documentación publicada. La mitad de las respuestas se apoyan en el texto y la otra mitad tiene un solo dato cambiado
+(una fecha, un importe, un código) o una afirmación añadida. Las escribió un modelo que no se mide en la prueba (Gemma 4
+12B). 194 casos de prueba; 60 para entrenar las referencias.
+
+```{=latex}
+\necesitaespacio{18\baselineskip}
+```
+
+| Herramienta | Bandeja | Nota | Acierto |
+|------------------------|----|----|----|
+| Qwen3.5 9B, chat general con letras | 5 | **9,4** | 97 % |
+| Jeff-0.8B | 4 | **8,4** | 91 % |
+| Jeff-2B | 4 | 7,8 | 88 % |
+| Réplica de Jev de 2.000 millones | 4 | 4,9 | 72 % |
+| Kev-4B | 4 | 4,9 | 77 % |
+| Clasificador clásico | 2 | 3,3 | 63 % |
+| *Embeddings* y clasificador | 3 | 2,5 | 58 % |
+| Réplica de Jev de 800 millones | 4 | 2,2 | 68 % |
+| Kev-0.8B | 4 | 1,0 | 61 % |
+
+**Lo que enseña.** Aquí importa para qué se entrenó cada modelo. Jeff se entrenó con ejemplos de esta tarea
+(respuestas que se apoyan o no en un documento) y su versión más pequeña, de 800 millones, saca un 8,4, muy por encima de
+Kev-4B, que tiene cinco veces más parámetros. El chat de 9.000 millones es el mejor. Las referencias apenas superan el
+azar: una fecha cambiada o una frase añadida no cambian casi nada las palabras.
+
+**Dos correcciones antes de dar las cifras por buenas.** La primera versión de este caso la redactó Qwen3.5 9B, que
+también se mide: juzgaba respuestas escritas por él mismo. Se descartó entera y se rehízo con Gemma 4 12B, que no se
+mide. Después, al revisar a mano las respuestas, se encontraron tres en las que lo añadido para que la respuesta no se
+apoyara en el texto sí estaba en él; se excluyeron esos tres textos.
+
+## Cuánto tarda cada uno
+
+Mediana de segundos por correo del triaje (tres preguntas cada uno), un modelo cada vez y con la máquina en reposo,
+en el Mac mini con M4 Pro y 24 GB:
+
+```{=latex}
+\necesitaespacio{16\baselineskip}
+```
+
+| Herramienta | Bandeja | Segundos por correo |
+|------------------------|----|--------|
+| Clasificador clásico | 2 | menos de 0,01 |
+| *Embeddings* y clasificador | 3 | 0,14 |
+| Kev-0.8B | 4 | 0,19 |
+| Jeff-0.8B | 4 | 0,36 |
+| Réplica de Jev de 800 millones | 4 | 0,37 |
+| Jeff-2B | 4 | 0,60 |
+| Kev-4B | 4 | 1,10 |
+| Réplica de Jev de 2.000 millones | 4 | 1,16 |
+| Qwen3.5 9B, chat general con letras | 5 | 3,63 |
+
+El clasificador clásico decide miles de veces más rápido que cualquier modelo. Entre los modelos de decisión, el tamaño
+manda: Kev-0.8B contesta las tres preguntas en unas dos décimas de segundo y Kev-4B, en algo más de un segundo. El chat
+de 9.000 millones tarda más de tres veces lo que Kev-4B, con una nota parecida. Cómo se midió, en la sección 6 de la metodología.
+
+# Fuera de la tarea: olvido y calibración
+
+Ajustar un modelo con una tarea puede estropear lo que ya sabía hacer. Para comprobarlo, a los modelos ajustados con el
+BOE se les hicieron antes y después preguntas ajenas al BOE: 560 en inglés, de colecciones públicas (noticias, reseñas,
+consultas de clientes, inferencia) que no se usaron al ajustar, y 150 en español (tres colecciones públicas etiquetadas
+por personas). Se mira el acierto y, sobre todo, cuántas de las respuestas que da con un 90 % de seguridad o más
+resultan erróneas:
+
+```{=latex}
+\necesitaespacio{12\baselineskip}
+```
+
+| En las 560 preguntas en inglés | Kev-0.8B | Kev-4B |
+|---|---|---|
+| Acierto, antes y después del ajuste | 83 % y 82 % | 87 % y 86 % |
+| Respuestas con ≥ 90 % que fallan, antes del ajuste | 4 de 298 (1 %) | 0 de 338 (0 %) |
+| Después del ajuste | 88 de 530 (17 %) | 53 de 512 (10 %) |
+| Después de recalibrar | 30 de 425 (7 %) | 11 de 399 (3 %) |
+
+El acierto no cambia más de lo que cambia por azar. Lo que cambia es la seguridad: el ajustado dice «90 %» a casi todo,
+también cuando se equivoca. Con un umbral como el de la sección 7 («Probabilidad, calibración y umbrales»), habría dejado
+pasar como seguras muchas respuestas erróneas. En español pasa lo mismo, y más acusado: con el 4B, fallan 7 de 58
+respuestas seguras antes del ajuste, 35 de 132 después y 11 de 81 recalibrado.
+
+**La recalibración.** Se hizo con 400 casos que no se usan para entrenar ni para medir: 140 textos del BOE de septiembre,
+200 preguntas generales y 60 en español. La temperatura que mejor funcionó es 4, bastante más alta que la del modelo
+publicado:
+
+- **En el 4B funciona.** En inglés, las respuestas seguras que fallan bajan del 10 % al 3 %, y en la prueba del BOE
+  fallan 3 de 289. En español mejora mucho, pero sigue peor que antes del ajuste.
+- **En el 0.8B no basta.** Necesitaría una temperatura de más de 7, y cada tipo de pregunta pide una distinta: unos 4 el
+  BOE, 7 las preguntas generales y 18 el español. Una sola temperatura no puede corregir las tres a la vez. No se le
+  deberían fijar umbrales.
+
+La lección es general: **el ajuste no hace olvidar cómo responder, pero sí cuándo dudar**, y eso solo se ve midiendo la
+calibración fuera de la tarea ajustada. La primera versión de este experimento midió el olvido con 12 preguntas y
+concluyó que no había ningún problema; con 710 apareció. Y no es solo cosa del ajuste: en los casos de uso, casi todos
+los modelos sin ajustar pierden puntos por fallar con demasiada seguridad en alguna pregunta.
+
+**Límites de estas medidas.** Un solo periodo de prueba en el BOE, conjuntos de prueba de unos cientos de casos y datos
+sintéticos en los casos de uso. Aún no se ha fijado ningún umbral: debería salir de otro conjunto aparte, distinto del de
+calibración y del de prueba. Las preguntas en inglés salen del conjunto de prueba con que se publica Kev, así que le
+favorecen frente a otros modelos.
+
+```{=latex}
+\parteinforme{Hacerlo tú}
+```
 
 # Ajuste fino: enseñarle tus casos
 
@@ -416,197 +951,27 @@ bastantes **de cada opción**: si una opción es rara (un 3 % de los casos, pong
 Un aviso útil: antes de ajustar, prueba el modelo **sin ajustar** con tu pregunta y tu grupo de prueba. A veces basta con
 escribir mejor las opciones, y el ajuste no compensa el trabajo.
 
-# Un caso medido: ¿en qué apartado del BOE se publica?
+## Con pocos datos no funciona
 
-Para comprobar si todo esto funciona con textos administrativos reales, se ha seguido el proceso anterior con datos
-públicos del Boletín Oficial del Estado. Es una clasificación documental muy parecida a la de un registro de entrada:
-leer un texto y decir de qué tipo es. El código, los resultados y las instrucciones para repetirlo están en
-<https://github.com/joakinen/toolkit-modelos-de-decision>.
+En el BOE, con 200 ejemplos por opción, el ajuste funcionó. Hubo otra prueba con una pregunta más fina y muchos menos
+datos: qué hace un «conviene» en un texto. Puede hacer dos cosas muy distintas:
 
-```{=latex}
-\necesitaespacio{18\baselineskip}
-```
+- **Dar un consejo práctico al lector** (se queda): «Antes de actualizar el sistema, conviene guardar una copia de los
+  datos: si algo falla, se puede volver atrás». El lector sale sabiendo qué hacer y por qué.
+- **Anunciar o subrayar lo que el texto va a decir** (se filtra): «Conviene señalar que la calibración no cambia la
+  respuesta más probable». Si se quita «Conviene señalar que», la frase dice exactamente lo mismo: «La calibración no
+  cambia la respuesta más probable».
 
-**La pregunta.** *¿En qué apartado del BOE se publica este texto?* Las opciones son las siete secciones del sumario:
+El segundo uso es uno de los tics de los textos generados por modelos de lenguaje: una muletilla que no añade nada y que,
+repetida, delata el origen del texto. Un modelo que distinguiera los dos usos serviría para detectar y filtrar esos
+excesos al revisar un texto, algo que no puede hacer una lista de palabras prohibidas, porque la palabra es la misma en
+los dos casos.
 
-| Apartado | Qué contiene |
-|---|---|
-| I | Disposiciones generales (leyes, reales decretos, órdenes de alcance general) |
-| II.A | Nombramientos, situaciones e incidencias del personal |
-| II.B | Oposiciones y concursos |
-| III | Otras disposiciones (actos concretos: convenios, subvenciones, resoluciones) |
-| IV | Administración de Justicia |
-| V.A | Anuncios de contratación del sector público |
-| V.B | Otros anuncios oficiales |
-
-**Los datos.** Se descargaron de la API de datos abiertos del BOE. La respuesta correcta de cada texto es la sección en
-que lo publicó el propio BOE, así que es fiable por construcción. Al modelo se le da solo el cuerpo del texto, sin el
-título, que a menudo delata la sección. El reparto es por fechas, como se recomendaba más arriba:
-
-- **Entrenamiento:** 1.400 textos de enero a junio de 2026, 200 por apartado.
-- **Prueba:** 350 textos de julio y agosto de 2026, 50 por apartado.
-- **Calibración:** 140 textos de septiembre de 2026, 20 por apartado (más casos generales; se explica más abajo).
-- Como mucho tres textos casi idénticos por tipo (por ejemplo, los cambios diarios del euro), para que no dominen.
-
-Los ajustes del entrenamiento (3 épocas, lote de 4, 160 ejemplos de repaso, LoRA de rango 16, ritmo 4e-5 en el 0.8B y
-2e-5 en el 4B) se fijaron antes de medir nada.
-
-```{=latex}
-\necesitaespacio{26\baselineskip}
-```
-
-**Resultados en los 350 textos de prueba** (acierto medio por apartado):
-
-| Modelo | Acierto | Log-loss |
-|---|---|---|
-| **Kev-4B, ajustado con los 1.400 textos** | **96 %** | **0,22** |
-| **Kev-0.8B, ajustado con los 1.400 textos** | **95 %** | **0,35** |
-| Réplica abierta de Jev de 2.000 millones de parámetros, sin ajustar | 73 % | 1,24 |
-| Kev-4B, sin ajustar | 69 % | 0,83 |
-| Modelo de chat general de 9.000 millones (Qwen3.5), con el truco de las letras | 66 % | 0,78 |
-| Réplica abierta de Jev de 800 millones, sin ajustar | 64 % | 1,10 |
-| Kev-0.8B, sin ajustar | 49 % | 1,32 |
-
-«Acierto medio por apartado» es la media de los siete aciertos por apartado: así un modelo no puede sacar buena nota
-acertando solo los apartados fáciles.
-
-**Cómo saber si una diferencia es real.** Con 350 casos, parte de cualquier diferencia es suerte. Para medirlo se usa un
-***bootstrap***: se sortean 2.000 veces 350 casos con repetición entre los de la prueba, se recalcula la diferencia en
-cada sorteo y se mira entre qué valores cae el 95 % de las veces. Ese es el **intervalo de confianza del 95 %**. Si no
-incluye el cero, la diferencia no se explica por azar.
-
-**Lo que enseña:**
-
-- **Con datos suficientes, el ajuste funciona.** Kev-0.8B pasa del 49 % al 95 %: +45 puntos, con un intervalo de
-  confianza del 95 % de +41 a +49. Kev-4B pasa del 69 % al 96 % (+27 puntos; de +24 a +31).
-- **Sin ajustar, ningún modelo conoce las convenciones del BOE.** Ninguno reconoce más de 5 de las 50 disposiciones
-  generales: las confunden con «otras disposiciones». Distinguir una norma de alcance general de un acto concreto no se
-  deduce del texto; se aprende con ejemplos. El 0.8B ajustado acierta 42 de 50, y el 4B ajustado, 47.
-- **Un modelo pequeño y ajustado supera a uno grande sin ajustar.** El 0.8B ajustado tiene 800 millones de parámetros; el
-  modelo general de 9.000 millones se queda en el 66 % y tarda unas trece veces más por texto que Kev-0.8B.
-- **No es memoria.** Revisando a mano una muestra de aciertos y separando los textos cuyo tipo de título aparece en el
-  entrenamiento de los que no, el 4B ajustado acierta casi igual en los dos grupos (96,6 % en los conocidos y 95,9 % en
-  los nuevos). Si hubiera
-  memorizado, acertaría mucho más en los conocidos. Donde falla es en fronteras dudosas de verdad, sobre todo entre
-  disposiciones generales y otras disposiciones.
-- **Fuera del BOE acierta lo mismo, pero ya no sabe cuándo dudar.** Se explica más abajo, en «Lo que pasa fuera del BOE».
-
-```{=latex}
-\necesitaespacio{13\baselineskip}
-```
-
-**Lo que cuesta el ajuste** (medido por el propio entrenador de Kev, en un Mac mini con chip M4 Pro y 24 GB de memoria):
-
-| | Kev-0.8B | Kev-4B |
-|---|---|---|
-| Tiempo de ajuste | 3 h 29 min | 11 h 35 min |
-| Ejemplos propios | 1.400, más 160 generales de repaso | Los mismos |
-| Pasadas por los datos | 3 (4.680 ejemplos procesados) | Las mismas |
-| Segundos por ejemplo | 2,68 | 8,91 |
-| Memoria máxima de GPU | 3,3 GB | 9,2 GB |
-| Qué se entrena | En torno al 1 % de los parámetros (LoRA) | Lo mismo, con la base en media precisión |
-
-A eso hay que sumar reunir los datos: descargar los 1.400 textos del BOE tardó unos 27 minutos. El tiempo de ajuste
-crece en proporción a los ejemplos y a las pasadas, y con el tamaño del modelo. Con el 4B, un equipo de 24 GB está en su
-límite: llegó a usar unos 14 GB de intercambio a disco. Todo se hizo sin enviar nada fuera de la máquina.
-
-```{=latex}
-\necesitaespacio{16\baselineskip}
-```
-
-## Lo que pasa fuera del BOE
-
-Para ver si el ajuste estropea lo que el modelo ya sabía, se le hicieron antes y después preguntas ajenas al BOE: 560 en
-inglés, de colecciones públicas (noticias, reseñas, consultas de clientes, inferencia) que no se usaron al ajustar, y 150
-en español (tres colecciones públicas etiquetadas por personas). Se mira el acierto y, sobre todo, cuántas de las
-respuestas que da con un 90 % de seguridad o más resultan erróneas:
-
-| En las 560 preguntas en inglés | Kev-0.8B | Kev-4B |
-|---|---|---|
-| Acierto, antes y después del ajuste | 83 % y 82 % | 87 % y 86 % |
-| Respuestas con ≥ 90 % que fallan, antes del ajuste | 4 de 298 (1 %) | 0 de 338 (0 %) |
-| Después del ajuste | 88 de 530 (17 %) | 53 de 512 (10 %) |
-| Después de recalibrar | 30 de 425 (7 %) | 11 de 399 (3 %) |
-
-El acierto no cambia más de lo que cambia por azar. Lo que cambia es la seguridad: el ajustado dice «90 %» a casi todo,
-también cuando se equivoca. Si se hubiera puesto en producción con la regla del umbral del apartado anterior, habría
-dejado pasar como seguras muchas respuestas erróneas. En español pasa lo mismo, y más acusado: con el 4B, fallan 7 de
-58 respuestas seguras antes del ajuste, 35 de 132 después y 11 de 81 recalibrado.
-
-**La recalibración.** Se hizo como se explicó en el apartado «Probabilidad, calibración y umbrales», con 400 casos que
-no se usan para entrenar ni para medir: 140 textos del BOE de septiembre, 200 preguntas generales y 60 en español. La
-temperatura que mejor funcionó es 4, bastante más alta que la del modelo publicado:
-
-- **En el 4B funciona.** En inglés, las respuestas seguras que fallan bajan del 10 % al 3 % (el original tenía un 0 %),
-  y en la prueba del BOE fallan 3 de 289. En español mejora mucho, pero sigue peor que antes del ajuste.
-- **En el 0.8B no basta.** Necesitaría una temperatura de más de 7, por encima del máximo que prueba la herramienta de
-  Kev, y cada tipo de pregunta pide una distinta: unos 4 el BOE, 7 las preguntas generales y 18 el español. Una sola
-  temperatura no puede corregir las tres a la vez. No se le deberían fijar umbrales.
-
-La lección es general: **el ajuste no hace olvidar cómo responder, pero sí cuándo dudar**, y eso solo se ve midiendo la
-calibración fuera de la tarea ajustada, no solo en ella. La primera versión de este experimento midió el olvido con 12
-preguntas y concluyó que no había ningún problema; con 710 apareció.
-
-**Y lo que pasa con pocos datos.** En otra prueba, con 100 ejemplos de los que solo 17 eran de la opción difícil, el
-ajuste no se distinguió del azar: el modelo aprendió a responder casi siempre la opción mayoritaria. La diferencia entre
-un caso y otro no está en el modelo ni en la máquina, sino en tener **unos cientos de ejemplos de cada opción**.
-
-**Límites de esta medida.** Es un solo periodo de prueba (dos meses) y una sola pregunta. Aún no se ha fijado ningún
-umbral: debería salir de otro conjunto aparte, distinto del de calibración y del de prueba. El control en español es
-pequeño (150 preguntas). Y los textos del BOE están más normalizados que los escritos que llegan a un registro, que
-serían más variados.
-
-*Fuente de los datos: Agencia Estatal Boletín Oficial del Estado (boe.es), reutilizados según sus condiciones de datos
-abiertos.*
-
-# Qué tareas hacen bien
-
-Todo lo que se pueda formular como una pregunta cerrada sobre un texto:
-
-- **Clasificar:** qué tipo de documento es, a qué materia pertenece.
-- **Encaminar:** a qué unidad, cola o persona debe ir.
-- **Comprobar:** si falta un documento, si se cumple una condición, si se menciona un requisito.
-- **Detectar:** urgencia, reclamación, queja, plazo, datos personales.
-- **Priorizar:** puntuar para ordenar una cola de trabajo.
-- **Verificar a otro sistema:** comprobar si la respuesta que ha dado otro programa (o un chat) es correcta o está
-  sustentada en el texto.
-- **Abstenerse:** responder «no consta» cuando el texto no dice nada, en lugar de suponer.
-
-# Posibles usos en una administración
-
-Algunos ejemplos, escritos como la pregunta que se le haría al modelo:
-
-| Uso | Pregunta | Opciones |
-|---|---|---|
-| Registro de entrada | ¿Qué tipo de escrito es? | solicitud · alegación · recurso · consulta · otro |
-| Reparto | ¿Qué unidad debe tramitarlo? | la lista de unidades |
-| Completitud | ¿Aporta la documentación obligatoria? | sí · no · no consta |
-| Plazos | ¿Se presentó dentro de plazo según el texto? | sí · no · no consta |
-| Urgencia | ¿Con qué urgencia hay que atenderlo? | escala del 1 al 5 |
-| Consultas | ¿La respuesta a esta consulta está en la documentación publicada? | sí · no |
-| Calidad | ¿Cita la resolución la norma aplicable? | sí · no |
-| Revisión | ¿Contiene datos personales que haya que anonimizar? | sí · no · no consta |
-
-En todos ellos el modelo no sustituye a quien tramita: **ordena, filtra y señala**, y deja la decisión a una persona
-cuando hay duda o cuando la decisión tiene efectos sobre alguien.
-
-También encajan bien **delante de un modelo de lenguaje**: el modelo de decisión, barato y rápido, clasifica todas las
-entradas, y solo las que lo necesitan pasan a un chat, más caro, para redactar un borrador.
-
-# Qué no hacen, y con qué cuidado usarlos
-
-- **No redactan, no resumen, no explican.** Solo eligen entre opciones.
-- **Dependen de cómo se escriban las opciones.** Opciones ambiguas o que se solapan dan resultados pobres.
-- **Fallan con la ironía, los dobles sentidos y los razonamientos largos** (contar días hábiles, encadenar varias
-  condiciones). Ahí conviene que el modelo dude, y medir si lo hace.
-- **Hay que medirlos con casos propios.** Las cifras de quien publica un modelo se obtienen con sus datos, no con los
-  tuyos.
-- **Ajustarlos tiene coste y riesgos.** Con pocos ejemplos aprenden poco, y el ajuste puede estropear la calibración
-  aunque el acierto no baje.
-- **Las decisiones con efectos sobre personas requieren intervención humana.** El Reglamento General de Protección de
-  Datos (artículo 22) limita las decisiones basadas únicamente en tratamiento automatizado, y la Ley 40/2015 (artículo 41)
-  exige que la actuación administrativa automatizada tenga un órgano responsable definido. Usados como apoyo a la
-  tramitación, estos límites se respetan con facilidad; usados para resolver, no.
+Los ejemplos salieron de revisiones reales de textos propios, que no se publican: 100, de los que solo 17 eran consejos
+prácticos. Con validación cruzada (cada caso se mide con un modelo que no lo vio al ajustarse), **el ajuste de Kev-0.8B
+no se distinguió del azar**: aprendió a responder casi siempre la opción mayoritaria. Un clasificador clásico con los
+mismos casos tampoco aprendió nada. Con 17 ejemplos de una opción no hay bandeja que llegue: hacen falta **unos cientos
+de ejemplos de cada opción**.
 
 # Qué modelos existen
 
@@ -622,6 +987,21 @@ en un ordenador de sobremesa con buena memoria, sin conexión a internet. Eso pe
 - **no depender de un proveedor** ni de su precio;
 - **ajustarlos con los propios casos**, con herramientas libres.
 
+A finales de septiembre de 2026 apareció **Jeff**, un proyecto independiente con el mismo formato de petición que
+Jev, entrenado entero en máquinas propias (licencia MIT el código y Apache-2.0 los pesos), con versiones de 0,8 y
+2 mil millones de parámetros. Sus autores avisan de que solo lo han pensado para inglés; en las pruebas de este
+informe, en español, funciona de forma desigual.
+
+Los modelos probados en este informe, con su ficha técnica:
+
+| Modelo | Autor | Ficha técnica |
+|---|---|---|
+| Kev-0.8B y Kev-4B | Jared Palmer | [huggingface.co/jaredpalmer/kev-4b](https://huggingface.co/jaredpalmer/kev-4b) |
+| Jeff-0.8B y Jeff-2B | firelex | [huggingface.co/mstrasser/Jeff-Qwen3.5-2B](https://huggingface.co/mstrasser/Jeff-Qwen3.5-2B) |
+| Réplica de Jev, 2.000 millones | chaoliangUNSW | [huggingface.co/chaoliangUNSW](https://huggingface.co/chaoliangUNSW/Jev-Style-Qwen3.5-2B-Decision-GGUF) |
+| Réplica de Jev, 800 millones | chaoliangUNSW | [huggingface.co/chaoliangUNSW](https://huggingface.co/chaoliangUNSW/Jev-Style-0.8B-Decision-v3-GGUF) |
+| Qwen3.5 9B (chat general) | Qwen (Alibaba) | [ollama.com/library/qwen3.5](https://ollama.com/library/qwen3.5) |
+
 Son proyectos recientes y cambian rápido: conviene tratarlos como tecnología en evaluación, no como producto maduro.
 
 # Cómo empezar
@@ -631,6 +1011,7 @@ Son proyectos recientes y cambian rápido: conviene tratarlos como tecnología e
 2. **Elige una sola decisión** concreta y frecuente, que hoy se tome a mano, y escribe la pregunta y sus opciones
    exactamente como las usarías.
 3. **Mide el modelo sin ajustar** con 100 o 200 casos ya resueltos por personas: acierto en cada opción y calibración.
+   Mide también, con los mismos casos, un clasificador clásico: si lo iguala, no necesitas el modelo.
 4. **Si no basta, ajústalo.** Reúne unos cientos de casos de cada opción, repártelos en entrenamiento, calibración y
    prueba sin fugas, fija los ajustes antes de mirar, entrena, recalibra y mide, también fuera de tu tarea.
 5. **Fija un umbral** con casos apartados y haz un piloto en el que el modelo solo propone y una persona revisa.
@@ -640,40 +1021,65 @@ Son proyectos recientes y cambian rápido: conviene tratarlos como tecnología e
 \newpage
 ```
 
+```{=latex}
+\parteinforme{Cierre}
+```
+
+```{=latex}
+\newpage
+```
+
 # Veredicto provisional
 
 El repositorio que acompaña a este texto es un **toolkit de evaluación de modelos de decisión**: un laboratorio para
-comparar modelos con los mismos casos, la prueba del BOE, los controles de olvido y la recalibración. La idea es
-repetir las mismas pruebas con cada modelo de decisión nuevo que salga, así que esta valoración es **provisional**:
-refleja el estado de la tecnología a 28 de septiembre de 2026, con los modelos probados hasta ahora (Kev-0.8B y
-Kev-4B, sin ajustar y ajustados; las réplicas abiertas de Jev de 800 y 2.000 millones de parámetros; y un modelo de chat
-general, Qwen3.5 9B, como referencia). El Jev original no se ha probado, porque exige enviar los textos a sus servidores.
+comparar modelos con los mismos casos y un conjunto de pruebas que se repetirá con cada modelo nuevo que salga. Esta
+valoración es **provisional**: refleja el estado de la tecnología a 29 de septiembre de 2026, con los modelos probados
+hasta ahora (Kev-0.8B y Kev-4B, sin ajustar y ajustados; Jeff-0.8B y Jeff-2B; las réplicas abiertas de Jev de 800 y
+2.000 millones de parámetros; un modelo de chat general, Qwen3.5 9B; y dos referencias sin modelo de lenguaje, un
+clasificador clásico y *embeddings* con clasificador). El Jev original no se ha probado, porque exige enviar los textos a
+sus servidores.
 
-**En una frase:** los modelos de decisión abiertos **ya son usables para clasificar y encaminar documentos con revisión
-humana**, en una máquina propia, siempre que se ajusten con unos cientos de ejemplos de cada opción y se recalibren antes
-de fiarse de su seguridad. **No lo son** sin ajustar para tareas con convenciones propias, ni para decidir solos.
+**En una frase:** para preguntas que dependen del **significado**, los modelos de decisión abiertos de 2.000 a 4.000
+millones de parámetros **ya son útiles con revisión humana**, en una máquina propia; para preguntas que se resuelven por
+el **vocabulario**, **un clasificador clásico basta** y es mucho más barato. Ninguno está para decidir solo.
+
+```{=latex}
+\necesitaespacio{30\baselineskip}
+```
 
 | Aspecto | Valoración | Por qué |
 |--------------|-----------|-------------------------------|
 | Integración en una aplicación | **Buena** | Devuelven datos, no texto; no pueden salirse de las opciones; la API es sencilla y estable |
-| Acierto sin ajustar en una tarea propia | **Insuficiente** | Del 49 % al 73 % en el BOE: no conocen las convenciones propias de un dominio |
-| Acierto ajustados, con datos suficientes | **Muy bueno** | 95 % y 96 % en el BOE con 1.400 ejemplos, por encima de modelos diez veces mayores |
-| Con pocos datos | **No funciona** | Con 17 ejemplos de la opción difícil, el ajuste no se distinguió del azar |
-| Fiabilidad de su seguridad | **Frágil** | El ajuste la estropea fuera de la tarea; recalibrando se recupera en el 4B, no en el 0.8B |
-| Coste y soberanía | **Muy favorable** | Un ordenador de sobremesa, sin enviar nada fuera; ajuste en horas; respuesta en décimas de segundo |
-| Español | **Aceptable, poco medido** | Funcionan, pero se ha medido menos y su calibración empeora más que en inglés |
-| Madurez | **Baja** | Proyectos de semanas (la versión de Kev probada es del 24 de septiembre de 2026); sus herramientas tienen límites que no avisan |
+| Preguntas de vocabulario | **No compensan** | En el BOE, un clasificador clásico entrenado en segundos iguala a los modelos ajustados durante horas, y con 35 ejemplos supera a todos los modelos sin ajustar |
+| Preguntas de significado, sin ajustar | **Buena, pero desigual** | 78 % en PAWS-X sin haber visto la tarea; notas de 7,5 a 8,4 en correo y expedientes, donde las referencias sacan de 3 a 6,5. Cada modelo rinde en lo que se parece a su entrenamiento: Jeff-0.8B es flojo en correo y muy bueno comprobando respuestas (8,4) |
+| Ajustados, con datos suficientes | **Muy buena** | 95 % y 96 % en el BOE con 1.400 ejemplos; +20 puntos en PAWS-X con 200 |
+| Con pocos datos | **No funciona** | Con 17 ejemplos de la opción difícil, ni el ajuste ni el clasificador clásico se distinguieron del azar |
+| Frente a un chat general | **Empate en acierto, ventaja en coste** | Un chat de 9.000 millones preguntado con letras rinde como Kev-4B, pero tarda de tres a cuatro veces más y ocupa más memoria |
+| Fiabilidad de su seguridad | **Frágil** | Casi todos fallan demasiado con un 90 % o más; el ajuste lo empeora; recalibrando se recupera en el 4B, no en el 0.8B |
+| Coste y soberanía | **Muy favorable** | Un ordenador de sobremesa, sin enviar nada fuera; respuesta en décimas de segundo o en un segundo |
+| Español | **Aceptable** | Todas las pruebas son en español y funcionan, aunque la calibración empeora más que en inglés |
+| Madurez | **Baja** | Proyectos de semanas (Jeff se publicó el 28 de septiembre de 2026); sus herramientas tienen límites que no avisan |
 
-Sobre la madurez, dos ejemplos encontrados por el camino: el evaluador de Kev descartaba en silencio los textos largos
-(182 de 350 en la prueba del BOE), y su herramienta de calibración tiene un tope que el 0.8B ajustado supera. Nada de eso
-impide usarlos, pero obliga a medir con cuidado y a no dar por buenas las cifras de nadie, incluidas las de este texto.
+Sobre la madurez, algunos ejemplos encontrados por el camino: el evaluador de Kev descartaba en silencio los textos
+largos (182 de 350 en la prueba del BOE), su herramienta de calibración tiene un tope que el 0.8B ajustado supera, y Jeff
+rechaza las preguntas de más de 26 opciones. Nada de eso impide usarlos, pero obliga a medir con cuidado y a no dar por
+buenas las cifras de nadie, incluidas las de este texto.
 
-**Qué modelo elegir hoy.** Kev-4B, ajustado con tus casos y recalibrado. Kev-0.8B solo si la máquina no da para más, y sin
-fijarle umbrales. Para una primera prueba sin ajustar, la réplica abierta de Jev de 2.000 millones es la que mejor rinde.
+**Qué elegir hoy:**
+
+- **Si la pregunta la resuelven las palabras y tienes ejemplos:** un clasificador clásico.
+- **Si depende del significado y no tienes ejemplos:** Kev-4B, o un chat de 9.000 millones si el tiempo por consulta no
+  importa.
+- **Para comprobar si una respuesta se apoya en un documento:** Jeff-0.8B, pequeño y rápido, que se entrenó para eso, o
+  un chat de 9.000 millones si el tiempo no importa.
+- **Si tienes unos cientos de ejemplos de cada opción:** ajusta Kev-4B y recalíbralo. Kev-0.8B solo si la máquina no da
+  para más, y sin fijarle umbrales.
+- **En todos los casos:** mide contra el clasificador clásico antes de decidir, y no fijes umbrales sin recalibrar.
 
 **Qué falta para pasar de provisional a firme:**
 
-- probarlo con un lote real de expedientes con la respuesta conocida;
+- probarlo con datos reales: un lote de expedientes con la respuesta conocida y la prueba privada con correos reales de
+  un buzón general;
 - fijar un umbral con casos apartados y medir cuánto trabajo ahorra y cuántos errores deja pasar;
 - repetir las pruebas con cada modelo nuevo que salga, con los mismos datos, para ver si la tecnología madura.
 
@@ -681,6 +1087,23 @@ fijarle umbrales. Para una primera prueba sin ajustar, la réplica abierta de Je
 
 **Modelo de decisión.** Modelo que, dado un texto y una pregunta con opciones cerradas, devuelve una probabilidad por
 opción. No genera texto.
+
+**Clasificador clásico.** Programa de aprendizaje automático anterior a los modelos de lenguaje que aprende qué
+palabras van con cada respuesta a partir de ejemplos etiquetados. En este informe, TF-IDF y regresión logística.
+
+**TF-IDF.** Forma de convertir un texto en números: cuenta qué palabras aparecen y les da más peso cuanto más raras
+son en el conjunto de textos.
+
+**Regresión logística.** Clasificador lineal que convierte una suma ponderada de rasgos en probabilidades.
+
+***Embedding*.** Vector de números que representa el significado aproximado de un texto, calculado por un modelo
+pequeño. Dos textos parecidos en significado dan vectores cercanos.
+
+**Caja de herramientas escalonada.** La forma de elegir herramienta que propone este informe: reglas, clasificador
+clásico, *embeddings*, modelo de decisión y modelo de lenguaje, como bandejas de una caja que se abre en escalones;
+se sube a la siguiente solo si la de abajo no llega.
+
+**Paráfrasis.** Dos textos que dicen lo mismo con otras palabras.
 
 **Modelo de lenguaje (LLM).** Modelo que genera texto *token* a *token*: los chats como ChatGPT o Claude.
 
@@ -746,7 +1169,7 @@ ISO/IEC 80000-13.
 \newpage
 ```
 
-# Créditos
+# Créditos {.unnumbered}
 
 **Modelos de decisión y ajuste fino**\
 *Una introducción para programadores que ya han usado modelos de lenguaje*
@@ -754,7 +1177,9 @@ ISO/IEC 80000-13.
 Joaquín Herrero Pintado\
 Creative Codeworks
 
-Primera versión · 28 de septiembre de 2026\
+Versión 2.0 · 29 de septiembre de 2026\
+Primera versión: 28 de septiembre de 2026 · Cambios de cada versión:
+[CAMBIOS.md](https://github.com/joakinen/toolkit-modelos-de-decision/blob/main/CAMBIOS.md)\
 Última versión: [creativecodeworks.com/toolkit-modelos-de-decision.html](https://creativecodeworks.com/toolkit-modelos-de-decision.html)\
 Toolkit de evaluación de modelos de decisión:
 [github.com/joakinen/toolkit-modelos-de-decision](https://github.com/joakinen/toolkit-modelos-de-decision)\
@@ -766,9 +1191,13 @@ puedes copiarlo y adaptarlo, también con fines comerciales, siempre que indique
 creativecodeworks.com) y publiques lo que hagas a partir de él con la misma licencia. El código del toolkit tiene
 licencia Apache-2.0.
 
-Los datos de la prueba proceden de la Agencia Estatal Boletín Oficial del Estado (boe.es), reutilizados según sus
-condiciones de datos abiertos. Los modelos probados son de sus autores: Kev, de Jared Palmer; las réplicas abiertas de
-Jev, de chaoliangUNSW; Qwen3.5, de Alibaba. Jev es un modelo de TypeSafe AI, que no está relacionada con este trabajo.
+Los textos de la prueba del BOE y del caso de respuestas apoyadas proceden de la Agencia Estatal Boletín Oficial del
+Estado (boe.es), reutilizados según sus condiciones de datos abiertos; los pares de paráfrasis, de PAWS-X (Google
+Research); los controles en español, de XNLI, PAWS-X y reseñas de Amazon. Los correos y expedientes de los casos de
+uso son sintéticos, escritos para esta prueba. Los modelos probados son de sus autores: Kev, de Jared Palmer; Jeff,
+de firelex; las réplicas abiertas de Jev, de chaoliangUNSW; Qwen3.5, de Alibaba; el modelo de *embeddings*
+bge-m3, de BAAI; y Gemma 4, de Google, que escribió las respuestas del caso de respuestas apoyadas. Jev es un modelo
+de TypeSafe AI, que no está relacionada con este trabajo.
 
 Este informe y el toolkit que lo acompaña se han hecho con la asistencia de **Claude Code** (Anthropic). La herramienta
 se usó para escribir y ejecutar los programas de evaluación, lanzar los ajustes y las medidas, contrastar cada cifra

@@ -1,0 +1,997 @@
+{
+ "correo": {
+  "titulo": "Triaje del buzón general",
+  "preguntas": {
+   "unidad": "Unidad",
+   "tipo": "Tipo",
+   "urgente": "Urgente"
+  },
+  "n": 120,
+  "modelos": [
+   {
+    "id": "llm-9b",
+    "nombre": "Qwen3.5 · 9B (letras)",
+    "escalon": 5,
+    "nota": 7.7,
+    "ms": 3776.9,
+    "preguntas": {
+     "unidad": {
+      "nota": 7.3,
+      "acierto": 0.8333333333333334,
+      "ic95": [
+       0.7688110500610501,
+       0.8886972402597403
+      ],
+      "seguras": 84,
+      "fallo_seguras": 0.05952380952380952
+     },
+     "tipo": {
+      "nota": 7.5,
+      "acierto": 0.8623227752639517,
+      "ic95": [
+       0.7723809523809525,
+       0.9275078722447144
+      ],
+      "seguras": 69,
+      "fallo_seguras": 0.07246376811594203
+     },
+     "urgente": {
+      "nota": 8.3,
+      "acierto": 0.9035619552860932,
+      "ic95": [
+       0.828125,
+       0.9642857142857143
+      ],
+      "seguras": 72,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "kev-4b",
+    "nombre": "Kev · 4B",
+    "escalon": 4,
+    "nota": 7.5,
+    "ms": 1300.4,
+    "preguntas": {
+     "unidad": {
+      "nota": 7.6,
+      "acierto": 0.8666666666666667,
+      "ic95": [
+       0.8152462121212122,
+       0.9131127450980391
+      ],
+      "seguras": 15,
+      "fallo_seguras": 0.06666666666666667
+     },
+     "tipo": {
+      "nota": 7.5,
+      "acierto": 0.7818552036199093,
+      "ic95": [
+       0.6784615384615386,
+       0.8843770442014766
+      ],
+      "seguras": 15,
+      "fallo_seguras": 0.0
+     },
+     "urgente": {
+      "nota": 7.4,
+      "acierto": 0.8580901856763926,
+      "ic95": [
+       0.7770177838577291,
+       0.9336134453781513
+      ],
+      "seguras": 7,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "embeddings",
+    "nombre": "Embeddings y clasificador",
+    "escalon": 3,
+    "nota": 6.5,
+    "ms": 2.7,
+    "preguntas": {
+     "unidad": {
+      "nota": 8.6,
+      "acierto": 0.8666666666666667,
+      "ic95": [
+       0.8080257392031772,
+       0.9224855006105006
+      ],
+      "seguras": 2,
+      "fallo_seguras": 0.0
+     },
+     "tipo": {
+      "nota": 6.4,
+      "acierto": 0.6773400129282482,
+      "ic95": [
+       0.5537254901960784,
+       0.7924019607843137
+      ],
+      "seguras": 5,
+      "fallo_seguras": 0.0
+     },
+     "urgente": {
+      "nota": 4.6,
+      "acierto": 0.7014020462296324,
+      "ic95": [
+       0.613997113997114,
+       0.7927018633540373
+      ],
+      "seguras": 22,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jeff-2b",
+    "nombre": "Jeff · 2B",
+    "escalon": 4,
+    "nota": 6.1,
+    "ms": 1674.8,
+    "preguntas": {
+     "unidad": {
+      "nota": 6.2,
+      "acierto": 0.725,
+      "ic95": [
+       0.6471525958561563,
+       0.7953296703296703
+      ],
+      "seguras": 25,
+      "fallo_seguras": 0.08
+     },
+     "tipo": {
+      "nota": 7.3,
+      "acierto": 0.7589248006895064,
+      "ic95": [
+       0.6432570991044975,
+       0.859467787114846
+      ],
+      "seguras": 25,
+      "fallo_seguras": 0.04
+     },
+     "urgente": {
+      "nota": 4.8,
+      "acierto": 0.7084122773777947,
+      "ic95": [
+       0.608421052631579,
+       0.8064295485636115
+      ],
+      "seguras": 56,
+      "fallo_seguras": 0.017857142857142856
+     }
+    }
+   },
+   {
+    "id": "clasico",
+    "nombre": "Clasificador clásico",
+    "escalon": 2,
+    "nota": 5.5,
+    "ms": 8.1,
+    "preguntas": {
+     "unidad": {
+      "nota": 8.6,
+      "acierto": 0.8666666666666667,
+      "ic95": [
+       0.8048976608187134,
+       0.9204656862745099
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "tipo": {
+      "nota": 5.7,
+      "acierto": 0.6189646627881922,
+      "ic95": [
+       0.5136038961038961,
+       0.7347950089126559
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "urgente": {
+      "nota": 2.2,
+      "acierto": 0.5689655172413793,
+      "ic95": [
+       0.5151515151515151,
+       0.64
+      ],
+      "seguras": 8,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jev-v3",
+    "nombre": "Jev-style v3 · 0.8B",
+    "escalon": 4,
+    "nota": 5.1,
+    "ms": 513.0,
+    "preguntas": {
+     "unidad": {
+      "nota": 4.1,
+      "acierto": 0.625,
+      "ic95": [
+       0.5456709956709956,
+       0.7030906593406593
+      ],
+      "seguras": 6,
+      "fallo_seguras": 0.16666666666666666
+     },
+     "tipo": {
+      "nota": 6.2,
+      "acierto": 0.6637459599224306,
+      "ic95": [
+       0.5507518625165684,
+       0.7793465563965984
+      ],
+      "seguras": 2,
+      "fallo_seguras": 0.0
+     },
+     "urgente": {
+      "nota": 5.1,
+      "acierto": 0.7811671087533156,
+      "ic95": [
+       0.6904761904761905,
+       0.8626176602420439
+      ],
+      "seguras": 15,
+      "fallo_seguras": 0.06666666666666667
+     }
+    }
+   },
+   {
+    "id": "kev-08b",
+    "nombre": "Kev · 0.8B",
+    "escalon": 4,
+    "nota": 5.1,
+    "ms": 255.1,
+    "preguntas": {
+     "unidad": {
+      "nota": 6.9,
+      "acierto": 0.7,
+      "ic95": [
+       0.6229120215533259,
+       0.7753831952361365
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "tipo": {
+      "nota": 3.0,
+      "acierto": 0.37469726352079297,
+      "ic95": [
+       0.2910158662100482,
+       0.4806548856548856
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "urgente": {
+      "nota": 5.4,
+      "acierto": 0.7459264873057977,
+      "ic95": [
+       0.6451863354037267,
+       0.8369175627240143
+      ],
+      "seguras": 1,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jev-v1",
+    "nombre": "Jev-style v1 · 2B",
+    "escalon": 4,
+    "nota": 4.6,
+    "ms": 1272.0,
+    "preguntas": {
+     "unidad": {
+      "nota": 4.7,
+      "acierto": 0.675,
+      "ic95": [
+       0.5985347985347985,
+       0.7485449293353705
+      ],
+      "seguras": 2,
+      "fallo_seguras": 0.5
+     },
+     "tipo": {
+      "nota": 4.7,
+      "acierto": 0.5268616677440207,
+      "ic95": [
+       0.455429292929293,
+       0.5925
+      ],
+      "seguras": 10,
+      "fallo_seguras": 0.0
+     },
+     "urgente": {
+      "nota": 4.4,
+      "acierto": 0.8021978021978022,
+      "ic95": [
+       0.75,
+       0.8539325842696629
+      ],
+      "seguras": 13,
+      "fallo_seguras": 0.3076923076923077
+     }
+    }
+   },
+   {
+    "id": "jeff-08b",
+    "nombre": "Jeff · 0.8B",
+    "escalon": 4,
+    "nota": 3.9,
+    "ms": 1231.6,
+    "preguntas": {
+     "unidad": {
+      "nota": 4.4,
+      "acierto": 0.6499999999999999,
+      "ic95": [
+       0.5747712561131679,
+       0.7262112887112888
+      ],
+      "seguras": 27,
+      "fallo_seguras": 0.18518518518518517
+     },
+     "tipo": {
+      "nota": 2.0,
+      "acierto": 0.46752100840336136,
+      "ic95": [
+       0.394803438616826,
+       0.5393666393666393
+      ],
+      "seguras": 28,
+      "fallo_seguras": 0.21428571428571427
+     },
+     "urgente": {
+      "nota": 5.2,
+      "acierto": 0.7319060250094733,
+      "ic95": [
+       0.6314217443249701,
+       0.8272549658091827
+      ],
+      "seguras": 64,
+      "fallo_seguras": 0.046875
+     }
+    }
+   }
+  ]
+ },
+ "expedientes": {
+  "titulo": "Completitud de un expediente",
+  "preguntas": {
+   "pago": "Pago",
+   "firma": "Firma",
+   "identidad": "Identidad",
+   "representacion": "Quién presenta"
+  },
+  "n": 60,
+  "modelos": [
+   {
+    "id": "llm-9b",
+    "nombre": "Qwen3.5 · 9B (letras)",
+    "escalon": 5,
+    "nota": 8.5,
+    "ms": 3819.9,
+    "preguntas": {
+     "pago": {
+      "nota": 6.6,
+      "acierto": 0.823529411764706,
+      "ic95": [
+       0.7435897435897436,
+       0.9019607843137255
+      ],
+      "seguras": 33,
+      "fallo_seguras": 0.06060606060606061
+     },
+     "firma": {
+      "nota": 8.9,
+      "acierto": 0.915994623655914,
+      "ic95": [
+       0.8392857142857143,
+       0.980952380952381
+      ],
+      "seguras": 43,
+      "fallo_seguras": 0.023255813953488372
+     },
+     "identidad": {
+      "nota": 8.5,
+      "acierto": 0.887617115811842,
+      "ic95": [
+       0.8004668534080298,
+       0.9569444444444445
+      ],
+      "seguras": 31,
+      "fallo_seguras": 0.03225806451612903
+     },
+     "representacion": {
+      "nota": 10.0,
+      "acierto": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "seguras": 60,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "kev-4b",
+    "nombre": "Kev · 4B",
+    "escalon": 4,
+    "nota": 8.4,
+    "ms": 858.3,
+    "preguntas": {
+     "pago": {
+      "nota": 8.1,
+      "acierto": 0.8574660633484162,
+      "ic95": [
+       0.7643020594965675,
+       0.9388888888888888
+      ],
+      "seguras": 14,
+      "fallo_seguras": 0.0
+     },
+     "firma": {
+      "nota": 8.0,
+      "acierto": 0.8541666666666666,
+      "ic95": [
+       0.7777777777777777,
+       0.9333333333333332
+      ],
+      "seguras": 22,
+      "fallo_seguras": 0.0
+     },
+     "identidad": {
+      "nota": 7.4,
+      "acierto": 0.8828841881580218,
+      "ic95": [
+       0.7888888888888889,
+       0.9607843137254902
+      ],
+      "seguras": 12,
+      "fallo_seguras": 0.08333333333333333
+     },
+     "representacion": {
+      "nota": 10.0,
+      "acierto": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "seguras": 48,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jev-v1",
+    "nombre": "Jev-style v1 · 2B",
+    "escalon": 4,
+    "nota": 7.5,
+    "ms": 1359.3,
+    "preguntas": {
+     "pago": {
+      "nota": 7.7,
+      "acierto": 0.8310708898944194,
+      "ic95": [
+       0.7333333333333334,
+       0.9175084175084175
+      ],
+      "seguras": 1,
+      "fallo_seguras": 0.0
+     },
+     "firma": {
+      "nota": 6.2,
+      "acierto": 0.7170698924731184,
+      "ic95": [
+       0.6291666666666667,
+       0.8055555555555555
+      ],
+      "seguras": 4,
+      "fallo_seguras": 0.0
+     },
+     "identidad": {
+      "nota": 6.4,
+      "acierto": 0.7310924369747899,
+      "ic95": [
+       0.6216931216931217,
+       0.8476190476190476
+      ],
+      "seguras": 1,
+      "fallo_seguras": 0.0
+     },
+     "representacion": {
+      "nota": 9.7,
+      "acierto": 0.9761904761904763,
+      "ic95": [
+       0.9166666666666666,
+       1.0
+      ],
+      "seguras": 32,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jeff-2b",
+    "nombre": "Jeff · 2B",
+    "escalon": 4,
+    "nota": 6.8,
+    "ms": 571.6,
+    "preguntas": {
+     "pago": {
+      "nota": 5.3,
+      "acierto": 0.6538461538461539,
+      "ic95": [
+       0.625,
+       0.6666666666666666
+      ],
+      "seguras": 10,
+      "fallo_seguras": 0.0
+     },
+     "firma": {
+      "nota": 7.0,
+      "acierto": 0.7813792390405293,
+      "ic95": [
+       0.6721454173067075,
+       0.88763197586727
+      ],
+      "seguras": 16,
+      "fallo_seguras": 0.0
+     },
+     "identidad": {
+      "nota": 6.2,
+      "acierto": 0.7170868347338936,
+      "ic95": [
+       0.6253968253968254,
+       0.8148148148148149
+      ],
+      "seguras": 20,
+      "fallo_seguras": 0.05
+     },
+     "representacion": {
+      "nota": 8.9,
+      "acierto": 0.9166666666666666,
+      "ic95": [
+       0.8333333333333334,
+       0.9885057471264368
+      ],
+      "seguras": 50,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "kev-08b",
+    "nombre": "Kev · 0.8B",
+    "escalon": 4,
+    "nota": 4.7,
+    "ms": 247.1,
+    "preguntas": {
+     "pago": {
+      "nota": 3.2,
+      "acierto": 0.5,
+      "ic95": [
+       0.4045072574484339,
+       0.5982142857142857
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "firma": {
+      "nota": 3.4,
+      "acierto": 0.5089950372208437,
+      "ic95": [
+       0.3904761904761905,
+       0.6214487832484437
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "identidad": {
+      "nota": 2.2,
+      "acierto": 0.42152033227083935,
+      "ic95": [
+       0.3176387531226241,
+       0.5373181530676786
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "representacion": {
+      "nota": 10.0,
+      "acierto": 1.0,
+      "ic95": [
+       1.0,
+       1.0
+      ],
+      "seguras": 4,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jeff-08b",
+    "nombre": "Jeff · 0.8B",
+    "escalon": 4,
+    "nota": 4.4,
+    "ms": 254.8,
+    "preguntas": {
+     "pago": {
+      "nota": 3.3,
+      "acierto": 0.5776772247360483,
+      "ic95": [
+       0.496969696969697,
+       0.6626984126984127
+      ],
+      "seguras": 16,
+      "fallo_seguras": 0.0625
+     },
+     "firma": {
+      "nota": 2.9,
+      "acierto": 0.6188482216708023,
+      "ic95": [
+       0.540360873694207,
+       0.6898148148148149
+      ],
+      "seguras": 27,
+      "fallo_seguras": 0.2222222222222222
+     },
+     "identidad": {
+      "nota": 2.3,
+      "acierto": 0.5070028011204482,
+      "ic95": [
+       0.4071428571428571,
+       0.6166666666666667
+      ],
+      "seguras": 27,
+      "fallo_seguras": 0.07407407407407407
+     },
+     "representacion": {
+      "nota": 9.0,
+      "acierto": 0.9285714285714285,
+      "ic95": [
+       0.8444444444444444,
+       1.0
+      ],
+      "seguras": 47,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jev-v3",
+    "nombre": "Jev-style v3 · 0.8B",
+    "escalon": 4,
+    "nota": 4.2,
+    "ms": 320.2,
+    "preguntas": {
+     "pago": {
+      "nota": 4.9,
+      "acierto": 0.6221719457013575,
+      "ic95": [
+       0.5441176470588235,
+       0.7006033182503771
+      ],
+      "seguras": 1,
+      "fallo_seguras": 0.0
+     },
+     "firma": {
+      "nota": 1.1,
+      "acierto": 0.4865074441687345,
+      "ic95": [
+       0.38271604938271603,
+       0.5973137973137973
+      ],
+      "seguras": 17,
+      "fallo_seguras": 0.17647058823529413
+     },
+     "identidad": {
+      "nota": 1.4,
+      "acierto": 0.3632280498406259,
+      "ic95": [
+       0.26587301587301587,
+       0.4691919191919192
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "representacion": {
+      "nota": 9.2,
+      "acierto": 0.9391534391534391,
+      "ic95": [
+       0.8578431372549019,
+       1.0
+      ],
+      "seguras": 28,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "clasico",
+    "nombre": "Clasificador clásico",
+    "escalon": 2,
+    "nota": 3.3,
+    "ms": 8.3,
+    "preguntas": {
+     "pago": {
+      "nota": 4.5,
+      "acierto": 0.5957767722473605,
+      "ic95": [
+       0.4985507246376812,
+       0.6876190476190477
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "firma": {
+      "nota": 1.9,
+      "acierto": 0.4006410256410256,
+      "ic95": [
+       0.3333333333333333,
+       0.4801587301587302
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "identidad": {
+      "nota": 1.6,
+      "acierto": 0.38095238095238093,
+      "ic95": [
+       0.3333333333333333,
+       0.4545454545454546
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "representacion": {
+      "nota": 5.1,
+      "acierto": 0.6402116402116401,
+      "ic95": [
+       0.5541666666666667,
+       0.7353801169590644
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "embeddings",
+    "nombre": "Embeddings y clasificador",
+    "escalon": 3,
+    "nota": 3.0,
+    "ms": 3.4,
+    "preguntas": {
+     "pago": {
+      "nota": 4.4,
+      "acierto": 0.5822021116138764,
+      "ic95": [
+       0.4615384615384615,
+       0.7000000000000001
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "firma": {
+      "nota": 3.2,
+      "acierto": 0.49570926385442515,
+      "ic95": [
+       0.37393162393162394,
+       0.6298468556533071
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "identidad": {
+      "nota": 2.2,
+      "acierto": 0.4187192118226601,
+      "ic95": [
+       0.32142857142857145,
+       0.5239491691104594
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     },
+     "representacion": {
+      "nota": 2.1,
+      "acierto": 0.41269841269841273,
+      "ic95": [
+       0.34782608695652173,
+       0.49242424242424243
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     }
+    }
+   }
+  ]
+ },
+ "apoyo": {
+  "titulo": "¿La respuesta se apoya en el documento?",
+  "preguntas": {
+   "apoyada": "Apoyada"
+  },
+  "n": 194,
+  "modelos": [
+   {
+    "id": "llm-9b",
+    "nombre": "Qwen3.5 · 9B (letras)",
+    "escalon": 5,
+    "nota": 9.4,
+    "ms": 2067.1,
+    "preguntas": {
+     "apoyada": {
+      "nota": 9.4,
+      "acierto": 0.9690721649484536,
+      "ic95": [
+       0.9438202247191011,
+       0.99
+      ],
+      "seguras": 172,
+      "fallo_seguras": 0.005813953488372093
+     }
+    }
+   },
+   {
+    "id": "jeff-08b",
+    "nombre": "Jeff · 0.8B",
+    "escalon": 4,
+    "nota": 8.4,
+    "ms": 282.4,
+    "preguntas": {
+     "apoyada": {
+      "nota": 8.4,
+      "acierto": 0.9123711340206185,
+      "ic95": [
+       0.871819440008517,
+       0.9475810738968634
+      ],
+      "seguras": 153,
+      "fallo_seguras": 0.006535947712418301
+     }
+    }
+   },
+   {
+    "id": "jeff-2b",
+    "nombre": "Jeff · 2B",
+    "escalon": 4,
+    "nota": 7.8,
+    "ms": 516.3,
+    "preguntas": {
+     "apoyada": {
+      "nota": 7.8,
+      "acierto": 0.8762886597938144,
+      "ic95": [
+       0.8322169059011164,
+       0.9205319148936171
+      ],
+      "seguras": 128,
+      "fallo_seguras": 0.0078125
+     }
+    }
+   },
+   {
+    "id": "jev-v1",
+    "nombre": "Jev-style v1 · 2B",
+    "escalon": 4,
+    "nota": 4.9,
+    "ms": 603.8,
+    "preguntas": {
+     "apoyada": {
+      "nota": 4.9,
+      "acierto": 0.7164948453608248,
+      "ic95": [
+       0.6714285714285715,
+       0.7650602409638554
+      ],
+      "seguras": 83,
+      "fallo_seguras": 0.04819277108433735
+     }
+    }
+   },
+   {
+    "id": "kev-4b",
+    "nombre": "Kev · 4B",
+    "escalon": 4,
+    "nota": 4.9,
+    "ms": 925.3,
+    "preguntas": {
+     "apoyada": {
+      "nota": 4.9,
+      "acierto": 0.7731958762886597,
+      "ic95": [
+       0.7254901960784313,
+       0.8200000000000001
+      ],
+      "seguras": 129,
+      "fallo_seguras": 0.05426356589147287
+     }
+    }
+   },
+   {
+    "id": "clasico",
+    "nombre": "Clasificador clásico",
+    "escalon": 2,
+    "nota": 3.3,
+    "ms": 2.3,
+    "preguntas": {
+     "apoyada": {
+      "nota": 3.3,
+      "acierto": 0.6288659793814433,
+      "ic95": [
+       0.5648504273504273,
+       0.6924481684391449
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "embeddings",
+    "nombre": "Embeddings y clasificador",
+    "escalon": 3,
+    "nota": 2.5,
+    "ms": 0.1,
+    "preguntas": {
+     "apoyada": {
+      "nota": 2.5,
+      "acierto": 0.5824742268041236,
+      "ic95": [
+       0.5156649616368286,
+       0.6480516661239553
+      ],
+      "seguras": 0,
+      "fallo_seguras": 0.0
+     }
+    }
+   },
+   {
+    "id": "jev-v3",
+    "nombre": "Jev-style v3 · 0.8B",
+    "escalon": 4,
+    "nota": 2.2,
+    "ms": 200.6,
+    "preguntas": {
+     "apoyada": {
+      "nota": 2.2,
+      "acierto": 0.6804123711340206,
+      "ic95": [
+       0.6333333333333333,
+       0.7277777777777777
+      ],
+      "seguras": 167,
+      "fallo_seguras": 0.2994011976047904
+     }
+    }
+   },
+   {
+    "id": "kev-08b",
+    "nombre": "Kev · 0.8B",
+    "escalon": 4,
+    "nota": 1.0,
+    "ms": 185.9,
+    "preguntas": {
+     "apoyada": {
+      "nota": 1.0,
+      "acierto": 0.6082474226804124,
+      "ic95": [
+       0.5659340659340659,
+       0.651685393258427
+      ],
+      "seguras": 82,
+      "fallo_seguras": 0.32926829268292684
+     }
+    }
+   }
+  ]
+ }
+}

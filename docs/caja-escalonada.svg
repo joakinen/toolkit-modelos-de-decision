@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 725" width="1000" height="725" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" role="img" aria-labelledby="t d">
+  <title id="t">La caja de herramientas escalonada</title>
+  <desc id="d">Una caja de herramientas abierta con cinco bandejas escalonadas, de abajo arriba: reglas, clasificador clásico, embeddings con clasificador, modelo de decisión y modelo de lenguaje. Cada bandeja cuesta más y entiende más. Se sube a la siguiente solo si la de abajo no llega. Obra de Joaquín Herrero Pintado, licencia CC BY-SA 4.0.</desc>
+  <style>
+    .fondo { fill: #ffffff; }
+    .bandeja { fill: #f3f6ec; stroke: #8cb724; stroke-width: 2; }
+    .cuerpo { fill: #e6efd2; stroke: #6f9a18; stroke-width: 2.5; }
+    .suelo { fill: #dfe8c9; }
+    .borde { stroke: #8cb724; stroke-width: 5; stroke-linecap: round; }
+    .asa { fill: none; stroke: #6f9a18; stroke-width: 6; stroke-linecap: round; }
+    .brazo { stroke: #a4acb5; stroke-width: 7; stroke-linecap: round; }
+    .pivote { fill: #ffffff; stroke: #7a838e; stroke-width: 2; }
+    .num { fill: #6f9a18; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; }
+    .nom { fill: #15171c; font-size: 17px; font-weight: 700; }
+    .ent { fill: #3d6b0f; font-size: 13.5px; font-style: italic; }
+    .dato { fill: #3a3f48; font-size: 12.5px; }
+    .ej { fill: #6b7280; font-size: 12px; }
+    .titulo { fill: #15171c; font-size: 26px; font-weight: 700; }
+    .sub { fill: #3a3f48; font-size: 15px; }
+    .regla { fill: #15171c; font-size: 15px; font-weight: 700; }
+    .eje { fill: #6b7280; font-size: 12.5px; font-weight: 700; letter-spacing: 1px; }
+    .flecha { stroke: #6b7280; stroke-width: 2; fill: none; }
+    .aviso { fill: #fff8e6; stroke: #d9a400; stroke-width: 1.5; }
+    .avisot { fill: #7a5a00; font-size: 14px; font-weight: 700; }
+    .firma { fill: #8a919b; font-size: 11.5px; }
+    @media (prefers-color-scheme: dark) {
+      .fondo { fill: #0b0d11; } .bandeja { fill: #15171c; } .cuerpo { fill: #1d2415; } .suelo { fill: #232c16; }
+      .brazo { stroke: #4a515a; } .pivote { fill: #0b0d11; stroke: #9aa1ac; }
+      .nom, .titulo, .regla { fill: #f4f4f2; } .ent, .num { fill: #b5d86a; } .dato, .sub { fill: #c8ccd3; }
+      .ej, .eje, .firma { fill: #9aa1ac; } .flecha { stroke: #9aa1ac; } .aviso { fill: #2a2410; } .avisot { fill: #f0c24a; }
+    }
+  </style>
+  <defs><marker id="punta" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6b7280"/></marker></defs>
+  <rect class="fondo" width="1000" height="725"/>
+  <text class="titulo" x="40" y="50">La caja de herramientas escalonada</text>
+  <text class="sub" x="40" y="77">Cuándo usar cada herramienta de IA para preguntas cerradas sobre textos. Cada bandeja cuesta más y entiende más.</text>
+  <text class="regla" x="40" y="103">Se empieza por abajo y se sube a la bandeja siguiente solo si la de abajo no llega, midiéndolo.</text>
+  <rect class="aviso" x="40" y="132" width="352" height="92" rx="6"/>
+  <text class="avisot" x="54" y="156">Ojo: ordena por coste, no por acierto.</text>
+  <text class="dato" x="54" y="178">Subir solo ayuda si la pregunta depende del</text>
+  <text class="dato" x="54" y="196">significado. Si la respuesta la delatan las</text>
+  <text class="dato" x="54" y="214">palabras, la bandeja 2 acierta como la 4.</text>
+  <line class="brazo" x1="216" y1="551" x2="224" y2="471"/>
+  <line class="brazo" x1="216" y1="611" x2="224" y2="531"/>
+  <line class="brazo" x1="400" y1="471" x2="408" y2="391"/>
+  <line class="brazo" x1="400" y1="531" x2="408" y2="451"/>
+  <line class="brazo" x1="584" y1="391" x2="592" y2="311"/>
+  <line class="brazo" x1="584" y1="451" x2="592" y2="371"/>
+  <line class="brazo" x1="768" y1="311" x2="776" y2="231"/>
+  <line class="brazo" x1="768" y1="371" x2="776" y2="291"/>
+  <path class="asa" d="M78 470 v-14 q0 -8 8 -8 h84 q8 0 8 8 v14"/>
+  <rect class="cuerpo" x="40" y="470" width="176" height="176" rx="6"/>
+  <line class="borde" x1="42" y1="470" x2="214" y2="470"/>
+  <text class="num" x="52" y="494">BANDEJA 1</text>
+  <text class="nom" x="52" y="516">Reglas</text>
+  <text class="ent" x="52" y="560">Lo mecánico</text>
+  <text class="dato" x="52" y="580">Sin ejemplos</text>
+  <text class="dato" x="52" y="597">· instantáneo</text>
+  <text class="ej" x="52" y="618">¿Hay un NIF?</text>
+  <text class="ej" x="52" y="633">¿Una fecha?</text>
+  <rect class="bandeja" x="224" y="390" width="176" height="176" rx="6"/>
+  <rect class="suelo" x="225" y="554" width="174" height="11" rx="5"/>
+  <line class="borde" x1="226" y1="390" x2="398" y2="390"/>
+  <text class="num" x="236" y="414">BANDEJA 2</text>
+  <text class="nom" x="236" y="436">Clasificador</text>
+  <text class="nom" x="236" y="456">clásico</text>
+  <text class="ent" x="236" y="480">Palabras</text>
+  <text class="dato" x="236" y="500">Decenas o cientos de</text>
+  <text class="dato" x="236" y="517">ejemplos · milésimas</text>
+  <text class="ej" x="236" y="538">¿En qué sección del</text>
+  <text class="ej" x="236" y="553">BOE? ¿A qué unidad?</text>
+  <rect class="bandeja" x="408" y="310" width="176" height="176" rx="6"/>
+  <rect class="suelo" x="409" y="474" width="174" height="11" rx="5"/>
+  <line class="borde" x1="410" y1="310" x2="582" y2="310"/>
+  <text class="num" x="420" y="334">BANDEJA 3</text>
+  <text class="nom" x="420" y="356">Embeddings</text>
+  <text class="nom" x="420" y="376">+ clasificador</text>
+  <text class="ent" x="420" y="400">Algo de significado</text>
+  <text class="dato" x="420" y="420">Ejemplos etiquetados</text>
+  <text class="dato" x="420" y="437">· décimas de segundo</text>
+  <text class="ej" x="420" y="458">Cuando las palabras</text>
+  <text class="ej" x="420" y="473">casi bastan</text>
+  <rect class="bandeja" x="592" y="230" width="176" height="176" rx="6"/>
+  <rect class="suelo" x="593" y="394" width="174" height="11" rx="5"/>
+  <line class="borde" x1="594" y1="230" x2="766" y2="230"/>
+  <text class="num" x="604" y="254">BANDEJA 4</text>
+  <text class="nom" x="604" y="276">Modelo de</text>
+  <text class="nom" x="604" y="296">decisión</text>
+  <text class="ent" x="604" y="320">Significado</text>
+  <text class="dato" x="604" y="340">Sin ejemplos para empezar;</text>
+  <text class="dato" x="604" y="357">se ajusta · 0,2 a 1,5 s</text>
+  <text class="ej" x="604" y="378">¿Es urgente? ¿Consta</text>
+  <text class="ej" x="604" y="393">el pago?</text>
+  <rect class="bandeja" x="776" y="150" width="184" height="176" rx="6"/>
+  <rect class="suelo" x="777" y="314" width="182" height="11" rx="5"/>
+  <line class="borde" x1="778" y1="150" x2="958" y2="150"/>
+  <text class="num" x="788" y="174">BANDEJA 5</text>
+  <text class="nom" x="788" y="196">Modelo de</text>
+  <text class="nom" x="788" y="216">lenguaje</text>
+  <text class="ent" x="788" y="240">Significado y redacción</text>
+  <text class="dato" x="788" y="260">Sin ejemplos · segundos,</text>
+  <text class="dato" x="788" y="277">más memoria</text>
+  <text class="ej" x="788" y="298">Redactar, resumir,</text>
+  <text class="ej" x="788" y="313">explicar</text>
+  <circle class="pivote" cx="216" cy="551" r="4.5"/>
+  <circle class="pivote" cx="224" cy="471" r="4.5"/>
+  <circle class="pivote" cx="216" cy="611" r="4.5"/>
+  <circle class="pivote" cx="224" cy="531" r="4.5"/>
+  <circle class="pivote" cx="400" cy="471" r="4.5"/>
+  <circle class="pivote" cx="408" cy="391" r="4.5"/>
+  <circle class="pivote" cx="400" cy="531" r="4.5"/>
+  <circle class="pivote" cx="408" cy="451" r="4.5"/>
+  <circle class="pivote" cx="584" cy="391" r="4.5"/>
+  <circle class="pivote" cx="592" cy="311" r="4.5"/>
+  <circle class="pivote" cx="584" cy="451" r="4.5"/>
+  <circle class="pivote" cx="592" cy="371" r="4.5"/>
+  <circle class="pivote" cx="768" cy="311" r="4.5"/>
+  <circle class="pivote" cx="776" cy="231" r="4.5"/>
+  <circle class="pivote" cx="768" cy="371" r="4.5"/>
+  <circle class="pivote" cx="776" cy="291" r="4.5"/>
+  <path class="flecha" d="M40 672 H960" marker-end="url(#punta)"/>
+  <path class="flecha" d="M22 672 V260" marker-end="url(#punta)"/>
+  <text class="eje" x="960" y="692" text-anchor="end">MÁS COSTE: TIEMPO, MEMORIA, DEPENDENCIA</text>
+  <text class="eje" transform="translate(14 667) rotate(-90)">ENTIENDE MÁS</text>
+  <text class="firma" x="40" y="712">© 2026 Joaquín Herrero Pintado · CC BY-SA 4.0 · creativecodeworks.com</text>
+</svg>

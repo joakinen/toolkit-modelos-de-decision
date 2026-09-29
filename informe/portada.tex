@@ -42,7 +42,7 @@
 
     % cabecera
     \node[anchor=north west, inner sep=0, text=ccwVerde, font=\small\bfseries\addfontfeatures{LetterSpace=18}]
-      at (22,276) {INFORME TÉCNICO · SEPTIEMBRE DE 2026};
+      at (22,276) {INFORME TÉCNICO · VERSIÓN \informeVersion\ · \MakeUppercase{\informeMes}};
     \draw[ccwVerde, line width=1.4pt] (22,268) -- (42,268);
 
     % título y subtítulo
@@ -68,11 +68,12 @@
     % qué incluye
     \node[anchor=north west, inner sep=0, text=ccwVerde, font=\scriptsize\bfseries\addfontfeatures{LetterSpace=12}]
       at (22,100) {QUÉ INCLUYE};
-    \foreach \y/\t in {92/{Qué cambia frente a un chat, y la API con peticiones reales},
-                       85/{Cómo funcionan por dentro: logits, softmax, calibración},
-                       78/{El ajuste fino paso a paso, en una máquina propia},
-                       71/{Un caso medido con 350 textos del BOE},
-                       64/{Veredicto provisional sobre el estado de esta tecnología}}
+    \foreach \y/\t in {92/{La caja de herramientas escalonada: cuándo usar cada una},
+                       85/{Qué cambia frente a un chat, y la API con peticiones reales},
+                       78/{Cómo funcionan por dentro: logits, softmax, calibración},
+                       71/{El ajuste fino paso a paso, en una máquina propia},
+                       64/{Cinco pruebas en español: BOE, PAWS-X y tres casos de uso},
+                       57/{Veredicto provisional sobre el estado de esta tecnología}}
       {\fill[ccwVerde] (23,\y-1) rectangle (25,\y+1);
        \node[anchor=west, text=ccwBlanco, font=\small] at (28,\y) {\t};}
 

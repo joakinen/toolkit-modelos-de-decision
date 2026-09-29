@@ -1,0 +1,2286 @@
+{
+"modelo": "jeff-2b",
+"ms_por_caso": 571.6,
+"casos": [
+{
+"id": "exp-p-001",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.9726258130406005,
+"no": 0.01534147035832597,
+"no consta": 0.012032716601073535
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9633555358460795,
+"no": 0.01549753351790346,
+"no consta": 0.02114693063601704
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9855026946390755,
+"no": 0.006713588550105985,
+"no consta": 0.007783716810818564
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9984575726804716,
+"un representante con autorización aportada": 0.0006652688752013078,
+"un representante sin autorización aportada": 0.0008771584443270753
+}
+}
+}
+},
+{
+"id": "exp-p-002",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.06803344580356686,
+"no": 0.2820693107360216,
+"no consta": 0.6498972434604116
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.898511417099194,
+"no": 0.05474017968328146,
+"no consta": 0.04674840321752453
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8726159139137883,
+"no": 0.060658788815316805,
+"no consta": 0.06672529727089485
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.015232189535754968,
+"un representante con autorización aportada": 0.984056172726883,
+"un representante sin autorización aportada": 0.0007116377373620515
+}
+}
+}
+},
+{
+"id": "exp-p-003",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.1899518902578305,
+"no": 0.29263816591969877,
+"no consta": 0.5174099438224707
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.09472097707504899,
+"no": 0.5069122646124224,
+"no consta": 0.39836675831252855
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9742985340553377,
+"no": 0.01249267809327875,
+"no consta": 0.013208787851383571
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.796459281602832,
+"un representante con autorización aportada": 0.11447797948965521,
+"un representante sin autorización aportada": 0.08906273890751278
+}
+}
+}
+},
+{
+"id": "exp-p-004",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.9366168795596417,
+"no": 0.031559046042011436,
+"no consta": 0.031824074398346835
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.8553722459545549,
+"no": 0.0655675034547222,
+"no consta": 0.07906025059072297
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.06582828758273171,
+"no": 0.2422793114694799,
+"no consta": 0.6918924009477884
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.17543176862190774,
+"un representante con autorización aportada": 0.49093672579149755,
+"un representante sin autorización aportada": 0.33363150558659466
+}
+}
+}
+},
+{
+"id": "exp-p-005",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.1143932374420301,
+"no": 0.24349745200956419,
+"no consta": 0.6421093105484057
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9809946723872065,
+"no": 0.00764484960222846,
+"no consta": 0.011360478010565054
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.48404698842693883,
+"no": 0.1816353919858427,
+"no consta": 0.33431761958721845
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9815905970848393,
+"un representante con autorización aportada": 0.012120076997072756,
+"un representante sin autorización aportada": 0.006289325918087974
+}
+}
+}
+},
+{
+"id": "exp-p-006",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.023200789250426096,
+"no": 0.2406400717735284,
+"no consta": 0.7361591389760456
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.13433567089842768,
+"no": 0.36215222961164206,
+"no consta": 0.5035120994899303
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9508111323607682,
+"no": 0.02380470111056702,
+"no consta": 0.025384166528664834
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.009972333935943434,
+"un representante con autorización aportada": 0.008082744688026826,
+"un representante sin autorización aportada": 0.9819449213760297
+}
+}
+}
+},
+{
+"id": "exp-p-007",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.8642078638076782,
+"no": 0.07286301255226135,
+"no consta": 0.06292912364006042
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.341656748827044,
+"no": 0.21620994685516157,
+"no consta": 0.4421333043177944
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.22583645774695707,
+"no": 0.2328526551166665,
+"no consta": 0.5413108871363764
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9958516248034132,
+"un representante con autorización aportada": 0.001983533824046696,
+"un representante sin autorización aportada": 0.002164841372540131
+}
+}
+}
+},
+{
+"id": "exp-p-008",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.023621366894632016,
+"no": 0.27130642078489475,
+"no consta": 0.7050722123204732
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9500681899498133,
+"no": 0.027742281969521672,
+"no consta": 0.022189528080664992
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.96671297596884,
+"no": 0.01802831188474262,
+"no consta": 0.01525871214641745
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9622152205508326,
+"un representante con autorización aportada": 0.030814890997836783,
+"un representante sin autorización aportada": 0.006969888451330527
+}
+}
+}
+},
+{
+"id": "exp-p-009",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.7630664167036594,
+"no": 0.13725446266870545,
+"no consta": 0.09967912062763512
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9488034624311895,
+"no": 0.02446281042965981,
+"no consta": 0.02673372713915071
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8945009508467998,
+"no": 0.03149381954609261,
+"no consta": 0.07400522960710758
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.012719302279710947,
+"un representante con autorización aportada": 0.9861914266556396,
+"un representante sin autorización aportada": 0.0010892710646493939
+}
+}
+}
+},
+{
+"id": "exp-p-010",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.05316504130635441,
+"no": 0.29436120610208216,
+"no consta": 0.6524737525915634
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.4836321915278492,
+"no": 0.20570585744696432,
+"no consta": 0.3106619510251865
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9643482871240394,
+"no": 0.01997756648737682,
+"no consta": 0.015674146388583797
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9969257013515364,
+"un representante con autorización aportada": 0.0017431827426018036,
+"un representante sin autorización aportada": 0.001331115905861866
+}
+}
+}
+},
+{
+"id": "exp-p-011",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.9458024522347112,
+"no": 0.028359692529941423,
+"no consta": 0.0258378552353474
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.030205151353507792,
+"no": 0.5237897361328591,
+"no consta": 0.4460051125136332
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8012357234770697,
+"no": 0.07197935771972898,
+"no consta": 0.12678491880320134
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9762605888360097,
+"un representante con autorización aportada": 0.011614551605453459,
+"un representante sin autorización aportada": 0.01212485955853677
+}
+}
+}
+},
+{
+"id": "exp-p-012",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.04611671463704483,
+"no": 0.1945749870018099,
+"no consta": 0.7593082983611453
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.5889623077368392,
+"no": 0.24270058806686717,
+"no consta": 0.16833710419629358
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.051870557777318825,
+"no": 0.5351513943166372,
+"no consta": 0.412978047906044
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.0025701402545613133,
+"un representante con autorización aportada": 0.011943053670841084,
+"un representante sin autorización aportada": 0.9854868060745976
+}
+}
+}
+},
+{
+"id": "exp-p-013",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.15203072357223515,
+"no": 0.23754778858345432,
+"no consta": 0.6104214878443105
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.12833283116417116,
+"no": 0.4870497874647252,
+"no consta": 0.38461738137110363
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9258732778469598,
+"no": 0.01942160535711496,
+"no consta": 0.054705116795925206
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.04546771238738975,
+"un representante con autorización aportada": 0.9470273340090734,
+"un representante sin autorización aportada": 0.007504953603536877
+}
+}
+}
+},
+{
+"id": "exp-p-014",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.48317705864940497,
+"no": 0.22573195061487034,
+"no consta": 0.2910909907357247
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.20034202338793977,
+"no": 0.42574869509408003,
+"no consta": 0.37390928151798014
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.18331769233065157,
+"no": 0.16908790401459456,
+"no consta": 0.6475944036547538
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9874853926326007,
+"un representante con autorización aportada": 0.0034092198229261086,
+"un representante sin autorización aportada": 0.009105387544473225
+}
+}
+}
+},
+{
+"id": "exp-p-015",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.010488958540886708,
+"no": 0.24677515370886988,
+"no consta": 0.7427358877502435
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9152389798881075,
+"no": 0.04662111791454672,
+"no consta": 0.038139902197345726
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9084455134007388,
+"no": 0.04669225094152333,
+"no consta": 0.04486223565773796
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.06158132218161758,
+"un representante con autorización aportada": 0.9331472654370069,
+"un representante sin autorización aportada": 0.005271412381375531
+}
+}
+}
+},
+{
+"id": "exp-p-016",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.1099391017131842,
+"no": 0.38662298073533996,
+"no consta": 0.5034379175514758
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.931608259677887,
+"no": 0.0345943346619606,
+"no consta": 0.033797405660152435
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8699999159947066,
+"no": 0.038795518319459016,
+"no consta": 0.09120456568583439
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9978450719686922,
+"un representante con autorización aportada": 0.001242657564082016,
+"un representante sin autorización aportada": 0.0009122704672257647
+}
+}
+}
+},
+{
+"id": "exp-p-017",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.948331044347225,
+"no": 0.025923566285544493,
+"no consta": 0.025745389367230465
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9442035118077539,
+"no": 0.03145478718558901,
+"no consta": 0.02434170100665709
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8484599030360507,
+"no": 0.07923217708112129,
+"no consta": 0.07230791988282799
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.028841425948031806,
+"un representante con autorización aportada": 0.9694511672593565,
+"un representante sin autorización aportada": 0.0017074067926116392
+}
+}
+}
+},
+{
+"id": "exp-p-018",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.044786293560113315,
+"no": 0.2730030745976017,
+"no consta": 0.682210631842285
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.858858372535061,
+"no": 0.07182894861188378,
+"no consta": 0.0693126788530552
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.05681716862384858,
+"no": 0.4641336971571184,
+"no consta": 0.47904913421903306
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9900310117893514,
+"un representante con autorización aportada": 0.005703549877256317,
+"un representante sin autorización aportada": 0.0042654383333923535
+}
+}
+}
+},
+{
+"id": "exp-p-019",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.013355910257198884,
+"no": 0.27202240468630506,
+"no consta": 0.714621685056496
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.12903411349959196,
+"no": 0.26702421310760494,
+"no consta": 0.603941673392803
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9661955345369376,
+"no": 0.016721753590424587,
+"no consta": 0.01708271187263778
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.1071049185540863,
+"un representante con autorización aportada": 0.8902121674523147,
+"un representante sin autorización aportada": 0.0026829139935990033
+}
+}
+}
+},
+{
+"id": "exp-p-020",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.842701083739855,
+"no": 0.08156004608839784,
+"no consta": 0.07573887017174713
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.09172663365979891,
+"no": 0.6440428687346836,
+"no consta": 0.2642304976055174
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9687480131979508,
+"no": 0.01859612352297202,
+"no consta": 0.012655863279077232
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9957654657004649,
+"un representante con autorización aportada": 0.002237769582901622,
+"un representante sin autorización aportada": 0.0019967647166335136
+}
+}
+}
+},
+{
+"id": "exp-p-021",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.8082236713950365,
+"no": 0.1088333591607731,
+"no consta": 0.08294296944419044
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9795955240115342,
+"no": 0.008597107854900726,
+"no consta": 0.01180736813356514
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.26349394103848583,
+"no": 0.17247937157627174,
+"no consta": 0.5640266873852424
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9981085724339223,
+"un representante con autorización aportada": 0.0012452340114143894,
+"un representante sin autorización aportada": 0.0006461935546633701
+}
+}
+}
+},
+{
+"id": "exp-p-022",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.030450448402883107,
+"no": 0.23818090531969419,
+"no consta": 0.7313686462774227
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.12526853569252097,
+"no": 0.39060667739222465,
+"no consta": 0.4841247869152544
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9148924571878574,
+"no": 0.03956866847256067,
+"no consta": 0.04553887433958196
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.07695121289435322,
+"un representante con autorización aportada": 0.0477793177672501,
+"un representante sin autorización aportada": 0.8752694693383967
+}
+}
+}
+},
+{
+"id": "exp-p-023",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.8295432020148932,
+"no": 0.1036726868274552,
+"no consta": 0.06678411115765158
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.7578970137395187,
+"no": 0.11579788389952567,
+"no consta": 0.1263051023609556
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.10733996491640754,
+"no": 0.27363855054435954,
+"no consta": 0.6190214845392329
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.989583455183791,
+"un representante con autorización aportada": 0.0073275470222032,
+"un representante sin autorización aportada": 0.0030889977940058697
+}
+}
+}
+},
+{
+"id": "exp-p-024",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.06462216569847362,
+"no": 0.30888692465087547,
+"no consta": 0.6264909096506509
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.04048354264651496,
+"no": 0.6223663843238305,
+"no consta": 0.3371500730296545
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9486986045279129,
+"no": 0.021563933358939986,
+"no consta": 0.02973746211314715
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9951008725693307,
+"un representante con autorización aportada": 0.003799535403280973,
+"un representante sin autorización aportada": 0.0010995920273883907
+}
+}
+}
+},
+{
+"id": "exp-p-025",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.07171492649611469,
+"no": 0.18242101910004666,
+"no consta": 0.7458640544038386
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.6757625140022482,
+"no": 0.12225170069182811,
+"no consta": 0.20198578530592365
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.701529197508782,
+"no": 0.09533414954946559,
+"no consta": 0.20313665294175245
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.1967784703737953,
+"un representante con autorización aportada": 0.4921373876292292,
+"un representante sin autorización aportada": 0.3110841419969755
+}
+}
+}
+},
+{
+"id": "exp-p-026",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.947425554850238,
+"no": 0.03178895672919926,
+"no consta": 0.02078548842056269
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.172239613946682,
+"no": 0.33072038992165936,
+"no consta": 0.4970399961316586
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.06454456164761592,
+"no": 0.4581635287145394,
+"no consta": 0.4772919096378447
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9897944898087169,
+"un representante con autorización aportada": 0.0027604384066229333,
+"un representante sin autorización aportada": 0.007445071784660141
+}
+}
+}
+},
+{
+"id": "exp-p-027",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.13969315380315253,
+"no": 0.21074056311338302,
+"no consta": 0.6495662830834644
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.7977271676063538,
+"no": 0.10946694761514664,
+"no consta": 0.0928058847784996
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9615389860880327,
+"no": 0.018637926844494283,
+"no consta": 0.01982308706747304
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.5013131020734152,
+"un representante con autorización aportada": 0.007115548262983843,
+"un representante sin autorización aportada": 0.49157134966360094
+}
+}
+}
+},
+{
+"id": "exp-p-028",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.04569347558284746,
+"no": 0.18394724956174474,
+"no consta": 0.7703592748554078
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.8490705047287529,
+"no": 0.07540961706737191,
+"no consta": 0.07551987820387522
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.09927673489933111,
+"no": 0.3336601207604986,
+"no consta": 0.5670631443401702
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.0047194810191519805,
+"un representante con autorización aportada": 0.9946855827097737,
+"un representante sin autorización aportada": 0.0005949362710743401
+}
+}
+}
+},
+{
+"id": "exp-p-029",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.8609204164010225,
+"no": 0.08545600495553009,
+"no consta": 0.05362357864344748
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.4039876223204676,
+"no": 0.18944563253887942,
+"no consta": 0.40656674514065305
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.05984543524970421,
+"no": 0.2515509975785204,
+"no consta": 0.6886035671717754
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9950610845762976,
+"un representante con autorización aportada": 0.002460036218868638,
+"un representante sin autorización aportada": 0.002478879204833797
+}
+}
+}
+},
+{
+"id": "exp-p-030",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.068465248770494,
+"no": 0.2776292901877953,
+"no consta": 0.6539054610417107
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.7857308329214838,
+"no": 0.09408914972775317,
+"no consta": 0.12018001735076295
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.3079591072761214,
+"no": 0.4771110544005979,
+"no consta": 0.21492983832328066
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.3631758798115218,
+"un representante con autorización aportada": 0.23847157473777458,
+"un representante sin autorización aportada": 0.39835254545070364
+}
+}
+}
+},
+{
+"id": "exp-p-031",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.9743304013318309,
+"no": 0.014747786846493947,
+"no consta": 0.010921811821675153
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.4585749370284397,
+"no": 0.2695625344049175,
+"no consta": 0.2718625285666427
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.5095120896180908,
+"no": 0.23073783058246214,
+"no consta": 0.25975007979944703
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.006902255180568423,
+"un representante con autorización aportada": 0.0012514724044146537,
+"un representante sin autorización aportada": 0.9918462724150169
+}
+}
+}
+},
+{
+"id": "exp-p-032",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.027579963374624417,
+"no": 0.2047604792619202,
+"no consta": 0.7676595573634554
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.014578409867626797,
+"no": 0.4596746090365025,
+"no consta": 0.5257469810958707
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.15333468983568713,
+"no": 0.15584176546571007,
+"no consta": 0.6908235446986027
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9594606435479753,
+"un representante con autorización aportada": 0.020735620757115682,
+"un representante sin autorización aportada": 0.019803735694909015
+}
+}
+}
+},
+{
+"id": "exp-p-033",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.7716492665566832,
+"no": 0.09468209320237816,
+"no consta": 0.13366864024093866
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.11310712837986572,
+"no": 0.5446437285282172,
+"no consta": 0.34224914309191706
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8383711391714271,
+"no": 0.052833190855272966,
+"no consta": 0.10879566997329984
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.03483925478113734,
+"un representante con autorización aportada": 0.9263090136802312,
+"un representante sin autorización aportada": 0.03885173153863147
+}
+}
+}
+},
+{
+"id": "exp-p-034",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.060384152520175205,
+"no": 0.24549379213172817,
+"no consta": 0.6941220553480967
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9868575587296698,
+"no": 0.0062259153194843524,
+"no consta": 0.006916525950845763
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9576126042742134,
+"no": 0.012854038342662839,
+"no consta": 0.029533357383123793
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9974944927119543,
+"un representante con autorización aportada": 0.0015779346525696006,
+"un representante sin autorización aportada": 0.000927572635476069
+}
+}
+}
+},
+{
+"id": "exp-p-035",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.13070675214430333,
+"no": 0.20890663630564782,
+"no consta": 0.6603866115500489
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.7685353641430235,
+"no": 0.09407940366745884,
+"no consta": 0.13738523218951773
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.017635256577588816,
+"no": 0.5222022689045152,
+"no consta": 0.460162474517896
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.013073751147512408,
+"un representante con autorización aportada": 0.985831229423675,
+"un representante sin autorización aportada": 0.0010950194288126425
+}
+}
+}
+},
+{
+"id": "exp-p-036",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.06498987082414617,
+"no": 0.2345538831974443,
+"no consta": 0.7004562459784095
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.10012044161737624,
+"no": 0.3764054533303597,
+"no consta": 0.5234741050522641
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.16473063826560974,
+"no": 0.29161033034324646,
+"no consta": 0.5436590313911438
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.02174991958425268,
+"un representante con autorización aportada": 0.013944248863648374,
+"un representante sin autorización aportada": 0.9643058315520989
+}
+}
+}
+},
+{
+"id": "exp-p-037",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.3855292750421815,
+"no": 0.17357359764812014,
+"no consta": 0.4408971273096984
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.38798907977326336,
+"no": 0.18866856677336347,
+"no consta": 0.42334235345337323
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8756344327277698,
+"no": 0.06443977668912716,
+"no consta": 0.05992579058310304
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.994190789079793,
+"un representante con autorización aportada": 0.0030359452310202983,
+"un representante sin autorización aportada": 0.0027732656891867468
+}
+}
+}
+},
+{
+"id": "exp-p-038",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.9333703835794215,
+"no": 0.035155325080295646,
+"no consta": 0.03147429134028282
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9691550406724387,
+"no": 0.015601181833406402,
+"no consta": 0.01524377749415488
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9614158855972065,
+"no": 0.016100642183009845,
+"no consta": 0.02248347221978371
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.11589049455837805,
+"un representante con autorización aportada": 0.8812191982881739,
+"un representante sin autorización aportada": 0.002890307153448074
+}
+}
+}
+},
+{
+"id": "exp-p-039",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.028236926443485213,
+"no": 0.30191538637624343,
+"no consta": 0.6698476871802713
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.2220321479742549,
+"no": 0.3868469951577037,
+"no consta": 0.39112085686804143
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9452126866127295,
+"no": 0.02599316366042332,
+"no consta": 0.0287941497268472
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9884340070387748,
+"un representante con autorización aportada": 0.004840688732613594,
+"un representante sin autorización aportada": 0.006725304228611575
+}
+}
+}
+},
+{
+"id": "exp-p-040",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.940093997642748,
+"no": 0.035236973446745326,
+"no consta": 0.024669028910506624
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.6598686182577241,
+"no": 0.18135022036133883,
+"no consta": 0.158781161380937
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.884376843669493,
+"no": 0.07369255439249921,
+"no consta": 0.041930601938007815
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.06325711062476165,
+"un representante con autorización aportada": 0.025173508508794608,
+"un representante sin autorización aportada": 0.9115693808664438
+}
+}
+}
+},
+{
+"id": "exp-p-041",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.01275817663120281,
+"no": 0.3893396512865314,
+"no consta": 0.5979021720822658
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9409629650122864,
+"no": 0.03165928428733066,
+"no consta": 0.02737775070038293
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.1373720508030668,
+"no": 0.29857695992520333,
+"no consta": 0.5640509892717299
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9944048161699638,
+"un representante con autorización aportada": 0.0023587353616562373,
+"un representante sin autorización aportada": 0.003236448468379978
+}
+}
+}
+},
+{
+"id": "exp-p-042",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.05704488551494957,
+"no": 0.1812628459891032,
+"no consta": 0.7616922684959472
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.8847784270900287,
+"no": 0.06175032497008462,
+"no consta": 0.053471247939886696
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.2250701818625656,
+"no": 0.22150664361576206,
+"no consta": 0.5534231745216723
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.006066767178559802,
+"un representante con autorización aportada": 0.9930023026738148,
+"un representante sin autorización aportada": 0.0009309301476254102
+}
+}
+}
+},
+{
+"id": "exp-p-043",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.1075105369091034,
+"no": 0.32158181071281433,
+"no consta": 0.5709076523780823
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.048635245173726714,
+"no": 0.5501503860717999,
+"no consta": 0.4012143687544734
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9507546766917696,
+"no": 0.017381577129819054,
+"no consta": 0.03186374617841129
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9922047035648367,
+"un representante con autorización aportada": 0.005217602825516399,
+"un representante sin autorización aportada": 0.0025776936096468506
+}
+}
+}
+},
+{
+"id": "exp-p-044",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.08651197766149027,
+"no": 0.2031993732094718,
+"no consta": 0.7102886491290379
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.4573800172230609,
+"no": 0.210321480497188,
+"no consta": 0.3322985022797511
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.6272874977098778,
+"no": 0.1332933286831777,
+"no consta": 0.23941917360694448
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9897189977539876,
+"un representante con autorización aportada": 0.00982047023429712,
+"un representante sin autorización aportada": 0.00046053201171524595
+}
+}
+}
+},
+{
+"id": "exp-p-045",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.9337859953831058,
+"no": 0.04165896757750308,
+"no consta": 0.024555037039391145
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.1433803141117096,
+"no": 0.41699934005737305,
+"no consta": 0.43962034583091736
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.12083693798615315,
+"no": 0.2354251786131332,
+"no consta": 0.6437378834007137
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.0670137712156333,
+"un representante con autorización aportada": 0.014485614563150893,
+"un representante sin autorización aportada": 0.9185006142212158
+}
+}
+}
+},
+{
+"id": "exp-p-046",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.33694235964377106,
+"no": 0.2106274421232592,
+"no consta": 0.4524301982329697
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9510844928192264,
+"no": 0.029730167184527652,
+"no consta": 0.019185339996245988
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8285707893116085,
+"no": 0.07447457369025479,
+"no consta": 0.09695463699813661
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9952811436565406,
+"un representante con autorización aportada": 0.002867744257500838,
+"un representante sin autorización aportada": 0.001851112085958513
+}
+}
+}
+},
+{
+"id": "exp-p-047",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.026437640978027612,
+"no": 0.32792709255001223,
+"no consta": 0.6456352664719601
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9341059366401472,
+"no": 0.03383442185315955,
+"no consta": 0.03205964150669327
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9036530902813361,
+"no": 0.028981277881085562,
+"no consta": 0.0673656318375783
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.01294957149477593,
+"un representante con autorización aportada": 0.9864911690275634,
+"un representante sin autorización aportada": 0.0005592594776606474
+}
+}
+}
+},
+{
+"id": "exp-p-048",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.05040168204909869,
+"no": 0.2512326036107765,
+"no consta": 0.6983657143401248
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.37024955064802023,
+"no": 0.1882349904845652,
+"no consta": 0.44151545886741456
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9758628734034301,
+"no": 0.008355766643752096,
+"no consta": 0.01578135995281771
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.1814384173720786,
+"un representante con autorización aportada": 0.8155223108222072,
+"un representante sin autorización aportada": 0.0030392718057142085
+}
+}
+}
+},
+{
+"id": "exp-p-049",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.03421092854911674,
+"no": 0.28544000429153454,
+"no consta": 0.6803490671593487
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.34907591342926025,
+"no": 0.3108457624912262,
+"no consta": 0.34007832407951355
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.8922656446654601,
+"no": 0.04852461912348903,
+"no consta": 0.05920973621105083
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.03026108688034168,
+"un representante con autorización aportada": 0.005391591465736356,
+"un representante sin autorización aportada": 0.964347321653922
+}
+}
+}
+},
+{
+"id": "exp-p-050",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.07511596028366478,
+"no": 0.21582857899963895,
+"no consta": 0.7090554607166962
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9706574298743046,
+"no": 0.013651439386084253,
+"no consta": 0.015691130739611116
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.7191015374794373,
+"no": 0.17116473360114196,
+"no consta": 0.10973372891942071
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9974807927347492,
+"un representante con autorización aportada": 0.0017216728009092355,
+"un representante sin autorización aportada": 0.0007975344643415846
+}
+}
+}
+},
+{
+"id": "exp-p-051",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.11717214871839243,
+"no": 0.30174244574243003,
+"no consta": 0.5810854055391775
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.04083080772299205,
+"no": 0.6359218047226282,
+"no consta": 0.32324738755437976
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.2562804741775848,
+"no": 0.21692653843979423,
+"no consta": 0.5267929873826209
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.03833438223662908,
+"un representante con autorización aportada": 0.9612528695058506,
+"un representante sin autorización aportada": 0.0004127482575202995
+}
+}
+}
+},
+{
+"id": "exp-p-052",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.05564753339311332,
+"no": 0.1813627156038913,
+"no consta": 0.7629897510029954
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.958268498607409,
+"no": 0.020806161878121232,
+"no consta": 0.020925339514469718
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9506250944594012,
+"no": 0.024910597680790496,
+"no consta": 0.024464307859808222
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.017790966820326194,
+"un representante con autorización aportada": 0.9818895625713044,
+"un representante sin autorización aportada": 0.0003194706083693214
+}
+}
+}
+},
+{
+"id": "exp-p-053",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.9167453135991964,
+"no": 0.05342482452676468,
+"no consta": 0.02982986187403893
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.00904677531415627,
+"no": 0.8095166109768207,
+"no consta": 0.1814366137090231
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.02625042641070852,
+"no": 0.6232014460951467,
+"no consta": 0.35054812749414477
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9822489410285774,
+"un representante con autorización aportada": 0.004750977812254757,
+"un representante sin autorización aportada": 0.01300008115916779
+}
+}
+}
+},
+{
+"id": "exp-p-054",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.024251068518437342,
+"no": 0.27582336911055994,
+"no consta": 0.6999255623710028
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.012215984461889337,
+"no": 0.6523940283710833,
+"no consta": 0.3353899871670274
+}
+},
+"identidad": {
+"label": "sí",
+"p": {
+"sí": 0.9508030379161125,
+"no": 0.01793612160557463,
+"no consta": 0.03126084047831282
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.04741941374756614,
+"un representante con autorización aportada": 0.03061528865018752,
+"un representante sin autorización aportada": 0.9219652976022463
+}
+}
+}
+},
+{
+"id": "exp-p-055",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.48337922319564713,
+"no": 0.1897015635802643,
+"no consta": 0.32691921322408857
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.41849469514944115,
+"no": 0.20953680262659785,
+"no consta": 0.371968502223961
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.20810414850711823,
+"no": 0.2167712301015854,
+"no consta": 0.5751246213912964
+}
+},
+"representacion": {
+"label": "el interesado en nombre propio",
+"p": {
+"el interesado en nombre propio": 0.9938281881911143,
+"un representante con autorización aportada": 0.0037354426774137126,
+"un representante sin autorización aportada": 0.002436369131472012
+}
+}
+}
+},
+{
+"id": "exp-p-056",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "no",
+"p": {
+"sí": 0.18759596906888393,
+"no": 0.25493202373182844,
+"no consta": 0.5574720071992876
+}
+},
+"firma": {
+"label": "no",
+"p": {
+"sí": 0.020572355821764976,
+"no": 0.6591221947997177,
+"no consta": 0.32030544937851735
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.018999685509146175,
+"no": 0.6072020821376588,
+"no consta": 0.37379823235319504
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.019940228609544215,
+"un representante con autorización aportada": 0.0014446601077878012,
+"un representante sin autorización aportada": 0.978615111282668
+}
+}
+}
+},
+{
+"id": "exp-p-057",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.801775467422239,
+"no": 0.0716688792656195,
+"no consta": 0.1265556533121415
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.7715430202220155,
+"no": 0.0862586715351144,
+"no consta": 0.14219830824287005
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.07831792183289281,
+"no": 0.4327013299151661,
+"no consta": 0.48898074825194116
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.15998855128891779,
+"un representante con autorización aportada": 0.8257678097296742,
+"un representante sin autorización aportada": 0.014243638981408
+}
+}
+}
+},
+{
+"id": "exp-p-058",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.1051114448557372,
+"no": 0.15002109445678655,
+"no consta": 0.7448674606874762
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.8342736674202109,
+"no": 0.07760221055158267,
+"no consta": 0.08812412202820637
+}
+},
+"identidad": {
+"label": "no consta",
+"p": {
+"sí": 0.19162589882689413,
+"no": 0.178074096979919,
+"no consta": 0.6303000041931869
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.05704062427404865,
+"un representante con autorización aportada": 0.9424443217799563,
+"un representante sin autorización aportada": 0.0005150539459950941
+}
+}
+}
+},
+{
+"id": "exp-p-059",
+"dificil": false,
+"respuestas": {
+"pago": {
+"label": "no consta",
+"p": {
+"sí": 0.10734878960320902,
+"no": 0.2588471587977033,
+"no consta": 0.6338040515990876
+}
+},
+"firma": {
+"label": "no consta",
+"p": {
+"sí": 0.12692273964102954,
+"no": 0.27445107289476584,
+"no consta": 0.5986261874642046
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.017329475072487024,
+"no": 0.4779205068752217,
+"no consta": 0.5047500180522912
+}
+},
+"representacion": {
+"label": "un representante sin autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.029870525759315678,
+"un representante con autorización aportada": 0.0023305021760636367,
+"un representante sin autorización aportada": 0.9677989720646207
+}
+}
+}
+},
+{
+"id": "exp-p-060",
+"dificil": true,
+"respuestas": {
+"pago": {
+"label": "sí",
+"p": {
+"sí": 0.8698665486931721,
+"no": 0.05331486075992694,
+"no consta": 0.07681859054690089
+}
+},
+"firma": {
+"label": "sí",
+"p": {
+"sí": 0.9515910520840661,
+"no": 0.022527930276629582,
+"no consta": 0.02588101763930427
+}
+},
+"identidad": {
+"label": "no",
+"p": {
+"sí": 0.48017385720170397,
+"no": 0.17105980687977035,
+"no consta": 0.3487663359185257
+}
+},
+"representacion": {
+"label": "un representante con autorización aportada",
+"p": {
+"el interesado en nombre propio": 0.0349886880024182,
+"un representante con autorización aportada": 0.9638107848748949,
+"un representante sin autorización aportada": 0.0012005271226868369
+}
+}
+}
+}
+]
+}

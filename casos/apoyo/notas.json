@@ -1,0 +1,164 @@
+{
+ "clasico": {
+  "nota": 3.3,
+  "ms_por_caso": 2.3,
+  "preguntas": {
+   "apoyada": {
+    "nota": 3.3,
+    "acierto": 0.6288659793814433,
+    "ic95": [
+     0.5648504273504273,
+     0.6924481684391449
+    ],
+    "seguras": 0,
+    "fallo_seguras": 0.0,
+    "penalizacion": 0
+   }
+  },
+  "n": 194
+ },
+ "embeddings": {
+  "nota": 2.5,
+  "ms_por_caso": 0.1,
+  "preguntas": {
+   "apoyada": {
+    "nota": 2.5,
+    "acierto": 0.5824742268041236,
+    "ic95": [
+     0.5156649616368286,
+     0.6480516661239553
+    ],
+    "seguras": 0,
+    "fallo_seguras": 0.0,
+    "penalizacion": 0
+   }
+  },
+  "n": 194
+ },
+ "jeff-08b": {
+  "nota": 8.4,
+  "ms_por_caso": 282.4,
+  "preguntas": {
+   "apoyada": {
+    "nota": 8.4,
+    "acierto": 0.9123711340206185,
+    "ic95": [
+     0.871819440008517,
+     0.9475810738968634
+    ],
+    "seguras": 153,
+    "fallo_seguras": 0.006535947712418301,
+    "penalizacion": 0
+   }
+  },
+  "n": 194
+ },
+ "jeff-2b": {
+  "nota": 7.8,
+  "ms_por_caso": 516.3,
+  "preguntas": {
+   "apoyada": {
+    "nota": 7.8,
+    "acierto": 0.8762886597938144,
+    "ic95": [
+     0.8322169059011164,
+     0.9205319148936171
+    ],
+    "seguras": 128,
+    "fallo_seguras": 0.0078125,
+    "penalizacion": 0
+   }
+  },
+  "n": 194
+ },
+ "jev-v1": {
+  "nota": 4.9,
+  "ms_por_caso": 603.8,
+  "preguntas": {
+   "apoyada": {
+    "nota": 4.9,
+    "acierto": 0.7164948453608248,
+    "ic95": [
+     0.6714285714285715,
+     0.7650602409638554
+    ],
+    "seguras": 83,
+    "fallo_seguras": 0.04819277108433735,
+    "penalizacion": 0
+   }
+  },
+  "n": 194
+ },
+ "jev-v3": {
+  "nota": 2.2,
+  "ms_por_caso": 200.6,
+  "preguntas": {
+   "apoyada": {
+    "nota": 2.2,
+    "acierto": 0.6804123711340206,
+    "ic95": [
+     0.6333333333333333,
+     0.7277777777777777
+    ],
+    "seguras": 167,
+    "fallo_seguras": 0.2994011976047904,
+    "penalizacion": 2
+   }
+  },
+  "n": 194
+ },
+ "kev-08b": {
+  "nota": 1.0,
+  "ms_por_caso": 185.9,
+  "preguntas": {
+   "apoyada": {
+    "nota": 1.0,
+    "acierto": 0.6082474226804124,
+    "ic95": [
+     0.5659340659340659,
+     0.651685393258427
+    ],
+    "seguras": 82,
+    "fallo_seguras": 0.32926829268292684,
+    "penalizacion": 2
+   }
+  },
+  "n": 194
+ },
+ "kev-4b": {
+  "nota": 4.9,
+  "ms_por_caso": 925.3,
+  "preguntas": {
+   "apoyada": {
+    "nota": 4.9,
+    "acierto": 0.7731958762886597,
+    "ic95": [
+     0.7254901960784313,
+     0.8200000000000001
+    ],
+    "seguras": 129,
+    "fallo_seguras": 0.05426356589147287,
+    "penalizacion": 1
+   }
+  },
+  "n": 194
+ },
+ "llm-9b": {
+  "nota": 9.4,
+  "ms_por_caso": 2067.1,
+  "preguntas": {
+   "apoyada": {
+    "nota": 9.4,
+    "acierto": 0.9690721649484536,
+    "ic95": [
+     0.9438202247191011,
+     0.99
+    ],
+    "seguras": 172,
+    "fallo_seguras": 0.005813953488372093,
+    "penalizacion": 0
+   }
+  },
+  "n": 194
+ }
+}

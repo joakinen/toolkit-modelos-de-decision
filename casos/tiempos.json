@@ -1,0 +1,47 @@
+{
+ "embeddings": {
+  "segundos_por_correo": 0.141,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "jev-v1": {
+  "segundos_por_correo": 1.16,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "jev-v3": {
+  "segundos_por_correo": 0.372,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "llm-9b": {
+  "segundos_por_correo": 3.633,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "kev-08b": {
+  "segundos_por_correo": 0.19,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "kev-4b": {
+  "segundos_por_correo": 1.105,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "jeff-08b": {
+  "segundos_por_correo": 0.358,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "jeff-2b": {
+  "segundos_por_correo": 0.597,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ },
+ "clasico": {
+  "segundos_por_correo": 0.001,
+  "correos": 30,
+  "preguntas_por_correo": 3
+ }
+}

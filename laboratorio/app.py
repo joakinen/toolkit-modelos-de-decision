@@ -6,6 +6,8 @@ Configuración por variables de entorno (todas opcionales):
   OLLAMA_URL      por defecto http://127.0.0.1:11434
   KEV_08B_PORT    por defecto 8008   (python -m kev.serve --run jaredpalmer/kev-0.8b --port 8008)
   KEV_4B_PORT     por defecto 8009
+  JEFF_08B_PORT   por defecto 8010   (JEFF_BACKEND=mlx JEFF_CHECKPOINT=<carpeta> PORT=8010 uv run jeff-serve)
+  JEFF_2B_PORT    por defecto 8011
   JEV_V3_DIR      carpeta de Jev-style v3 con jev-score compilado; sin ella ese modelo aparece como «no responde»
 Un modelo que no esté en marcha aparece como parado; el resto funciona igual.
 """
@@ -28,6 +30,8 @@ V3_DIR = Path(os.environ.get("JEV_V3_DIR", Path.home() / "jev-v3-gguf"))
 OLLAMA = os.environ.get("OLLAMA_URL", "http://127.0.0.1:11434")
 KEV_08B_PORT = int(os.environ.get("KEV_08B_PORT", 8008))
 KEV_4B_PORT = int(os.environ.get("KEV_4B_PORT", 8009))
+JEFF_08B_PORT = int(os.environ.get("JEFF_08B_PORT", 8010))
+JEFF_2B_PORT = int(os.environ.get("JEFF_2B_PORT", 8011))
 V1_MODEL = "hf.co/chaoliangUNSW/Jev-Style-Qwen3.5-2B-Decision-GGUF:Q8_0"
 LETRAS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 PROMPT_V1 = """You are a decision function. Read the state, then answer the question by choosing exactly one option.
@@ -124,10 +128,11 @@ def run_v3(state, questions):
         return out
 
 
-def kev_runner(port):
+def kev_runner(port, modelo="kev-latest"):
+    """Para cualquier servidor con el protocolo de TypeSafe (/v1/systemone): Kev y Jeff."""
     def run(state, questions):
-        # Kev responde todas las preguntas sobre el mismo estado en una sola pasada
-        body = {"model": "kev-latest", "state": state, "questions": {
+        # responde todas las preguntas sobre el mismo estado en una sola pasada
+        body = {"model": modelo, "state": state, "questions": {
             qid: {"type": "choice", "instructions": q, "criteria": {o: None for o in opts}} for qid, q, opts in questions}}
         r = post_json(f"http://127.0.0.1:{port}/v1/systemone", body)
         answers = r.get("answers", r)
@@ -168,6 +173,14 @@ MODELOS = [
      "motor": "Servidor Kev (MLX en Apple Silicon, PyTorch en el resto)", "autor": "jaredpalmer",
      "fuente": "https://huggingface.co/jaredpalmer/kev-4b",
      "resumen": "El mismo diseño sobre Qwen3.5-4B, con entrenamiento extra en documentos reales y en habilidades (fechas, abstención, varios pasos). Es el hermano mayor que la ficha de Kev recomienda para calidad."},
+    {"id": "jeff-08b", "nombre": "Jeff · 0.8B", "run": kev_runner(JEFF_08B_PORT, "jeff-latest"), "ok": ok_kev(JEFF_08B_PORT),
+     "motor": "Servidor Jeff (MLX en Apple Silicon, PyTorch en el resto)", "autor": "firelex (mstrasser en Hugging Face)",
+     "fuente": "https://huggingface.co/mstrasser/Jeff-Qwen3.5-0.8B",
+     "resumen": "Qwen3.5-0.8B ajustado entero (no con LoRA) a partir de la receta abierta AutoJev, con datos sintéticos escritos por un modelo abierto. Lee la respuesta en una sola pasada y la calibra con una temperatura. Habla el protocolo de TypeSafe. Sus autores avisan: solo inglés."},
+    {"id": "jeff-2b", "nombre": "Jeff · 2B", "run": kev_runner(JEFF_2B_PORT, "jeff-latest"), "ok": ok_kev(JEFF_2B_PORT),
+     "motor": "Servidor Jeff (MLX en Apple Silicon, PyTorch en el resto)", "autor": "firelex (mstrasser en Hugging Face)",
+     "fuente": "https://huggingface.co/mstrasser/Jeff-Qwen3.5-2B",
+     "resumen": "El mismo diseño sobre Qwen3.5-2B. En sus pruebas puntúa más que el 0.8B en los benchmarks pero juega peor: es más prudente."},
     {"id": "llm-9b", "nombre": "Qwen3.5 · 9B (letras)", "run": run_llm, "ok": ok_llm,
      "motor": "Ollama (qwen3.5:9b, Q4_K_M, 6,6 GB)", "autor": "Qwen (Alibaba)",
      "fuente": "https://ollama.com/library/qwen3.5",

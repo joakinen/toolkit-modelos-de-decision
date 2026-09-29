@@ -16,7 +16,8 @@ import os
 SALIDA = Path(__file__).parent.parent / "resultados" / "boe.json"
 AQUI = Path(os.environ.get("BOE_DATOS", Path(__file__).parent))   # carpeta con prueba.jsonl, eval/ y eval-kev/
 SIN_AJUSTAR = {"jev-v1": "Jev-style v1 · 2B", "jev-v3": "Jev-style v3 · 0.8B", "kev-08b": "Kev · 0.8B",
-               "kev-4b": "Kev · 4B", "llm-9b": "Qwen3.5 · 9B (letras)"}
+               "kev-4b": "Kev · 4B", "llm-9b": "Qwen3.5 · 9B (letras)", "jeff-08b": "Jeff · 0.8B", "jeff-2b": "Jeff · 2B",
+               "clasico": "Clasificador clásico (1.400 textos)", "embeddings": "Embeddings y clasificador (1.400 textos)"}
 AJUSTADOS = {"ajustado08b": "Kev · 0.8B ajustado", "ajustado4b": "Kev · 4B ajustado"}
 ORIGINAL_DE = {"ajustado08b": "base08b", "ajustado4b": "base4b"}   # el mismo modelo sin ajustar, medido igual
 N_CONTROL = 12   # control.py: las 12 pruebas de laboratorio/casos.py

@@ -1,0 +1,2528 @@
+{
+"modelo": "jev-v3",
+"ms_por_caso": 200.6,
+"casos": [
+{
+"id": "BOE-A-2026-11581-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9738960066795447,
+"false": 0.026103993320455297
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11581-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.6679217621119297,
+"false": 0.3320782378880704
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-15295-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9830763604368982,
+"false": 0.016923639563101816
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-15295-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.985602087132691,
+"false": 0.014397912867308826
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1222-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9769699554977809,
+"false": 0.023030044502219054
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1222-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.05212818977780623,
+"false": 0.9478718102221937
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3076-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9793527210161006,
+"false": 0.02064727898389942
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3076-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9818301076625029,
+"false": 0.01816989233749718
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7323-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9735691710305555,
+"false": 0.026430828969444552
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7323-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9251530528757314,
+"false": 0.07484694712426869
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18608-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9823359089136059,
+"false": 0.01766409108639412
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18608-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9831784074362209,
+"false": 0.016821592563779235
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2545-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9752604285955372,
+"false": 0.024739571404462757
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2545-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.8523253624752736,
+"false": 0.14767463752472645
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11582-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9702786201018775,
+"false": 0.029721379898122426
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11582-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9739508836920079,
+"false": 0.02604911630799216
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-19690-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9795554175243085,
+"false": 0.020444582475691465
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-19690-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.05635011637337007,
+"false": 0.9436498836266299
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21507-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9845367090490471,
+"false": 0.015463290950952833
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21507-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9870472938606575,
+"false": 0.012952706139342523
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12775-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9832071304188539,
+"false": 0.016792869581146105
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12775-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.2592468322381463,
+"false": 0.7407531677618537
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14019-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9841298781773614,
+"false": 0.015870121822638483
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14019-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.35337900818177365,
+"false": 0.6466209918182264
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7542-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9842936346869507,
+"false": 0.015706365313049125
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7542-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9836063750621665,
+"false": 0.016393624937833397
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-239-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9821266769620202,
+"false": 0.017873323037979776
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-239-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9837401389368542,
+"false": 0.016259861063145673
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5406-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9820303030480518,
+"false": 0.017969696951948128
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5406-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9737265415815182,
+"false": 0.026273458418481728
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-4522-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9837006927845765,
+"false": 0.016299307215423647
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-4522-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.03593933779016504,
+"false": 0.964060662209835
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1030-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9874176707833863,
+"false": 0.012582329216613806
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1030-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.985624137486994,
+"false": 0.014375862513006122
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-9041-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9802452513489667,
+"false": 0.019754748651033275
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-9041-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.09838302842865444,
+"false": 0.9016169715713456
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6484-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9862199240144716,
+"false": 0.013780075985528425
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6484-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9892957712176278,
+"false": 0.010704228782372198
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21575-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9813093632550215,
+"false": 0.018690636744978426
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21575-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.4991477073657169,
+"false": 0.500852292634283
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2141-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9268667540824477,
+"false": 0.07313324591755231
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2141-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.875770016596904,
+"false": 0.12422998340309595
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-9795-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9825865842522626,
+"false": 0.017413415747737436
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-9795-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.03572571339194421,
+"false": 0.9642742866080557
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11062-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9800943783860674,
+"false": 0.019905621613932525
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11062-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9607716935145602,
+"false": 0.03922830648543989
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-2295-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.984678522957311,
+"false": 0.015321477042689064
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-2295-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.12010176442281985,
+"false": 0.8798982355771803
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10022-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9750272147083093,
+"false": 0.024972785291690575
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10022-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.978937365382075,
+"false": 0.021062634617925017
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11700-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.982854411852099,
+"false": 0.0171455881479011
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11700-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.21889376276737676,
+"false": 0.7811062372326233
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21208-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9857279618845787,
+"false": 0.014272038115421385
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21208-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9851870092797627,
+"false": 0.014812990720237219
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10587-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9815799182193475,
+"false": 0.018420081780652416
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10587-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.06268847430986213,
+"false": 0.9373115256901379
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-5713-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9801789156750641,
+"false": 0.01982108432493587
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-5713-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9844734286263656,
+"false": 0.015526571373634447
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-534-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9822700888973235,
+"false": 0.017729911102676566
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-534-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.11331913195071561,
+"false": 0.8866808680492844
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3379-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9808348460094916,
+"false": 0.019165153990508523
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3379-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9678204852931892,
+"false": 0.03217951470681074
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6697-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9717534493508363,
+"false": 0.02824655064916381
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6697-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.02832837462791297,
+"false": 0.9716716253720871
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-5925-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9821511232229709,
+"false": 0.017848876777029156
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-5925-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9837180759465631,
+"false": 0.0162819240534369
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-13946-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9591116036981003,
+"false": 0.04088839630189956
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-13946-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.04703753995350015,
+"false": 0.9529624600464998
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3211-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9822475789368769,
+"false": 0.01775242106312312
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3211-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9792083736560898,
+"false": 0.02079162634391007
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18286-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9773059585148187,
+"false": 0.022694041485181227
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18286-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.03157985937082554,
+"false": 0.9684201406291745
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8955-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9815162498247191,
+"false": 0.01848375017528088
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8955-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9810120946782962,
+"false": 0.018987905321703937
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-19488-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9740122872598256,
+"false": 0.02598771274017433
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-19488-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.5975874884138374,
+"false": 0.40241251158616265
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5693-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9824325996109594,
+"false": 0.01756740038904063
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5693-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9815999318984114,
+"false": 0.018400068101588604
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11939-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.982992937197801,
+"false": 0.017007062802198974
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11939-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.4369352561671364,
+"false": 0.5630647438328635
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-11294-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9731065725946255,
+"false": 0.02689342740537453
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-11294-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9694541629256762,
+"false": 0.030545837074323803
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8697-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9800880349712721,
+"false": 0.019911965028727958
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8697-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.06906208954550154,
+"false": 0.9309379104544986
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-6978-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.979373374406762,
+"false": 0.02062662559323806
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-6978-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9717818715446223,
+"false": 0.028218128455377755
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18305-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9807504737688151,
+"false": 0.019249526231184963
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18305-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.02176265403571075,
+"false": 0.9782373459642892
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12874-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9868220919555856,
+"false": 0.013177908044414325
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12874-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9823122007271023,
+"false": 0.017687799272897653
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7408-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9834120614633626,
+"false": 0.016587938536637484
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7408-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.028016348838755183,
+"false": 0.9719836511612449
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10638-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9840273960269497,
+"false": 0.015972603973050285
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10638-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9799057513958758,
+"false": 0.02009424860412419
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14295-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9832338045283728,
+"false": 0.016766195471627235
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14295-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.09648438730947383,
+"false": 0.9035156126905263
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8958-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9869626206841339,
+"false": 0.013037379315866203
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8958-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9876843626852725,
+"false": 0.012315637314727396
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2825-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9763795495756307,
+"false": 0.02362045042436938
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2825-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.7682673156833744,
+"false": 0.2317326843166256
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-8977-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9733249241181385,
+"false": 0.02667507588186146
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-8977-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9662852011972689,
+"false": 0.033714798802731205
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14166-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9774497897664773,
+"false": 0.02255021023352273
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14166-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.11556428225537062,
+"false": 0.8844357177446294
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-762-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9810607816072233,
+"false": 0.01893921839277666
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-762-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9823235695005497,
+"false": 0.01767643049945042
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3812-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.957324296114663,
+"false": 0.04267570388533712
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3812-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.6574965606829908,
+"false": 0.34250343931700916
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3705-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9825692394557849,
+"false": 0.017430760544215104
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3705-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9790870601083025,
+"false": 0.020912939891697516
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5880-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9841441732807291,
+"false": 0.015855826719270924
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5880-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.7713259973035718,
+"false": 0.22867400269642832
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-4112-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9741900960210841,
+"false": 0.02580990397891593
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-4112-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9712526281642779,
+"false": 0.028747371835722027
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2147-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9825080357692942,
+"false": 0.01749196423070571
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-2147-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9090094466808625,
+"false": 0.09099055331913752
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7954-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9812801436021479,
+"false": 0.018719856397852095
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7954-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9793280769542708,
+"false": 0.02067192304572912
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-9047-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9786356170355859,
+"false": 0.02136438296441398
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-9047-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.48882451773039026,
+"false": 0.5111754822696097
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3216-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9814455981491651,
+"false": 0.018554401850834845
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3216-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9812961214995172,
+"false": 0.01870387850048282
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11178-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9817219390871439,
+"false": 0.018278060912856206
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-11178-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.012245918151001381,
+"false": 0.9877540818489986
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-15033-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9840230692458883,
+"false": 0.01597693075411151
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-15033-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9873775273735271,
+"false": 0.01262247262647288
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7295-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.982047314609953,
+"false": 0.017952685390047126
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7295-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.8325008606218876,
+"false": 0.16749913937811245
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3353-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9805570146883222,
+"false": 0.019442985311677798
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-3353-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9812540886673897,
+"false": 0.018745911332610228
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-823-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9862308913623604,
+"false": 0.013769108637639488
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-823-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.2568571190821738,
+"false": 0.7431428809178262
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-19564-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.984312537543631,
+"false": 0.01568746245636885
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-19564-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9857934743796863,
+"false": 0.014206525620313572
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5388-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9823752406535484,
+"false": 0.017624759346451652
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-5388-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.04240491879128474,
+"false": 0.9575950812087152
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-11824-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9839773804420205,
+"false": 0.016022619557979408
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-11824-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9841287949548857,
+"false": 0.015871205045114196
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21504-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9855168778188693,
+"false": 0.014483122181130684
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-21504-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.1586391440676289,
+"false": 0.8413608559323711
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-6777-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9758926269547767,
+"false": 0.02410737304522328
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-6777-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.978353361183488,
+"false": 0.02164663881651206
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6334-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9831104375268129,
+"false": 0.01688956247318693
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6334-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.023500115208487937,
+"false": 0.9764998847915122
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-231-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9811374033774527,
+"false": 0.018862596622547426
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-231-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.981521065848004,
+"false": 0.01847893415199588
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12300-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9874735151189022,
+"false": 0.012526484881097722
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12300-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9891035447083728,
+"false": 0.010896455291627156
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18594-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9733243614032736,
+"false": 0.02667563859672636
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-18594-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.07065763387126107,
+"false": 0.9293423661287389
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1472-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9798989649021763,
+"false": 0.020101035097823676
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1472-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9765331097330668,
+"false": 0.023466890266933146
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7298-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9246197495929062,
+"false": 0.0753802504070939
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7298-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.5116834501389355,
+"false": 0.48831654986106454
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-13280-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9702026501239174,
+"false": 0.0297973498760826
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-13280-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9710314170534825,
+"false": 0.02896858294651742
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7168-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9837912284896851,
+"false": 0.01620877151031475
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7168-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.08987405918252776,
+"false": 0.9101259408174722
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7192-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9797964686777803,
+"false": 0.0202035313222198
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7192-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9769438280905537,
+"false": 0.023056171909446366
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-6548-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9832461620244807,
+"false": 0.016753837975519176
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-6548-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.305378142085132,
+"false": 0.694621857914868
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-13293-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9503136338699896,
+"false": 0.049686366130010415
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-13293-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9524480212840079,
+"false": 0.047551978715992024
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-17350-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9863800108138522,
+"false": 0.01361998918614774
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-17350-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.7481431836358708,
+"false": 0.2518568163641292
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6317-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9845567574888163,
+"false": 0.015443242511183732
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-6317-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9871662322976956,
+"false": 0.01283376770230433
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14156-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9581542015254678,
+"false": 0.041845798474532146
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-14156-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.0696054701042558,
+"false": 0.9303945298957441
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7824-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9805094401784067,
+"false": 0.01949055982159324
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7824-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9800798278844033,
+"false": 0.019920172115596744
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1218-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9720523262718676,
+"false": 0.027947673728132425
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-1218-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.8140104637079255,
+"false": 0.18598953629207457
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12710-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9842680995691115,
+"false": 0.015731900430888495
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-12710-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9847845742152793,
+"false": 0.015215425784720628
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7103-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9846103467751379,
+"false": 0.015389653224862064
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7103-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.08409129996731679,
+"false": 0.9159087000326832
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-322-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9851027205997973,
+"false": 0.014897279400202698
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-322-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.16882170538461472,
+"false": 0.8311782946153853
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-4055-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.980194846857582,
+"false": 0.01980515314241811
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-4055-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9778242065086223,
+"false": 0.022175793491377563
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8418-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9821930007721609,
+"false": 0.01780699922783918
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-8418-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.20996022898266395,
+"false": 0.790039771017336
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10511-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9774095314131391,
+"false": 0.022590468586860753
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10511-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9801608226789266,
+"false": 0.019839177321073504
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-4567-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9750350501629955,
+"false": 0.02496494983700449
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-4567-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.24701784511764452,
+"false": 0.7529821548823554
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-16419-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9774824420996319,
+"false": 0.022517557900368242
+}
+}
+}
+},
+{
+"id": "BOE-B-2026-16419-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9641444085743248,
+"false": 0.035855591425675175
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10429-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.9808008183017786,
+"false": 0.01919918169822155
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-10429-no",
+"dificil": true,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.6451785300691526,
+"false": 0.35482146993084734
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7677-si",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "true",
+"p": {
+"true": 0.971086296071088,
+"false": 0.0289137039289119
+}
+}
+}
+},
+{
+"id": "BOE-A-2026-7677-no",
+"dificil": false,
+"respuestas": {
+"apoyada": {
+"label": "false",
+"p": {
+"true": 0.9696115873192068,
+"false": 0.030388412680793255
+}
+}
+}
+}
+]
+}

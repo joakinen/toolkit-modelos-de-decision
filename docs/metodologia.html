@@ -1,0 +1,582 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modelos de decisión: metodología</title>
+<meta name="description" content="Cómo se han medido los modelos de decisión del toolkit: datos, métricas, pruebas y nota de 1 a 10.">
+<style>
+:root {
+  --bg: #f6f5f1; --panel: #ffffff; --ink: #1c1d21; --muted: #62646b; --line: #e3e1da;
+  --accent: #2f5bd3; --accent-soft: #e6ecfb; --ok: #1e7a4c; --ok-soft: #e2f3ea; --bad: #b3261e; --bad-soft: #fbe7e5;
+  --warn: #8a5a00; --warn-soft: #fbf0d9; --bar: #2f5bd3; --bar-bg: #eceae4;
+  --radius: 12px; --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #16171a; --panel: #1f2024; --ink: #ececef; --muted: #a0a2aa; --line: #2e3036;
+    --accent: #7ea2ff; --accent-soft: #232c45; --ok: #5fd39a; --ok-soft: #1b3328; --bad: #ff8a80; --bad-soft: #3a2220;
+    --warn: #f0c060; --warn-soft: #372c16; --bar: #7ea2ff; --bar-bg: #2b2d33;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+header { padding: 20px 16px 8px; max-width: 860px; margin: 0 auto; }
+h1 { font-size: 1.35rem; margin: 0 0 4px; letter-spacing: -0.01em; }
+h2 { font-size: 1.1rem; margin: 24px 0 8px; }
+h3 { font-size: 1rem; margin: 0 0 6px; }
+p { margin: 0 0 10px; }
+.sub { color: var(--muted); font-size: 0.92rem; }
+nav { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+nav .tabs { display: flex; gap: 4px; overflow-x: auto; padding: 8px 12px; max-width: 860px; margin: 0 auto; scrollbar-width: none; }
+nav button { flex: none; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 0.95rem; padding: 8px 12px; border-radius: 999px; cursor: pointer; }
+nav button[aria-selected="true"] { background: var(--accent-soft); color: var(--accent); font-weight: 600; }
+main { max-width: 860px; margin: 0 auto; padding: 8px 16px 64px; }
+section[hidden] { display: none; }
+.card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; margin: 12px 0; }
+.row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.grow { flex: 1; min-width: 0; }
+.btn { border: 0; background: var(--accent); color: #fff; font: inherit; font-weight: 600; font-size: 0.95rem; padding: 10px 14px; border-radius: 10px; cursor: pointer; }
+@media (prefers-color-scheme: dark) { .btn { color: #10131c; } }
+.btn.ghost { background: var(--accent-soft); color: var(--accent); }
+.btn:disabled { opacity: 0.5; cursor: default; }
+.chip { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--panel); color: var(--ink); font: inherit; font-size: 0.85rem; padding: 6px 10px; border-radius: 999px; cursor: pointer; }
+.chip[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: var(--accent); }
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); }
+.chip .dot.on { background: var(--ok); }
+.badge { display: inline-block; font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; background: var(--bar-bg); color: var(--muted); }
+.badge.trampa { background: var(--warn-soft); color: var(--warn); }
+.state { font-size: 0.95rem; background: var(--bg); border-left: 3px solid var(--line); padding: 8px 10px; border-radius: 6px; margin: 8px 0; }
+.q { font-weight: 600; margin: 6px 0 2px; }
+.opts { color: var(--muted); font-size: 0.88rem; }
+.opts b { color: var(--ok); font-weight: 600; }
+.why { color: var(--muted); font-size: 0.85rem; margin-top: 6px; }
+.res { margin-top: 10px; border-top: 1px solid var(--line); }
+.r { display: grid; grid-template-columns: 1fr auto; gap: 2px 10px; padding: 8px 0; border-bottom: 1px dashed var(--line); }
+.r:last-child { border-bottom: 0; }
+.r .who { font-size: 0.85rem; color: var(--muted); }
+.r .ans { font-weight: 600; }
+.r .ans.ok::before { content: "✓ "; color: var(--ok); }
+.r .ans.bad::before { content: "✗ "; color: var(--bad); }
+.r .meta { font-family: var(--mono); font-size: 0.8rem; color: var(--muted); text-align: right; white-space: nowrap; }
+.bar { grid-column: 1 / -1; height: 6px; border-radius: 3px; background: var(--bar-bg); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--bar); border-radius: 3px; }
+.bar.bad i { background: var(--bad); }
+.dist { grid-column: 1 / -1; font-size: 0.8rem; color: var(--muted); font-family: var(--mono); }
+.pending { color: var(--muted); font-size: 0.85rem; }
+.err { color: var(--bad); font-size: 0.85rem; }
+.score { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.score .card { margin: 0; }
+.score .n { font-size: 1.8rem; font-weight: 700; letter-spacing: -0.02em; }
+.score .n small { font-size: 0.95rem; color: var(--muted); font-weight: 500; }
+.matrix { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+.matrix th, .matrix td { padding: 6px 4px; border-bottom: 1px solid var(--line); text-align: center; }
+.matrix th:first-child, .matrix td:first-child { text-align: left; }
+.matrix td.ok { color: var(--ok); } .matrix td.bad { color: var(--bad); font-weight: 700; }
+.scroll { overflow-x: auto; }
+textarea, input[type=text] { width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px; }
+textarea { min-height: 96px; resize: vertical; }
+label { display: block; font-size: 0.85rem; color: var(--muted); margin: 10px 0 4px; }
+ul.plain { padding-left: 18px; margin: 6px 0 10px; } ul.plain li { margin: 4px 0; }
+a { color: var(--accent); }
+.progress { font-size: 0.85rem; color: var(--muted); }
+mark { background: var(--warn-soft); color: var(--warn); font-weight: 600; border-radius: 3px; padding: 0 2px; }
+details summary { cursor: pointer; }
+
+.metodo {max-width: 52rem} .metodo h1 {font-size: 1.35rem; margin-top: 2.2rem} .metodo h2 {font-size: 1.1rem}
+.metodo h3 {font-size: 1rem} .metodo li {margin: .3rem 0} .metodo pre {overflow-x: auto}
+</style>
+</head>
+<body>
+<header>
+  <h1>Cómo se ha medido</h1>
+  <p class="sub"><a href="index.html">Resultados</a> · <a href="modelos-de-decision.pdf">Informe (PDF)</a> ·
+  <a href="https://github.com/joakinen/toolkit-modelos-de-decision">Código</a></p>
+  <p class="sub">Versión 2.0 · 29 de septiembre de 2026 · <a href="https://github.com/joakinen/toolkit-modelos-de-decision/blob/main/CAMBIOS.md">Qué cambia en cada versión</a></p>
+</header>
+<main class="metodo">
+<p>Esta página explica cómo se han hecho las
+pruebas del <a
+href="https://github.com/joakinen/toolkit-modelos-de-decision">toolkit
+de evaluación de modelos de decisión</a>: de dónde salen los datos, qué
+se mide, cómo se calcula cada cifra y qué no dicen. Los resultados están
+en la <a href="index.html">página de resultados</a> y la explicación
+para quien empieza, en el <a href="modelos-de-decision.pdf">informe</a>.
+Aquí va el detalle, para quien quiera comprobarlo o repetirlo.</p>
+
+<nav class="card"><ul>
+<li><a href="#principios" id="toc-principios"><span
+class="toc-section-number">1</span> Principios</a></li>
+<li><a href="#las-métricas" id="toc-las-métricas"><span
+class="toc-section-number">2</span> Las métricas</a>
+<ul>
+<li><a href="#acierto-medio-por-clase"
+id="toc-acierto-medio-por-clase"><span
+class="toc-section-number">2.1</span> Acierto medio por clase</a></li>
+<li><a href="#intervalo-de-confianza"
+id="toc-intervalo-de-confianza"><span
+class="toc-section-number">2.2</span> Intervalo de confianza</a></li>
+<li><a href="#calibración-y-falsa-seguridad"
+id="toc-calibración-y-falsa-seguridad"><span
+class="toc-section-number">2.3</span> Calibración y «falsa
+seguridad»</a></li>
+<li><a href="#log-loss" id="toc-log-loss"><span
+class="toc-section-number">2.4</span> Log-loss</a></li>
+</ul></li>
+<li><a href="#cómo-se-le-pregunta-a-cada-modelo"
+id="toc-cómo-se-le-pregunta-a-cada-modelo"><span
+class="toc-section-number">3</span> Cómo se le pregunta a cada
+modelo</a></li>
+<li><a href="#las-pruebas" id="toc-las-pruebas"><span
+class="toc-section-number">4</span> Las pruebas</a>
+<ul>
+<li><a href="#boe" id="toc-boe"><span
+class="toc-section-number">4.1</span> El BOE: una pregunta de
+vocabulario</a></li>
+<li><a href="#clasico" id="toc-clasico"><span
+class="toc-section-number">4.2</span> El clasificador clásico y su curva
+de aprendizaje</a></li>
+<li><a href="#olvido" id="toc-olvido"><span
+class="toc-section-number">4.3</span> Fuera de la tarea: olvido y
+calibración</a></li>
+<li><a href="#recalibracion" id="toc-recalibracion"><span
+class="toc-section-number">4.4</span> Recalibración</a></li>
+<li><a href="#pawsx" id="toc-pawsx"><span
+class="toc-section-number">4.5</span> PAWS-X: una pregunta de
+significado</a></li>
+<li><a href="#casos" id="toc-casos"><span
+class="toc-section-number">4.6</span> Casos de uso</a></li>
+</ul></li>
+<li><a href="#nota" id="toc-nota"><span
+class="toc-section-number">5</span> La nota de 1 a 10</a></li>
+<li><a href="#tiempos" id="toc-tiempos"><span
+class="toc-section-number">6</span> Cómo se miden los tiempos</a></li>
+<li><a href="#qué-no-mide-todo-esto"
+id="toc-qué-no-mide-todo-esto"><span class="toc-section-number">7</span>
+Qué no mide todo esto</a></li>
+<li><a href="#cómo-reproducirlo" id="toc-cómo-reproducirlo"><span
+class="toc-section-number">8</span> Cómo reproducirlo</a></li>
+<li><a href="#cambios" id="toc-cambios"><span
+class="toc-section-number">9</span> Cambios al diseño y
+correcciones</a></li>
+</ul></nav>
+<h1 data-number="1" id="principios"><span
+class="header-section-number">1</span> Principios</h1>
+<p><strong>El diseño se fija antes de medir.</strong> Qué se pregunta,
+con qué datos, qué modelos y cómo se puntúa se escribe antes de pasar
+ningún modelo por la prueba. Lo que se cambie después de ver resultados
+se anota, con la fecha y el motivo, en la sección 9 (<a
+href="#cambios">Cambios al diseño y correcciones</a>). Así se evita el
+sesgo más común en estas comparaciones: ajustar la prueba hasta que
+salga lo que uno espera.</p>
+<p><strong>Los datos de entrenar, calibrar y medir no se
+mezclan.</strong> Cada prueba tiene su parte de entrenamiento (para los
+modelos que se ajustan y para el clasificador clásico), a veces una de
+calibración, y una de prueba que ningún modelo ha visto al prepararse.
+En los textos con fecha, el reparto es por fechas: se entrena con lo
+antiguo y se mide con lo reciente, como pasaría en un uso real.</p>
+<p><strong>Siempre hay una referencia clásica.</strong> Junto a los
+modelos de decisión se mide un clasificador de los de antes de los
+modelos de lenguaje (TF-IDF y regresión logística). Si el clásico iguala
+a un modelo de decisión, el modelo no está justificado en esa tarea, por
+muy bien que acierte.</p>
+<p><strong>Se publica también lo que sale mal.</strong> Las pruebas en
+que los modelos fallan, y las correcciones de versiones anteriores del
+informe, se cuentan igual que las que salen bien.</p>
+<h1 data-number="2" id="las-métricas"><span
+class="header-section-number">2</span> Las métricas</h1>
+<h2 data-number="2.1" id="acierto-medio-por-clase"><span
+class="header-section-number">2.1</span> Acierto medio por clase</h2>
+<p>Es la media de los aciertos de cada opción por separado. Si una
+prueba tiene 80 correos de Tributos y 20 de Contratación, un modelo que
+dijera siempre «Tributos» acertaría el 80 % de los correos, pero su
+acierto medio por clase sería (100 % + 0 %) / 2 = 50 %: el del azar con
+dos opciones. Por eso se usa esta medida en lugar del acierto a secas.
+En la prueba del BOE se llama «acierto medio por apartado».</p>
+<h2 data-number="2.2" id="intervalo-de-confianza"><span
+class="header-section-number">2.2</span> Intervalo de confianza</h2>
+<p>Con unos cientos de casos, parte de cualquier diferencia es suerte.
+Para saber cuánta se usa un <em>bootstrap</em>: se sortean 2.000 veces,
+con repetición, tantos casos como tiene la prueba, se recalcula la cifra
+en cada sorteo y se mira entre qué valores cae el 95 % de las veces. Ese
+es el <strong>intervalo de confianza del 95 %</strong>. Si el intervalo
+de una diferencia entre dos modelos no incluye el cero, la diferencia no
+se explica por azar. Cuando se comparan dos modelos se sortean los
+mismos casos para los dos (<em>bootstrap</em> pareado), porque así se
+descuenta que unos casos sean más difíciles que otros. Semilla 0 en
+todos los sorteos, para que las cifras se puedan repetir.</p>
+<h2 data-number="2.3" id="calibración-y-falsa-seguridad"><span
+class="header-section-number">2.3</span> Calibración y «falsa
+seguridad»</h2>
+<p>Un modelo está <strong>calibrado</strong> si, cuando dice «80 %»,
+acierta el 80 % de las veces. Importa porque en un uso real la
+probabilidad decide qué pasa sin revisión y qué va a una persona.</p>
+<ul>
+<li><strong>Falsa seguridad:</strong> de las respuestas que el modelo da
+con un 90 % de probabilidad o más, qué parte son errores. Es la cifra
+más útil en la práctica: si se deja pasar sin revisar lo que supere el
+90 %, esa es la parte de errores que se cuela.</li>
+<li><strong>ECE</strong> (<em>expected calibration error</em>): se
+reparten las respuestas en diez tramos por su probabilidad (0-10 %,
+10-20 %…) y se mide, en cada tramo, la distancia entre la probabilidad
+media y el acierto real. Cero es la calibración perfecta.</li>
+</ul>
+<h2 data-number="2.4" id="log-loss"><span
+class="header-section-number">2.4</span> Log-loss</h2>
+<p>Mide cómo reparte el modelo la probabilidad, no solo si acierta:
+castiga mucho dar una probabilidad muy baja a la respuesta correcta.
+Cuanto más bajo, mejor. Sirve para distinguir un modelo que acierta
+dudando de otro que acierta de casualidad.</p>
+<h1 data-number="3" id="cómo-se-le-pregunta-a-cada-modelo"><span
+class="header-section-number">3</span> Cómo se le pregunta a cada
+modelo</h1>
+<p>No todos los modelos entienden la pregunta igual, y eso afecta a la
+comparación:</p>
+<ul>
+<li><strong>Por el protocolo de decisión</strong> (Kev y Jeff): se les
+manda el texto, la pregunta y las opciones con su descripción
+(<code>POST /v1/systemone</code>), y devuelven una probabilidad por
+opción. Las preguntas de sí o no van como tipo <code>noul</code>, que es
+el que conocen de su entrenamiento.</li>
+<li><strong>Por letras</strong> (las réplicas abiertas de Jev y Qwen3.5
+9B): se les presentan las opciones con una letra delante (A, B, C…), se
+les pide que contesten solo con la letra y se lee la probabilidad que el
+modelo da a cada letra en su primera palabra, repartiendo el total entre
+las letras válidas. Las preguntas de sí o no van como dos opciones.</li>
+</ul>
+<p>A cada modelo se le pregunta por su vía natural, la que usa el
+laboratorio. Una comparación en que todos recibieran la pregunta del
+mismo modo sería más igualada en la forma, pero penalizaría a quien no
+está hecho para ese modo.</p>
+<h1 data-number="4" id="las-pruebas"><span
+class="header-section-number">4</span> Las pruebas</h1>
+<p>Cada prueba se describe igual: qué pregunta, de dónde salen los
+datos, cómo se reparten, cómo se comprueba que los modelos no los han
+visto antes y qué límites tiene.</p>
+<h2 data-number="4.1" id="boe"><span
+class="header-section-number">4.1</span> El BOE: una pregunta de
+vocabulario</h2>
+<ul>
+<li><strong>Pregunta:</strong> ¿en qué apartado del BOE se publica este
+texto? Siete opciones, las secciones del sumario.</li>
+<li><strong>Datos:</strong> textos descargados de la API de datos
+abiertos del BOE. La respuesta correcta es la sección en que lo publicó
+el propio BOE, así que es fiable por construcción. Al modelo se le da el
+cuerpo del texto, sin el título.</li>
+<li><strong>Reparto por fechas:</strong> 1.400 textos de enero a junio
+de 2026 para entrenar (200 por apartado), 350 de julio y agosto para
+medir (50 por apartado) y 140 de septiembre para calibrar. Como mucho
+tres textos casi idénticos por tipo.</li>
+<li><strong>Ajuste:</strong> Kev-0.8B y Kev-4B, con los hiperparámetros
+fijados antes de medir: 3 pasadas, lote de 4, 160 ejemplos generales de
+repaso, LoRA de rango 16, ritmo 4e-5 (0.8B) y 2e-5 (4B).</li>
+<li><strong>Comprobación de memoria:</strong> se revisó a mano una
+muestra de aciertos y se separaron los textos cuyo tipo de título
+aparece en el entrenamiento de los que no; el 4B ajustado acierta casi
+igual en los dos grupos.</li>
+<li><strong>Límites:</strong> un solo periodo de prueba y una sola
+pregunta; los textos del BOE están más normalizados que los escritos de
+un registro.</li>
+<li><strong>Scripts:</strong> <code>boe/construir.py</code>,
+<code>boe/evaluar.py</code>, <code>boe/evaluar_kev.py</code>,
+<code>boe/ajustar.sh</code>, <code>boe/exportar.py</code>.</li>
+</ul>
+<h2 data-number="4.2" id="clasico"><span
+class="header-section-number">4.2</span> El clasificador clásico y su
+curva de aprendizaje</h2>
+<ul>
+<li><strong>Qué es:</strong> cada texto se convierte en un vector TF-IDF
+(qué palabras y pares de palabras tiene, pesadas por lo raras que son) y
+una regresión logística aprende a separar las opciones. Se entrena en
+segundos, sin GPU.</li>
+<li><strong>En el BOE:</strong> con los mismos 1.400 textos que los
+modelos ajustados; la regularización se eligió por validación cruzada en
+5 partes sobre el entrenamiento, sin mirar la prueba.</li>
+<li><strong>Curva de aprendizaje:</strong> el mismo clasificador con 1,
+2, 5, 10, 20, 50, 100 y 200 textos por apartado, 10 sorteos por tamaño,
+para ver cuántos ejemplos le hacen falta.</li>
+<li><strong>En pares de textos</strong> (PAWS-X y respuestas apoyadas):
+cada texto del par se convierte en un vector y el par se describe por la
+diferencia y el producto de los dos, la forma habitual de comparar
+textos con un clasificador lineal.</li>
+<li><strong>Scripts:</strong> <code>boe/clasico.py</code>,
+<code>boe/clasico_curva.py</code>, <code>pawsx/clasico.py</code>.</li>
+</ul>
+<h2 data-number="4.3" id="olvido"><span
+class="header-section-number">4.3</span> Fuera de la tarea: olvido y
+calibración</h2>
+<ul>
+<li><strong>Pregunta:</strong> ¿ajustar un modelo con una tarea le hace
+olvidar lo que ya sabía, o le quita la capacidad de dudar?</li>
+<li><strong>Datos:</strong> 560 preguntas en inglés (las 12 pruebas del
+laboratorio y 440 casos de la partición de prueba del conjunto con que
+se publica Kev: noticias, reseñas, consultas, inferencia) y 150 en
+español (50 de XNLI, 50 de PAWS-X y 50 reseñas de Amazon, de sus
+particiones de prueba, al azar con semilla 0).</li>
+<li><strong>Qué se mide:</strong> acierto y falsa seguridad antes y
+después del ajuste, con los mismos casos.</li>
+<li><strong>Límites:</strong> las preguntas en inglés salen del conjunto
+de prueba de Kev, así que favorecen a Kev frente a otros modelos; el
+control en español es pequeño.</li>
+<li><strong>Scripts:</strong> <code>boe/control.py</code>,
+<code>boe/control_ampliado.py</code>, <code>boe/control_es.py</code>,
+<code>boe/evaluar_servidor.py</code>.</li>
+</ul>
+<h2 data-number="4.4" id="recalibracion"><span
+class="header-section-number">4.4</span> Recalibración</h2>
+<ul>
+<li><strong>Qué es:</strong> corregir la seguridad del modelo con una
+<strong>temperatura</strong>, un número que suaviza las probabilidades
+sin cambiar cuál es la respuesta más probable.</li>
+<li><strong>Datos:</strong> 400 casos que no se usan para nada más: 140
+textos del BOE de septiembre, 200 preguntas generales y 60 en español
+(de las particiones de validación).</li>
+<li><strong>Cómo:</strong> con el mismo procedimiento que trae Kev, se
+prueban temperaturas entre 0,25 y 4 y se elige la que da menos log-loss
+en esos 400 casos; después se mide el efecto en las pruebas. Como
+diagnóstico se mira también qué temperatura pediría cada parte de la
+mezcla por separado: si difieren mucho, una sola temperatura no
+basta.</li>
+<li><strong>Scripts:</strong> <code>boe/calibracion.py</code>,
+<code>boe/calibrar.py</code>.</li>
+</ul>
+<h2 data-number="4.5" id="pawsx"><span
+class="header-section-number">4.5</span> PAWS-X: una pregunta de
+significado</h2>
+<ul>
+<li><strong>Pregunta:</strong> ¿significan lo mismo estas dos oraciones?
+PAWS-X son pares con casi las mismas palabras que unas veces significan
+lo mismo y otras no («El vuelo de Madrid a Lima» frente a «El vuelo de
+Lima a Madrid»). Se hizo para que fallen los métodos que miran qué
+palabras hay.</li>
+<li><strong>Datos:</strong> la versión en español. Prueba: 400 pares de
+su partición de prueba (traducida por personas), al azar con semilla 1,
+sin los 50 que usa el control en español. Entrenamiento: una bolsa de
+5.000 pares de su partición de entrenamiento (traducida a máquina), al
+azar con semilla 0.</li>
+<li><strong>Ajuste:</strong> Kev-0.8B con los primeros 200 pares de la
+bolsa y los mismos hiperparámetros que en el BOE.</li>
+<li><strong>¿Lo han visto antes?</strong> Kev no: en su conjunto de
+entrenamiento, PAWS solo se usa para medir. <strong>Jeff sí:</strong> se
+entrenó con 12.000 pares de PAWS en inglés y usó su partición de
+validación para elegir su versión final, y los pares de PAWS-X son
+traducciones de pares de PAWS. Su resultado en esta prueba es la tarea
+aprendida en inglés trasladada al español, no una prueba sin datos de la
+tarea.</li>
+<li><strong>Scripts:</strong> <code>pawsx/construir.py</code>,
+<code>pawsx/clasico.py</code>.</li>
+</ul>
+<h2 data-number="4.6" id="casos"><span
+class="header-section-number">4.6</span> Casos de uso</h2>
+<p>El diseño completo, con fecha anterior a cualquier medida, está en <a
+href="https://github.com/joakinen/toolkit-modelos-de-decision/blob/main/casos/DISENO.md"><code>casos/DISENO.md</code></a>.</p>
+<h3 data-number="4.6.1" id="correo"><span
+class="header-section-number">4.6.1</span> Triaje del buzón general</h3>
+<ul>
+<li><strong>Preguntas:</strong> a qué unidad corresponde (8 opciones),
+qué es (5) y si es urgente (sí o no), sobre correos que llegan al buzón
+general de un ayuntamiento ficticio.</li>
+<li><strong>Datos públicos:</strong> correos sintéticos escritos para la
+prueba: 160 para entrenar el clásico y 120 para medir, 15 por unidad, de
+los que casi la mitad son difíciles a propósito (temas mezclados,
+lenguaje informal, reenvíos, palabras clave de otra unidad, plazos que
+hay que calcular con la fecha). Los de entrenamiento y los de prueba los
+escribieron autores distintos, para que no compartan frases hechas que
+le faciliten el trabajo al clasificador clásico; se comprobó que ninguna
+frase larga se repite más de dos veces y que ningún correo de prueba
+comparte más del 41 % de sus grupos de tres palabras con uno de
+entrenamiento.</li>
+<li><strong>Datos privados:</strong> correos reales de un buzón general,
+anonimizados y etiquetados por quien lo lleva, que no salen de la
+máquina. Solo se publican las cifras. Instrucciones en
+<code>casos/correo/privado/LEEME.md</code>.</li>
+<li><strong>Límites:</strong> unos correos sintéticos son más limpios
+que los reales; por eso existe la prueba privada.</li>
+</ul>
+<h3 data-number="4.6.2" id="expedientes"><span
+class="header-section-number">4.6.2</span> Completitud de un
+expediente</h3>
+<ul>
+<li><strong>Preguntas:</strong> si consta el pago de la tasa, si está
+firmada la solicitud y si se aporta el documento de identidad (sí, no o
+no consta), y quién la presenta (el interesado, un representante con
+autorización o uno sin ella).</li>
+<li><strong>Datos:</strong> resúmenes sintéticos de expedientes: 40 para
+entrenar el clásico y 60 para medir, con trampas deliberadas (el pago
+que se hará más adelante, el justificante de otra tasa, la firma
+pendiente, el documento citado pero no adjunto). Autores distintos para
+entrenamiento y prueba, con sus criterios cruzados para que las
+etiquetas no se contradigan.</li>
+</ul>
+<h3 data-number="4.6.3" id="apoyo"><span
+class="header-section-number">4.6.3</span> ¿La respuesta se apoya en el
+documento?</h3>
+<ul>
+<li><strong>Pregunta:</strong> dado un texto, una pregunta sobre él y
+una respuesta, ¿todo lo que afirma la respuesta está en el texto?</li>
+<li><strong>Datos:</strong> textos del BOE sin nombres de personas
+(disposiciones y anuncios de contratación). Por cada texto, un modelo
+local escribe una respuesta que solo usa el texto; después, esa
+respuesta se altera cambiando un solo dato o añadiendo una afirmación
+que el texto no contiene. La etiqueta se conoce por construcción, y cada
+texto aparece con su respuesta correcta y con la alterada.
+Comprobaciones automáticas: las cifras de la correcta están en el texto
+y la cifra nueva de la alterada no. 60 casos para entrenar el clásico y
+194 para medir (tras excluir tres pares mal construidos; ver la sección
+9 («Cambios al diseño y correcciones»)). Los textos del BOE no se
+publican: el conjunto se reconstruye con el script.</li>
+<li><strong>Quién escribe las respuestas:</strong> Gemma 4 12B, un
+modelo que no se mide en la prueba ni es de la familia Qwen, en la que
+se basan Kev, Jeff y las réplicas de Jev. Así ningún modelo juzga textos
+escritos por él mismo o por un pariente.</li>
+</ul>
+<h3 data-number="4.6.4" id="conviene"><span
+class="header-section-number">4.6.4</span> Los «conviene»: una prueba
+privada</h3>
+<ul>
+<li><strong>Pregunta:</strong> en un párrafo con «conviene», ¿da un
+consejo práctico al lector o solo anuncia o subraya lo que el texto va a
+decir? El segundo uso es uno de los tics de los textos generados por
+modelos de lenguaje.</li>
+<li><strong>Datos:</strong> 100 casos de revisiones reales de textos
+propios, que no se publican; solo 17 son consejos prácticos.</li>
+<li><strong>Cómo:</strong> validación cruzada en 5 partes (cada caso se
+mide con un modelo que no lo vio al ajustarse), Kev-0.8B con 160
+ejemplos generales de repaso y ritmo 4e-5, y el clasificador clásico con
+las mismas partes.</li>
+<li><strong>Límites:</strong> es una prueba que nadie más puede repetir;
+se cita como indicio, no como resultado del toolkit.</li>
+</ul>
+<h1 data-number="5" id="nota"><span
+class="header-section-number">5</span> La nota de 1 a 10</h1>
+<p>Cada modelo recibe una nota por caso de uso, con reglas escritas
+antes de medir:</p>
+<ol type="1">
+<li><strong>Acierto medio por clase</strong> (A) y acierto del azar (Z =
+1 dividido entre el número de opciones).</li>
+<li><strong>Nota de calidad</strong> = 1 + 9 × (A − Z) / (1 − Z),
+limitada entre 1 y 10. Responder al azar da un 1; acertarlo todo, un
+10.</li>
+<li><strong>Penalización por falsa seguridad:</strong> si falla más del
+5 % de las respuestas dadas con un 90 % o más, se resta 1; si falla más
+del 10 %, se restan 2. Nunca por debajo de 1.</li>
+<li><strong>Nota del caso:</strong> la media de las notas de sus
+preguntas.</li>
+</ol>
+<p><strong>Un ejemplo resuelto.</strong> En la pregunta «¿qué es este
+correo?» hay 5 opciones, así que el azar acierta un 20 %. Un modelo con
+un acierto medio por clase del 62 % saca 1 + 9 × (0,62 − 0,20) / (1 −
+0,20) = 1 + 9 × 0,525 = 5,7. Si de sus respuestas dadas con un 90 % o
+más fallara el 8 %, perdería un punto: 4,7.</p>
+<p><strong>Cómo leerla.</strong> La nota dice cómo rinde el modelo en
+esta prueba, no si hay que usarlo. Si el clasificador clásico saca una
+nota igual o mayor, el modelo de decisión no está justificado en ese
+caso salvo por otra razón que habrá que decir, como que las preguntas
+cambien a menudo o que no haya ejemplos etiquetados. El tiempo por
+decisión y la memoria van aparte: no se mezclan con la nota.</p>
+<h1 data-number="6" id="tiempos"><span
+class="header-section-number">6</span> Cómo se miden los tiempos</h1>
+<p>Los tiempos que guarda cada evaluación dependen de lo que hubiera en
+marcha a la vez, así que se miden aparte
+(<code>casos/tiempos.py</code>): un modelo cada vez, sobre los mismos 30
+correos del triaje (tres preguntas cada uno), tras dos de calentamiento,
+y se da la mediana de segundos por correo. Antes de empezar, la máquina
+se deja en reposo hasta que el chip baja de 50 °C, y antes de cada
+modelo, de 55 °C: con horas de carga seguida la GPU llegó a 98 °C, y un
+chip caliente puede bajar su frecuencia y dar tiempos peores de los
+reales. Se usa la temperatura de los núcleos de CPU, que están en el
+mismo chip, porque el sensor de la GPU no da lecturas válidas cuando la
+GPU está apagada (se lee con <code>macmon</code>). En los
+<em>embeddings</em> se cuenta también el cálculo del vector; en el
+clasificador clásico, solo la predicción, porque se entrena una vez y en
+segundos.</p>
+<h1 data-number="7" id="qué-no-mide-todo-esto"><span
+class="header-section-number">7</span> Qué no mide todo esto</h1>
+<ul>
+<li><strong>Un solo equipo:</strong> todo se ha medido en un Mac mini
+con M4 Pro y 24 GB. En otro equipo, los tiempos cambian.</li>
+<li><strong>Pocas pruebas por caso:</strong> entre 60 y 400 casos por
+prueba. Los intervalos de confianza dicen cuánto pesa eso.</li>
+<li><strong>Datos sintéticos:</strong> los casos de uso públicos son
+sintéticos, más limpios que los reales.</li>
+<li><strong>Sin ajustar, salvo donde se dice:</strong> los casos de uso
+miden los modelos tal como se publican. Ajustarlos con datos propios
+cambiaría las notas, como enseñan el BOE y PAWS-X.</li>
+<li><strong>Un solo modo de preguntar por modelo:</strong> otra
+redacción de la pregunta o de las opciones daría otras cifras.</li>
+</ul>
+<h1 data-number="8" id="cómo-reproducirlo"><span
+class="header-section-number">8</span> Cómo reproducirlo</h1>
+<p>El <a
+href="https://github.com/joakinen/toolkit-modelos-de-decision">README
+del repositorio</a> explica cómo instalarlo y arrancar los modelos.
+Después, en este orden:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># el BOE (descarga los textos, evalúa, ajusta y exporta)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> boe/construir.py <span class="kw">&amp;&amp;</span> <span class="ex">python</span> boe/evaluar.py</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="va">KEV_DIR</span><span class="op">=</span>/ruta/a/kev <span class="fu">sh</span> boe/ajustar.sh</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> boe/clasico.py <span class="kw">&amp;&amp;</span> <span class="ex">python</span> boe/clasico_curva.py</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> boe/exportar.py <span class="kw">&amp;&amp;</span> <span class="ex">python</span> boe/pagina.py</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># PAWS-X</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="va">PAWSX_DATOS</span><span class="op">=&lt;</span>carpeta<span class="op">&gt;</span> python <span class="ex">pawsx/construir.py</span> <span class="kw">&amp;&amp;</span> <span class="va">PAWSX_DATOS</span><span class="op">=&lt;</span>carpeta<span class="op">&gt;</span> python <span class="ex">pawsx/clasico.py</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># casos de uso</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> casos/construir.py correo <span class="kw">&amp;&amp;</span> <span class="ex">python</span> casos/construir.py expedientes</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="va">BOE_DATOS</span><span class="op">=&lt;</span>carpeta <span class="ex">del</span> BOE<span class="op">&gt;</span> python casos/apoyo/construir.py</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> casos/evaluar.py correo    <span class="co"># y expedientes, apoyo</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> casos/notas.py correo expedientes apoyo</span></code></pre></div>
+<h1 data-number="9" id="cambios"><span
+class="header-section-number">9</span> Cambios al diseño y
+correcciones</h1>
+<ul>
+<li><strong>29 de septiembre de 2026.</strong> En los expedientes, la
+pregunta sobre el representante se redactó con tres opciones
+(interesado, representante con autorización, representante sin ella) en
+lugar de «sí, no o no consta», que no encajaba cuando no hay
+representante. Se cambió antes de medir.</li>
+<li><strong>29 de septiembre de 2026.</strong> Los tiempos por decisión
+que guardaron las primeras evaluaciones se descartaron: se midieron con
+varios modelos cargados a la vez (la máquina llegó a quedarse sin
+memoria) y con la GPU a 93-98 °C tras horas de carga. Se volvieron a
+medir aparte, un modelo cada vez y con el chip enfriado (ver la sección
+6 («Cómo se miden los tiempos»)). Un primer intento de esa nueva medida
+también se descartó: esperaba a que bajara la temperatura de la GPU,
+pero con la GPU apagada su sensor devuelve un valor sin sentido (unos 2
+°C), así que no hubo reposo; se repitió usando la temperatura de la CPU,
+del mismo chip. En la práctica, los tiempos con reposo y sin él apenas
+difieren (menos de un 5 %, salvo Jeff-0.8B, un 20 % más lento con
+reposo). Las notas y los aciertos no dependen de nada de esto.</li>
+<li><strong>29 de septiembre de 2026.</strong> Revisión a mano del caso
+de respuestas apoyadas: en tres textos, la afirmación que se añadió para
+que la respuesta no se apoyara en el texto sí estaba en él. Se
+excluyeron esos tres pares y la prueba quedó en 194 casos. Se revisaron
+todas las respuestas con algo añadido que se parecía al texto, no solo
+aquellas en que los modelos fallaban, para no corregir las etiquetas a
+favor de los modelos.</li>
+<li><strong>29 de septiembre de 2026.</strong> La primera versión del
+caso de respuestas apoyadas se construyó con Qwen3.5 9B, que también se
+medía: juzgaba respuestas escritas por él mismo, y además los demás
+modelos son de su misma familia. Se descartó entera y se reconstruyó con
+Gemma 4 12B, que no se mide; todas las notas de ese caso son de la
+segunda versión.</li>
+<li><strong>29 de septiembre de 2026.</strong> En los expedientes, la
+pregunta de identidad decía «del solicitante», que es ambiguo cuando
+presenta un representante. Se vio al revisar los casos en que los dos
+mejores modelos coincidían contra la etiqueta. Se cambió a «del
+interesado (el titular del trámite, no su representante)», sin tocar las
+etiquetas, y se volvieron a medir todos los modelos; las notas con la
+redacción anterior se descartaron.</li>
+<li><strong>29 de septiembre de 2026.</strong> El ajuste de Kev-0.8B con
+PAWS-X se hizo con los servidores de Kev del laboratorio en marcha: se
+intentaron parar para liberar memoria, pero el sistema los volvió a
+arrancar. Solo afecta al tiempo del ajuste, no a sus resultados.</li>
+<li><strong>28 de septiembre de 2026.</strong> La primera versión del
+control de olvido usó 12 preguntas y concluyó que el ajuste no
+estropeaba nada; con 710 preguntas se vio que el modelo ajustado pierde
+la capacidad de dudar. El informe se corrigió.</li>
+</ul>
+<p class="sub">Textos de esta página: <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>.</p>
+</main>
+</body>
+</html>

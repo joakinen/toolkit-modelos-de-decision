@@ -13,3 +13,27 @@ boe/eval/
 boe/eval-kev/
 boe/runs/
 boe/calibracion.json
+
+# generado por informe/generar.sh a partir de CAMBIOS.md
+informe/version.tex
+
+# casos de uso: datos reales de la prueba privada del correo (solo se publica el LEEME)
+casos/correo/privado/*
+!casos/correo/privado/LEEME.md
+# el conjunto de apoyo se construye con textos del BOE: no se publica
+casos/apoyo/*.jsonl
+
+# vectores de embeddings calculados (se regeneran con embeddings.py)
+.cache/
+casos/apoyo/descartado-qwen/
+# scripts de un solo uso del autor, con rutas de su máquina
+casos/apoyo/rehacer.sh
+casos/remate.sh
+casos/*.log
+casos/apoyo/*.log
+casos/remate2.sh
+casos/remate3.sh
+casos/tiempos-sin-reposo.json
+# piezas de la transición a la 2.0 (ya fundidas en informe/modelos-de-decision.md, que se edita directamente)
+informe/v2/
+informe/cinco-minutos.md

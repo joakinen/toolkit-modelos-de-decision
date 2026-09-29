@@ -24,57 +24,53 @@ LoRA, cómo repartir los datos) con ejemplos de código y con un caso real medid
 pública, pero las ideas valen para cualquier clasificación de textos.
 
 Este repositorio es un **toolkit de evaluación de modelos de decisión**: las mismas pruebas se repetirán con cada modelo
-nuevo que salga, para seguir el estado de esta tecnología. Reúne tres cosas:
+nuevo que salga, para seguir el estado de esta tecnología. Reúne:
 
 | Carpeta | Qué contiene |
 |---|---|
 | [`informe/`](informe/) | Un informe introductorio: qué son, en qué se diferencian de un chat, cómo se llaman desde código, cómo funcionan por dentro, cómo se ajustan con casos propios y qué hay que medir ([PDF](informe/modelos-de-decision.pdf)) |
 | [`laboratorio/`](laboratorio/) | Una web local para comparar varios modelos de decisión con los mismos casos |
 | [`boe/`](boe/) | Una prueba con textos reales del BOE: construir los datos, evaluar, ajustar un modelo y medirlo |
-| [`resultados/`](resultados/) y [`docs/`](docs/) | Los resultados de esa prueba (sin textos) y una página estática para verlos |
+| [`pawsx/`](pawsx/) | Una prueba de significado con PAWS-X en español: pares de frases que parecen iguales y no lo son |
+| [`casos/`](casos/) | Tres casos de uso con nota de 1 a 10: triaje de correo, completitud de expedientes y respuestas apoyadas en un documento ([diseño, fijado antes de medir](casos/DISENO.md)) |
+| [`embeddings.py`](embeddings.py) | La referencia con *embeddings* (bge-m3) y clasificador, para todas las pruebas |
+| [`resultados/`](resultados/) y [`docs/`](docs/) | Los resultados (sin textos), la página que los muestra y la de [metodología](https://joakinen.github.io/toolkit-modelos-de-decision/metodologia.html) |
 
 **Ver los resultados sin instalar nada:** <https://joakinen.github.io/toolkit-modelos-de-decision/>
 
-## El resultado principal
+## Resultados principales
 
-Pregunta: *¿en qué apartado del BOE se publica este texto?* Siete apartados, 350 textos de prueba (50 por apartado)
-de julio y agosto de 2026, que los modelos ajustados nunca vieron al entrenar. El acierto es la media de los siete
-aciertos por apartado, para que no cuenten más los apartados fáciles.
+![La caja de herramientas escalonada](docs/caja-escalonada.svg)
 
-| Modelo | Acierto medio por apartado |
-|---|---|
-| **Kev-4B ajustado con 1.400 textos del BOE** (200 por apartado) | **96 %** |
-| **Kev-0.8B ajustado con los mismos textos** | **95 %** |
-| Jev-style v1, 2.000 millones de parámetros, sin ajustar | 73 % |
-| Kev-4B, sin ajustar | 69 % |
-| Qwen3.5 9B, un modelo de chat general, sin ajustar | 66 % |
-| Jev-style v3, 800 millones, sin ajustar | 64 % |
-| Kev-0.8B, sin ajustar | 49 % |
+Para responder una pregunta cerrada sobre un texto hay cinco herramientas, de la más barata a la más cara: reglas, un
+clasificador clásico (TF-IDF y regresión logística), *embeddings* con clasificador, un modelo de decisión y un modelo de
+lenguaje general: las bandejas de una **caja de herramientas escalonada**. **Se empieza por abajo y se sube a la bandeja
+siguiente solo cuando la de abajo no llega, midiéndolo.** Las pruebas
+del toolkit, todas en español, dicen hasta dónde hizo falta subir:
 
-Con unos cientos de ejemplos por opción, un modelo pequeño ajustado supera con claridad a modelos mucho mayores sin
-ajustar: el 0.8B mejora +45 puntos y el 4B, +27. Los intervalos de confianza del 95 % (+41 a +49 y +24 a +31, por
-*bootstrap*: sorteando 2.000 veces los casos de prueba) no incluyen el cero, así que la mejora no se explica por azar. Sin ajustar, ningún modelo distingue
-una disposición general de una «otra disposición»: es una convención del BOE que solo se aprende con ejemplos. Con pocos
-datos, en cambio, el ajuste no sirve: en otra prueba con 17 ejemplos de la clase difícil, no se distinguió del azar.
+| Pregunta | Depende de | Resultado |
+|---|---|---|
+| ¿En qué apartado del BOE se publica este texto? | Vocabulario | Un clasificador clásico entrenado en 9 segundos (95 %) iguala a Kev-4B ajustado durante 11 horas (96 %; la diferencia no se distingue del azar), y con solo 5 ejemplos por apartado supera a todos los modelos sin ajustar |
+| ¿Significan lo mismo estas dos frases? (PAWS-X) | Significado | El clásico se queda en el azar incluso con 5.000 ejemplos; Kev-4B, sin haber visto la tarea, llega al 78 %, y Kev-0.8B ajustado con 200 pares pasa del 60 % al 80 % |
+| Triaje del buzón general | Las dos cosas | El clásico es el mejor encaminando a la unidad (8,6 sobre 10), pero no distingue lo urgente (2,2); Kev-4B saca un 7,5 en conjunto |
+| ¿Está completo este expediente? | Significado | Kev-4B saca un 8,4; el clásico, un 3,3 |
 
-**Fuera del BOE, los ajustados aciertan lo mismo pero ya no saben cuándo dudar.** En 560 preguntas ajenas al BOE en
-inglés y 150 en español, el acierto no cambia más de lo que cambia por azar. Pero de las respuestas que dan con un 90 %
-de seguridad o más, fallan muchas más que antes: en inglés, del 1 % al 17 % con el 0.8B y del 0 % al 10 % con el 4B.
-Recalibrando con 400 casos apartados, el 4B baja al 3 %; al 0.8B no le basta una sola corrección (7 %, y peor en
-español). Antes de fijar umbrales hay que recalibrar y medir la calibración también fuera de la tarea ajustada.
+Un modelo de chat general de 9.000 millones de parámetros, preguntado para que conteste con una letra, rinde como Kev-4B
+en los casos de uso, pero tarda de tres a cuatro veces más. Casi todos los modelos se equivocan con demasiada seguridad:
+no se les deben fijar umbrales sin recalibrarlos. El detalle está en el [informe](informe/modelos-de-decision.pdf), la
+[página de resultados](https://joakinen.github.io/toolkit-modelos-de-decision/) y la
+[metodología](https://joakinen.github.io/toolkit-modelos-de-decision/metodologia.html).
 
-Todo se ejecutó en un ordenador de sobremesa (Mac mini con M4 Pro y 24 GB), con modelos de pesos abiertos y sin enviar
-nada fuera. El detalle está en el [informe](informe/modelos-de-decision.pdf) y en la [página de resultados](https://joakinen.github.io/toolkit-modelos-de-decision/).
+## Veredicto provisional (29 de septiembre de 2026)
 
-## Veredicto provisional (28 de septiembre de 2026)
-
-Con los modelos probados hasta ahora (Kev-0.8B y Kev-4B, las réplicas abiertas de Jev de 800 y 2.000 millones y Qwen3.5
-9B como referencia): los modelos de decisión abiertos **ya son usables para clasificar y encaminar documentos con revisión
-humana**, en una máquina propia, siempre que se ajusten con unos cientos de ejemplos de cada opción y se recalibren antes
-de fiarse de su seguridad. **No lo son** sin ajustar para tareas con convenciones propias, ni para decidir solos. Hoy
-elegiríamos Kev-4B ajustado y recalibrado. Su punto más débil es la madurez: son proyectos de semanas, con herramientas
-que tienen límites que no avisan. La valoración completa, aspecto por aspecto, está al final del
-[informe](informe/modelos-de-decision.pdf); se revisará con cada modelo nuevo.
+Con los modelos probados hasta ahora (Kev-0.8B y Kev-4B, sin ajustar y ajustados; Jeff-0.8B y Jeff-2B; las réplicas
+abiertas de Jev de 800 y 2.000 millones; Qwen3.5 9B como modelo de chat general; y dos referencias sin modelo de
+lenguaje): para preguntas que dependen del **significado**, los modelos de decisión abiertos de 2.000 a 4.000 millones
+de parámetros **ya son útiles con revisión humana**, en una máquina propia; para preguntas que se resuelven por el
+**vocabulario**, **un clasificador clásico basta** y es mucho más barato. Ninguno está para decidir solo. Su punto más
+débil sigue siendo la madurez: son proyectos de semanas, con herramientas que tienen límites que no avisan. La valoración
+completa está al final del [informe](informe/modelos-de-decision.pdf); se revisará con cada modelo nuevo y cada versión
+queda anotada en [CAMBIOS.md](CAMBIOS.md).
 
 ## Cuánto cuesta el ajuste
 
@@ -112,9 +108,10 @@ que no estén en marcha aparecen como parados y el resto funciona igual):
 | Modelo | Cómo arrancarlo |
 |---|---|
 | Kev-0.8B y Kev-4B | En una copia de [Kev](https://github.com/jaredpalmer/kev) (probado en el commit `3d9973b`): `uv sync --extra serve` y después `uv run python -m kev.serve --run jaredpalmer/kev-0.8b --port 8008` (y `kev-4b` en el 8009) |
+| Jeff-0.8B y Jeff-2B | En una copia de [Jeff](https://github.com/firelex/jeff) (probado en el commit `2c1bfce`; pide uv 0.12.19 o posterior): `uv sync --extra mac`, descargar `mstrasser/Jeff-Qwen3.5-0.8B` (y `-2B`) con `hf download` y `JEFF_BACKEND=mlx JEFF_CHECKPOINT=<carpeta> PORT=8010 uv run jeff-serve` (el 2B en el 8011) |
 | Jev-style v1 · 2B | Con [Ollama](https://ollama.com): `ollama pull hf.co/chaoliangUNSW/Jev-Style-Qwen3.5-2B-Decision-GGUF:Q8_0` |
 | Qwen3.5 · 9B | Con Ollama: `ollama pull qwen3.5:9b` |
-| Jev-style v3 · 0.8B | Necesita compilar `jev-score` contra llama.cpp ([ficha del modelo](https://huggingface.co/chaoliangUNSW/Jev-Style-0.8B-Decision-v3-GGUF)); indica su carpeta en `JEV_V3_DIR` |
+| Jev-style v3 · 0.8B | Necesita compilar `jev-score` contra llama.cpp ([ficha del modelo](https://huggingface.co/chaoliangUNSW/Jev-Style-0.8B-Decision-v3-GGUF)), indicar su carpeta en `JEV_V3_DIR` e instalar el extra: `uv sync --extra jev-v3` |
 
 Los puertos y direcciones se cambian con variables de entorno; están al principio de [`laboratorio/app.py`](laboratorio/app.py).
 El laboratorio escucha solo en tu máquina.
@@ -148,6 +145,25 @@ tamaños y semillas de los controles y de la calibración) están explicadas al 
 de medir ningún modelo. Los controles se descargan de sus fuentes y no se publican aquí: cada colección tiene su licencia
 (XNLI, por ejemplo, no permite el uso comercial).
 
+## Repetir PAWS-X y los casos de uso
+
+```sh
+PAWSX_DATOS=<carpeta> uv run python pawsx/construir.py   # descarga PAWS-X y fija prueba y bolsa de entrenamiento
+PAWSX_DATOS=<carpeta> uv run python pawsx/clasico.py     # el clasificador clásico con 50 a 5.000 pares
+uv run python casos/construir.py correo                  # correos sintéticos (publicados) -> peticiones
+uv run python casos/construir.py expedientes
+BOE_DATOS=<carpeta del BOE> uv run python casos/apoyo/construir.py   # necesita Ollama con gemma4:12b
+uv run python casos/evaluar.py correo                    # todos los modelos del laboratorio y el clásico
+uv run python embeddings.py correo                       # la referencia con embeddings (Ollama con bge-m3)
+uv run python casos/notas.py correo expedientes apoyo    # la nota de 1 a 10
+uv run python casos/exportar.py && uv run python boe/pagina.py
+```
+
+Los correos y expedientes sintéticos se publican (CC BY-SA 4.0). El caso de respuestas apoyadas se construye con textos
+del BOE y no se publica. La prueba privada con correos reales se explica en
+[`casos/correo/privado/LEEME.md`](casos/correo/privado/LEEME.md). Mide un grupo de modelos cada vez: con todos cargados a
+la vez, un equipo de 24 GB se queda sin memoria ([`casos/medir_por_fases.sh`](casos/medir_por_fases.sh) lo hace así).
+
 ## Cuidados
 
 - **Datos personales.** Los textos del BOE son públicos, pero su reutilización debe respetar la protección de datos. No
@@ -156,8 +172,8 @@ de medir ningún modelo. Los controles se descargan de sus fuentes y no se publi
   sin sugerir que el BOE respalda el uso. Consulta el [aviso legal](https://www.boe.es/informacion/aviso_legal/index.php).
 - **Decisiones con efectos sobre personas.** Estos modelos sirven como apoyo a la tramitación. El artículo 22 del RGPD y
   el artículo 41 de la Ley 40/2015 limitan las decisiones puramente automatizadas; el informe lo explica.
-- **Una sola prueba no es una evaluación general.** Los resultados valen para esta pregunta, estos periodos y estos
-  modelos. Mídelos siempre con tus propios casos.
+- **Unas pocas pruebas no son una evaluación general.** Los resultados valen para estas preguntas, estos datos (en parte
+  sintéticos) y estos modelos. Mídelos siempre con tus propios casos, y siempre contra un clasificador clásico.
 
 ## Créditos y licencias
 
@@ -168,8 +184,9 @@ de medir ningún modelo. Los controles se descargan de sus fuentes y no se publi
   conjunto de prueba de Kev (`evals/v7/decision-v7`), [XNLI](https://huggingface.co/datasets/facebook/xnli),
   [PAWS-X](https://huggingface.co/datasets/google-research-datasets/paws-x) y
   [reseñas de Amazon en español](https://huggingface.co/datasets/SetFit/amazon_reviews_multi_es), cada uno con su licencia.
-- Modelos: [Kev](https://github.com/jaredpalmer/kev) de Jared Palmer; Jev-style de [chaoliangUNSW](https://huggingface.co/chaoliangUNSW);
-  Qwen3.5 de Alibaba. La idea de convertir un modelo de chat en uno de decisión leyendo la probabilidad de cada letra
+- Modelos: [Kev](https://github.com/jaredpalmer/kev) de Jared Palmer; [Jeff](https://github.com/firelex/jeff) de firelex;
+  Jev-style de [chaoliangUNSW](https://huggingface.co/chaoliangUNSW); Qwen3.5 de Alibaba; bge-m3 de BAAI (*embeddings*);
+  Gemma 4 de Google (redactó las respuestas del caso de respuestas apoyadas). La idea de convertir un modelo de chat en uno de decisión leyendo la probabilidad de cada letra
   viene de [este artículo de allanrbo](https://allanrbo.blogspot.com/2026/09/a-jev-like-wrapper-for-llms-including.html).
 - Jev es un modelo cerrado de TypeSafe AI; este repositorio no está afiliado a TypeSafe.
 

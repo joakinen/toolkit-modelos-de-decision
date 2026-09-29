@@ -1,0 +1,4326 @@
+{
+"modelo": "kev-08b",
+"ms_por_caso": 255.1,
+"casos": [
+{
+"id": "correo-p-001",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.1568,
+"Tributos y recaudación": 0.0163,
+"Urbanismo y obras": 0.0827,
+"Servicios sociales": 0.0408,
+"Recursos humanos": 0.2548,
+"Contratación": 0.0143,
+"Sede electrónica e informática": 0.0892,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.345
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.1496,
+"Trámite o solicitud": 0.6937,
+"Queja o reclamación": 0.0076,
+"Respuesta a un requerimiento": 0.0622,
+"Publicidad o correo no deseado": 0.0869
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3563,
+"false": 0.6436999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-002",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0624,
+"Tributos y recaudación": 0.0094,
+"Urbanismo y obras": 0.7802,
+"Servicios sociales": 0.0147,
+"Recursos humanos": 0.0087,
+"Contratación": 0.0227,
+"Sede electrónica e informática": 0.006,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.096
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.12,
+"Trámite o solicitud": 0.5564,
+"Queja o reclamación": 0.0398,
+"Respuesta a un requerimiento": 0.1707,
+"Publicidad o correo no deseado": 0.1132
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.5123,
+"false": 0.4877
+}
+}
+}
+},
+{
+"id": "correo-p-003",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.1339,
+"Tributos y recaudación": 0.0125,
+"Urbanismo y obras": 0.0196,
+"Servicios sociales": 0.4694,
+"Recursos humanos": 0.2314,
+"Contratación": 0.0153,
+"Sede electrónica e informática": 0.0125,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1053
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.194,
+"Trámite o solicitud": 0.4888,
+"Queja o reclamación": 0.0401,
+"Respuesta a un requerimiento": 0.1363,
+"Publicidad o correo no deseado": 0.1408
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.5366,
+"false": 0.46340000000000003
+}
+}
+}
+},
+{
+"id": "correo-p-004",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.6208,
+"Tributos y recaudación": 0.0216,
+"Urbanismo y obras": 0.0584,
+"Servicios sociales": 0.0389,
+"Recursos humanos": 0.0347,
+"Contratación": 0.0059,
+"Sede electrónica e informática": 0.0369,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1827
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2106,
+"Trámite o solicitud": 0.5688,
+"Queja o reclamación": 0.0168,
+"Respuesta a un requerimiento": 0.1313,
+"Publicidad o correo no deseado": 0.0725
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5851,
+"false": 0.41490000000000005
+}
+}
+}
+},
+{
+"id": "correo-p-005",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.1044,
+"Tributos y recaudación": 0.0452,
+"Urbanismo y obras": 0.107,
+"Servicios sociales": 0.0357,
+"Recursos humanos": 0.1498,
+"Contratación": 0.0369,
+"Sede electrónica e informática": 0.1778,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.3432
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3612,
+"Trámite o solicitud": 0.1582,
+"Queja o reclamación": 0.0583,
+"Respuesta a un requerimiento": 0.2309,
+"Publicidad o correo no deseado": 0.1914
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3622,
+"false": 0.6377999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-006",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.1897,
+"Tributos y recaudación": 0.0179,
+"Urbanismo y obras": 0.5838,
+"Servicios sociales": 0.0154,
+"Recursos humanos": 0.0307,
+"Contratación": 0.0214,
+"Sede electrónica e informática": 0.029,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1122
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.213,
+"Trámite o solicitud": 0.2986,
+"Queja o reclamación": 0.1258,
+"Respuesta a un requerimiento": 0.2282,
+"Publicidad o correo no deseado": 0.1344
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.5802,
+"false": 0.41979999999999995
+}
+}
+}
+},
+{
+"id": "correo-p-007",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0962,
+"Tributos y recaudación": 0.2935,
+"Urbanismo y obras": 0.3184,
+"Servicios sociales": 0.0231,
+"Recursos humanos": 0.0322,
+"Contratación": 0.0238,
+"Sede electrónica e informática": 0.057,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.156
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1724,
+"Trámite o solicitud": 0.5554,
+"Queja o reclamación": 0.0689,
+"Respuesta a un requerimiento": 0.1276,
+"Publicidad o correo no deseado": 0.0758
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.4276,
+"false": 0.5724
+}
+}
+}
+},
+{
+"id": "correo-p-008",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0625,
+"Tributos y recaudación": 0.0126,
+"Urbanismo y obras": 0.0974,
+"Servicios sociales": 0.0114,
+"Recursos humanos": 0.0213,
+"Contratación": 0.5684,
+"Sede electrónica e informática": 0.0238,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2026
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.343,
+"Trámite o solicitud": 0.3285,
+"Queja o reclamación": 0.0119,
+"Respuesta a un requerimiento": 0.1105,
+"Publicidad o correo no deseado": 0.206
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2141,
+"false": 0.7859
+}
+}
+}
+},
+{
+"id": "correo-p-009",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.0857,
+"Tributos y recaudación": 0.0216,
+"Urbanismo y obras": 0.031,
+"Servicios sociales": 0.1769,
+"Recursos humanos": 0.2624,
+"Contratación": 0.0628,
+"Sede electrónica e informática": 0.0723,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2873
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2001,
+"Trámite o solicitud": 0.2482,
+"Queja o reclamación": 0.0761,
+"Respuesta a un requerimiento": 0.2353,
+"Publicidad o correo no deseado": 0.2404
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4173,
+"false": 0.5827
+}
+}
+}
+},
+{
+"id": "correo-p-010",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0951,
+"Tributos y recaudación": 0.0987,
+"Urbanismo y obras": 0.5502,
+"Servicios sociales": 0.016,
+"Recursos humanos": 0.0325,
+"Contratación": 0.0772,
+"Sede electrónica e informática": 0.0307,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0995
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2077,
+"Trámite o solicitud": 0.5567,
+"Queja o reclamación": 0.0188,
+"Respuesta a un requerimiento": 0.1255,
+"Publicidad o correo no deseado": 0.0913
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4381,
+"false": 0.5619000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-011",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0838,
+"Tributos y recaudación": 0.0797,
+"Urbanismo y obras": 0.0997,
+"Servicios sociales": 0.0685,
+"Recursos humanos": 0.0333,
+"Contratación": 0.3211,
+"Sede electrónica e informática": 0.0422,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2716
+}
+},
+"tipo": {
+"label": "Publicidad o correo no deseado",
+"p": {
+"Solicitud de información": 0.2493,
+"Trámite o solicitud": 0.3955,
+"Queja o reclamación": 0.0123,
+"Respuesta a un requerimiento": 0.1402,
+"Publicidad o correo no deseado": 0.2027
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.7747,
+"false": 0.22529999999999994
+}
+}
+}
+},
+{
+"id": "correo-p-012",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.2087,
+"Tributos y recaudación": 0.2761,
+"Urbanismo y obras": 0.1399,
+"Servicios sociales": 0.0484,
+"Recursos humanos": 0.0345,
+"Contratación": 0.0158,
+"Sede electrónica e informática": 0.0421,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2345
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1915,
+"Trámite o solicitud": 0.5795,
+"Queja o reclamación": 0.0158,
+"Respuesta a un requerimiento": 0.1033,
+"Publicidad o correo no deseado": 0.1098
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4195,
+"false": 0.5805
+}
+}
+}
+},
+{
+"id": "correo-p-013",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0571,
+"Tributos y recaudación": 0.0259,
+"Urbanismo y obras": 0.0359,
+"Servicios sociales": 0.4577,
+"Recursos humanos": 0.235,
+"Contratación": 0.0209,
+"Sede electrónica e informática": 0.0399,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1276
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.2493,
+"Trámite o solicitud": 0.2606,
+"Queja o reclamación": 0.1913,
+"Respuesta a un requerimiento": 0.1931,
+"Publicidad o correo no deseado": 0.1056
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4858,
+"false": 0.5142
+}
+}
+}
+},
+{
+"id": "correo-p-014",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0705,
+"Tributos y recaudación": 0.0298,
+"Urbanismo y obras": 0.0339,
+"Servicios sociales": 0.0476,
+"Recursos humanos": 0.051,
+"Contratación": 0.0227,
+"Sede electrónica e informática": 0.2267,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.5178
+}
+},
+"tipo": {
+"label": "Publicidad o correo no deseado",
+"p": {
+"Solicitud de información": 0.2046,
+"Trámite o solicitud": 0.409,
+"Queja o reclamación": 0.0318,
+"Respuesta a un requerimiento": 0.1515,
+"Publicidad o correo no deseado": 0.2032
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3379,
+"false": 0.6621
+}
+}
+}
+},
+{
+"id": "correo-p-015",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.2293,
+"Tributos y recaudación": 0.0218,
+"Urbanismo y obras": 0.5377,
+"Servicios sociales": 0.0081,
+"Recursos humanos": 0.0112,
+"Contratación": 0.0342,
+"Sede electrónica e informática": 0.023,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1346
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.1647,
+"Trámite o solicitud": 0.6546,
+"Queja o reclamación": 0.0126,
+"Respuesta a un requerimiento": 0.0865,
+"Publicidad o correo no deseado": 0.0816
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.8466,
+"false": 0.15339999999999998
+}
+}
+}
+},
+{
+"id": "correo-p-016",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.1735,
+"Tributos y recaudación": 0.0685,
+"Urbanismo y obras": 0.3472,
+"Servicios sociales": 0.0189,
+"Recursos humanos": 0.0192,
+"Contratación": 0.0858,
+"Sede electrónica e informática": 0.0459,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.241
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1442,
+"Trámite o solicitud": 0.404,
+"Queja o reclamación": 0.0275,
+"Respuesta a un requerimiento": 0.287,
+"Publicidad o correo no deseado": 0.1373
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3746,
+"false": 0.6254
+}
+}
+}
+},
+{
+"id": "correo-p-017",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.1872,
+"Tributos y recaudación": 0.2084,
+"Urbanismo y obras": 0.1029,
+"Servicios sociales": 0.0636,
+"Recursos humanos": 0.0396,
+"Contratación": 0.0379,
+"Sede electrónica e informática": 0.0762,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2841
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3084,
+"Trámite o solicitud": 0.3036,
+"Queja o reclamación": 0.0163,
+"Respuesta a un requerimiento": 0.2603,
+"Publicidad o correo no deseado": 0.1115
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2849,
+"false": 0.7151000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-018",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.0505,
+"Tributos y recaudación": 0.4053,
+"Urbanismo y obras": 0.0471,
+"Servicios sociales": 0.0293,
+"Recursos humanos": 0.0464,
+"Contratación": 0.0499,
+"Sede electrónica e informática": 0.1996,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.172
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1065,
+"Trámite o solicitud": 0.2691,
+"Queja o reclamación": 0.3136,
+"Respuesta a un requerimiento": 0.1441,
+"Publicidad o correo no deseado": 0.1667
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.5195,
+"false": 0.48050000000000004
+}
+}
+}
+},
+{
+"id": "correo-p-019",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.3298,
+"Tributos y recaudación": 0.0301,
+"Urbanismo y obras": 0.1841,
+"Servicios sociales": 0.0317,
+"Recursos humanos": 0.0367,
+"Contratación": 0.0625,
+"Sede electrónica e informática": 0.0648,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2604
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3903,
+"Trámite o solicitud": 0.3657,
+"Queja o reclamación": 0.0241,
+"Respuesta a un requerimiento": 0.0785,
+"Publicidad o correo no deseado": 0.1414
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3609,
+"false": 0.6391
+}
+}
+}
+},
+{
+"id": "correo-p-020",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.1062,
+"Tributos y recaudación": 0.4626,
+"Urbanismo y obras": 0.0387,
+"Servicios sociales": 0.0189,
+"Recursos humanos": 0.0342,
+"Contratación": 0.0791,
+"Sede electrónica e informática": 0.1526,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1077
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1592,
+"Trámite o solicitud": 0.3212,
+"Queja o reclamación": 0.0553,
+"Respuesta a un requerimiento": 0.3077,
+"Publicidad o correo no deseado": 0.1566
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4652,
+"false": 0.5347999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-021",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.6339,
+"Tributos y recaudación": 0.0235,
+"Urbanismo y obras": 0.1389,
+"Servicios sociales": 0.037,
+"Recursos humanos": 0.0279,
+"Contratación": 0.0122,
+"Sede electrónica e informática": 0.0087,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1179
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1041,
+"Trámite o solicitud": 0.4028,
+"Queja o reclamación": 0.09,
+"Respuesta a un requerimiento": 0.2983,
+"Publicidad o correo no deseado": 0.1048
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5807,
+"false": 0.4193
+}
+}
+}
+},
+{
+"id": "correo-p-022",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0199,
+"Tributos y recaudación": 0.0202,
+"Urbanismo y obras": 0.4797,
+"Servicios sociales": 0.0144,
+"Recursos humanos": 0.0207,
+"Contratación": 0.3828,
+"Sede electrónica e informática": 0.0054,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0569
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1073,
+"Trámite o solicitud": 0.2147,
+"Queja o reclamación": 0.3018,
+"Respuesta a un requerimiento": 0.2388,
+"Publicidad o correo no deseado": 0.1373
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4794,
+"false": 0.5206
+}
+}
+}
+},
+{
+"id": "correo-p-023",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.1146,
+"Tributos y recaudación": 0.0112,
+"Urbanismo y obras": 0.7515,
+"Servicios sociales": 0.007,
+"Recursos humanos": 0.004,
+"Contratación": 0.0179,
+"Sede electrónica e informática": 0.0033,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0905
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1986,
+"Trámite o solicitud": 0.482,
+"Queja o reclamación": 0.0366,
+"Respuesta a un requerimiento": 0.1698,
+"Publicidad o correo no deseado": 0.113
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.285,
+"false": 0.7150000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-024",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.0067,
+"Tributos y recaudación": 0.007,
+"Urbanismo y obras": 0.1528,
+"Servicios sociales": 0.0066,
+"Recursos humanos": 0.7173,
+"Contratación": 0.0736,
+"Sede electrónica e informática": 0.0061,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0299
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.2049,
+"Trámite o solicitud": 0.35,
+"Queja o reclamación": 0.0956,
+"Respuesta a un requerimiento": 0.1741,
+"Publicidad o correo no deseado": 0.1754
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.446,
+"false": 0.554
+}
+}
+}
+},
+{
+"id": "correo-p-025",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.2649,
+"Tributos y recaudación": 0.0382,
+"Urbanismo y obras": 0.0812,
+"Servicios sociales": 0.1303,
+"Recursos humanos": 0.0495,
+"Contratación": 0.0323,
+"Sede electrónica e informática": 0.0402,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.3634
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2138,
+"Trámite o solicitud": 0.451,
+"Queja o reclamación": 0.1013,
+"Respuesta a un requerimiento": 0.102,
+"Publicidad o correo no deseado": 0.1318
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.4915,
+"false": 0.5085
+}
+}
+}
+},
+{
+"id": "correo-p-026",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0673,
+"Tributos y recaudación": 0.0202,
+"Urbanismo y obras": 0.7647,
+"Servicios sociales": 0.0075,
+"Recursos humanos": 0.0079,
+"Contratación": 0.0397,
+"Sede electrónica e informática": 0.0127,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.08
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1056,
+"Trámite o solicitud": 0.3127,
+"Queja o reclamación": 0.173,
+"Respuesta a un requerimiento": 0.316,
+"Publicidad o correo no deseado": 0.0927
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4516,
+"false": 0.5484
+}
+}
+}
+},
+{
+"id": "correo-p-027",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0832,
+"Tributos y recaudación": 0.0161,
+"Urbanismo y obras": 0.7071,
+"Servicios sociales": 0.012,
+"Recursos humanos": 0.0084,
+"Contratación": 0.0386,
+"Sede electrónica e informática": 0.0077,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1268
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2849,
+"Trámite o solicitud": 0.5031,
+"Queja o reclamación": 0.0268,
+"Respuesta a un requerimiento": 0.1229,
+"Publicidad o correo no deseado": 0.0623
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2918,
+"false": 0.7081999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-028",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0328,
+"Tributos y recaudación": 0.0083,
+"Urbanismo y obras": 0.2145,
+"Servicios sociales": 0.0112,
+"Recursos humanos": 0.0134,
+"Contratación": 0.5558,
+"Sede electrónica e informática": 0.0436,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1202
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1751,
+"Trámite o solicitud": 0.3604,
+"Queja o reclamación": 0.0364,
+"Respuesta a un requerimiento": 0.2683,
+"Publicidad o correo no deseado": 0.1599
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5279,
+"false": 0.47209999999999996
+}
+}
+}
+},
+{
+"id": "correo-p-029",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.0345,
+"Tributos y recaudación": 0.0031,
+"Urbanismo y obras": 0.0594,
+"Servicios sociales": 0.0244,
+"Recursos humanos": 0.6389,
+"Contratación": 0.0973,
+"Sede electrónica e informática": 0.0233,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1191
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3755,
+"Trámite o solicitud": 0.1829,
+"Queja o reclamación": 0.0104,
+"Respuesta a un requerimiento": 0.1805,
+"Publicidad o correo no deseado": 0.2507
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2807,
+"false": 0.7193
+}
+}
+}
+},
+{
+"id": "correo-p-030",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.0701,
+"Tributos y recaudación": 0.0501,
+"Urbanismo y obras": 0.0588,
+"Servicios sociales": 0.3924,
+"Recursos humanos": 0.2481,
+"Contratación": 0.0248,
+"Sede electrónica e informática": 0.0136,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1422
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1649,
+"Trámite o solicitud": 0.6463,
+"Queja o reclamación": 0.0205,
+"Respuesta a un requerimiento": 0.0874,
+"Publicidad o correo no deseado": 0.0809
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4666,
+"false": 0.5334
+}
+}
+}
+},
+{
+"id": "correo-p-031",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0822,
+"Tributos y recaudación": 0.0212,
+"Urbanismo y obras": 0.0492,
+"Servicios sociales": 0.0165,
+"Recursos humanos": 0.0233,
+"Contratación": 0.6116,
+"Sede electrónica e informática": 0.0595,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1365
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1513,
+"Trámite o solicitud": 0.2899,
+"Queja o reclamación": 0.0185,
+"Respuesta a un requerimiento": 0.3245,
+"Publicidad o correo no deseado": 0.2159
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3423,
+"false": 0.6577
+}
+}
+}
+},
+{
+"id": "correo-p-032",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0243,
+"Tributos y recaudación": 0.0051,
+"Urbanismo y obras": 0.8737,
+"Servicios sociales": 0.0103,
+"Recursos humanos": 0.0086,
+"Contratación": 0.016,
+"Sede electrónica e informática": 0.0038,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0581
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.0721,
+"Trámite o solicitud": 0.1149,
+"Queja o reclamación": 0.72,
+"Respuesta a un requerimiento": 0.0549,
+"Publicidad o correo no deseado": 0.038
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.7724,
+"false": 0.22760000000000002
+}
+}
+}
+},
+{
+"id": "correo-p-033",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.06,
+"Tributos y recaudación": 0.5044,
+"Urbanismo y obras": 0.1334,
+"Servicios sociales": 0.0221,
+"Recursos humanos": 0.0293,
+"Contratación": 0.0339,
+"Sede electrónica e informática": 0.1113,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1056
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2491,
+"Trámite o solicitud": 0.3409,
+"Queja o reclamación": 0.0382,
+"Respuesta a un requerimiento": 0.1895,
+"Publicidad o correo no deseado": 0.1823
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5295,
+"false": 0.47050000000000003
+}
+}
+}
+},
+{
+"id": "correo-p-034",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.0447,
+"Tributos y recaudación": 0.7632,
+"Urbanismo y obras": 0.0436,
+"Servicios sociales": 0.0071,
+"Recursos humanos": 0.0117,
+"Contratación": 0.0206,
+"Sede electrónica e informática": 0.029,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0801
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2797,
+"Trámite o solicitud": 0.3256,
+"Queja o reclamación": 0.0273,
+"Respuesta a un requerimiento": 0.2006,
+"Publicidad o correo no deseado": 0.1668
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.4319,
+"false": 0.5681
+}
+}
+}
+},
+{
+"id": "correo-p-035",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0913,
+"Tributos y recaudación": 0.5584,
+"Urbanismo y obras": 0.0382,
+"Servicios sociales": 0.0514,
+"Recursos humanos": 0.0593,
+"Contratación": 0.0247,
+"Sede electrónica e informática": 0.042,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1346
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.1959,
+"Trámite o solicitud": 0.3297,
+"Queja o reclamación": 0.0727,
+"Respuesta a un requerimiento": 0.233,
+"Publicidad o correo no deseado": 0.1686
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3318,
+"false": 0.6682
+}
+}
+}
+},
+{
+"id": "correo-p-036",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0623,
+"Tributos y recaudación": 0.0298,
+"Urbanismo y obras": 0.0735,
+"Servicios sociales": 0.0205,
+"Recursos humanos": 0.0504,
+"Contratación": 0.0245,
+"Sede electrónica e informática": 0.6254,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1136
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2225,
+"Trámite o solicitud": 0.4631,
+"Queja o reclamación": 0.0552,
+"Respuesta a un requerimiento": 0.1368,
+"Publicidad o correo no deseado": 0.1225
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.426,
+"false": 0.5740000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-037",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.1506,
+"Tributos y recaudación": 0.0439,
+"Urbanismo y obras": 0.1075,
+"Servicios sociales": 0.0537,
+"Recursos humanos": 0.0643,
+"Contratación": 0.0165,
+"Sede electrónica e informática": 0.3803,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1832
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.225,
+"Trámite o solicitud": 0.1705,
+"Queja o reclamación": 0.1033,
+"Respuesta a un requerimiento": 0.2142,
+"Publicidad o correo no deseado": 0.287
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4593,
+"false": 0.5407
+}
+}
+}
+},
+{
+"id": "correo-p-038",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.2725,
+"Tributos y recaudación": 0.0115,
+"Urbanismo y obras": 0.0597,
+"Servicios sociales": 0.4484,
+"Recursos humanos": 0.049,
+"Contratación": 0.0109,
+"Sede electrónica e informática": 0.0547,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0934
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2202,
+"Trámite o solicitud": 0.5002,
+"Queja o reclamación": 0.0227,
+"Respuesta a un requerimiento": 0.1595,
+"Publicidad o correo no deseado": 0.0975
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4823,
+"false": 0.5177
+}
+}
+}
+},
+{
+"id": "correo-p-039",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.1015,
+"Tributos y recaudación": 0.4265,
+"Urbanismo y obras": 0.073,
+"Servicios sociales": 0.0224,
+"Recursos humanos": 0.0336,
+"Contratación": 0.0255,
+"Sede electrónica e informática": 0.206,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1116
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1625,
+"Trámite o solicitud": 0.13,
+"Queja o reclamación": 0.1826,
+"Respuesta a un requerimiento": 0.3075,
+"Publicidad o correo no deseado": 0.2174
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.5072,
+"false": 0.4928
+}
+}
+}
+},
+{
+"id": "correo-p-040",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.037,
+"Tributos y recaudación": 0.0085,
+"Urbanismo y obras": 0.5122,
+"Servicios sociales": 0.0066,
+"Recursos humanos": 0.0165,
+"Contratación": 0.1789,
+"Sede electrónica e informática": 0.0316,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2087
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2771,
+"Trámite o solicitud": 0.3413,
+"Queja o reclamación": 0.0128,
+"Respuesta a un requerimiento": 0.2166,
+"Publicidad o correo no deseado": 0.1523
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2281,
+"false": 0.7719
+}
+}
+}
+},
+{
+"id": "correo-p-041",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.0411,
+"Tributos y recaudación": 0.006,
+"Urbanismo y obras": 0.0203,
+"Servicios sociales": 0.5967,
+"Recursos humanos": 0.0404,
+"Contratación": 0.0202,
+"Sede electrónica e informática": 0.1054,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.17
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3324,
+"Trámite o solicitud": 0.379,
+"Queja o reclamación": 0.0628,
+"Respuesta a un requerimiento": 0.088,
+"Publicidad o correo no deseado": 0.1379
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4632,
+"false": 0.5367999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-042",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.3562,
+"Tributos y recaudación": 0.0384,
+"Urbanismo y obras": 0.1164,
+"Servicios sociales": 0.1142,
+"Recursos humanos": 0.0938,
+"Contratación": 0.0152,
+"Sede electrónica e informática": 0.0409,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2249
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.0715,
+"Trámite o solicitud": 0.1016,
+"Queja o reclamación": 0.6508,
+"Respuesta a un requerimiento": 0.1119,
+"Publicidad o correo no deseado": 0.0642
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.622,
+"false": 0.378
+}
+}
+}
+},
+{
+"id": "correo-p-043",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.6337,
+"Tributos y recaudación": 0.019,
+"Urbanismo y obras": 0.1202,
+"Servicios sociales": 0.0738,
+"Recursos humanos": 0.0214,
+"Contratación": 0.0082,
+"Sede electrónica e informática": 0.0176,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.106
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.2201,
+"Trámite o solicitud": 0.572,
+"Queja o reclamación": 0.018,
+"Respuesta a un requerimiento": 0.105,
+"Publicidad o correo no deseado": 0.085
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4044,
+"false": 0.5956
+}
+}
+}
+},
+{
+"id": "correo-p-044",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.0404,
+"Tributos y recaudación": 0.3929,
+"Urbanismo y obras": 0.3738,
+"Servicios sociales": 0.0062,
+"Recursos humanos": 0.0094,
+"Contratación": 0.0681,
+"Sede electrónica e informática": 0.0232,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0859
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1333,
+"Trámite o solicitud": 0.1963,
+"Queja o reclamación": 0.1309,
+"Respuesta a un requerimiento": 0.3809,
+"Publicidad o correo no deseado": 0.1586
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4912,
+"false": 0.5087999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-045",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0608,
+"Tributos y recaudación": 0.0203,
+"Urbanismo y obras": 0.4679,
+"Servicios sociales": 0.0268,
+"Recursos humanos": 0.0146,
+"Contratación": 0.0162,
+"Sede electrónica e informática": 0.0668,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.3266
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3402,
+"Trámite o solicitud": 0.1659,
+"Queja o reclamación": 0.0401,
+"Respuesta a un requerimiento": 0.1596,
+"Publicidad o correo no deseado": 0.2941
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2833,
+"false": 0.7167
+}
+}
+}
+},
+{
+"id": "correo-p-046",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.192,
+"Tributos y recaudación": 0.0311,
+"Urbanismo y obras": 0.1161,
+"Servicios sociales": 0.0202,
+"Recursos humanos": 0.0321,
+"Contratación": 0.0114,
+"Sede electrónica e informática": 0.4287,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1682
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2977,
+"Trámite o solicitud": 0.2599,
+"Queja o reclamación": 0.0827,
+"Respuesta a un requerimiento": 0.1733,
+"Publicidad o correo no deseado": 0.1864
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2931,
+"false": 0.7069
+}
+}
+}
+},
+{
+"id": "correo-p-047",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.0843,
+"Tributos y recaudación": 0.0244,
+"Urbanismo y obras": 0.0992,
+"Servicios sociales": 0.0442,
+"Recursos humanos": 0.1582,
+"Contratación": 0.0593,
+"Sede electrónica e informática": 0.0168,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.5136
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3839,
+"Trámite o solicitud": 0.2949,
+"Queja o reclamación": 0.0368,
+"Respuesta a un requerimiento": 0.1087,
+"Publicidad o correo no deseado": 0.1756
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.7344,
+"false": 0.26559999999999995
+}
+}
+}
+},
+{
+"id": "correo-p-048",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.167,
+"Tributos y recaudación": 0.0557,
+"Urbanismo y obras": 0.3741,
+"Servicios sociales": 0.1252,
+"Recursos humanos": 0.0551,
+"Contratación": 0.0169,
+"Sede electrónica e informática": 0.0221,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.184
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1807,
+"Trámite o solicitud": 0.5135,
+"Queja o reclamación": 0.0463,
+"Respuesta a un requerimiento": 0.1686,
+"Publicidad o correo no deseado": 0.0909
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.507,
+"false": 0.493
+}
+}
+}
+},
+{
+"id": "correo-p-049",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0373,
+"Tributos y recaudación": 0.0093,
+"Urbanismo y obras": 0.7741,
+"Servicios sociales": 0.0406,
+"Recursos humanos": 0.0142,
+"Contratación": 0.0151,
+"Sede electrónica e informática": 0.0181,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0912
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1187,
+"Trámite o solicitud": 0.2048,
+"Queja o reclamación": 0.4959,
+"Respuesta a un requerimiento": 0.0888,
+"Publicidad o correo no deseado": 0.0919
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.9131,
+"false": 0.08689999999999998
+}
+}
+}
+},
+{
+"id": "correo-p-050",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.081,
+"Tributos y recaudación": 0.037,
+"Urbanismo y obras": 0.0241,
+"Servicios sociales": 0.6541,
+"Recursos humanos": 0.0299,
+"Contratación": 0.0517,
+"Sede electrónica e informática": 0.0114,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1107
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2219,
+"Trámite o solicitud": 0.5934,
+"Queja o reclamación": 0.0185,
+"Respuesta a un requerimiento": 0.0649,
+"Publicidad o correo no deseado": 0.1014
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.539,
+"false": 0.46099999999999997
+}
+}
+}
+},
+{
+"id": "correo-p-051",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.1174,
+"Tributos y recaudación": 0.0551,
+"Urbanismo y obras": 0.1392,
+"Servicios sociales": 0.1165,
+"Recursos humanos": 0.0568,
+"Contratación": 0.0258,
+"Sede electrónica e informática": 0.1302,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.359
+}
+},
+"tipo": {
+"label": "Publicidad o correo no deseado",
+"p": {
+"Solicitud de información": 0.3063,
+"Trámite o solicitud": 0.1408,
+"Queja o reclamación": 0.0309,
+"Respuesta a un requerimiento": 0.1039,
+"Publicidad o correo no deseado": 0.418
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.26,
+"false": 0.74
+}
+}
+}
+},
+{
+"id": "correo-p-052",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.5408,
+"Tributos y recaudación": 0.0166,
+"Urbanismo y obras": 0.1965,
+"Servicios sociales": 0.0257,
+"Recursos humanos": 0.0154,
+"Contratación": 0.0072,
+"Sede electrónica e informática": 0.0874,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1103
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.2064,
+"Trámite o solicitud": 0.3861,
+"Queja o reclamación": 0.136,
+"Respuesta a un requerimiento": 0.1803,
+"Publicidad o correo no deseado": 0.0913
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.6818,
+"false": 0.31820000000000004
+}
+}
+}
+},
+{
+"id": "correo-p-053",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.6848,
+"Tributos y recaudación": 0.0054,
+"Urbanismo y obras": 0.1103,
+"Servicios sociales": 0.0124,
+"Recursos humanos": 0.009,
+"Contratación": 0.0056,
+"Sede electrónica e informática": 0.0108,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1617
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1048,
+"Trámite o solicitud": 0.7267,
+"Queja o reclamación": 0.0086,
+"Respuesta a un requerimiento": 0.0775,
+"Publicidad o correo no deseado": 0.0824
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4271,
+"false": 0.5729
+}
+}
+}
+},
+{
+"id": "correo-p-054",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.4324,
+"Tributos y recaudación": 0.0408,
+"Urbanismo y obras": 0.0777,
+"Servicios sociales": 0.0733,
+"Recursos humanos": 0.1218,
+"Contratación": 0.0158,
+"Sede electrónica e informática": 0.0386,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1997
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2497,
+"Trámite o solicitud": 0.1932,
+"Queja o reclamación": 0.0369,
+"Respuesta a un requerimiento": 0.3975,
+"Publicidad o correo no deseado": 0.1228
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3253,
+"false": 0.6747000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-055",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.5229,
+"Tributos y recaudación": 0.0151,
+"Urbanismo y obras": 0.1286,
+"Servicios sociales": 0.0144,
+"Recursos humanos": 0.021,
+"Contratación": 0.0103,
+"Sede electrónica e informática": 0.0186,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.269
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.4165,
+"Trámite o solicitud": 0.2168,
+"Queja o reclamación": 0.0234,
+"Respuesta a un requerimiento": 0.1908,
+"Publicidad o correo no deseado": 0.1525
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2153,
+"false": 0.7847
+}
+}
+}
+},
+{
+"id": "correo-p-056",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.2045,
+"Tributos y recaudación": 0.0174,
+"Urbanismo y obras": 0.0493,
+"Servicios sociales": 0.0166,
+"Recursos humanos": 0.3127,
+"Contratación": 0.02,
+"Sede electrónica e informática": 0.2504,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1292
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.2505,
+"Trámite o solicitud": 0.4066,
+"Queja o reclamación": 0.0585,
+"Respuesta a un requerimiento": 0.0904,
+"Publicidad o correo no deseado": 0.194
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5541,
+"false": 0.44589999999999996
+}
+}
+}
+},
+{
+"id": "correo-p-057",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0302,
+"Tributos y recaudación": 0.0056,
+"Urbanismo y obras": 0.8678,
+"Servicios sociales": 0.0092,
+"Recursos humanos": 0.0139,
+"Contratación": 0.0139,
+"Sede electrónica e informática": 0.0023,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0571
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1006,
+"Trámite o solicitud": 0.6598,
+"Queja o reclamación": 0.1088,
+"Respuesta a un requerimiento": 0.0775,
+"Publicidad o correo no deseado": 0.0533
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.628,
+"false": 0.372
+}
+}
+}
+},
+{
+"id": "correo-p-058",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0169,
+"Tributos y recaudación": 0.0104,
+"Urbanismo y obras": 0.4326,
+"Servicios sociales": 0.005,
+"Recursos humanos": 0.0072,
+"Contratación": 0.3588,
+"Sede electrónica e informática": 0.021,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1481
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1595,
+"Trámite o solicitud": 0.5983,
+"Queja o reclamación": 0.0209,
+"Respuesta a un requerimiento": 0.1096,
+"Publicidad o correo no deseado": 0.1117
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4037,
+"false": 0.5963
+}
+}
+}
+},
+{
+"id": "correo-p-059",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0227,
+"Tributos y recaudación": 0.0728,
+"Urbanismo y obras": 0.1125,
+"Servicios sociales": 0.0165,
+"Recursos humanos": 0.0131,
+"Contratación": 0.6508,
+"Sede electrónica e informática": 0.0253,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0863
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1859,
+"Trámite o solicitud": 0.3871,
+"Queja o reclamación": 0.1014,
+"Respuesta a un requerimiento": 0.1405,
+"Publicidad o correo no deseado": 0.1851
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3227,
+"false": 0.6773
+}
+}
+}
+},
+{
+"id": "correo-p-060",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.0507,
+"Tributos y recaudación": 0.1237,
+"Urbanismo y obras": 0.0826,
+"Servicios sociales": 0.4568,
+"Recursos humanos": 0.0409,
+"Contratación": 0.0719,
+"Sede electrónica e informática": 0.0448,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1286
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1591,
+"Trámite o solicitud": 0.3679,
+"Queja o reclamación": 0.1842,
+"Respuesta a un requerimiento": 0.1504,
+"Publicidad o correo no deseado": 0.1384
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.717,
+"false": 0.28300000000000003
+}
+}
+}
+},
+{
+"id": "correo-p-061",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.0621,
+"Tributos y recaudación": 0.0097,
+"Urbanismo y obras": 0.042,
+"Servicios sociales": 0.05,
+"Recursos humanos": 0.4465,
+"Contratación": 0.2084,
+"Sede electrónica e informática": 0.0216,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1598
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3993,
+"Trámite o solicitud": 0.1607,
+"Queja o reclamación": 0.016,
+"Respuesta a un requerimiento": 0.3307,
+"Publicidad o correo no deseado": 0.0933
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3528,
+"false": 0.6472
+}
+}
+}
+},
+{
+"id": "correo-p-062",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.1169,
+"Tributos y recaudación": 0.3505,
+"Urbanismo y obras": 0.0975,
+"Servicios sociales": 0.2313,
+"Recursos humanos": 0.0178,
+"Contratación": 0.0201,
+"Sede electrónica e informática": 0.0134,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1525
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2024,
+"Trámite o solicitud": 0.5601,
+"Queja o reclamación": 0.0222,
+"Respuesta a un requerimiento": 0.118,
+"Publicidad o correo no deseado": 0.0973
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3974,
+"false": 0.6026
+}
+}
+}
+},
+{
+"id": "correo-p-063",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.2057,
+"Tributos y recaudación": 0.5405,
+"Urbanismo y obras": 0.0496,
+"Servicios sociales": 0.0277,
+"Recursos humanos": 0.0361,
+"Contratación": 0.0172,
+"Sede electrónica e informática": 0.0383,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0848
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1442,
+"Trámite o solicitud": 0.6891,
+"Queja o reclamación": 0.0213,
+"Respuesta a un requerimiento": 0.0676,
+"Publicidad o correo no deseado": 0.0778
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.7682,
+"false": 0.2318
+}
+}
+}
+},
+{
+"id": "correo-p-064",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.1272,
+"Tributos y recaudación": 0.008,
+"Urbanismo y obras": 0.7398,
+"Servicios sociales": 0.007,
+"Recursos humanos": 0.0076,
+"Contratación": 0.0227,
+"Sede electrónica e informática": 0.0068,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.081
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1624,
+"Trámite o solicitud": 0.7322,
+"Queja o reclamación": 0.0086,
+"Respuesta a un requerimiento": 0.048,
+"Publicidad o correo no deseado": 0.0487
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3637,
+"false": 0.6363
+}
+}
+}
+},
+{
+"id": "correo-p-065",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0611,
+"Tributos y recaudación": 0.0156,
+"Urbanismo y obras": 0.7533,
+"Servicios sociales": 0.0114,
+"Recursos humanos": 0.0112,
+"Contratación": 0.0269,
+"Sede electrónica e informática": 0.0061,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1144
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.125,
+"Trámite o solicitud": 0.3832,
+"Queja o reclamación": 0.3486,
+"Respuesta a un requerimiento": 0.095,
+"Publicidad o correo no deseado": 0.0482
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.5984,
+"false": 0.40159999999999996
+}
+}
+}
+},
+{
+"id": "correo-p-066",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.0565,
+"Tributos y recaudación": 0.0122,
+"Urbanismo y obras": 0.0577,
+"Servicios sociales": 0.6035,
+"Recursos humanos": 0.05,
+"Contratación": 0.0242,
+"Sede electrónica e informática": 0.0365,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1593
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1676,
+"Trámite o solicitud": 0.273,
+"Queja o reclamación": 0.3336,
+"Respuesta a un requerimiento": 0.1005,
+"Publicidad o correo no deseado": 0.1252
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.8538,
+"false": 0.1462
+}
+}
+}
+},
+{
+"id": "correo-p-067",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.4263,
+"Tributos y recaudación": 0.0267,
+"Urbanismo y obras": 0.1078,
+"Servicios sociales": 0.0745,
+"Recursos humanos": 0.0379,
+"Contratación": 0.0587,
+"Sede electrónica e informática": 0.0404,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2277
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1894,
+"Trámite o solicitud": 0.468,
+"Queja o reclamación": 0.0395,
+"Respuesta a un requerimiento": 0.2232,
+"Publicidad o correo no deseado": 0.0798
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.6591,
+"false": 0.3409
+}
+}
+}
+},
+{
+"id": "correo-p-068",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.2847,
+"Tributos y recaudación": 0.0156,
+"Urbanismo y obras": 0.0945,
+"Servicios sociales": 0.0355,
+"Recursos humanos": 0.0329,
+"Contratación": 0.0085,
+"Sede electrónica e informática": 0.2825,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2458
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1424,
+"Trámite o solicitud": 0.1725,
+"Queja o reclamación": 0.1659,
+"Respuesta a un requerimiento": 0.3477,
+"Publicidad o correo no deseado": 0.1714
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.7711,
+"false": 0.2289
+}
+}
+}
+},
+{
+"id": "correo-p-069",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.6985,
+"Tributos y recaudación": 0.0155,
+"Urbanismo y obras": 0.06,
+"Servicios sociales": 0.0555,
+"Recursos humanos": 0.0328,
+"Contratación": 0.0048,
+"Sede electrónica e informática": 0.0127,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1201
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2951,
+"Trámite o solicitud": 0.4527,
+"Queja o reclamación": 0.0506,
+"Respuesta a un requerimiento": 0.1322,
+"Publicidad o correo no deseado": 0.0693
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.6861,
+"false": 0.31389999999999996
+}
+}
+}
+},
+{
+"id": "correo-p-070",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.0452,
+"Tributos y recaudación": 0.6439,
+"Urbanismo y obras": 0.1178,
+"Servicios sociales": 0.01,
+"Recursos humanos": 0.0628,
+"Contratación": 0.0162,
+"Sede electrónica e informática": 0.0471,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0569
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1544,
+"Trámite o solicitud": 0.2663,
+"Queja o reclamación": 0.1049,
+"Respuesta a un requerimiento": 0.3505,
+"Publicidad o correo no deseado": 0.124
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5315,
+"false": 0.4685
+}
+}
+}
+},
+{
+"id": "correo-p-071",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.1408,
+"Tributos y recaudación": 0.0187,
+"Urbanismo y obras": 0.0228,
+"Servicios sociales": 0.4128,
+"Recursos humanos": 0.157,
+"Contratación": 0.0171,
+"Sede electrónica e informática": 0.0237,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2071
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.34,
+"Trámite o solicitud": 0.3035,
+"Queja o reclamación": 0.0269,
+"Respuesta a un requerimiento": 0.1892,
+"Publicidad o correo no deseado": 0.1405
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.271,
+"false": 0.729
+}
+}
+}
+},
+{
+"id": "correo-p-072",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0353,
+"Tributos y recaudación": 0.0226,
+"Urbanismo y obras": 0.1401,
+"Servicios sociales": 0.0159,
+"Recursos humanos": 0.0228,
+"Contratación": 0.4573,
+"Sede electrónica e informática": 0.0345,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2715
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2812,
+"Trámite o solicitud": 0.3653,
+"Queja o reclamación": 0.0376,
+"Respuesta a un requerimiento": 0.1728,
+"Publicidad o correo no deseado": 0.1431
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3663,
+"false": 0.6336999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-073",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.1993,
+"Tributos y recaudación": 0.5346,
+"Urbanismo y obras": 0.0728,
+"Servicios sociales": 0.0137,
+"Recursos humanos": 0.0106,
+"Contratación": 0.0221,
+"Sede electrónica e informática": 0.0214,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1254
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1015,
+"Trámite o solicitud": 0.2724,
+"Queja o reclamación": 0.0385,
+"Respuesta a un requerimiento": 0.4849,
+"Publicidad o correo no deseado": 0.1028
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4735,
+"false": 0.5265
+}
+}
+}
+},
+{
+"id": "correo-p-074",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.1292,
+"Tributos y recaudación": 0.0168,
+"Urbanismo y obras": 0.2686,
+"Servicios sociales": 0.0217,
+"Recursos humanos": 0.0246,
+"Contratación": 0.0146,
+"Sede electrónica e informática": 0.086,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.4386
+}
+},
+"tipo": {
+"label": "Publicidad o correo no deseado",
+"p": {
+"Solicitud de información": 0.2123,
+"Trámite o solicitud": 0.4346,
+"Queja o reclamación": 0.0135,
+"Respuesta a un requerimiento": 0.0788,
+"Publicidad o correo no deseado": 0.2608
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3112,
+"false": 0.6888000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-075",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.0375,
+"Tributos y recaudación": 0.0073,
+"Urbanismo y obras": 0.0205,
+"Servicios sociales": 0.783,
+"Recursos humanos": 0.0207,
+"Contratación": 0.0139,
+"Sede electrónica e informática": 0.005,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.112
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.211,
+"Trámite o solicitud": 0.5579,
+"Queja o reclamación": 0.0485,
+"Respuesta a un requerimiento": 0.0603,
+"Publicidad o correo no deseado": 0.1223
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4346,
+"false": 0.5654
+}
+}
+}
+},
+{
+"id": "correo-p-076",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0326,
+"Tributos y recaudación": 0.1093,
+"Urbanismo y obras": 0.1603,
+"Servicios sociales": 0.0282,
+"Recursos humanos": 0.0319,
+"Contratación": 0.0456,
+"Sede electrónica e informática": 0.4094,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1826
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2107,
+"Trámite o solicitud": 0.1486,
+"Queja o reclamación": 0.2136,
+"Respuesta a un requerimiento": 0.2407,
+"Publicidad o correo no deseado": 0.1864
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.4933,
+"false": 0.5066999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-077",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.087,
+"Tributos y recaudación": 0.0449,
+"Urbanismo y obras": 0.0674,
+"Servicios sociales": 0.0268,
+"Recursos humanos": 0.0356,
+"Contratación": 0.1306,
+"Sede electrónica e informática": 0.3609,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2468
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1479,
+"Trámite o solicitud": 0.176,
+"Queja o reclamación": 0.0399,
+"Respuesta a un requerimiento": 0.4717,
+"Publicidad o correo no deseado": 0.1645
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3557,
+"false": 0.6443
+}
+}
+}
+},
+{
+"id": "correo-p-078",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.1154,
+"Tributos y recaudación": 0.0407,
+"Urbanismo y obras": 0.072,
+"Servicios sociales": 0.0203,
+"Recursos humanos": 0.339,
+"Contratación": 0.1052,
+"Sede electrónica e informática": 0.059,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2484
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1266,
+"Trámite o solicitud": 0.5345,
+"Queja o reclamación": 0.161,
+"Respuesta a un requerimiento": 0.106,
+"Publicidad o correo no deseado": 0.0719
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.4357,
+"false": 0.5643
+}
+}
+}
+},
+{
+"id": "correo-p-079",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0761,
+"Tributos y recaudación": 0.0164,
+"Urbanismo y obras": 0.133,
+"Servicios sociales": 0.0535,
+"Recursos humanos": 0.0232,
+"Contratación": 0.0217,
+"Sede electrónica e informática": 0.3725,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.3035
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3176,
+"Trámite o solicitud": 0.2565,
+"Queja o reclamación": 0.1,
+"Respuesta a un requerimiento": 0.1104,
+"Publicidad o correo no deseado": 0.2155
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3417,
+"false": 0.6583
+}
+}
+}
+},
+{
+"id": "correo-p-080",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0388,
+"Tributos y recaudación": 0.0094,
+"Urbanismo y obras": 0.0606,
+"Servicios sociales": 0.006,
+"Recursos humanos": 0.0262,
+"Contratación": 0.6694,
+"Sede electrónica e informática": 0.0903,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0994
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.3326,
+"Trámite o solicitud": 0.3908,
+"Queja o reclamación": 0.0224,
+"Respuesta a un requerimiento": 0.1349,
+"Publicidad o correo no deseado": 0.1193
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4143,
+"false": 0.5857
+}
+}
+}
+},
+{
+"id": "correo-p-081",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0606,
+"Tributos y recaudación": 0.0356,
+"Urbanismo y obras": 0.0276,
+"Servicios sociales": 0.0233,
+"Recursos humanos": 0.0468,
+"Contratación": 0.03,
+"Sede electrónica e informática": 0.5696,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2064
+}
+},
+"tipo": {
+"label": "Publicidad o correo no deseado",
+"p": {
+"Solicitud de información": 0.2244,
+"Trámite o solicitud": 0.3081,
+"Queja o reclamación": 0.0801,
+"Respuesta a un requerimiento": 0.2085,
+"Publicidad o correo no deseado": 0.179
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.516,
+"false": 0.484
+}
+}
+}
+},
+{
+"id": "correo-p-082",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0724,
+"Tributos y recaudación": 0.184,
+"Urbanismo y obras": 0.0327,
+"Servicios sociales": 0.0572,
+"Recursos humanos": 0.0594,
+"Contratación": 0.3436,
+"Sede electrónica e informática": 0.0906,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1601
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1684,
+"Trámite o solicitud": 0.5441,
+"Queja o reclamación": 0.0349,
+"Respuesta a un requerimiento": 0.0991,
+"Publicidad o correo no deseado": 0.1535
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4121,
+"false": 0.5879
+}
+}
+}
+},
+{
+"id": "correo-p-083",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.1069,
+"Tributos y recaudación": 0.0052,
+"Urbanismo y obras": 0.017,
+"Servicios sociales": 0.0104,
+"Recursos humanos": 0.7073,
+"Contratación": 0.0283,
+"Sede electrónica e informática": 0.0211,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1038
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3179,
+"Trámite o solicitud": 0.3796,
+"Queja o reclamación": 0.0138,
+"Respuesta a un requerimiento": 0.1502,
+"Publicidad o correo no deseado": 0.1385
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.4518,
+"false": 0.5482
+}
+}
+}
+},
+{
+"id": "correo-p-084",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0303,
+"Tributos y recaudación": 0.0043,
+"Urbanismo y obras": 0.8269,
+"Servicios sociales": 0.0064,
+"Recursos humanos": 0.0045,
+"Contratación": 0.0531,
+"Sede electrónica e informática": 0.0037,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0708
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1485,
+"Trámite o solicitud": 0.639,
+"Queja o reclamación": 0.0574,
+"Respuesta a un requerimiento": 0.0721,
+"Publicidad o correo no deseado": 0.083
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.4319,
+"false": 0.5681
+}
+}
+}
+},
+{
+"id": "correo-p-085",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0165,
+"Tributos y recaudación": 0.004,
+"Urbanismo y obras": 0.3406,
+"Servicios sociales": 0.0043,
+"Recursos humanos": 0.0036,
+"Contratación": 0.4866,
+"Sede electrónica e informática": 0.0511,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0935
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.2143,
+"Trámite o solicitud": 0.4266,
+"Queja o reclamación": 0.0125,
+"Respuesta a un requerimiento": 0.1522,
+"Publicidad o correo no deseado": 0.1943
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.7504,
+"false": 0.24960000000000004
+}
+}
+}
+},
+{
+"id": "correo-p-086",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0636,
+"Tributos y recaudación": 0.0184,
+"Urbanismo y obras": 0.7632,
+"Servicios sociales": 0.0125,
+"Recursos humanos": 0.0108,
+"Contratación": 0.015,
+"Sede electrónica e informática": 0.0198,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0967
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1062,
+"Trámite o solicitud": 0.4794,
+"Queja o reclamación": 0.2439,
+"Respuesta a un requerimiento": 0.08,
+"Publicidad o correo no deseado": 0.0905
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.6229,
+"false": 0.3771
+}
+}
+}
+},
+{
+"id": "correo-p-087",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0964,
+"Tributos y recaudación": 0.0106,
+"Urbanismo y obras": 0.0857,
+"Servicios sociales": 0.0549,
+"Recursos humanos": 0.0379,
+"Contratación": 0.0165,
+"Sede electrónica e informática": 0.4715,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2264
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1902,
+"Trámite o solicitud": 0.458,
+"Queja o reclamación": 0.0659,
+"Respuesta a un requerimiento": 0.1575,
+"Publicidad o correo no deseado": 0.1284
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5827,
+"false": 0.4173
+}
+}
+}
+},
+{
+"id": "correo-p-088",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0282,
+"Tributos y recaudación": 0.0113,
+"Urbanismo y obras": 0.0294,
+"Servicios sociales": 0.0265,
+"Recursos humanos": 0.533,
+"Contratación": 0.0203,
+"Sede electrónica e informática": 0.1924,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1588
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2177,
+"Trámite o solicitud": 0.4704,
+"Queja o reclamación": 0.0356,
+"Respuesta a un requerimiento": 0.1202,
+"Publicidad o correo no deseado": 0.1562
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4859,
+"false": 0.5141
+}
+}
+}
+},
+{
+"id": "correo-p-089",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.1632,
+"Tributos y recaudación": 0.0212,
+"Urbanismo y obras": 0.1424,
+"Servicios sociales": 0.1851,
+"Recursos humanos": 0.0764,
+"Contratación": 0.0841,
+"Sede electrónica e informática": 0.0153,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.3123
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1412,
+"Trámite o solicitud": 0.4889,
+"Queja o reclamación": 0.1798,
+"Respuesta a un requerimiento": 0.1104,
+"Publicidad o correo no deseado": 0.0797
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.7616,
+"false": 0.23839999999999995
+}
+}
+}
+},
+{
+"id": "correo-p-090",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.1621,
+"Tributos y recaudación": 0.0095,
+"Urbanismo y obras": 0.2264,
+"Servicios sociales": 0.0132,
+"Recursos humanos": 0.419,
+"Contratación": 0.0697,
+"Sede electrónica e informática": 0.0144,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0857
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1567,
+"Trámite o solicitud": 0.5365,
+"Queja o reclamación": 0.0196,
+"Respuesta a un requerimiento": 0.16,
+"Publicidad o correo no deseado": 0.1272
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3805,
+"false": 0.6194999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-091",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.0468,
+"Tributos y recaudación": 0.3361,
+"Urbanismo y obras": 0.0474,
+"Servicios sociales": 0.1708,
+"Recursos humanos": 0.048,
+"Contratación": 0.1235,
+"Sede electrónica e informática": 0.1136,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1139
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.1952,
+"Trámite o solicitud": 0.4462,
+"Queja o reclamación": 0.0585,
+"Respuesta a un requerimiento": 0.1323,
+"Publicidad o correo no deseado": 0.1679
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.279,
+"false": 0.721
+}
+}
+}
+},
+{
+"id": "correo-p-092",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.6363,
+"Tributos y recaudación": 0.0284,
+"Urbanismo y obras": 0.1556,
+"Servicios sociales": 0.0194,
+"Recursos humanos": 0.0177,
+"Contratación": 0.0075,
+"Sede electrónica e informática": 0.0163,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1186
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1673,
+"Trámite o solicitud": 0.6954,
+"Queja o reclamación": 0.0127,
+"Respuesta a un requerimiento": 0.0424,
+"Publicidad o correo no deseado": 0.0822
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3636,
+"false": 0.6364000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-093",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0258,
+"Tributos y recaudación": 0.0283,
+"Urbanismo y obras": 0.0302,
+"Servicios sociales": 0.0132,
+"Recursos humanos": 0.0139,
+"Contratación": 0.6499,
+"Sede electrónica e informática": 0.0482,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1905
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1631,
+"Trámite o solicitud": 0.203,
+"Queja o reclamación": 0.0407,
+"Respuesta a un requerimiento": 0.3129,
+"Publicidad o correo no deseado": 0.2802
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3265,
+"false": 0.6735
+}
+}
+}
+},
+{
+"id": "correo-p-094",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.1189,
+"Tributos y recaudación": 0.579,
+"Urbanismo y obras": 0.0913,
+"Servicios sociales": 0.0223,
+"Recursos humanos": 0.033,
+"Contratación": 0.0343,
+"Sede electrónica e informática": 0.0211,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1001
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1665,
+"Trámite o solicitud": 0.5806,
+"Queja o reclamación": 0.0356,
+"Respuesta a un requerimiento": 0.0984,
+"Publicidad o correo no deseado": 0.1189
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4002,
+"false": 0.5998
+}
+}
+}
+},
+{
+"id": "correo-p-095",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0278,
+"Tributos y recaudación": 0.0134,
+"Urbanismo y obras": 0.3901,
+"Servicios sociales": 0.0116,
+"Recursos humanos": 0.0079,
+"Contratación": 0.395,
+"Sede electrónica e informática": 0.0288,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1254
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.211,
+"Trámite o solicitud": 0.3955,
+"Queja o reclamación": 0.0522,
+"Respuesta a un requerimiento": 0.1714,
+"Publicidad o correo no deseado": 0.1699
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.7063,
+"false": 0.29369999999999996
+}
+}
+}
+},
+{
+"id": "correo-p-096",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.054,
+"Tributos y recaudación": 0.0095,
+"Urbanismo y obras": 0.0396,
+"Servicios sociales": 0.6245,
+"Recursos humanos": 0.0923,
+"Contratación": 0.0078,
+"Sede electrónica e informática": 0.0253,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.147
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1599,
+"Trámite o solicitud": 0.3775,
+"Queja o reclamación": 0.1458,
+"Respuesta a un requerimiento": 0.2166,
+"Publicidad o correo no deseado": 0.1002
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4534,
+"false": 0.5466
+}
+}
+}
+},
+{
+"id": "correo-p-097",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0382,
+"Tributos y recaudación": 0.7021,
+"Urbanismo y obras": 0.0494,
+"Servicios sociales": 0.0171,
+"Recursos humanos": 0.0138,
+"Contratación": 0.0216,
+"Sede electrónica e informática": 0.0393,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1184
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.1585,
+"Trámite o solicitud": 0.3,
+"Queja o reclamación": 0.0663,
+"Respuesta a un requerimiento": 0.2509,
+"Publicidad o correo no deseado": 0.2243
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3852,
+"false": 0.6148
+}
+}
+}
+},
+{
+"id": "correo-p-098",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.1248,
+"Tributos y recaudación": 0.0299,
+"Urbanismo y obras": 0.1315,
+"Servicios sociales": 0.0988,
+"Recursos humanos": 0.062,
+"Contratación": 0.0919,
+"Sede electrónica e informática": 0.0213,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.4398
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.4071,
+"Trámite o solicitud": 0.1789,
+"Queja o reclamación": 0.0204,
+"Respuesta a un requerimiento": 0.2258,
+"Publicidad o correo no deseado": 0.1678
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2521,
+"false": 0.7479
+}
+}
+}
+},
+{
+"id": "correo-p-099",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.1808,
+"Tributos y recaudación": 0.0095,
+"Urbanismo y obras": 0.0132,
+"Servicios sociales": 0.5123,
+"Recursos humanos": 0.0299,
+"Contratación": 0.0151,
+"Sede electrónica e informática": 0.0213,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2179
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.2369,
+"Trámite o solicitud": 0.3314,
+"Queja o reclamación": 0.049,
+"Respuesta a un requerimiento": 0.2076,
+"Publicidad o correo no deseado": 0.175
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4192,
+"false": 0.5808
+}
+}
+}
+},
+{
+"id": "correo-p-100",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.0624,
+"Tributos y recaudación": 0.0084,
+"Urbanismo y obras": 0.0491,
+"Servicios sociales": 0.5046,
+"Recursos humanos": 0.1601,
+"Contratación": 0.0444,
+"Sede electrónica e informática": 0.0068,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1643
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1919,
+"Trámite o solicitud": 0.6512,
+"Queja o reclamación": 0.0261,
+"Respuesta a un requerimiento": 0.054,
+"Publicidad o correo no deseado": 0.0767
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3202,
+"false": 0.6798
+}
+}
+}
+},
+{
+"id": "correo-p-101",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0305,
+"Tributos y recaudación": 0.0152,
+"Urbanismo y obras": 0.2877,
+"Servicios sociales": 0.0112,
+"Recursos humanos": 0.0238,
+"Contratación": 0.5343,
+"Sede electrónica e informática": 0.0168,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0806
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2128,
+"Trámite o solicitud": 0.5167,
+"Queja o reclamación": 0.0157,
+"Respuesta a un requerimiento": 0.1298,
+"Publicidad o correo no deseado": 0.1251
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.3981,
+"false": 0.6019
+}
+}
+}
+},
+{
+"id": "correo-p-102",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.3215,
+"Tributos y recaudación": 0.0109,
+"Urbanismo y obras": 0.1742,
+"Servicios sociales": 0.0413,
+"Recursos humanos": 0.0401,
+"Contratación": 0.0133,
+"Sede electrónica e informática": 0.2205,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1781
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1497,
+"Trámite o solicitud": 0.4472,
+"Queja o reclamación": 0.0218,
+"Respuesta a un requerimiento": 0.2462,
+"Publicidad o correo no deseado": 0.1351
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4528,
+"false": 0.5472
+}
+}
+}
+},
+{
+"id": "correo-p-103",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Ninguna (no es competencia municipal, o es publicidad)",
+"p": {
+"Atención ciudadana y registro": 0.0689,
+"Tributos y recaudación": 0.0603,
+"Urbanismo y obras": 0.0893,
+"Servicios sociales": 0.0243,
+"Recursos humanos": 0.0364,
+"Contratación": 0.0944,
+"Sede electrónica e informática": 0.2837,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.3427
+}
+},
+"tipo": {
+"label": "Publicidad o correo no deseado",
+"p": {
+"Solicitud de información": 0.1902,
+"Trámite o solicitud": 0.3272,
+"Queja o reclamación": 0.0521,
+"Respuesta a un requerimiento": 0.1581,
+"Publicidad o correo no deseado": 0.2723
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4741,
+"false": 0.5259
+}
+}
+}
+},
+{
+"id": "correo-p-104",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.1192,
+"Tributos y recaudación": 0.0922,
+"Urbanismo y obras": 0.5701,
+"Servicios sociales": 0.0313,
+"Recursos humanos": 0.0118,
+"Contratación": 0.0432,
+"Sede electrónica e informática": 0.0055,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1266
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2728,
+"Trámite o solicitud": 0.5379,
+"Queja o reclamación": 0.0138,
+"Respuesta a un requerimiento": 0.1055,
+"Publicidad o correo no deseado": 0.07
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3473,
+"false": 0.6527000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-105",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.6979,
+"Tributos y recaudación": 0.0126,
+"Urbanismo y obras": 0.0585,
+"Servicios sociales": 0.0291,
+"Recursos humanos": 0.0204,
+"Contratación": 0.0049,
+"Sede electrónica e informática": 0.0422,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1345
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2201,
+"Trámite o solicitud": 0.6029,
+"Queja o reclamación": 0.0219,
+"Respuesta a un requerimiento": 0.0753,
+"Publicidad o correo no deseado": 0.0798
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3573,
+"false": 0.6427
+}
+}
+}
+},
+{
+"id": "correo-p-106",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.0816,
+"Tributos y recaudación": 0.0297,
+"Urbanismo y obras": 0.454,
+"Servicios sociales": 0.0388,
+"Recursos humanos": 0.1274,
+"Contratación": 0.0482,
+"Sede electrónica e informática": 0.0195,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2008
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2407,
+"Trámite o solicitud": 0.3856,
+"Queja o reclamación": 0.0448,
+"Respuesta a un requerimiento": 0.177,
+"Publicidad o correo no deseado": 0.1519
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.2555,
+"false": 0.7444999999999999
+}
+}
+}
+},
+{
+"id": "correo-p-107",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Atención ciudadana y registro",
+"p": {
+"Atención ciudadana y registro": 0.6235,
+"Tributos y recaudación": 0.0107,
+"Urbanismo y obras": 0.0547,
+"Servicios sociales": 0.0204,
+"Recursos humanos": 0.0239,
+"Contratación": 0.008,
+"Sede electrónica e informática": 0.092,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1668
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.228,
+"Trámite o solicitud": 0.6082,
+"Queja o reclamación": 0.0179,
+"Respuesta a un requerimiento": 0.0576,
+"Publicidad o correo no deseado": 0.0883
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.3546,
+"false": 0.6454
+}
+}
+}
+},
+{
+"id": "correo-p-108",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.4997,
+"Tributos y recaudación": 0.0195,
+"Urbanismo y obras": 0.0586,
+"Servicios sociales": 0.111,
+"Recursos humanos": 0.046,
+"Contratación": 0.0089,
+"Sede electrónica e informática": 0.1097,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1466
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2063,
+"Trámite o solicitud": 0.1933,
+"Queja o reclamación": 0.1919,
+"Respuesta a un requerimiento": 0.2559,
+"Publicidad o correo no deseado": 0.1527
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5404,
+"false": 0.4596
+}
+}
+}
+},
+{
+"id": "correo-p-109",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.3996,
+"Tributos y recaudación": 0.0154,
+"Urbanismo y obras": 0.0465,
+"Servicios sociales": 0.0293,
+"Recursos humanos": 0.2122,
+"Contratación": 0.1076,
+"Sede electrónica e informática": 0.0791,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1103
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2798,
+"Trámite o solicitud": 0.4373,
+"Queja o reclamación": 0.0304,
+"Respuesta a un requerimiento": 0.0935,
+"Publicidad o correo no deseado": 0.1591
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.5125,
+"false": 0.48750000000000004
+}
+}
+}
+},
+{
+"id": "correo-p-110",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.1489,
+"Tributos y recaudación": 0.0449,
+"Urbanismo y obras": 0.2002,
+"Servicios sociales": 0.2317,
+"Recursos humanos": 0.0498,
+"Contratación": 0.0167,
+"Sede electrónica e informática": 0.0806,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2272
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2448,
+"Trámite o solicitud": 0.4083,
+"Queja o reclamación": 0.1695,
+"Respuesta a un requerimiento": 0.0427,
+"Publicidad o correo no deseado": 0.1348
+}
+},
+"urgente": {
+"label": "true",
+"p": {
+"true": 0.6018,
+"false": 0.3982
+}
+}
+}
+},
+{
+"id": "correo-p-111",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0267,
+"Tributos y recaudación": 0.0982,
+"Urbanismo y obras": 0.0557,
+"Servicios sociales": 0.0104,
+"Recursos humanos": 0.0094,
+"Contratación": 0.5943,
+"Sede electrónica e informática": 0.0254,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1799
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.1385,
+"Trámite o solicitud": 0.5233,
+"Queja o reclamación": 0.0843,
+"Respuesta a un requerimiento": 0.1298,
+"Publicidad o correo no deseado": 0.1242
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.389,
+"false": 0.611
+}
+}
+}
+},
+{
+"id": "correo-p-112",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.0532,
+"Tributos y recaudación": 0.0089,
+"Urbanismo y obras": 0.7488,
+"Servicios sociales": 0.0091,
+"Recursos humanos": 0.0087,
+"Contratación": 0.047,
+"Sede electrónica e informática": 0.0093,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1151
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2847,
+"Trámite o solicitud": 0.4747,
+"Queja o reclamación": 0.0554,
+"Respuesta a un requerimiento": 0.0769,
+"Publicidad o correo no deseado": 0.1083
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3715,
+"false": 0.6285000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-113",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.211,
+"Tributos y recaudación": 0.0119,
+"Urbanismo y obras": 0.0406,
+"Servicios sociales": 0.393,
+"Recursos humanos": 0.112,
+"Contratación": 0.0177,
+"Sede electrónica e informática": 0.0282,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1856
+}
+},
+"tipo": {
+"label": "Trámite o solicitud",
+"p": {
+"Solicitud de información": 0.2441,
+"Trámite o solicitud": 0.3035,
+"Queja o reclamación": 0.1872,
+"Respuesta a un requerimiento": 0.0968,
+"Publicidad o correo no deseado": 0.1685
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3649,
+"false": 0.6351
+}
+}
+}
+},
+{
+"id": "correo-p-114",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Tributos y recaudación",
+"p": {
+"Atención ciudadana y registro": 0.0247,
+"Tributos y recaudación": 0.1201,
+"Urbanismo y obras": 0.4768,
+"Servicios sociales": 0.0076,
+"Recursos humanos": 0.0244,
+"Contratación": 0.2347,
+"Sede electrónica e informática": 0.0327,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.079
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.3485,
+"Trámite o solicitud": 0.1473,
+"Queja o reclamación": 0.0397,
+"Respuesta a un requerimiento": 0.2142,
+"Publicidad o correo no deseado": 0.2503
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.319,
+"false": 0.681
+}
+}
+}
+},
+{
+"id": "correo-p-115",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.0746,
+"Tributos y recaudación": 0.011,
+"Urbanismo y obras": 0.0269,
+"Servicios sociales": 0.5301,
+"Recursos humanos": 0.1743,
+"Contratación": 0.0167,
+"Sede electrónica e informática": 0.0141,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.1522
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.1323,
+"Trámite o solicitud": 0.1471,
+"Queja o reclamación": 0.5897,
+"Respuesta a un requerimiento": 0.0386,
+"Publicidad o correo no deseado": 0.0922
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4382,
+"false": 0.5618000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-116",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Contratación",
+"p": {
+"Atención ciudadana y registro": 0.0298,
+"Tributos y recaudación": 0.0082,
+"Urbanismo y obras": 0.1983,
+"Servicios sociales": 0.0196,
+"Recursos humanos": 0.0149,
+"Contratación": 0.4924,
+"Sede electrónica e informática": 0.0243,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2124
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2895,
+"Trámite o solicitud": 0.3075,
+"Queja o reclamación": 0.0146,
+"Respuesta a un requerimiento": 0.1335,
+"Publicidad o correo no deseado": 0.2549
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3113,
+"false": 0.6887
+}
+}
+}
+},
+{
+"id": "correo-p-117",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Urbanismo y obras",
+"p": {
+"Atención ciudadana y registro": 0.1523,
+"Tributos y recaudación": 0.0201,
+"Urbanismo y obras": 0.6769,
+"Servicios sociales": 0.0131,
+"Recursos humanos": 0.0099,
+"Contratación": 0.018,
+"Sede electrónica e informática": 0.0118,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0977
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2126,
+"Trámite o solicitud": 0.4942,
+"Queja o reclamación": 0.0301,
+"Respuesta a un requerimiento": 0.1801,
+"Publicidad o correo no deseado": 0.0831
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.3635,
+"false": 0.6365000000000001
+}
+}
+}
+},
+{
+"id": "correo-p-118",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Sede electrónica e informática",
+"p": {
+"Atención ciudadana y registro": 0.0291,
+"Tributos y recaudación": 0.3837,
+"Urbanismo y obras": 0.0239,
+"Servicios sociales": 0.0176,
+"Recursos humanos": 0.0419,
+"Contratación": 0.0435,
+"Sede electrónica e informática": 0.3688,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.0914
+}
+},
+"tipo": {
+"label": "Queja o reclamación",
+"p": {
+"Solicitud de información": 0.2036,
+"Trámite o solicitud": 0.2362,
+"Queja o reclamación": 0.2097,
+"Respuesta a un requerimiento": 0.157,
+"Publicidad o correo no deseado": 0.1935
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4104,
+"false": 0.5896
+}
+}
+}
+},
+{
+"id": "correo-p-119",
+"dificil": false,
+"respuestas": {
+"unidad": {
+"label": "Recursos humanos",
+"p": {
+"Atención ciudadana y registro": 0.2073,
+"Tributos y recaudación": 0.012,
+"Urbanismo y obras": 0.0796,
+"Servicios sociales": 0.1362,
+"Recursos humanos": 0.2347,
+"Contratación": 0.0359,
+"Sede electrónica e informática": 0.0872,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2071
+}
+},
+"tipo": {
+"label": "Respuesta a un requerimiento",
+"p": {
+"Solicitud de información": 0.1861,
+"Trámite o solicitud": 0.3681,
+"Queja o reclamación": 0.0251,
+"Respuesta a un requerimiento": 0.2683,
+"Publicidad o correo no deseado": 0.1525
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.4392,
+"false": 0.5608
+}
+}
+}
+},
+{
+"id": "correo-p-120",
+"dificil": true,
+"respuestas": {
+"unidad": {
+"label": "Servicios sociales",
+"p": {
+"Atención ciudadana y registro": 0.1137,
+"Tributos y recaudación": 0.0825,
+"Urbanismo y obras": 0.1537,
+"Servicios sociales": 0.1544,
+"Recursos humanos": 0.0542,
+"Contratación": 0.1382,
+"Sede electrónica e informática": 0.0392,
+"Ninguna (no es competencia municipal, o es publicidad)": 0.2641
+}
+},
+"tipo": {
+"label": "Solicitud de información",
+"p": {
+"Solicitud de información": 0.2594,
+"Trámite o solicitud": 0.5233,
+"Queja o reclamación": 0.0234,
+"Respuesta a un requerimiento": 0.1235,
+"Publicidad o correo no deseado": 0.0704
+}
+},
+"urgente": {
+"label": "false",
+"p": {
+"true": 0.5318,
+"false": 0.46819999999999995
+}
+}
+}
+}
+]
+}
