@@ -29,19 +29,19 @@ OTROS = [
 # Casos de uso y PAWS-X: tablas estáticas a partir de resultados/casos.json y resultados/pawsx.json (casos/exportar.py).
 leer_json = lambda n: json.loads((RAIZ / "resultados" / n).read_text()) if (RAIZ / "resultados" / n).exists() else {}
 coma = lambda x, d=1: f"{x:.{d}f}".replace(".", ",")
-BANDEJAS = {2: "2 · clásico", 3: "3 · embeddings", 4: "4 · decisión", 5: "5 · lenguaje"}
+ESCALONES = {2: "2 · clásico", 3: "3 · embeddings", 4: "4 · decisión", 5: "5 · lenguaje"}
 ANCLA = {"correo": "correo", "expedientes": "expedientes", "apoyo": "apoyo"}   # identificadores de informe/metodologia.md
 
 
 def tabla_caso(clave, caso):
     qs = caso["preguntas"]
-    cab = "<tr><th>Herramienta</th><th>Bandeja</th><th>Nota</th>" + "".join(f"<th>{html.escape(v)}</th>" for v in qs.values()) + "</tr>"
+    cab = "<tr><th>Herramienta</th><th>Escalón</th><th>Nota</th>" + "".join(f"<th>{html.escape(v)}</th>" for v in qs.values()) + "</tr>"
     mejor = {q: max(m["preguntas"][q]["nota"] for m in caso["modelos"]) for q in qs}
     filas = []
     for m in caso["modelos"]:
         celdas = "".join(f'<td class="{"ok" if m["preguntas"][q]["nota"] == mejor[q] else ""}" title="acierto {coma(m["preguntas"][q]["acierto"] * 100, 0)} %">'
                          f'{coma(m["preguntas"][q]["nota"])}{" ·" * (m["preguntas"][q]["fallo_seguras"] > 0.05)}</td>' for q in qs)
-        filas.append(f'<tr><td>{html.escape(m["nombre"])}</td><td>{BANDEJAS[m["escalon"]]}</td><td><b>{coma(m["nota"])}</b></td>{celdas}</tr>')
+        filas.append(f'<tr><td>{html.escape(m["nombre"])}</td><td>{ESCALONES[m["escalon"]]}</td><td><b>{coma(m["nota"])}</b></td>{celdas}</tr>')
     return (f'<h3>{html.escape(caso["titulo"])}</h3><p class="sub">{caso["n"]} casos de prueba · '
             f'<a href="metodologia.html#{ANCLA[clave]}">cómo se midió</a></p>'
             f'<div class="card scroll"><table class="matrix">{cab}{"".join(filas)}</table></div>')
@@ -58,17 +58,17 @@ for m in sorted(pawsx_json.get("modelos", []), key=orden_pawsx):
     else:
         acierto = f'{coma(m["acierto"] * 100, 0)} % <small>({coma(m["ic95"][0] * 100, 0)} a {coma(m["ic95"][1] * 100, 0)})</small>'
         ejemplos = "200" if m["ejemplos"] else ("ninguno" if not m["id"].startswith("jeff") else "ver nota")
-    filas_pawsx.append(f'<tr><td>{html.escape(m["nombre"])}</td><td>{BANDEJAS[m["escalon"]]}</td><td>{ejemplos}</td><td>{acierto}</td></tr>')
-bloque_pawsx = ('<div class="card scroll"><table class="matrix"><tr><th>Herramienta</th><th>Bandeja</th><th>Ejemplos de la tarea</th>'
+    filas_pawsx.append(f'<tr><td>{html.escape(m["nombre"])}</td><td>{ESCALONES[m["escalon"]]}</td><td>{ejemplos}</td><td>{acierto}</td></tr>')
+bloque_pawsx = ('<div class="card scroll"><table class="matrix"><tr><th>Herramienta</th><th>Escalón</th><th>Ejemplos de la tarea</th>'
                 '<th>Acierto medio (IC 95 %)</th></tr>' + "".join(filas_pawsx) + "</table></div>")
 
 tiempos = leer_json("tiempos.json")
 NOMBRE_T = {"clasico": "Clasificador clásico", "embeddings": "Embeddings y clasificador", "kev-08b": "Kev · 0.8B", "kev-4b": "Kev · 4B",
             "jeff-08b": "Jeff · 0.8B", "jeff-2b": "Jeff · 2B", "jev-v1": "Jev-style v1 · 2B", "jev-v3": "Jev-style v3 · 0.8B",
             "llm-9b": "Qwen3.5 · 9B (letras)"}
-BANDEJA_T = {"clasico": 2, "embeddings": 3, "llm-9b": 5}
-bloque_tiempos = ('<div class="card scroll"><table class="matrix"><tr><th>Herramienta</th><th>Bandeja</th><th>Segundos por correo</th></tr>'
-                  + "".join(f'<tr><td>{NOMBRE_T[k]}</td><td>{BANDEJAS[BANDEJA_T.get(k, 4)]}</td><td>{"&lt; 0,01" if v["segundos_por_correo"] < 0.01 else coma(v["segundos_por_correo"], 2)}</td></tr>'
+ESCALON_T = {"clasico": 2, "embeddings": 3, "llm-9b": 5}
+bloque_tiempos = ('<div class="card scroll"><table class="matrix"><tr><th>Herramienta</th><th>Escalón</th><th>Segundos por correo</th></tr>'
+                  + "".join(f'<tr><td>{NOMBRE_T[k]}</td><td>{ESCALONES[ESCALON_T.get(k, 4)]}</td><td>{"&lt; 0,01" if v["segundos_por_correo"] < 0.01 else coma(v["segundos_por_correo"], 2)}</td></tr>'
                             for k, v in sorted(tiempos.items(), key=lambda x: x[1]["segundos_por_correo"])) + "</table></div>")
 
 filas_modelos = "\n".join(
@@ -100,9 +100,9 @@ pagina = f"""<!doctype html>
 <section id="caja">
   <h2>La caja de herramientas escalonada</h2>
   <p class="sub">Para responder una pregunta cerrada sobre un texto hay cinco herramientas, de la más barata a la más cara.
-  Se empieza por abajo y se sube a la bandeja siguiente solo cuando la de abajo no llega, midiéndolo.
+  Se empieza por abajo y se sube al escalón siguiente solo cuando el de abajo no llega, midiéndolo.
   La figura se puede reutilizar citando la fuente (CC BY-SA 4.0).</p>
-  <div class="card"><img src="caja-escalonada.svg" alt="Una caja de herramientas abierta con cinco bandejas escalonadas, de abajo arriba: reglas, clasificador clásico, embeddings con clasificador, modelo de decisión y modelo de lenguaje. Cada bandeja cuesta más y entiende más." style="width:100%;height:auto"></div>
+  <div class="card"><img src="caja-escalonada.svg" alt="Una caja de herramientas escalonada con cinco escalones, de abajo arriba: reglas, clasificador clásico, embeddings con clasificador, modelo de decisión y modelo de lenguaje. Cada escalón cuesta más y entiende más." style="width:100%;height:auto"></div>
 </section>
 <section id="casos">
   <h2>Casos de uso: nota de 1 a 10</h2>

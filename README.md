@@ -44,8 +44,8 @@ nuevo que salga, para seguir el estado de esta tecnología. Reúne:
 
 Para responder una pregunta cerrada sobre un texto hay cinco herramientas, de la más barata a la más cara: reglas, un
 clasificador clásico (TF-IDF y regresión logística), *embeddings* con clasificador, un modelo de decisión y un modelo de
-lenguaje general: las bandejas de una **caja de herramientas escalonada**. **Se empieza por abajo y se sube a la bandeja
-siguiente solo cuando la de abajo no llega, midiéndolo.** Las pruebas
+lenguaje general: los escalones de una **caja de herramientas escalonada**. **Se empieza por abajo y se sube al escalón
+siguiente solo cuando el de abajo no llega, midiéndolo.** Las pruebas
 del toolkit, todas en español, dicen hasta dónde hizo falta subir:
 
 | Pregunta | Depende de | Resultado |

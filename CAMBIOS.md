@@ -19,6 +19,12 @@ la segunda con cada modelo o prueba nuevos y con las correcciones. Cada versión
    `web/toolkit-modelos-de-decision.html` y desplegar la página y el PDF.
 5. Avisar a la lista del toolkit en MailerLite.
 
+## 2.1 · 29 de septiembre de 2026
+
+- **«Escalón» en lugar de «bandeja».** Cada nivel de la caja de herramientas escalonada se llama ahora escalón, en el
+  informe, la figura y las páginas web: «se sube al escalón siguiente solo si el de abajo no llega».
+- El script que dibuja la figura pasa al repositorio (`informe/caja_escalonada.py`).
+
 ## 2.0 · 29 de septiembre de 2026
 
 Cambia la conclusión principal, por eso sube la primera cifra.

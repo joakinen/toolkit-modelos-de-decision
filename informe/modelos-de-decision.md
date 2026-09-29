@@ -18,21 +18,21 @@ probabilidad para cada una. «¿Está completa esta solicitud? Sí 1 %, no 95 %,
 respuesta fuera de la lista y dice cuánta seguridad tiene.
 
 **La idea más útil de este informe: la caja de herramientas escalonada.** Para responder una pregunta cerrada sobre un
-texto hay cinco herramientas, de la más barata a la más cara, como las bandejas de una caja de herramientas que se abre
-en escalones. Se empieza por abajo y se sube a la bandeja siguiente solo cuando la de abajo no
+texto hay cinco herramientas, de la más barata a la más cara, como los escalones de una caja de herramientas que se abre
+en bandejas escalonadas. Se empieza por abajo y se sube al escalón siguiente solo cuando el de abajo no
 llega, midiéndolo.
 
 ![](caja-escalonada.pdf){width=100%}
 
 **Lo que hemos medido.** Todo en un Mac mini de 24 GB, sin enviar nada fuera, con cinco pruebas en español:
 
-| Pregunta | Depende de | Hasta qué bandeja hizo falta subir |
+| Pregunta | Depende de | Hasta qué escalón hizo falta subir |
 |------------|-----|--------------------------|
-| ¿En qué sección del BOE se publica este texto? | Vocabulario | **Bandeja 2.** El clasificador clásico llega al 95 % con 1.400 ejemplos, igual que un modelo de decisión ajustado durante horas, y con solo 5 ejemplos por sección ya supera a todos los modelos sin ajustar |
-| ¿Significan lo mismo estas dos frases? | Significado | **Bandeja 4.** El clásico se queda en el azar incluso con 5.000 ejemplos, y los *embeddings*, en el 58 %. Un modelo de decisión sin ajustar llega al 78 %, y uno pequeño ajustado con 200 ejemplos pasa del 60 % al 80 % |
-| Triaje del buzón general: unidad, tipo y urgencia | Las dos cosas | **Bandeja 2 para la unidad, 4 para lo demás.** El clásico es el mejor encaminando, pero casi no distingue lo urgente |
-| ¿Está completo este expediente? | Significado | **Bandeja 4.** El clásico y los *embeddings* fallan con los matices («el pago se hará en ventanilla», «el justificante es de otro expediente») |
-| ¿Esta respuesta se apoya en el documento? | Significado | **Bandeja 4 o 5.** Un modelo de decisión pequeño entrenado para esta tarea (Jeff-0.8B) saca un 8,4 sobre 10, y el chat de 9.000 millones, un 9,4; el clásico se queda en un 3,3 |
+| ¿En qué sección del BOE se publica este texto? | Vocabulario | **Escalón 2.** El clasificador clásico llega al 95 % con 1.400 ejemplos, igual que un modelo de decisión ajustado durante horas, y con solo 5 ejemplos por sección ya supera a todos los modelos sin ajustar |
+| ¿Significan lo mismo estas dos frases? | Significado | **Escalón 4.** El clásico se queda en el azar incluso con 5.000 ejemplos, y los *embeddings*, en el 58 %. Un modelo de decisión sin ajustar llega al 78 %, y uno pequeño ajustado con 200 ejemplos pasa del 60 % al 80 % |
+| Triaje del buzón general: unidad, tipo y urgencia | Las dos cosas | **Escalón 2 para la unidad, 4 para lo demás.** El clásico es el mejor encaminando, pero casi no distingue lo urgente |
+| ¿Está completo este expediente? | Significado | **Escalón 4.** El clásico y los *embeddings* fallan con los matices («el pago se hará en ventanilla», «el justificante es de otro expediente») |
+| ¿Esta respuesta se apoya en el documento? | Significado | **Escalón 4 o 5.** Un modelo de decisión pequeño entrenado para esta tarea (Jeff-0.8B) saca un 8,4 sobre 10, y el chat de 9.000 millones, un 9,4; el clásico se queda en un 3,3 |
 
 **Notas de 1 a 10 en los casos de uso** (1 es el azar y 10 acertarlo todo; se resta si el modelo falla con mucha
 seguridad; el detalle está en la sección 5 de la [metodología](https://joakinen.github.io/toolkit-modelos-de-decision/metodologia.html#nota)):
@@ -60,7 +60,7 @@ sigue siendo su punto débil.
 
 **Si solo te llevas tres cosas:**
 
-1. Empieza por la bandeja más baja que pueda funcionar.
+1. Empieza por el escalón más bajo que pueda funcionar.
 2. Mide siempre contra un clasificador clásico: si lo iguala, el modelo sobra.
 3. No te fíes de la seguridad que declara un modelo hasta haberla comprobado con tus datos.
 
@@ -92,7 +92,7 @@ El código, los datos de la prueba y un laboratorio para probar varios modelos e
 
 Funciona como un **toolkit de evaluación de modelos de decisión**: se irá actualizando con los modelos nuevos que salgan.
 Al final del texto hay un veredicto provisional sobre el estado de esta tecnología.
-Esta es la versión 2.0, del 29 de septiembre de 2026; la última está siempre en
+Esta es la versión 2.1, del 29 de septiembre de 2026; la última está siempre en
 <https://creativecodeworks.com/toolkit-modelos-de-decision.html>, y lo que cambia en cada una, en
 [CAMBIOS.md](https://github.com/joakinen/toolkit-modelos-de-decision/blob/main/CAMBIOS.md).
 
@@ -385,7 +385,7 @@ pruebas de este informe dicen que ninguna gana siempre. Ordenadas de la más bar
 \necesitaespacio{24\baselineskip}
 ```
 
-| Bandeja | Qué es | Qué necesita | Qué entiende | Coste por texto |
+| Escalón | Qué es | Qué necesita | Qué entiende | Coste por texto |
 |--------|------------|----------|--------|--------|
 | 1. Reglas | Expresiones regulares y condiciones escritas a mano | Escribir la regla | Lo mecánico: hay un NIF, hay una fecha | Nada |
 | 2. Clasificador clásico | TF-IDF y regresión logística: aprende qué palabras van con cada respuesta | Decenas o cientos de ejemplos etiquetados | Palabras, no significado | Milésimas de segundo, sin GPU |
@@ -393,28 +393,27 @@ pruebas de este informe dicen que ninguna gana siempre. Ordenadas de la más bar
 | 4. Modelo de decisión | Un modelo de lenguaje pequeño reentrenado para elegir entre opciones | Nada para empezar; cientos de ejemplos si se ajusta | Significado | De 0,2 a 1,5 segundos |
 | 5. Modelo de lenguaje | Un chat general, preguntado para que conteste con una letra | Nada | Significado, y además sabe redactar | Varios segundos y más memoria |
 
-**La regla: empieza por abajo y sube a la bandeja siguiente solo si la de abajo no llega, midiéndolo.** Cada bandeja
-cuesta más en
-tiempo, en memoria y en dependencia de un modelo concreto. Subir solo compensa si la pregunta depende del significado.
+**La regla: empieza por abajo y sube al escalón siguiente solo si el de abajo no llega, midiéndolo.** Cada escalón
+cuesta más en tiempo, en memoria y en dependencia de un modelo concreto. Subir solo compensa si la pregunta depende del significado.
 
 **Cómo elegir, en cuatro preguntas:**
 
 1. ¿Es mecánico? Reglas.
 2. ¿La respuesta la delatan las palabras y tienes ejemplos etiquetados? Clasificador clásico. Si no llega, prueba con
-   *embeddings* antes de subir otra bandeja.
+   *embeddings* antes de subir otro escalón.
 3. ¿Depende del sentido (negaciones, plazos, algo citado pero no aportado), no tienes ejemplos o la pregunta cambia a
    menudo? Modelo de decisión. Si tienes unos cientos de ejemplos, ajústalo.
 4. ¿Hay que redactar, resumir o explicar? Modelo de lenguaje.
 
 **Ojo: la caja ordena por coste, no por acierto.** En la prueba del BOE, un clasificador clásico entrenado en nueve
 segundos acierta tanto como un modelo de decisión ajustado durante horas. En el triaje de correo, el clásico es el que
-mejor encamina a la unidad correcta. Subir de bandeja en una pregunta de vocabulario no mejora nada: solo encarece.
+mejor encamina a la unidad correcta. Subir de escalón en una pregunta de vocabulario no mejora nada: solo encarece.
 
-**Las bandejas se combinan.** En un buzón general, lo razonable sería que el clasificador clásico decidiera la unidad
+**Los escalones se combinan.** En un buzón general, lo razonable sería que el clasificador clásico decidiera la unidad
 (rápido y fiable, porque el tema lo delatan las palabras), que un modelo de decisión decidiera la urgencia y el tipo de
 correo (que dependen del sentido) y que un modelo de lenguaje redactara, si hace falta, el borrador de la respuesta.
 
-Las pruebas de las secciones 13 a 15 muestran hasta qué bandeja hizo falta subir en cada caso. La figura de la sección 1
+Las pruebas de las secciones 13 a 15 muestran hasta qué escalón hizo falta subir en cada caso. La figura de la sección 1
 («En cinco minutos»)
 la resume; se puede reutilizar citando la fuente (CC BY-SA 4.0).
 
@@ -446,7 +445,7 @@ Algunos ejemplos, escritos como la pregunta que se le haría al modelo:
 | Calidad | ¿Cita la resolución la norma aplicable? | sí · no |
 | Revisión | ¿Contiene datos personales que haya que anonimizar? | sí · no · no consta |
 
-No todos piden la misma bandeja de la caja escalonada: el tipo de escrito o la unidad suelen delatarlos las palabras, y
+No todos piden el mismo escalón de la caja escalonada: el tipo de escrito o la unidad suelen delatarlos las palabras, y
 ahí puede bastar un clasificador clásico; la completitud, los plazos o la urgencia dependen del sentido, y ahí es
 donde un modelo de decisión aporta. Tres de estos usos se han medido: se cuentan en la sección 15 («Tres casos de uso»).
 
@@ -533,7 +532,7 @@ julio y agosto (50 por apartado).
 
 **Resultados en los 350 textos de prueba** (acierto medio por apartado):
 
-| Herramienta | Bandeja | Acierto | Log-loss |
+| Herramienta | Escalón | Acierto | Log-loss |
 |------------------------------|----|----|----|
 | **Kev-4B, ajustado con los 1.400 textos** | 4 | **96 %** | 0,22 |
 | **Clasificador clásico, con los mismos 1.400 textos** | 2 | **95 %** | **0,15** |
@@ -565,7 +564,7 @@ apartados fáciles.
   entrenamiento de los que no, el 4B ajustado acierta casi igual en los dos grupos (96,6 % y 95,9 %).
 
 **Por qué gana el clásico aquí.** Las secciones del BOE las delatan las palabras: «edicto», «juzgado», «licitación»,
-«nombramiento», «convocatoria». Una pregunta así es de vocabulario, y para eso basta la segunda bandeja. Cuántos ejemplos
+«nombramiento», «convocatoria». Una pregunta así es de vocabulario, y para eso basta el segundo escalón. Cuántos ejemplos
 le hacen falta lo dice su curva de aprendizaje (10 sorteos por tamaño):
 
 ```{=latex}
@@ -621,7 +620,7 @@ entrenamiento.
 
 **Resultados en los 400 pares** (acierto medio por respuesta; el azar es el 50 %):
 
-| Herramienta | Bandeja | Ejemplos de la tarea | Acierto |
+| Herramienta | Escalón | Ejemplos de la tarea | Acierto |
 |--------------------------|----|--------|------|
 | Clasificador clásico | 2 | 50 a 5.000 | 50 % a 52 % |
 | *Embeddings* y clasificador | 3 | 50 a 5.000 | 56 % a 58 % |
@@ -678,7 +677,7 @@ un servicio caído). 120 correos de prueba; 160 para entrenar las referencias.
 \necesitaespacio{20\baselineskip}
 ```
 
-| Herramienta | Bandeja | Nota | Unidad | Tipo | Urgente |
+| Herramienta | Escalón | Nota | Unidad | Tipo | Urgente |
 |------------------------|----|----|----|----|----|
 | Qwen3.5 9B, chat general con letras | 5 | **7,7** | 7,3 | **7,5** | **8,3** |
 | Kev-4B | 4 | **7,5** | 7,6 | **7,5** | 7,4 |
@@ -690,10 +689,10 @@ un servicio caído). 120 correos de prueba; 160 para entrenar las referencias.
 | Réplica de Jev de 2.000 millones | 4 | 4,6 | 4,7 | 4,7 | 4,4 |
 | Jeff-0.8B | 4 | 3,9 | 4,4 | 2,0 | 5,2 |
 
-**Lo que enseña.** La pregunta de la unidad es de vocabulario, y ahí ganan las bandejas 2 y 3: el tema de un correo lo
+**Lo que enseña.** La pregunta de la unidad es de vocabulario, y ahí ganan los escalones 2 y 3: el tema de un correo lo
 delatan sus palabras. La urgencia es de significado (hay que calcular un plazo con la fecha del correo, o ver un riesgo),
 y ahí el clasificador clásico está casi al azar (2,2) mientras Kev-4B y el chat superan el 7. Es el caso que mejor ilustra
-la combinación de bandejas: clásico para encaminar, modelo de decisión para la urgencia y el tipo.
+la combinación de escalones: clásico para encaminar, modelo de decisión para la urgencia y el tipo.
 
 ## Completitud de un expediente
 
@@ -707,7 +706,7 @@ firma está pendiente», un DNI citado pero no adjunto. 60 expedientes de prueba
 \necesitaespacio{20\baselineskip}
 ```
 
-| Herramienta | Bandeja | Nota | Pago | Firma | Identidad | Quién presenta |
+| Herramienta | Escalón | Nota | Pago | Firma | Identidad | Quién presenta |
 |--------------------|----|---|---|---|-----|-------|
 | Qwen3.5 9B, chat general con letras | 5 | **8,5** | 6,6 | **8,9** | **8,5** | **10** |
 | Kev-4B | 4 | **8,4** | **8,1** | 8,0 | 7,4 | **10** |
@@ -719,7 +718,7 @@ firma está pendiente», un DNI citado pero no adjunto. 60 expedientes de prueba
 | Clasificador clásico | 2 | 3,3 | 4,5 | 1,9 | 1,6 | 5,1 |
 | *Embeddings* y clasificador | 3 | 3,0 | 4,4 | 3,2 | 2,2 | 2,1 |
 
-**Lo que enseña.** Es el caso en que más claramente hace falta la bandeja 4. Las referencias fallan porque la respuesta
+**Lo que enseña.** Es el caso en que más claramente hace falta el escalón 4. Las referencias fallan porque la respuesta
 depende de matices que las palabras no recogen: «pago» aparece igual en «pago acreditado» que en «el pago se hará en
 ventanilla». Los modelos de decisión de 2.000 a 4.000 millones de parámetros llegan a notas de 7 a 8,4; los de 800
 millones se quedan cortos, salvo en la pregunta más sencilla (quién presenta).
@@ -742,7 +741,7 @@ documentación publicada. La mitad de las respuestas se apoyan en el texto y la 
 \necesitaespacio{18\baselineskip}
 ```
 
-| Herramienta | Bandeja | Nota | Acierto |
+| Herramienta | Escalón | Nota | Acierto |
 |------------------------|----|----|----|
 | Qwen3.5 9B, chat general con letras | 5 | **9,4** | 97 % |
 | Jeff-0.8B | 4 | **8,4** | 91 % |
@@ -773,7 +772,7 @@ en el Mac mini con M4 Pro y 24 GB:
 \necesitaespacio{16\baselineskip}
 ```
 
-| Herramienta | Bandeja | Segundos por correo |
+| Herramienta | Escalón | Segundos por correo |
 |------------------------|----|--------|
 | Clasificador clásico | 2 | menos de 0,01 |
 | *Embeddings* y clasificador | 3 | 0,14 |
@@ -970,7 +969,7 @@ los dos casos.
 Los ejemplos salieron de revisiones reales de textos propios, que no se publican: 100, de los que solo 17 eran consejos
 prácticos. Con validación cruzada (cada caso se mide con un modelo que no lo vio al ajustarse), **el ajuste de Kev-0.8B
 no se distinguió del azar**: aprendió a responder casi siempre la opción mayoritaria. Un clasificador clásico con los
-mismos casos tampoco aprendió nada. Con 17 ejemplos de una opción no hay bandeja que llegue: hacen falta **unos cientos
+mismos casos tampoco aprendió nada. Con 17 ejemplos de una opción no hay escalón que llegue: hacen falta **unos cientos
 de ejemplos de cada opción**.
 
 # Qué modelos existen
@@ -1100,8 +1099,8 @@ son en el conjunto de textos.
 pequeño. Dos textos parecidos en significado dan vectores cercanos.
 
 **Caja de herramientas escalonada.** La forma de elegir herramienta que propone este informe: reglas, clasificador
-clásico, *embeddings*, modelo de decisión y modelo de lenguaje, como bandejas de una caja que se abre en escalones;
-se sube a la siguiente solo si la de abajo no llega.
+clásico, *embeddings*, modelo de decisión y modelo de lenguaje, como los escalones de una caja que se abre en bandejas escalonadas;
+se sube al siguiente solo si el de abajo no llega.
 
 **Paráfrasis.** Dos textos que dicen lo mismo con otras palabras.
 
@@ -1177,7 +1176,7 @@ ISO/IEC 80000-13.
 Joaquín Herrero Pintado\
 Creative Codeworks
 
-Versión 2.0 · 29 de septiembre de 2026\
+Versión 2.1 · 29 de septiembre de 2026\
 Primera versión: 28 de septiembre de 2026 · Cambios de cada versión:
 [CAMBIOS.md](https://github.com/joakinen/toolkit-modelos-de-decision/blob/main/CAMBIOS.md)\
 Última versión: [creativecodeworks.com/toolkit-modelos-de-decision.html](https://creativecodeworks.com/toolkit-modelos-de-decision.html)\
